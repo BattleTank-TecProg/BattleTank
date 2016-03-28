@@ -1,10 +1,52 @@
-﻿Universidade de Brasília - Campus Gama
+Universidade de Brasília - Campus Gama
+
 
 Disciplina: Técnicas de programação
 Professor: Maurício Serrano
 Linguagem do Projeto: Java
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Folha de padronização de código
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Integrantes:
@@ -13,32 +55,48 @@ João Paulo Busche da Cruz - 140023348
 Matheus Henrique Sousa Costa - 140028455
 Ruan N. Herculano Pereira - 130145173
 
+
+
+
+
+
+
+
 Brasília - DF
 20 de Março de 2016
-
 Índice:
+
+
+
+
+
 
 1 - Objetivo
 2 - Comentários
 3 - Declaração de Variáveis
 4 - Declaração de Classes
 5 - Indentação
-  5.1 - Quebra de linha
+5.1 - Quebra de linha
 6 - Quebra de linha
 7 - Sintaxe
 8 - Declarações
-  8.1 - Métodos
-  8.2 - Classes
-  8.3 - Interfaces
-  8.4 - If/Else
-  8.5 - Switch Case
-  8.6 - While
-  8.7 - For
-  8.8 - Try/Catch
+8.1 - Métodos
+8.2 - Classes
+8.3 - Interfaces
+8.4 - If/Else
+8.5 - Switch Case
+8.6 - While
+8.7 - For
+8.8 - Try/Catch
 9 - Outras expressões
-  9.1 - Arrays
-  9.2 -  Strings
-  9.3 - Números
+        9.1 - Arrays
+9.2 -  Strings
+9.3 - Números
+
+
+
+
+
 
 1 - Objetivo:
 
@@ -55,6 +113,7 @@ Esta folha de padronização de código tem por objetivo tornar padrão toda e q
 * Os comentários em bloco (mais de uma linha) deverão ser escritos com inicio ‘/*’ e fim ‘*/’;
 *  Apenas os comentários de linha única deverão começar com ‘//’;
 * Os comentários sempre deverão estar alinhados com a instrução a que se referem;
+Exemplo:
 
 
 3 - Declaração de Variáveis:
@@ -68,23 +127,74 @@ Esta folha de padronização de código tem por objetivo tornar padrão toda e q
 * Nomes compostos devem ser escritos com o primeiro nome em minúsculo e a primeira letra de cada palavra subsequente em maiúsculo
 * Não deve-se separar o nome das variáveis com ‘-,/,etc’;
 * Constantes: As constantes sempre devem ser utilizadas para substituir valores que não mudam.
-
 Exemplo:
 
-        private int targetAngle = 0;
 
-        private int targetAngleody = 0;
 
-        private int previousTargetAngleBody = 0;
 
-        protected int bodyAngle = 0;
+4 - Declaração de classes:
 
-        protected int turrentAngle = 0;
 
-        protected int coolDownShell = 33;
+* Todas as classes deverão conter documentação javaDoc e deverão ser escritas seguindo o padrão CamelCase mais precisamente UpperCamelCase, onde a palavra é iniciada com Maiúsculas e unidas sem espaços.
+* As variáveis deverão ser declaradas na seguinte ordem: 1 - públicas, 2 - protegidas e 3 - privadas.
+Todas as classes deverão conter o método construtor.
 
-        public int coolDownShell = 33;
 
-        public double distance = 0;
+5 - Indentação:
 
-        public boolean forward = 0;
+
+* Usar indentação padrão do elipse de uma tabulação;
+* Terminar cada arquivo com uma linha em branco;
+* Usar espaços ao redor de operadores, depois de vírgulas e ponto e vírgula, e ao redor de chaves;
+* Não usar espaços antes de (, [ ou depois de ], );
+* Quando não houver conteúdo entre {},(), preencher com um espaço ( ),{ };
+* Deixar uma linha em branco acima da declaração do método;
+* Cada nova função/método deve ser iniciada junto a extremidade esquerda da tela;
+* A indentação dos operadores deve ser separada de seus operandos.
+* Exemplos corretos:
+* Exemplos incorretos:
+
+
+
+5.1 - Chaves
+* As chaves deverão ser abertas logo após a declaração das operações e deverão ser fechadas na linha abaixo do fim das operações;
+* Antes de utilizar chaves sempre deve haver um espaço
+
+6 - Quebra de linha:
+
+
+* Deve-se evitar linhas muito longas;
+* A nova linha deve começar no mesmo nível da linha da expressão de origem.
+
+
+7 - Sintaxe:
+
+
+* Classe: Primeira letra de cada palavra maiúscula
+* Membros de uma classe e variáveis locais: Primeira letra minúscula
+* Constantes de classe: Todas as letras em caixa alta (Maiúsculas)
+* Palavras compostas não devem ser separadas, devem ser escritas juntas e não deve haver qualquer símbolo entre elas.
+
+
+8 - Declarações:
+
+
+8.1 - Métodos:
+* Métodos deverão ter o primeiro nome em minúsculo;
+* Não deve haver espaço entre os parênteses e os atributos;
+* O parêntese de abertura deve estar posicionado após  ao nome do método;
+* Caso existe mais de um parâmetro sendo passado, deve ser colocado uma vírgula rente a variável, e acrescentado um espaço logo em seguida. Ao escrever o ultimo parâmetro, não deve existir nenhum espaço entre o parâmetro e o fechamento dos parênteses;
+* A passagem de parâmetro deve ser feita começando a ser escrita rente ao parêntese.
+
+
+Exemplo Declaração:
+
+Exemplo passagem de parâmetros:
+
+8.2 - Classes
+* As Classes deverão ser declaradas com a primeira letra maiúscula;
+* Todas as Classes deverão ter documentação javaDoc
+* Deverão ter o método construtor;
+
+
+8.3 - Interfaces
