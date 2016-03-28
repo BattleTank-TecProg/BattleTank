@@ -1,0 +1,90 @@
+﻿Universidade de Brasília - Campus Gama
+
+Disciplina: Técnicas de programação
+Professor: Maurício Serrano
+Linguagem do Projeto: Java
+
+Folha de padronização de código
+
+
+Integrantes:
+Nicácio Arruda Bezerra Neto - 130015857
+João Paulo Busche da Cruz - 140023348
+Matheus Henrique Sousa Costa - 140028455
+Ruan N. Herculano Pereira - 130145173
+
+Brasília - DF
+20 de Março de 2016
+
+Índice:
+
+1 - Objetivo
+2 - Comentários
+3 - Declaração de Variáveis
+4 - Declaração de Classes
+5 - Indentação
+  5.1 - Quebra de linha
+6 - Quebra de linha
+7 - Sintaxe
+8 - Declarações
+  8.1 - Métodos
+  8.2 - Classes
+  8.3 - Interfaces
+  8.4 - If/Else
+  8.5 - Switch Case
+  8.6 - While
+  8.7 - For
+  8.8 - Try/Catch
+9 - Outras expressões
+  9.1 - Arrays
+  9.2 -  Strings
+  9.3 - Números
+
+1 - Objetivo:
+
+
+Esta folha de padronização de código tem por objetivo tornar padrão toda e qualquer forma de escrita de código no projeto, seja em forma de código ou comentário.
+
+
+2 - Comentários:
+
+
+* Os comentários deverão ser postos sempre acima da expressão a que se referem;
+* Todos os comentários deverão começar com letra maiúscula e terminar com ponto final;
+* Não haverá espaço depois ou antes do operador utilizado para declarar o comentário;
+* Os comentários em bloco (mais de uma linha) deverão ser escritos com inicio ‘/*’ e fim ‘*/’;
+*  Apenas os comentários de linha única deverão começar com ‘//’;
+* Os comentários sempre deverão estar alinhados com a instrução a que se referem;
+
+
+3 - Declaração de Variáveis:
+
+
+* As variáveis serão declaradas de preferência no início da classe, ou no início do método, em hipótese alguma as variáveis poderão ser declaradas no meio ou fim do código, salvo em casos em que seja de estrita necessidade ao funcionamento do algoritmo;
+* Deverão ser evitadas as mudanças e conversões de tipo de variável;
+* As variáveis deverão ser inicializadas após a declaração;
+* A declaração de variáveis será realizada em 1 por linha;
+* Os nomes de variáveis deverão ser significativos;
+* Nomes compostos devem ser escritos com o primeiro nome em minúsculo e a primeira letra de cada palavra subsequente em maiúsculo
+* Não deve-se separar o nome das variáveis com ‘-,/,etc’;
+* Constantes: As constantes sempre devem ser utilizadas para substituir valores que não mudam.
+
+Exemplo:
+
+        private int targetAngle = 0;
+
+        private int targetAngleody = 0;
+
+        private int previousTargetAngleBody = 0;
+
+        protected int bodyAngle = 0;
+
+        protected int turrentAngle = 0;
+
+        protected int coolDownShell = 33;
+
+        public int coolDownShell = 33;
+
+        public double distance = 0;
+
+        public boolean forward = 0;
