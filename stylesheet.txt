@@ -198,3 +198,31 @@ Exemplo passagem de parâmetros:
 
 
 8.3 - Interfaces
+
+
+8.4 - If/Else
+* Não deve haver espaço entre dois ou mais parênteses;
+* Não deve haver espaço entre as operações e os parênteses
+* Todo if deverá ser acompanhado do ‘else’ obrigatoriamente;
+* Quando não houver nada para se fazer no ‘else’, deverá ser posto um comentário dentro do ‘else’ sinalizando que não há nada a se fazer;
+* O ‘else’ deverá iniciar na mesma linha do fim do ‘if’;
+* Deve haver um espaço entre o fim do ‘if’ e o início do ‘else’;
+* Mesmo que as instruções só tenham uma linha o uso das chaves é obrigatória;
+Exemplo:
+
+
+
+
+8.5 - Switch Case
+* Deve haver uma linha entre a declaração e o primeiro caso;
+* Cada caso do ‘switch’ deve estar separado por uma linha;
+Exemplo:
+
+
+
+
+8.6 - While
+* Não deve haver espaço entre dois ou mais parênteses;
+* Não deve haver espaço entre as operações e os parênteses
+* Mesmo que as instruções só tenham uma linha o uso das chaves é obrigatória;
+Exemplo:
