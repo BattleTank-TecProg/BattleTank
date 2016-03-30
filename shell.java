@@ -1,4 +1,4 @@
-public class shell extends solidObject {
+public class shell extends SolidObject {
 	private polygon3D[] polygons;
 
 	private vector direction;

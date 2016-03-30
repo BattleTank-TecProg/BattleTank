@@ -1,4 +1,4 @@
-public class missileLauncher extends solidObject {
+public class missileLauncher extends SolidObject {
 
 	private polygon3D[] polygons;
 

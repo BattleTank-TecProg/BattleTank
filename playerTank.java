@@ -1,4 +1,4 @@
-public class playerTank extends solidObject {
+public class playerTank extends SolidObject {
 
 	private polygon3D[] body;
 

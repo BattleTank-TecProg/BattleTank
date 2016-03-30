@@ -1,4 +1,4 @@
-public class stone extends solidObject {
+public class stone extends SolidObject {
 	private polygon3D[] polygons;
 
 	public polygon3D shadow;

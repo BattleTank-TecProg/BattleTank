@@ -1,4 +1,4 @@
-public class stealthTank extends solidObject {
+public class stealthTank extends SolidObject {
 	private polygon3D[] body;
 
 	private polygon3D[] bodyInvisible;

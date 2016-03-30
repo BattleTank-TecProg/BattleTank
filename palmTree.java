@@ -1,4 +1,4 @@
-public class palmTree extends solidObject {
+public class palmTree extends SolidObject {
 
 	private polygon3D[] polygons;
 

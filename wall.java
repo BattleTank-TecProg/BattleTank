@@ -1,5 +1,5 @@
 
-public class wall extends solidObject{
+public class wall extends SolidObject{
 
 	private polygon3D[] polygons;
 

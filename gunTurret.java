@@ -1,4 +1,4 @@
-public class gunTurret extends solidObject {
+public class gunTurret extends SolidObject {
 	private polygon3D[] body;
 
 	private polygon3D[] turret;

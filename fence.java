@@ -1,4 +1,4 @@
-public class fence extends solidObject {
+public class fence extends SolidObject {
 
 	private polygon3D[] polygons;
 

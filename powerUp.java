@@ -1,4 +1,4 @@
-public class powerUp extends solidObject {
+public class powerUp extends SolidObject {
 
 	public int type;
 

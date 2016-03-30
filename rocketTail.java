@@ -1,4 +1,4 @@
-public class rocketTail extends solidObject {
+public class rocketTail extends SolidObject {
 
 	public vector[] particles;
 

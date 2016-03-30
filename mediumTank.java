@@ -1,4 +1,4 @@
-public class mediumTank extends solidObject {
+public class mediumTank extends SolidObject {
 
 	private polygon3D[] body;
 

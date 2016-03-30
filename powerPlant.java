@@ -1,4 +1,4 @@
-public class powerPlant extends solidObject {
+public class powerPlant extends SolidObject {
 
 	private polygon3D[] polygons;
 

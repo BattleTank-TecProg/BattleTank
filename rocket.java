@@ -1,4 +1,4 @@
-public class rocket extends solidObject {
+public class rocket extends SolidObject {
 
 	private polygon3D[] polygons;
 

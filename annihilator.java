@@ -1,8 +1,54 @@
-public class annihilator extends solidObject {
+public class Annihilator extends SolidObject {
 
-	private polygon3D[] body;
+	private int bodyAngle = 0;
 
-	private int bodyAngle;
+	private int turretAngle = 0;
+
+	private int bodyAngleDelta = 0;
+
+	private int turretAngleDelta = 0;
+
+	private int position = 0;
+
+	private int desiredPosition = 0;
+
+	private int coolDownShell = 33;
+
+	private int coolDownRocket = 33;
+
+	private int targetAngle = 0;
+
+	private int targetAngleBody = 0;
+
+	private int previousTargetAngleBody = 0;
+
+	private int countDownToDeath = 0;
+
+	private int stuckCount = 0;
+
+	private int randomNumber1 = 0;
+
+	private int randomNumber2 = 0;
+
+	private double distance = 0;
+
+	private boolean forward;
+
+	private boolean aimRight;
+
+	private boolean aimLeft;
+
+	private boolean firingShell;
+
+	private boolean firingRocket;
+
+	private boolean isVisiblePreviousFrame;
+
+	public boolean active = true;
+
+	private boolean engaged;
+
+	private boolean clearToShoot;
 
 	private vector bodyCenter;
 
@@ -14,49 +60,17 @@ public class annihilator extends solidObject {
 
 	private vector turretCenter;
 
-	private int turretAngle;
-
-	private boolean forward, aimRight, aimLeft, firingShell, firingRocket;
-
-	private int coolDownShell = 33;
-	private int coolDownRocket = 33;
+	private polygon3D[] body;
 
 	private vector displacement = new vector(0, 0, 0);
 
-	private int bodyAngleDelta;
+	private vector tempVector1 = new vector(0, 0, 0);
 
-	private int turretAngleDelta;
-
-	private int position, desiredPosition;
-
-	private boolean isVisiblePreviousFrame;
+	private vector tempVector2 = new vector(0, 0, 0);
 
 	private smoke Smoke;
 
-	private double distance;
-
-	private int targetAngle;
-
-	private int targetAngleBody;
-
-	private int previousTargetAngleBody;
-
-	private vector tempVector1 = new vector(0, 0, 0);
-	private vector tempVector2 = new vector(0, 0, 0);
-
-	public boolean active = true;
-
-	private boolean engaged;
-
-	private boolean clearToShoot;
-
-	private int countDownToDeath;
-
-	private int stuckCount;
-
-	private int randomNumber1, randomNumber2;
-
-	public annihilator(double x, double y, double z, int angle) {
+	public Annihilator(double x, double y, double z, int angle) {
 		start = new vector(x, y, z);
 		iDirection = new vector(1, 0, 0);
 		jDirection = new vector(0, 1, 0);
@@ -356,39 +370,53 @@ public class annihilator extends solidObject {
 
 	public void update() {
 		if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
-			if (randomNumber2 > 50)
+			if (randomNumber2 > 50) {
 				randomNumber2 = 50;
-			else
+			} else {
 				randomNumber2 = 51;
+			}
 		}
 
-		if (countDownToDeath <= 0 && active && !main.gamePaused)
+		if (countDownToDeath <= 0 && active && !main.gamePaused) {
 			processAI();
+		}
 
 		if (aimLeft) {
 			if (Math.abs(turretAngle - targetAngle) <= 3) {
 				turretAngleDelta = targetAngle - turretAngle;
 				turretAngle += turretAngleDelta;
-				if (turretAngleDelta < 0)
+				if (turretAngleDelta < 0) {
 					turretAngleDelta += 360;
+				} else {
+					// Dont doing nothing.
+				}
 			} else {
 				turretAngleDelta = 3;
 				turretAngle += 3;
 			}
-			if (turretAngle >= 360)
+			if (turretAngle >= 360) {
 				turretAngle -= 360;
+			} else {
+				// Dont doing nothing.
+			}
 		} else if (aimRight) {
 			if (Math.abs(turretAngle - targetAngle) <= 3) {
 				turretAngleDelta = targetAngle - turretAngle;
 				turretAngle += turretAngleDelta;
-				if (turretAngleDelta < 0)
+				if (turretAngleDelta < 0) {
 					turretAngleDelta += 360;
+				} else {
+					// Dont doing nothing.
+				}
 			} else {
 				turretAngleDelta = 357;
 				turretAngle -= 3;
 			}
-			if (turretAngle < 0)
+			if (turretAngle < 0) {
 				turretAngle += 360;
+			} else {
+				// Dont doing nothing.
+			}
 		}
 
 		if (forward) {
@@ -401,16 +429,18 @@ public class annihilator extends solidObject {
 			} else {
 				displacement.set(0, 0, 0);
 				if (delta > 0) {
-					if (delta < 180)
+					if (delta < 180) {
 						bodyAngleDelta = 5;
-					else
+					} else {
 						bodyAngleDelta = 355;
+					}
 				}
 				if (delta < 0) {
-					if (delta > -180)
+					if (delta > -180) {
 						bodyAngleDelta = 355;
-					else
+					} else {
 						bodyAngleDelta = 5;
+					}
 				}
 
 				bodyAngle = (bodyAngle + bodyAngleDelta) % 360;
@@ -449,6 +479,8 @@ public class annihilator extends solidObject {
 				|| tempCentre.screenX < -400 || tempCentre.screenX > 800) {
 			visible = false;
 			isVisiblePreviousFrame = false;
+		} else {
+			// Dont doing nothing
 		}
 
 		if (visible) {
@@ -456,7 +488,11 @@ public class annihilator extends solidObject {
 				makeBody();
 				makeTurret();
 				isVisiblePreviousFrame = true;
+			} else {
+				// Dont doing nothing
 			}
+		} else {
+			// Dont doing nothing
 		}
 
 		if (visible) {
@@ -577,14 +613,24 @@ public class annihilator extends solidObject {
 				}
 				shadowTurret.update();
 				rasterizer.rasterize(shadowTurret);
+			} else {
+				// Dont doing nothing
 			}
+		} else {
+			// Dont doing nothing
 		}
 
-		if (coolDownShell > 0 && coolDownShell != 92 && !main.gamePaused)
+		if (coolDownShell > 0 && coolDownShell != 92 && !main.gamePaused) {
 			coolDownShell--;
+		} else {
+			// Dont doing nothing
+		}
 
-		if (coolDownRocket > 0 && coolDownRocket != 90 && !main.gamePaused)
+		if (coolDownRocket > 0 && coolDownRocket != 90 && !main.gamePaused) {
 			coolDownRocket--;
+		} else {
+			// Dont doing nothing
+		}
 
 		if (firingShell) {
 			if (coolDownShell == 0) {
@@ -600,6 +646,8 @@ public class annihilator extends solidObject {
 				projectiles.register(new shell(direction.x, direction.y,
 						direction.z, turretAngle, true, 1));
 
+			} else {
+				// Dont doing nothing
 			}
 
 			if (coolDownShell == 92) {
@@ -614,7 +662,11 @@ public class annihilator extends solidObject {
 				direction.add(tempVector1);
 				projectiles.register(new shell(direction.x, direction.y,
 						direction.z, turretAngle, true, 1));
+			} else {
+				// Dont doing nothing
 			}
+		} else {
+			// Dont doing nothing
 		}
 
 		if (firingRocket) {
@@ -633,6 +685,8 @@ public class annihilator extends solidObject {
 				rocket r = new rocket(direction.x, direction.y, direction.z,
 						turretAngle, true);
 				projectiles.register(r);
+			} else {
+				// Dont doing nothing
 			}
 
 			if (coolDownRocket == 90) {
@@ -648,16 +702,25 @@ public class annihilator extends solidObject {
 				rocket r = new rocket(direction.x, direction.y, direction.z,
 						turretAngle, true);
 				projectiles.register(r);
+			} else {
+				// Dont doing nothing
 			}
+		} else {
+			// Dont doing nothing
 		}
 
 		if (HP <= 200) {
 			if (Smoke == null) {
 				Smoke = new smoke(this);
 			} else {
-				if (visible)
+				if (visible) {
 					Smoke.update();
+				} else {
+					// Dont doing nothing
+				}
 			}
+		} else {
+			// Dont doing nothing
 		}
 
 		if (HP <= 0) {
@@ -667,12 +730,21 @@ public class annihilator extends solidObject {
 					projectiles.register(new explosion(centre.x, centre.y,
 							centre.z, 2));
 
+				} else {
+					// Dont doing nothing
 				}
 				obstacleMap.removeObstacle2(position);
 				Smoke.stopped = true;
+			} else {
+				// Dont doing nothing
 			}
-			if (countDownToDeath >= 40)
+			if (countDownToDeath >= 40) {
 				lifeSpan = 0;
+			} else {
+				// Dont doing nothing
+			}
+		} else {
+			// Dont doing nothing
 		}
 
 		forward = false;
@@ -683,9 +755,11 @@ public class annihilator extends solidObject {
 		displacement.reset();
 		firingRocket = false;
 		firingShell = false;
-		if (main.timer % 10 == 0)
+		if (main.timer % 10 == 0) {
 			unstuck = false;
-
+		} else {
+			// Dont doing nothing
+		}
 	}
 
 	private void processAI() {
@@ -693,31 +767,40 @@ public class annihilator extends solidObject {
 		tempVector1.subtract(playerTank.bodyCenter);
 		distance = tempVector1.getLength();
 
-		if (distance < 2)
+		if (distance < 2) {
 			engaged = true;
+		} else {
+			// Dont doing nothing
+		}
 
 		if (distance > 6) {
 			engaged = false;
 			targetAngle = bodyAngle;
 			int AngleDelta = turretAngle - targetAngle;
 			if (AngleDelta > 0) {
-				if (AngleDelta < 180)
+				if (AngleDelta < 180) {
 					aimRight = true;
-				else
+				} else {
 					aimLeft = true;
+				}
 			} else if (AngleDelta < 0) {
-				if (AngleDelta > -180)
+				if (AngleDelta > -180) {
 					aimLeft = true;
-				else
+				} else {
 					aimRight = true;
+				}
 			}
 			return;
+		} else {
+			// Dont doing nothing
 		}
 
 		if (engaged) {
-			if ((main.timer) % 5 == 0)
+			if ((main.timer) % 5 == 0) {
 				obstacleMap.alertNearbyTanks(position);
-
+			} else {
+				// Dont doing nothing
+			}
 			tempVector1.set(bodyCenter);
 			tempVector2.set(playerTank.bodyCenter);
 			tempVector2.subtract(tempVector1);
@@ -730,8 +813,11 @@ public class annihilator extends solidObject {
 			for (int i = 0; (d < distance) && (i < 30); i++, tempVector1
 					.add(tempVector2), d += 0.125) {
 				model temp = obstacleMap.isOccupied2(tempVector1);
-				if (temp == null)
+				if (temp == null) {
 					continue;
+				} else {
+					// Dont doing nothing
+				}
 				obstacleType = temp.getType();
 				if (obstacleType == 1) {
 					break;
@@ -747,8 +833,11 @@ public class annihilator extends solidObject {
 						.atan((centre.z - playerTank.bodyCenter.z)
 								/ (centre.x - playerTank.bodyCenter.x)) / Math.PI);
 				if (playerTank.bodyCenter.x > turretCenter.x
-						&& targetAngle <= 180)
+						&& targetAngle <= 180) {
 					targetAngle += 180;
+				} else {
+					// Dont doing nothing
+				}
 
 			} else {
 				targetAngle = bodyAngle;
@@ -756,37 +845,55 @@ public class annihilator extends solidObject {
 			}
 
 			int AngleDelta = turretAngle - targetAngle;
-			if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 1.7)
+			if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 1.7) {
 				firingShell = true;
-
-			if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 3)
+			} else {
+				// Dont doing nothing
+			}
+			if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 3) {
 				firingRocket = true;
-
+			} else {
+				// Dont doing nothing
+			}
 			if (AngleDelta > 0) {
-				if (AngleDelta < 180)
+				if (AngleDelta < 180) {
 					aimRight = true;
-				else
+				} else {
 					aimLeft = true;
+				}
 			} else if (AngleDelta < 0) {
-				if (AngleDelta > -180)
+				if (AngleDelta > -180) {
 					aimLeft = true;
-				else
+				} else {
 					aimRight = true;
+				}
 			}
 
 			forward = true;
 			if (clearToShoot && distance < 1.5) {
-				if (distance < 1.4)
+				if (distance < 1.4) {
 					forward = false;
-				if (distance >= 1.4)
-					if (randomNumber2 > 50)
+				} else {
+					// Dont doing nothing
+				}
+				if (distance >= 1.4) {
+					if (randomNumber2 > 50) {
 						forward = false;
+					} else {
+						// Dont doing nothing
+					}
+				} else {
+					// Dont doing nothing
+				}
+			} else {
+				// Dont doing nothing
 			}
 
 			if (unstuck && distance > 0.8) {
 				forward = true;
 				obstacleMap.giveWay(this, position);
-
+			} else {
+				// Dont doing nothing
 			}
 
 			if (forward) {
@@ -794,26 +901,35 @@ public class annihilator extends solidObject {
 						.atan((centre.z - playerTank.bodyCenter.z)
 								/ (centre.x - playerTank.bodyCenter.x)) / Math.PI);
 				if (playerTank.bodyCenter.x > centre.x
-						&& targetAngleBody <= 180)
+						&& targetAngleBody <= 180) {
 					targetAngleBody += 180;
+				} else {
+					// Dont doing nothing
+				}
 
 				if (!clearToShoot
 						&& (distance < 1.2 || (obstacleType == 6 && distance < 2.5))
 						|| stuckCount == 10) {
 					if (stuckCount == 10) {
-						if (randomNumber2 > 50)
+						if (randomNumber2 > 50) {
 							randomNumber2 = 50;
-						else
+						} else {
 							randomNumber2 = 51;
+						}
 						stuckCount = 0;
+					} else {
+						// Dont doing nothing
 					}
 
-					if (randomNumber2 > 50)
+					if (randomNumber2 > 50) {
 						targetAngleBody += 90;
-					else
+					} else {
 						targetAngleBody -= 90;
+					}
 
 					targetAngleBody = (targetAngleBody + 360) % 360;
+				} else {
+					// Dont doing nothing
 				}
 
 				int newPosition = (int) (boundary2D.xPos * 4)
@@ -838,6 +954,8 @@ public class annihilator extends solidObject {
 				if (!canMove) {
 					if (unstuck) {
 						obstacleMap.giveWay(this, position);
+					} else {
+						// Dont doing nothing
 					}
 
 					targetAngleBody = targetAngle;
@@ -911,8 +1029,12 @@ public class annihilator extends solidObject {
 					if (Math.abs((previousTargetAngleBody + 180) % 360
 							- targetAngleBody) <= 50) {
 						targetAngleBody = previousTargetAngleBody;
+					} else {
+						// Dont doing nothing
 					}
 
+				} else {
+					// Dont doing nothing
 				}
 				displacement.set(0, 0, 0.01);
 				displacement.rotate_XZ(targetAngleBody);
@@ -945,10 +1067,15 @@ public class annihilator extends solidObject {
 			for (int i = 0; i < turret.length; i++) {
 				turret[i].draw();
 			}
+		} else {
+			// Dont doing nothing
 		}
 
-		if (Smoke != null && visible)
+		if (Smoke != null && visible) {
 			Smoke.draw();
+		} else {
+			// Dont doing nothing
+		}
 	}
 
 	public void damage(int damagePoint) {
@@ -956,6 +1083,8 @@ public class annihilator extends solidObject {
 			active = true;
 			engaged = true;
 			return;
+		} else {
+			// Dont doing nothing
 		}
 		HP -= damagePoint;
 		engaged = true;

@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class helix extends solidObject {
+public class helix extends SolidObject {
 
 	public vector[] particles;
 

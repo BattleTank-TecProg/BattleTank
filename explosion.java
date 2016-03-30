@@ -1,4 +1,4 @@
-public class explosion extends solidObject {
+public class explosion extends SolidObject {
 
 	double size;
 
