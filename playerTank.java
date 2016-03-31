@@ -815,9 +815,9 @@ public class playerTank extends SolidObject {
 
 		tempCentre.set(centre);
 		tempCentre.y = -1;
-		tempCentre.subtract(camera.position);
-		tempCentre.rotate_XZ(camera.XZ_angle);
-		tempCentre.rotate_YZ(camera.YZ_angle);
+		tempCentre.subtract(Camera.position);
+		tempCentre.rotate_XZ(Camera.XZ_angle);
+		tempCentre.rotate_YZ(Camera.YZ_angle);
 
 		for (int i = 0; i < body.length; i++) {
 			body[i].origin.add(displacement);

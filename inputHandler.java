@@ -24,16 +24,16 @@ public class inputHandler {
 		if (RIGHT) {
 			playerTank.turnRight = true;
 
-			camera.XZ_angle += 4;
+			Camera.XZ_angle += 4;
 
-			if (camera.XZ_angle > 359)
-				camera.XZ_angle = camera.XZ_angle - 360;
+			if (Camera.XZ_angle > 359)
+				Camera.XZ_angle = Camera.XZ_angle - 360;
 		}
 		if (LEFT) {
 			playerTank.turnLeft = true;
-			camera.XZ_angle -= 4;
-			if (camera.XZ_angle < 0)
-				camera.XZ_angle = camera.XZ_angle + 360;
+			Camera.XZ_angle -= 4;
+			if (Camera.XZ_angle < 0)
+				Camera.XZ_angle = Camera.XZ_angle + 360;
 		}
 
 		if (W) {
@@ -55,10 +55,10 @@ public class inputHandler {
 
 		if (I && L && M) {
 			main.PT.HP = 1499;
-			main.PT.shells = 999;
-			main.PT.rockets = 999;
-			main.PT.slugs = 999;
-			main.PT.plasma = 999;
+			playerTank.shells = 999;
+			playerTank.rockets = 999;
+			playerTank.slugs = 999;
+			playerTank.plasma = 999;
 		}
 
 		if (space || mousePressed) {
@@ -87,22 +87,22 @@ public class inputHandler {
 		if ((xPos < 140 || (xPos < 320 && yPos > 370)) && !LEFT
 				&& cursorInApplet) {
 			playerTank.turnLeft = true;
-			camera.XZ_angle -= 4;
-			if (camera.XZ_angle < 0)
-				camera.XZ_angle = camera.XZ_angle + 360;
+			Camera.XZ_angle -= 4;
+			if (Camera.XZ_angle < 0)
+				Camera.XZ_angle = Camera.XZ_angle + 360;
 		}
 		if ((xPos > 490 || (xPos > 320 && yPos > 370)) && !RIGHT
 				&& cursorInApplet) {
 			playerTank.turnRight = true;
-			camera.XZ_angle += 4;
-			if (camera.XZ_angle > 359)
-				camera.XZ_angle = camera.XZ_angle - 360;
+			Camera.XZ_angle += 4;
+			if (Camera.XZ_angle > 359)
+				Camera.XZ_angle = Camera.XZ_angle - 360;
 		}
 
 		if (xPos <= 490 && xPos >= 140 && yPos < 410 && !RIGHT && !LEFT
 				&& cursorInApplet) {
 			int turretAngle = playerTank.turretAngle % 360;
-			int cameraAngle = (360 - camera.XZ_angle) % 360;
+			int cameraAngle = (360 - Camera.XZ_angle) % 360;
 
 			int yPos_ = 480 - yPos - 59;
 			int xPos_ = 0;

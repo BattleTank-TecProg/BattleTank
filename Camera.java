@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class camera {
+public class Camera {
 
 	public static vector position;
 
@@ -18,7 +18,7 @@ public class camera {
 
 	public int flyThroughTimer;
 
-	public camera() {
+	public Camera() {
 
 		XZ_angle = 0;
 		position = new vector(10, 0.25, 1.5);

@@ -128,14 +128,14 @@ public class polygon3D {
 	}
 
 	public void update() {
-		tempVector1.set(camera.position);
+		tempVector1.set(Camera.position);
 		tempVector1.subtract(vertex3D[0]);
 		if (tempVector1.dot(realNormal) <= 0) {
 			visible = false;
 			return;
 		}
 
-		double x = 0, y = 0, z = 0, camX = camera.position.x, camY = camera.position.y, camZ = camera.position.z, sinXZ = gameData.sin[camera.XZ_angle], cosXZ = gameData.cos[camera.XZ_angle], sinYZ = gameData.sin[camera.YZ_angle], cosYZ = gameData.cos[camera.YZ_angle];
+		double x = 0, y = 0, z = 0, camX = Camera.position.x, camY = Camera.position.y, camZ = Camera.position.z, sinXZ = gameData.sin[Camera.XZ_angle], cosXZ = gameData.cos[Camera.XZ_angle], sinYZ = gameData.sin[Camera.YZ_angle], cosYZ = gameData.cos[Camera.YZ_angle];
 
 		for (int i = 0; i < L; i++) {
 			x = vertex3D[i].x - camX;
@@ -166,7 +166,7 @@ public class polygon3D {
 		bound.setLocation(xMin, yMin);
 		bound.setSize(xMax - xMin + 1, yMax - yMin);
 
-		visible = camera.screen.intersects(bound);
+		visible = Camera.screen.intersects(bound);
 
 		if (visible) {
 			tempVector1.set(tempVertex[1]);
@@ -180,8 +180,8 @@ public class polygon3D {
 				centre.add(tempVertex[i]);
 			centre.scale(1.0 / L);
 
-			withinViewScreen = camera.screen.contains(xMin, yMin)
-					&& camera.screen.contains(xMax, yMax);
+			withinViewScreen = Camera.screen.contains(xMin, yMin)
+					&& Camera.screen.contains(xMax, yMax);
 		}
 	}
 

@@ -49,9 +49,9 @@ public class rocketTail extends SolidObject {
 
 		tempCentre.set(centre);
 		tempCentre.y = -1;
-		tempCentre.subtract(camera.position);
-		tempCentre.rotate_XZ(camera.XZ_angle);
-		tempCentre.rotate_YZ(camera.YZ_angle);
+		tempCentre.subtract(Camera.position);
+		tempCentre.rotate_XZ(Camera.XZ_angle);
+		tempCentre.rotate_YZ(Camera.YZ_angle);
 	}
 
 	public void draw() {
@@ -64,9 +64,9 @@ public class rocketTail extends SolidObject {
 
 		for (int i = 0; i < particles.length; i++) {
 			temp.set(particles[i]);
-			temp.subtract(camera.position);
-			temp.rotate_XZ(camera.XZ_angle);
-			temp.rotate_YZ(camera.YZ_angle);
+			temp.subtract(Camera.position);
+			temp.rotate_XZ(Camera.XZ_angle);
+			temp.rotate_YZ(Camera.YZ_angle);
 			temp.updateLocation();
 
 			if (temp.screenX >= 2 && temp.screenX < 638 && temp.screenY >= 0

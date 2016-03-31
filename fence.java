@@ -60,9 +60,9 @@ public class fence extends SolidObject {
 
 		tempCentre.set(centre);
 		tempCentre.y = -1;
-		tempCentre.subtract(camera.position);
-		tempCentre.rotate_XZ(camera.XZ_angle);
-		tempCentre.rotate_YZ(camera.YZ_angle);
+		tempCentre.subtract(Camera.position);
+		tempCentre.rotate_XZ(Camera.XZ_angle);
+		tempCentre.rotate_YZ(Camera.YZ_angle);
 		tempCentre.updateLocation();
 
 		if (tempCentre.z < 0.5 || tempCentre.screenY < -30

@@ -77,9 +77,9 @@ public class explosion extends SolidObject {
 			modelDrawList.register(this);
 
 		tempCentre.set(centre);
-		tempCentre.subtract(camera.position);
-		tempCentre.rotate_XZ(camera.XZ_angle);
-		tempCentre.rotate_YZ(camera.YZ_angle);
+		tempCentre.subtract(Camera.position);
+		tempCentre.rotate_XZ(Camera.XZ_angle);
+		tempCentre.rotate_YZ(Camera.YZ_angle);
 
 		if (lifeSpan == 15 && damage != 0) {
 			obstacleMap.damageType2Obstacles(damage, boundary2D, groundZero);

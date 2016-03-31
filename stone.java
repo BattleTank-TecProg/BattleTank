@@ -350,7 +350,7 @@ public class stone extends SolidObject {
 	public void update() {
 		tempCentre.set(centre);
 		tempCentre.y = 0.25;
-		tempCentre.subtract(camera.absolutePosition);
+		tempCentre.subtract(Camera.absolutePosition);
 		if (tempCentre.getLength() > 5.5) {
 			polygons = null;
 			visible = false;
@@ -359,9 +359,9 @@ public class stone extends SolidObject {
 
 		tempCentre.set(centre);
 		tempCentre.y = -1;
-		tempCentre.subtract(camera.position);
-		tempCentre.rotate_XZ(camera.XZ_angle);
-		tempCentre.rotate_YZ(camera.YZ_angle);
+		tempCentre.subtract(Camera.position);
+		tempCentre.rotate_XZ(Camera.XZ_angle);
+		tempCentre.rotate_YZ(Camera.YZ_angle);
 		tempCentre.updateLocation();
 
 		if (tempCentre.z < 0.9 || tempCentre.screenY < -10

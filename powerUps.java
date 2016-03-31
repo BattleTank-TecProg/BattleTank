@@ -25,37 +25,37 @@ public class powerUps {
 				if (rectangle2D.testIntersection(PU[i].boundary2D,
 						main.PT.boundary2D)) {
 					if (PU[i].type == 1) {
-						if (main.PT.shells == 0) {
-							main.PT.shells += 10;
+						if (playerTank.shells == 0) {
+							playerTank.shells += 10;
 							main.PT.changeWeapon(1);
 						} else {
-							main.PT.shells += 10;
+							playerTank.shells += 10;
 						}
 					}
 					if (PU[i].type == 2) {
-						if (main.PT.rockets == 0) {
-							main.PT.rockets += 10;
+						if (playerTank.rockets == 0) {
+							playerTank.rockets += 10;
 							main.PT.changeWeapon(2);
 
 						} else {
-							main.PT.rockets += 10;
+							playerTank.rockets += 10;
 						}
 					}
 					if (PU[i].type == 3) {
-						if (main.PT.slugs == 0) {
-							main.PT.slugs += 10;
+						if (playerTank.slugs == 0) {
+							playerTank.slugs += 10;
 							main.PT.changeWeapon(3);
 						} else {
-							main.PT.slugs += 10;
+							playerTank.slugs += 10;
 						}
 					}
 
 					if (PU[i].type == 4) {
-						if (main.PT.plasma == 0) {
-							main.PT.plasma += 10;
+						if (playerTank.plasma == 0) {
+							playerTank.plasma += 10;
 							main.PT.changeWeapon(4);
 						} else {
-							main.PT.plasma += 10;
+							playerTank.plasma += 10;
 						}
 					}
 

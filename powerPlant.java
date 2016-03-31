@@ -473,9 +473,9 @@ public class powerPlant extends SolidObject {
 	public void update() {
 		tempCentre.set(centre);
 		tempCentre.y = -1;
-		tempCentre.subtract(camera.position);
-		tempCentre.rotate_XZ(camera.XZ_angle);
-		tempCentre.rotate_YZ(camera.YZ_angle);
+		tempCentre.subtract(Camera.position);
+		tempCentre.rotate_XZ(Camera.XZ_angle);
+		tempCentre.rotate_YZ(Camera.YZ_angle);
 		tempCentre.updateLocation();
 
 		if (tempCentre.z < 0.5 || tempCentre.screenY < -30
@@ -619,18 +619,18 @@ public class powerPlant extends SolidObject {
 			}
 
 			smokeCentresCamera[i].set(smokeCentres[i]);
-			smokeCentresCamera[i].subtract(camera.position);
-			smokeCentresCamera[i].rotate_XZ(camera.XZ_angle);
-			smokeCentresCamera[i].rotate_YZ(camera.YZ_angle);
+			smokeCentresCamera[i].subtract(Camera.position);
+			smokeCentresCamera[i].rotate_XZ(Camera.XZ_angle);
+			smokeCentresCamera[i].rotate_YZ(Camera.YZ_angle);
 			smokeCentresCamera[i].updateLocation();
 		}
 
 		smokeBottomCamera.set(smokeBottom);
 		if (HP < 250)
 			smokeBottomCamera.set(0, 0, 1500);
-		smokeBottomCamera.subtract(camera.position);
-		smokeBottomCamera.rotate_XZ(camera.XZ_angle);
-		smokeBottomCamera.rotate_YZ(camera.YZ_angle);
+		smokeBottomCamera.subtract(Camera.position);
+		smokeBottomCamera.rotate_XZ(Camera.XZ_angle);
+		smokeBottomCamera.rotate_YZ(Camera.YZ_angle);
 		smokeBottomCamera.updateLocation();
 
 		if (shadow != null && countDownToDeath < 30) {

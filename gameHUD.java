@@ -186,9 +186,9 @@ public class gameHUD {
 				loadingScreenPosition = 0;
 				obstacleMap.clear();
 
-				camera.viewDirection = new vector(0, 0, 1);
-				camera.XZ_angle = 0;
-				camera.restart = true;
+				Camera.viewDirection = new vector(0, 0, 1);
+				Camera.XZ_angle = 0;
+				Camera.restart = true;
 
 				powerUps.init();
 				projectiles.init();
@@ -227,9 +227,9 @@ public class gameHUD {
 				loadingScreenPosition = 0;
 				obstacleMap.clear();
 
-				camera.viewDirection = new vector(0, 0, 1);
-				camera.XZ_angle = 0;
-				camera.restart = true;
+				Camera.viewDirection = new vector(0, 0, 1);
+				Camera.XZ_angle = 0;
+				Camera.restart = true;
 
 				powerUps.init();
 				projectiles.init();
@@ -490,7 +490,7 @@ public class gameHUD {
 			yPos++;
 		}
 
-		integer = new Integer(main.PT.currentAmmo);
+		integer = new Integer(playerTank.currentAmmo);
 		textFactory.drawString(integer.toString(), 554, 427, 1, 0x00d0d0d0);
 		textFactory.draw(Ammo, 482, 427, 1, 0x00d0d0d0);
 
