@@ -222,7 +222,7 @@ public class rasterizer {
 	public static void renderTerrain() {
 		int[] screen = main.screen;
 		short[] Texture = poly.myTexture.Texture;
-		int[][] colorTable = gameData.colorTable;
+		int[][] colorTable = GameData.colorTable;
 		short[] lightMap = main.lightMap;
 		boolean[] terrainBuffer = main.terrainBuffer;
 		boolean flag = main.terrainBufferFlag;
@@ -255,7 +255,7 @@ public class rasterizer {
 			dx = BigDx >> 16;
 			dy = BigDy >> 16;
 
-			int temp = gameData.screenTable[i];
+			int temp = GameData.screenTable[i];
 			int index = xLow[i] + temp;
 
 			X = BigX >> 16;
@@ -306,7 +306,7 @@ public class rasterizer {
 			dx = BigDx >> 16;
 			dy = BigDy >> 16;
 
-			int temp = gameData.screenTable[i];
+			int temp = GameData.screenTable[i];
 			int index = xLow[i] + temp;
 
 			X = BigX >> 16;
@@ -383,7 +383,7 @@ public class rasterizer {
 			dx = BigDx >> 16;
 			dy = BigDy >> 16;
 
-			temp = gameData.screenTable[i];
+			temp = GameData.screenTable[i];
 			int index = xLow[i] + temp;
 
 			X = BigX >> 16;
@@ -403,7 +403,7 @@ public class rasterizer {
 
 		for (int i = start; i <= end; i++) {
 			int offset = xHigh[i] - xLow[i];
-			temp = gameData.screenTable[i];
+			temp = GameData.screenTable[i];
 			int index = xLow[i] + temp;
 			for (k = offset; k > 0; k--, index++)
 				screen[index] = stencilBuffer[index];
@@ -418,7 +418,7 @@ public class rasterizer {
 		int end = poly.end;
 
 		for (int i = start; i <= end; i++) {
-			int temp = gameData.screenTable[i];
+			int temp = GameData.screenTable[i];
 			int index;
 			for (int j = xLow[i]; j < xHigh[i]; j++) {
 				index = j + temp;
@@ -426,7 +426,7 @@ public class rasterizer {
 				X = (j + xOffset) % 128;
 				Y = i % 128;
 
-				temp1 = gameData.distortion1[X + Y * 128];
+				temp1 = GameData.distortion1[X + Y * 128];
 				temp1 = index + (int) (temp1 / scale) * 640;
 				if (temp1 < 0 || temp1 >= 307200)
 					temp1 = index;
@@ -437,7 +437,7 @@ public class rasterizer {
 
 		for (int i = start; i <= end; i++) {
 			int offset = xHigh[i] - xLow[i];
-			temp = gameData.screenTable[i];
+			temp = GameData.screenTable[i];
 			int index = xLow[i] + temp;
 			for (k = offset; k > 0; k--, index++)
 				screen[index] = stencilBuffer[index];
@@ -456,7 +456,7 @@ public class rasterizer {
 			distanceScale = 1;
 
 		for (int i = start; i <= end; i++) {
-			int temp = gameData.screenTable[i];
+			int temp = GameData.screenTable[i];
 			int index;
 
 			for (int j = xLow[i]; j < xHigh[i]; j++) {
@@ -470,7 +470,7 @@ public class rasterizer {
 				X %= 128;
 				Y %= 128;
 
-				temp1 = gameData.distortion2[X + Y * 128];
+				temp1 = GameData.distortion2[X + Y * 128];
 				temp1 = index + (int) (temp1 / (distanceScale * 1.2)) * 640
 						+ (int) (temp1 / (distanceScale * 1.2));
 				if (temp1 < 0 || temp1 >= 307200)
@@ -482,7 +482,7 @@ public class rasterizer {
 
 		for (int i = start; i <= end; i++) {
 			int offset = xHigh[i] - xLow[i];
-			temp = gameData.screenTable[i];
+			temp = GameData.screenTable[i];
 			int index = xLow[i] + temp;
 			for (k = offset; k > 0; k--, index++) {
 				temp1 = stencilBuffer[index];
@@ -504,7 +504,7 @@ public class rasterizer {
 		int[] screen = main.screen;
 		short[] Texture = poly.myTexture.Texture;
 		diffuse_I = poly.diffuse_I;
-		int[] colorTable = gameData.colorTable[diffuse_I];
+		int[] colorTable = GameData.colorTable[diffuse_I];
 
 		A_offset = A.x * 16;
 		B_offset = B.x * 16;
@@ -527,7 +527,7 @@ public class rasterizer {
 			X1 = X;
 			Y1 = Y;
 
-			int temp = gameData.screenTable[i];
+			int temp = GameData.screenTable[i];
 			int index;
 			for (int j = xLow[i]; j < xHigh[i]; j += 16) {
 				X = X1;
@@ -640,7 +640,7 @@ public class rasterizer {
 			X1 = X;
 			Y1 = Y;
 
-			int temp = gameData.screenTable[i];
+			int temp = GameData.screenTable[i];
 			int index;
 
 			for (int j = xLow[i]; j < xHigh[i]; j += 16) {
@@ -715,14 +715,14 @@ public class rasterizer {
 	}
 
 	public static void renderSoildPolygon() {
-		int soildColor = gameData.colorTable[poly.diffuse_I][poly.color];
+		int soildColor = GameData.colorTable[poly.diffuse_I][poly.color];
 		int[] screen = main.screen;
 
 		int start = poly.start;
 		int end = poly.end;
 
 		for (int i = start; i <= end; i++) {
-			int temp = gameData.screenTable[i];
+			int temp = GameData.screenTable[i];
 			int index;
 			for (int j = xLow[i]; j < xHigh[i]; j++) {
 				index = j + temp;

@@ -1,8 +1,7 @@
-public class gameHUD {
+public class GameHUD {
 
 	public static int[] leftSide;
 	public static int[] rightSide;
-
 	public static int[] Health, Ammo, BattleTank2, NewGame, Controls,
 			AboutAuthor, controlDescription1, controlDescription2,
 			controlDescription3, controlDescription4, controlDescription5,
@@ -10,21 +9,14 @@ public class gameHUD {
 			controlDescription9, author1, author2, author3, author4, author5,
 			author6, author7, author8, author9, author10, game, over, You, Won,
 			cheat1, cheat2, cheat3;
-
 	public static int menuOptionStatus;
-
 	public static int gameoverMessagePosition, winMessagePosition;
-
 	public static int loadingScreenPosition;
-
 	public static boolean escapePressed, downPressed, upPressed, enterPressed;
-
 	public static int[] randomDisplacement = new int[640];
-
 	public static boolean mousePressed;
-
 	public static int mouseXpos, mouseYpos;
-
+	
 	public static void init() {
 		menuOptionStatus = 1;
 		gameoverMessagePosition = 0;
@@ -32,7 +24,7 @@ public class gameHUD {
 		loadingScreenPosition = 1234567;
 
 		for (int i = 0; i < 640; i += 2) {
-			int random = gameData.getRandom() / 10;
+			int random = GameData.getRandom() / 10;
 			randomDisplacement[i] = random;
 			randomDisplacement[i + 1] = random;
 
@@ -109,13 +101,13 @@ public class gameHUD {
 		}
 
 		if (main.win) {
-
 			drawWinMessage();
 		}
 
-		if (main.gamePaused == false && !main.gameNotStart)
+		if (main.gamePaused == false && !main.gameNotStart) {
 			drawInfo();
-
+		}
+		
 		if (main.gamePaused == true
 				|| (main.gameNotStart && menuOptionStatus != 0)) {
 			drawMenu();
@@ -192,7 +184,7 @@ public class gameHUD {
 
 				powerUps.init();
 				projectiles.init();
-				enemies.init();
+				Enemies.init();
 				obstacleMap.removeObstacle2(main.PT.position);
 				main.PT = new playerTank(10, -0.975, 2.5);
 				main.gameNotStart = false;
@@ -233,7 +225,7 @@ public class gameHUD {
 
 				powerUps.init();
 				projectiles.init();
-				enemies.init();
+				Enemies.init();
 				obstacleMap.removeObstacle2(main.PT.position);
 				main.PT = new playerTank(10, -0.975, 2.5);
 				main.gameNotStart = false;
@@ -243,13 +235,15 @@ public class gameHUD {
 			}
 
 			if (mouseXpos > 262 && mouseXpos < 385 && mouseYpos > 161
-					&& mouseYpos < 183)
+					&& mouseYpos < 183) {
 				menuOptionStatus = 2;
-
+			}
+			
 			if (mouseXpos > 234 && mouseXpos < 412 && mouseYpos > 197
-					&& mouseYpos < 222)
+					&& mouseYpos < 222) {
 				menuOptionStatus = 3;
-
+			}
+			
 			if (menuOptionStatus == 2) {
 				menuOptionStatus = 4;
 			} else if (menuOptionStatus == 3) {
@@ -349,23 +343,23 @@ public class gameHUD {
 
 		if (menuOptionStatus > 0 && menuOptionStatus <= 3) {
 
-			if (menuOptionStatus == 1)
+			if (menuOptionStatus == 1) {
 				color = 0x0055ffaa;
-			else
+			} else {
 				color = 0x00d0d0d0;
-			textFactory.draw(NewGame, 265, 120, 1, color);
+			} textFactory.draw(NewGame, 265, 120, 1, color);
 
-			if (menuOptionStatus == 2)
+			if (menuOptionStatus == 2) {
 				color = 0x0055ffaa;
-			else
+			} else {
 				color = 0x00d0d0d0;
-			textFactory.draw(Controls, 265, 160, 1, color);
+			} textFactory.draw(Controls, 265, 160, 1, color);
 
-			if (menuOptionStatus == 3)
+			if (menuOptionStatus == 3) {
 				color = 0x0055ffaa;
-			else
+			} else {
 				color = 0x00d0d0d0;
-			textFactory.draw(AboutAuthor, 235, 200, 1, color);
+			} textFactory.draw(AboutAuthor, 235, 200, 1, color);
 		}
 
 		if (menuOptionStatus == 4) {

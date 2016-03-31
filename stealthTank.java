@@ -84,7 +84,7 @@ public class stealthTank extends SolidObject {
 		bodyAngle = angle;
 		turretAngle = angle;
 
-		randomNumber1 = gameData.getRandom();
+		randomNumber1 = GameData.getRandom();
 
 		makeBody();
 		makeTurret();
@@ -563,7 +563,7 @@ public class stealthTank extends SolidObject {
 					body[i].update();
 					bodyInvisible[i].update();
 				}
-				geometry.sortPolygons(body, 2);
+				Geometry.sortPolygons(body, 2);
 
 				tempVector1.set(centre);
 				tempVector1.add(-0.015, 0, -0.01);
@@ -696,7 +696,7 @@ public class stealthTank extends SolidObject {
 			countDownToDeath++;
 			if (countDownToDeath >= 3) {
 				if (countDownToDeath == 3) {
-					projectiles.register(new explosion(centre.x, centre.y,
+					projectiles.register(new Explosion(centre.x, centre.y,
 							centre.z, 1.7));
 					powerUps.register(new powerUp(centre.x, -0.875, centre.z, 3));
 				}

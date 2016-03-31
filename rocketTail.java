@@ -23,9 +23,9 @@ public class rocketTail extends SolidObject {
 		directions = new vector[15];
 		for (int i = 0; i < 15; i++) {
 			particles[i] = centre.myClone();
-			directions[i] = new vector(0.00005 * gameData.getRandom() - 0.0025,
-					0.00005 * gameData.getRandom() - 0.0025,
-					0.00005 * gameData.getRandom() - 0.0025);
+			directions[i] = new vector(0.00005 * GameData.getRandom() - 0.0025,
+					0.00005 * GameData.getRandom() - 0.0025,
+					0.00005 * GameData.getRandom() - 0.0025);
 			directions[i].scale(0.8);
 		}
 
@@ -94,8 +94,8 @@ public class rocketTail extends SolidObject {
 					spriteIndex = 7;
 				}
 
-				for (int j = 0; j < gameData.size[spriteIndex].length; j++) {
-					position = centre + gameData.size[spriteIndex][j];
+				for (int j = 0; j < GameData.size[spriteIndex].length; j++) {
+					position = centre + GameData.size[spriteIndex][j];
 					if (position >= 0 && position < 307200) {
 						color = main.screen[position];
 						r = (((color >> 16) & 255) * factor) >> 8;

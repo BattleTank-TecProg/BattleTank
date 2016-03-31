@@ -48,9 +48,9 @@ public class helix extends SolidObject {
 			particles[i].add(directions[i]);
 			directions[i].scale(0.02);
 			colors[i] = new Color(
-					(int) (58 - 20 * gameData.sin[zAxisRotation]),
-					(int) (130 - 40 * gameData.sin[zAxisRotation]),
-					(int) (165 - 40 * gameData.sin[zAxisRotation])).getRGB();
+					(int) (58 - 20 * GameData.sin[zAxisRotation]),
+					(int) (130 - 40 * GameData.sin[zAxisRotation]),
+					(int) (165 - 40 * GameData.sin[zAxisRotation])).getRGB();
 			zAxisRotation += 18;
 			temp1.add(temp2);
 
@@ -134,8 +134,8 @@ public class helix extends SolidObject {
 					alpha = alpha - alpha * lifeSpan / 30 + 55;
 				}
 
-				for (int j = 0; j < gameData.size[spriteIndex].length; j++) {
-					position = centre + gameData.size[spriteIndex][j];
+				for (int j = 0; j < GameData.size[spriteIndex].length; j++) {
+					position = centre + GameData.size[spriteIndex][j];
 					if (position >= 0 && position < 307200) {
 						int bkgrd = main.screen[position];
 

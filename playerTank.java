@@ -480,14 +480,14 @@ public class playerTank extends SolidObject {
 		nukeCannonRear = new polygon3D[72];
 		for (int i = 0; i < 18; i++) {
 			v = new vector[] {
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], -0.04),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], -0.04),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.06),
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.06) };
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], -0.04),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], -0.04),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.06),
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.06) };
 			nukeCannonRear[i] = new polygon3D(v, v[0], v[1], v[3],
 					main.textures[13], 0.001, 0.01, 6);
 		}
@@ -496,14 +496,14 @@ public class playerTank extends SolidObject {
 		start = put(-0.017, 0.017, 0.1);
 		for (int i = 0; i < 18; i++) {
 			v = new vector[] {
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], -0.04),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], -0.04),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.06),
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.06) };
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], -0.04),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], -0.04),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.06),
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.06) };
 			nukeCannonRear[i + 18] = new polygon3D(v, v[0], v[1], v[3],
 					main.textures[13], 0.001, 0.01, 6);
 		}
@@ -512,14 +512,14 @@ public class playerTank extends SolidObject {
 		start = put(-0.017, -0.017, 0.1);
 		for (int i = 0; i < 18; i++) {
 			v = new vector[] {
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], -0.04),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], -0.04),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.06),
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.06) };
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], -0.04),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], -0.04),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.06),
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.06) };
 			nukeCannonRear[i + 36] = new polygon3D(v, v[0], v[1], v[3],
 					main.textures[13], 0.001, 0.01, 6);
 		}
@@ -528,14 +528,14 @@ public class playerTank extends SolidObject {
 		start = put(0.017, -0.017, 0.1);
 		for (int i = 0; i < 18; i++) {
 			v = new vector[] {
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], -0.04),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], -0.04),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.06),
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.06) };
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], -0.04),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], -0.04),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.06),
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.06) };
 			nukeCannonRear[i + 54] = new polygon3D(v, v[0], v[1], v[3],
 					main.textures[13], 0.001, 0.01, 6);
 		}
@@ -546,20 +546,20 @@ public class playerTank extends SolidObject {
 
 		v = new vector[18];
 		for (int i = 1; i < 19; i++)
-			v[18 - i] = put(r * gameData.cos[i * theta], r
-					* gameData.sin[i * theta], 0.16);
+			v[18 - i] = put(r * GameData.cos[i * theta], r
+					* GameData.sin[i * theta], 0.16);
 		nukeCannonMiddle[0] = new polygon3D(v, put(-0.2, 0.2, 0), put(0.2, 0.2,
 				0), put(-0.2, -0.2, 0), main.textures[13], 0.001, 0.01, 6);
 		for (int i = 0; i < 18; i++) {
 			v = new vector[] {
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.16),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.16),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.167),
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.167) };
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.16),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.16),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.167),
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.167) };
 			nukeCannonMiddle[i + 1] = new polygon3D(v, v[0], v[1], v[3],
 					main.textures[13], 0.001, 0.01, 6);
 		}
@@ -570,14 +570,14 @@ public class playerTank extends SolidObject {
 		nukeCannonFront = new polygon3D[72];
 		for (int i = 0; i < 18; i++) {
 			v = new vector[] {
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.07),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.07),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.1),
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.1) };
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.07),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.07),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.1),
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.1) };
 			nukeCannonFront[i] = new polygon3D(v, v[0], v[1], v[3],
 					main.textures[13], 0.001, 0.01, 6);
 		}
@@ -586,14 +586,14 @@ public class playerTank extends SolidObject {
 		start = put(-0.017, 0.017, 0.1);
 		for (int i = 0; i < 18; i++) {
 			v = new vector[] {
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.07),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.07),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.1),
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.1) };
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.07),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.07),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.1),
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.1) };
 			nukeCannonFront[i + 18] = new polygon3D(v, v[0], v[1], v[3],
 					main.textures[13], 0.001, 0.01, 6);
 		}
@@ -602,14 +602,14 @@ public class playerTank extends SolidObject {
 		start = put(-0.017, -0.017, 0.1);
 		for (int i = 0; i < 18; i++) {
 			v = new vector[] {
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.07),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.07),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.1),
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.1) };
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.07),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.07),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.1),
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.1) };
 			nukeCannonFront[i + 36] = new polygon3D(v, v[0], v[1], v[3],
 					main.textures[13], 0.001, 0.01, 6);
 		}
@@ -618,14 +618,14 @@ public class playerTank extends SolidObject {
 		start = put(0.017, -0.017, 0.1);
 		for (int i = 0; i < 18; i++) {
 			v = new vector[] {
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.07),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.07),
-					put(r * gameData.cos[(i + 1) * theta], r
-							* gameData.sin[(i + 1) * theta], 0.1),
-					put(r * gameData.cos[i * theta], r
-							* gameData.sin[i * theta], 0.1) };
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.07),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.07),
+					put(r * GameData.cos[(i + 1) * theta], r
+							* GameData.sin[(i + 1) * theta], 0.1),
+					put(r * GameData.cos[i * theta], r
+							* GameData.sin[i * theta], 0.1) };
 			nukeCannonFront[i + 54] = new polygon3D(v, v[0], v[1], v[3],
 					main.textures[13], 0.001, 0.01, 6);
 		}
@@ -921,8 +921,8 @@ public class playerTank extends SolidObject {
 		}
 
 		if (currentWeapon == 4) {
-			geometry.sortPolygons(nukeCannonRear, 0);
-			geometry.sortPolygons(nukeCannonFront, 0);
+			Geometry.sortPolygons(nukeCannonRear, 0);
+			Geometry.sortPolygons(nukeCannonFront, 0);
 
 			int index = 0;
 
@@ -1160,7 +1160,7 @@ public class playerTank extends SolidObject {
 		HP -= (damagePoint * 0.8);
 		if (HP <= 0) {
 			HP = 0;
-			projectiles.register(new explosion(centre.x, centre.y, centre.z,
+			projectiles.register(new Explosion(centre.x, centre.y, centre.z,
 					1.7));
 			centre.x = 1000;
 

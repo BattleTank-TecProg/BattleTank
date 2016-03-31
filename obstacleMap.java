@@ -215,7 +215,7 @@ public class obstacleMap {
 						projectile.getBoundary2D())) {
 					if (obstacleMap2[temp].getType() == 3
 							|| obstacleMap2[temp].getType() == 6) {
-						explosion theExplosion = new explosion(
+						Explosion theExplosion = new Explosion(
 								projectile.getRealCentre().x, -0.9,
 								projectile.getRealCentre().z, 0.5);
 						theExplosion.damage = 0;
@@ -226,7 +226,7 @@ public class obstacleMap {
 						return true;
 					}
 					if (obstacleMap2[temp].getType() == 1) {
-						explosion theExplosion = new explosion(
+						Explosion theExplosion = new Explosion(
 								projectile.getRealCentre().x, -0.9,
 								projectile.getRealCentre().z, 0.5);
 						theExplosion.damage = 0;
@@ -249,7 +249,7 @@ public class obstacleMap {
 						projectile.getBoundary2D())) {
 					if (obstacleMap2[temp].getType() == 3
 							|| obstacleMap2[temp].getType() == 6) {
-						explosion theExplosion = new explosion(
+						Explosion theExplosion = new Explosion(
 								projectile.getRealCentre().x, -0.9,
 								projectile.getRealCentre().z, 0.5);
 						theExplosion.damage = 0;
@@ -261,7 +261,7 @@ public class obstacleMap {
 					}
 					if (obstacleMap2[temp].getType() == 2) {
 						obstacleMap2[temp].damage(8);
-						explosion theExplosion = new explosion(
+						Explosion theExplosion = new Explosion(
 								projectile.getRealCentre().x, -0.9,
 								projectile.getRealCentre().z, 0.5);
 						theExplosion.damage = 0;

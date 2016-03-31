@@ -1,4 +1,4 @@
-public class explosion extends SolidObject {
+public class Explosion extends SolidObject {
 
 	double size;
 
@@ -18,13 +18,13 @@ public class explosion extends SolidObject {
 
 	public polygon3D explosionAura;
 
-	public explosion(double x, double y, double z, double size) {
+	public Explosion(double x, double y, double z, double size) {
 		start = new vector(x, y, z);
 		iDirection = new vector(1, 0, 0);
 		jDirection = new vector(0, 1, 0);
 		kDirection = new vector(0, 0, 1);
 
-		int random = gameData.getRandom();
+		int random = GameData.getRandom();
 		if (random >= 75)
 			spriteIndex = 17;
 		else if (random >= 50)

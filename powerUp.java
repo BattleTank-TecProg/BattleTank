@@ -146,7 +146,7 @@ public class powerUp extends SolidObject {
 
 		theta += 9;
 		theta = theta % 360;
-		double height = 0.006 * gameData.sin[theta];
+		double height = 0.006 * GameData.sin[theta];
 
 		for (int i = 0; i < polygons.length; i++) {
 			polygons[i].origin.subtract(start);
@@ -181,8 +181,8 @@ public class powerUp extends SolidObject {
 		for (int i = 0; i < 5; i++)
 			boundary[i].update();
 
-		displacement.set(-0.003 * (gameData.sin[theta]), 0, -0.003
-				* (gameData.sin[theta]));
+		displacement.set(-0.003 * (GameData.sin[theta]), 0, -0.003
+				* (GameData.sin[theta]));
 
 		shadow.realCentre.add(displacement);
 

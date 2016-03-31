@@ -76,8 +76,8 @@ public class smoke {
 					spriteIndex = 7;
 				}
 
-				for (int j = 0; j < gameData.size[spriteIndex].length; j++) {
-					position = centre + gameData.size[spriteIndex][j];
+				for (int j = 0; j < GameData.size[spriteIndex].length; j++) {
+					position = centre + GameData.size[spriteIndex][j];
 					if (position >= 0 && position < 307200) {
 						color = main.screen[position];
 						r = (((color >> 16) & 255) * factor) >> 8;
@@ -101,7 +101,7 @@ public class smoke {
 			} else {
 				if (particles[i] != null) {
 					if (main.timer % 2 == 0)
-						particles[i].add(gameData.getRandomVector());
+						particles[i].add(GameData.getRandomVector());
 					else
 						particles[i].y += 0.01;
 					if (particles[i].y >= -0.5) {

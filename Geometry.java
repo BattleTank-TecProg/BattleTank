@@ -1,4 +1,4 @@
-public class geometry {
+public class Geometry {
 	public static boolean compareModels(model a, model b) {
 
 		if (a.getZDepth() > b.getZDepth())
@@ -12,7 +12,7 @@ public class geometry {
 		int length = polygons.length;
 		for (int i = 1; i < length; i++) {
 			for (int j = start; j < length - i; j++) {
-				if (geometry.comparePolygons(polygons[j], polygons[j + 1])) {
+				if (Geometry.comparePolygons(polygons[j], polygons[j + 1])) {
 					polygon3D temp = polygons[j + 1];
 					polygons[j + 1] = polygons[j];
 					polygons[j] = temp;

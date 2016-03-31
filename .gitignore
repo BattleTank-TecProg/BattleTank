@@ -40,3 +40,10 @@
 /vector.class
 /wall.class
 /Camera.class
+/Enemies.class
+/Explosion.class
+/Fence.class
+/GameData.class
+/GameEventHandler.class
+/GameHUD.class
+/Geometry.class

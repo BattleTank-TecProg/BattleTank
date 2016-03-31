@@ -76,8 +76,8 @@ public final class vector {
 	}
 
 	public void rotate_XZ(int angle) {
-		double sin = gameData.sin[angle];
-		double cos = gameData.cos[angle];
+		double sin = GameData.sin[angle];
+		double cos = GameData.cos[angle];
 		old_X = x;
 		old_Z = z;
 		x = cos * old_X - sin * old_Z;
@@ -85,8 +85,8 @@ public final class vector {
 	}
 
 	public void rotate_YZ(int angle) {
-		double sin = gameData.sin[angle];
-		double cos = gameData.cos[angle];
+		double sin = GameData.sin[angle];
+		double cos = GameData.cos[angle];
 		old_Y = y;
 		old_Z = z;
 		y = cos * old_Y - sin * old_Z;
@@ -94,8 +94,8 @@ public final class vector {
 	}
 
 	public void rotate_XY(int angle) {
-		double sin = gameData.sin[angle];
-		double cos = gameData.cos[angle];
+		double sin = GameData.sin[angle];
+		double cos = GameData.cos[angle];
 		old_X = x;
 		old_Y = y;
 		x = cos * old_X - sin * old_Y;

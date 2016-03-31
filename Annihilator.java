@@ -93,7 +93,7 @@ public class Annihilator extends SolidObject {
 		makeBody();
 		makeTurret();
 
-		randomNumber1 = gameData.getRandom();
+		randomNumber1 = GameData.getRandom();
 
 		HP = 400;
 
@@ -727,7 +727,7 @@ public class Annihilator extends SolidObject {
 			countDownToDeath++;
 			if (countDownToDeath >= 3) {
 				if (countDownToDeath == 3) {
-					projectiles.register(new explosion(centre.x, centre.y,
+					projectiles.register(new Explosion(centre.x, centre.y,
 							centre.z, 2));
 
 				} else {

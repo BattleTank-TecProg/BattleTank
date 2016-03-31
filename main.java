@@ -43,7 +43,7 @@ public class main extends Applet implements KeyListener, ActionListener,
 
 		Camera = null;
 		Terrain = null;
-		gameData.destory();
+		GameData.destory();
 		terrainBuffer = null;
 		System.gc();
 
@@ -187,11 +187,11 @@ public class main extends Applet implements KeyListener, ActionListener,
 		textures[62] = new texture(getImage(getDocumentBase(), imageFolder
 				+ "62.jpg"), 8, 8, "normal");
 
-		gameData.makeData();
+		GameData.makeData();
 
 		textFactory.init();
 
-		gameHUD.init();
+		GameHUD.init();
 
 		Camera = new Camera();
 
@@ -203,7 +203,7 @@ public class main extends Applet implements KeyListener, ActionListener,
 
 		PT = new playerTank(1000, -0.975, 2.5);
 
-		enemies.init();
+		Enemies.init();
 
 		addKeyListener(this);
 		addMouseMotionListener(this);
@@ -258,10 +258,10 @@ public class main extends Applet implements KeyListener, ActionListener,
 
 		Terrain.update();
 		PT.update();
-		enemies.update();
+		Enemies.update();
 		projectiles.update();
 		powerUps.update();
-		gameEventHandler.processEvent();
+		GameEventHandler.processEvent();
 
 		if (terrainBufferFlag == true)
 			terrainBufferFlag = false;
@@ -272,9 +272,9 @@ public class main extends Applet implements KeyListener, ActionListener,
 		modelDrawList.sort();
 		modelDrawList.draw();
 
-		gameHUD.update();
+		GameHUD.update();
 
-		gameHUD.draw();
+		GameHUD.draw();
 
 		if (this.getGraphics() != null)
 			myPaint(this.getGraphics());

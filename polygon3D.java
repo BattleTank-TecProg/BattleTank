@@ -135,7 +135,7 @@ public class polygon3D {
 			return;
 		}
 
-		double x = 0, y = 0, z = 0, camX = Camera.position.x, camY = Camera.position.y, camZ = Camera.position.z, sinXZ = gameData.sin[Camera.XZ_angle], cosXZ = gameData.cos[Camera.XZ_angle], sinYZ = gameData.sin[Camera.YZ_angle], cosYZ = gameData.cos[Camera.YZ_angle];
+		double x = 0, y = 0, z = 0, camX = Camera.position.x, camY = Camera.position.y, camZ = Camera.position.z, sinXZ = GameData.sin[Camera.XZ_angle], cosXZ = GameData.cos[Camera.XZ_angle], sinYZ = GameData.sin[Camera.YZ_angle], cosYZ = GameData.cos[Camera.YZ_angle];
 
 		for (int i = 0; i < L; i++) {
 			x = vertex3D[i].x - camX;

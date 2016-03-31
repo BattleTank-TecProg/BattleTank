@@ -1,10 +1,10 @@
-public class fence extends SolidObject {
+public class Fence extends SolidObject {
 
 	private polygon3D[] polygons;
 
 	public int orientation;
 
-	public fence(double x, double y, double z, int orientation) {
+	public Fence(double x, double y, double z, int orientation) {
 		start = new vector(x, y, z);
 		iDirection = new vector(1, 0, 0);
 		jDirection = new vector(0, 1, 0);

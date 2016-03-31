@@ -348,7 +348,7 @@ public class gunTurret extends SolidObject {
 
 		if (HP <= 0) {
 			if (!destoried) {
-				projectiles.register(new explosion(centre.x, centre.y,
+				projectiles.register(new Explosion(centre.x, centre.y,
 						centre.z, 2));
 				modelType = 6;
 				Smoke.stopped = true;

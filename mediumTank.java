@@ -84,7 +84,7 @@ public class mediumTank extends SolidObject {
 		makeBody();
 		makeTurret();
 
-		randomNumber1 = gameData.getRandom();
+		randomNumber1 = GameData.getRandom();
 
 		HP = 25;
 
@@ -538,7 +538,7 @@ public class mediumTank extends SolidObject {
 			countDownToDeath++;
 			if (countDownToDeath >= 3) {
 				if (countDownToDeath == 3) {
-					projectiles.register(new explosion(centre.x, centre.y,
+					projectiles.register(new Explosion(centre.x, centre.y,
 							centre.z, 1.7));
 					powerUps.register(new powerUp(centre.x, -0.875, centre.z, 1));
 				}

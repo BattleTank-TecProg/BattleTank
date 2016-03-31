@@ -62,8 +62,8 @@ public class inputHandler {
 		}
 
 		if (space || mousePressed) {
-			if (gameHUD.loadingScreenPosition != 1234567
-					&& gameHUD.loadingScreenPosition > 100)
+			if (GameHUD.loadingScreenPosition != 1234567
+					&& GameHUD.loadingScreenPosition > 100)
 				playerTank.firing = true;
 		}
 
@@ -144,20 +144,20 @@ public class inputHandler {
 			space = true;
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			UP = true;
-			gameHUD.upPressed = true;
+			GameHUD.upPressed = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			DOWN = true;
-			gameHUD.downPressed = true;
+			GameHUD.downPressed = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT)
 			LEFT = true;
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
 			RIGHT = true;
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
-			gameHUD.escapePressed = true;
+			GameHUD.escapePressed = true;
 		if (e.getKeyCode() == KeyEvent.VK_ENTER)
-			gameHUD.enterPressed = true;
+			GameHUD.enterPressed = true;
 
 		if (e.getKeyCode() == '1')
 			weapon1Selected = true;
@@ -236,9 +236,9 @@ public class inputHandler {
 	public static void mousePressed(MouseEvent e) {
 		mousePressed = true;
 
-		gameHUD.mousePressed = true;
-		gameHUD.mouseXpos = e.getX();
-		gameHUD.mouseYpos = e.getY();
+		GameHUD.mousePressed = true;
+		GameHUD.mouseXpos = e.getX();
+		GameHUD.mouseYpos = e.getY();
 	}
 
 	public static void mouseReleased(MouseEvent e) {

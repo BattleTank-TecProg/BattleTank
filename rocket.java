@@ -113,7 +113,7 @@ public class rocket extends SolidObject {
 			}
 			rocketAura.update();
 
-			rocketAura.myTexture.Texture = rocketAura.myTexture.lightMapData[1 + (gameData
+			rocketAura.myTexture.Texture = rocketAura.myTexture.lightMapData[1 + (GameData
 					.getRandom() % 3) * 2];
 			rasterizer.rasterize(rocketAura);
 
@@ -174,7 +174,7 @@ public class rocket extends SolidObject {
 		if (obstacleMap.projectileCollideObstacle2(this, position, isHostile)) {
 			lifeSpan = -1;
 			centre.add(direction);
-			explosion theExplosion = new explosion(centre.x, centre.y,
+			Explosion theExplosion = new Explosion(centre.x, centre.y,
 					centre.z, 1);
 			theExplosion.damage = 10;
 			projectiles.register(theExplosion);
@@ -212,7 +212,7 @@ public class rocket extends SolidObject {
 		}
 
 		if (lifeSpan < 0) {
-			explosion theExplosion = new explosion(centre.x, centre.y,
+			Explosion theExplosion = new Explosion(centre.x, centre.y,
 					centre.z, 1);
 			theExplosion.damage = 10;
 			projectiles.register(theExplosion);

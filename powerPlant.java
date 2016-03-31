@@ -20,7 +20,7 @@ public class powerPlant extends SolidObject {
 
 	public int position1, position2, position3, position4;
 
-	public explosion[] explosions;
+	public Explosion[] explosions;
 
 	public powerPlant(double x, double y, double z) {
 		start = new vector(x, y, z);
@@ -53,7 +53,7 @@ public class powerPlant extends SolidObject {
 		findCentre();
 		centre.set(start);
 
-		explosions = new explosion[11];
+		explosions = new Explosion[11];
 
 		makePolygons();
 
@@ -493,72 +493,72 @@ public class powerPlant extends SolidObject {
 			countDownToDeath++;
 
 			if (countDownToDeath == 10) {
-				explosions[0] = new explosion(centre.x, centre.y, centre.z, 1.7);
+				explosions[0] = new Explosion(centre.x, centre.y, centre.z, 1.7);
 				explosions[0].explicitDrawing = true;
 			}
 
 			if (countDownToDeath == 13) {
-				explosions[1] = new explosion(centre.x + 0.2, centre.y,
+				explosions[1] = new Explosion(centre.x + 0.2, centre.y,
 						centre.z, 1.7);
 				explosions[1].explicitDrawing = true;
 			}
 
 			if (countDownToDeath == 16) {
-				explosions[2] = new explosion(centre.x + 0.1, centre.y - 0.1,
+				explosions[2] = new Explosion(centre.x + 0.1, centre.y - 0.1,
 						centre.z + 0.1, 1.7);
 				explosions[2].explicitDrawing = true;
 			}
 
 			if (countDownToDeath == 16) {
-				explosions[3] = new explosion(centre.x, centre.y - 0.2,
+				explosions[3] = new Explosion(centre.x, centre.y - 0.2,
 						centre.z, 1.7);
 				explosions[3].explicitDrawing = true;
 			}
 
 			if (countDownToDeath == 19) {
-				explosions[4] = new explosion(centre.x - 0.1, centre.y,
+				explosions[4] = new Explosion(centre.x - 0.1, centre.y,
 						centre.z + 0.15, 1.7);
 				explosions[4].explicitDrawing = true;
 			}
 
 			if (countDownToDeath == 19) {
-				explosions[4] = new explosion(centre.x, centre.y + 0.1,
+				explosions[4] = new Explosion(centre.x, centre.y + 0.1,
 						centre.z + 0.15, 1.7);
 				explosions[4].explicitDrawing = true;
 			}
 
 			if (countDownToDeath == 19) {
-				explosions[5] = new explosion(centre.x - 0.05, centre.y + 0.05,
+				explosions[5] = new Explosion(centre.x - 0.05, centre.y + 0.05,
 						centre.z, 1.7);
 				explosions[5].explicitDrawing = true;
 			}
 
 			if (countDownToDeath == 19) {
-				explosions[6] = new explosion(centre.x + 0.01, centre.y + 0.05,
+				explosions[6] = new Explosion(centre.x + 0.01, centre.y + 0.05,
 						centre.z - 0.01, 1.7);
 				explosions[6].explicitDrawing = true;
 			}
 
 			if (countDownToDeath == 22) {
-				explosions[7] = new explosion(centre.x + 0.01, centre.y + 0.15,
+				explosions[7] = new Explosion(centre.x + 0.01, centre.y + 0.15,
 						centre.z - 0.01, 1.7);
 				explosions[7].explicitDrawing = true;
 			}
 
 			if (countDownToDeath == 22) {
-				explosions[8] = new explosion(centre.x + 0.15, centre.y + 0.1,
+				explosions[8] = new Explosion(centre.x + 0.15, centre.y + 0.1,
 						centre.z + 0.1, 1.7);
 				explosions[8].explicitDrawing = true;
 			}
 
 			if (countDownToDeath == 22) {
-				explosions[9] = new explosion(centre.x - 0.15, centre.y - 0.03,
+				explosions[9] = new Explosion(centre.x - 0.15, centre.y - 0.03,
 						centre.z + 0.1, 1.7);
 				explosions[9].explicitDrawing = true;
 			}
 
 			if (countDownToDeath == 25) {
-				explosions[10] = new explosion(centre.x, centre.y + 0.05,
+				explosions[10] = new Explosion(centre.x, centre.y + 0.05,
 						centre.z, 3.5);
 				explosions[10].explicitDrawing = true;
 			}
@@ -609,7 +609,7 @@ public class powerPlant extends SolidObject {
 				if (HP > 250)
 					smokeCentres[i].set(smokeBottom);
 				else if (HP < 250 && HP > 0) {
-					if (gameData.getRandom() > 96)
+					if (GameData.getRandom() > 96)
 						smokeCentres[i].set(smokeBottom);
 					else
 						smokeCentres[i].set(0, 0, 1500);

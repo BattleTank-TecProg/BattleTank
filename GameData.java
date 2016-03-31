@@ -1,4 +1,4 @@
-public class gameData {
+public class GameData {
 	public static int[] random;
 	public static int randomIndex;
 	public static double[] sin;
