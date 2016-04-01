@@ -1,36 +1,53 @@
+//This class is responsible for enemy annihilator.
+
 public class Annihilator extends SolidObject {
 
+	//Total angle that the body has rotated from the initial position. (in the x-z plane).
 	private int bodyAngle = 0;
 
+	//Total angle that the turret has rotated from the initial position. (in the x-z plane).
 	private int turretAngle = 0;
 
+	//Degrees the tank body has rotated in a frame.
 	private int bodyAngleDelta = 0;
 
+	//Degrees the tank turreet has rotated in a frame.
 	private int turretAngleDelta = 0;
 
+	//The position index of the tank in the grid map.
 	private int position = 0;
-
+	
 	private int desiredPosition = 0;
 
+	//Time needed before a weapon can be fired again.
 	private int coolDownShell = 33;
-
+	
 	private int coolDownRocket = 33;
 
+	//Angle between player tank and turret centre.
 	private int targetAngle = 0;
 
+	//Angle between a target location and body centre.
 	private int targetAngleBody = 0;
 
+	//TargetAngleBody of the previous frame.
 	private int previousTargetAngleBody = 0;
 
+	//A count down for death after hp = 0.
 	private int countDownToDeath = 0;
 
+	//Represent the time that medium tank has been in stuck status.
 	private int stuckCount = 0;
 
+	//Random numbers.
 	private int randomNumber1 = 0;
 
 	private int randomNumber2 = 0;
 
+	//Distance from player tank.
 	private double distance = 0;
+
+	//Movement flag.
 
 	private boolean forward;
 
@@ -49,27 +66,38 @@ public class Annihilator extends SolidObject {
 	private boolean engaged;
 
 	private boolean clearToShoot;
-
+	
+	//The centre of the body in camera coordinate.
 	private vector bodyCenter;
 
+	//Polygons for tank turret
 	private polygon3D[] turret;
 
+	//The shadow of tank body
 	private polygon3D shadowBody;
 
+	//The shadow of tank turret
 	private polygon3D shadowTurret;
 
+	//The centre of the turret (pivot point for rotation).
 	private vector turretCenter;
-
+	
+	//Polygons for tank body.
 	private polygon3D[] body;
 
+	//Change in tank's position of each frame.
 	private vector displacement = new vector(0, 0, 0);
 
+	//Temporary vectors which will be used for vector arithmetic.
 	private vector tempVector1 = new vector(0, 0, 0);
 
 	private vector tempVector2 = new vector(0, 0, 0);
 
+	//A smoke tail will be visible if the tank's health is dropped to half.
 	private smoke Smoke;
 
+	
+	//X, Y, Z are coordinates in space.
 	public Annihilator(double x, double y, double z, int angle) {
 		start = new vector(x, y, z);
 		iDirection = new vector(1, 0, 0);
