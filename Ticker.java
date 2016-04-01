@@ -3,32 +3,32 @@ import java.awt.event.ActionListener;
 
 public class Ticker implements Runnable {
 
-	ActionListener al;
-	private boolean isTicking;
-	Thread t;
+	ActionListener actionListen;
+	Thread thread;
 	int delay;
+	private boolean isTicking;
 
 	public Ticker(int i, ActionListener actionlistener) {
-		al = actionlistener;
+		actionListen = actionlistener;
 		delay = i;
-		t = new Thread(this);
-		t.start();
+		thread = new Thread(this);
+		thread.start();
 		isTicking = false;
 	}
 
 	public Ticker(int i) {
 		delay = i;
-		t = new Thread(this);
-		t.start();
+		thread = new Thread(this);
+		thread.start();
 		isTicking = false;
 	}
 
 	public void addActionListener(ActionListener actionlistener) {
-		if (al == null)
-			al = actionlistener;
-		else
-			System.out
-					.println("WARNING: ActionListener already added to Ticker.");
+		if (actionListen == null) {
+			actionListen = actionlistener;
+		} else {
+			System.out.println("WARNING: ActionListener already added to Ticker.");
+		}
 	}
 
 	public boolean isRunning() {
@@ -51,16 +51,6 @@ public class Ticker implements Runnable {
 		return delay;
 	}
 
-	private void fireActionPerformed() {
-		if (al == null || !isTicking) {
-			return;
-		} else {
-			ActionEvent actionevent = new ActionEvent(this, 0, null);
-			al.actionPerformed(actionevent);
-			return;
-		}
-	}
-
 	public void run() {
 		do {
 			fireActionPerformed();
@@ -70,5 +60,15 @@ public class Ticker implements Runnable {
 				System.out.println("WARNING: Ticker thread interrupted.");
 			}
 		} while (true);
+	}
+	
+	private void fireActionPerformed() {
+		if (actionListen == null || !isTicking) {
+			return;
+		} else {
+			ActionEvent actionevent = new ActionEvent(this, 0, null);
+			actionListen.actionPerformed(actionevent);
+			return;
+		}
 	}
 }
