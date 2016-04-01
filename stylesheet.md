@@ -30,32 +30,29 @@
 
 
 
-1. Objetivo
-2. Comentários
-3. Declaração de Variáveis
-4. Declaração de Classes
-5. Indentação
-	5. Quebra de linha
-6. Quebra de linha
-7. Sintaxe
-8. Declarações
-	8. Métodos
-	8. Classes
-	8. If/Else
-	8. Switch Case
-	8. While
-	8. Do/While
-	8. For
-	8. Try/Catch
+[1. Objetivo](#1-objetivo)
+
+[2. Comentários](#2-comentários)
+
+[3. Declaração de Variáveis](#3-declaração-de-variáveis)
+
+[4. Declaração de Classes](#4-declaração-de-classes)
+
+[5. Indentação](#5-indentação)
+	
+[6. Quebra de linha](#6-quebra-de-linha)
+
+[7. Sintaxe](#7-sintaxe)
+
+[8. Declarações](#8-declarações)
 
 
-
-## 1. Objetivo:
+# 1. Objetivo:
 
 
 Esta folha de padronização de código tem por objetivo tornar padrão toda e qualquer forma de escrita de código no projeto, seja em forma de código ou comentário.
 
-## 2. Comentários:
+# 2. Comentários:
 
 
 * Os comentários deverão ser postos sempre acima da expressão a que se referem;
@@ -67,7 +64,7 @@ Esta folha de padronização de código tem por objetivo tornar padrão toda e q
 Exemplo:
 
 
-## 3. Declaração de Variáveis:
+# 3. Declaração de Variáveis:
 
 
 * As variáveis serão declaradas de preferência no início da classe, ou no início do método, em hipótese alguma as variáveis poderão ser declaradas no meio ou fim do código, salvo em casos em que seja de estrita necessidade ao funcionamento do algoritmo;
@@ -95,7 +92,7 @@ public double distance = 0;
 public boolean forward = 0;
 ```
 
-## 4. Declaração de classes:
+# 4. Declaração de classes:
 
 
 * Todas as classes deverão conter documentação ```javaDoc``` e deverão ser escritas seguindo o padrão ```CamelCase``` mais precisamente ```UpperCamelCase```, onde a palavra é iniciada com Maiúsculas e unidas sem espaços.
@@ -103,7 +100,7 @@ public boolean forward = 0;
 Todas as classes deverão conter o método construtor.
 
 
-## 5. Indentação:
+# 5. Indentação:
 
 
 * Usar indentação padrão do elipse de uma tabulação;
@@ -136,14 +133,14 @@ Todas as classes deverão conter o método construtor.
 * As chaves deverão ser abertas logo após a declaração das operações e deverão ser fechadas na linha abaixo do fim das operações;
 * Antes de utilizar chaves sempre deve haver um espaço.
 
-## 6. Quebra de linha:
+# 6. Quebra de linha:
 
 
 * Deve-se evitar linhas muito longas;
 * A nova linha deve começar no mesmo nível da linha da expressão de origem.
 
 
-## 7. Sintaxe:
+# 7. Sintaxe:
 
 
 * Classe: Primeira letra de cada palavra maiúscula
@@ -152,7 +149,7 @@ Todas as classes deverão conter o método construtor.
 * Palavras compostas não devem ser separadas, devem ser escritas juntas e não deve haver qualquer símbolo entre elas.
 
 
-## 8. Declarações:
+# 8. Declarações:
 
 
 ##	8.1 - Métodos:
