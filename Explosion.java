@@ -16,13 +16,13 @@ public class Explosion extends SolidObject {
 
 	public boolean explicitDrawing;
 
-	public polygon3D explosionAura;
+	public Polygon3D explosionAura;
 
 	public Explosion(double x, double y, double z, double size) {
-		start = new vector(x, y, z);
-		iDirection = new vector(1, 0, 0);
-		jDirection = new vector(0, 1, 0);
-		kDirection = new vector(0, 0, 1);
+		start = new Vector(x, y, z);
+		iDirection = new Vector(1, 0, 0);
+		jDirection = new Vector(0, 1, 0);
+		kDirection = new Vector(0, 0, 1);
 
 		int random = GameData.getRandom();
 		if (random >= 75)
@@ -37,13 +37,13 @@ public class Explosion extends SolidObject {
 		if (size > 1)
 			spriteIndex = 18;
 
-		vector[] v = new vector[] { put(-0.3, 0, 0.3), put(0.3, 0, 0.3),
+		Vector[] v = new Vector[] { put(-0.3, 0, 0.3), put(0.3, 0, 0.3),
 				put(0.3, 0, -0.3), put(-0.3, 0, -0.3) };
 		if (size > 3)
-			v = new vector[] { put(-0.12, 0, 0.12), put(0.12, 0, 0.12),
+			v = new Vector[] { put(-0.12, 0, 0.12), put(0.12, 0, 0.12),
 					put(0.12, 0, -0.12), put(-0.12, 0, -0.12) };
 
-		explosionAura = new polygon3D(v, v[0], v[1], v[3], main.textures[21],
+		explosionAura = new Polygon3D(v, v[0], v[1], v[3], Main.textures[21],
 				1, 1, 2);
 
 		this.size = size;
@@ -51,7 +51,7 @@ public class Explosion extends SolidObject {
 		modelType = 4;
 		makeBoundary(0.001, 0.001, 0.001);
 
-		boundary2D = new rectangle2D(x - 0.1, z + 0.1, 0.2, 0.2);
+		boundary2D = new Rectangle2D(x - 0.1, z + 0.1, 0.2, 0.2);
 
 		lifeSpan = 16;
 
@@ -68,13 +68,13 @@ public class Explosion extends SolidObject {
 			explosionAura.update();
 			if (explosionAura.visible) {
 				explosionAura.myTexture.Texture = explosionAura.myTexture.lightMapData[auraIndex];
-				rasterizer.rasterize(explosionAura);
+				Rasterizer.rasterize(explosionAura);
 			}
 		}
 		auraIndex++;
 
 		if (!explicitDrawing)
-			modelDrawList.register(this);
+			ModelDrawList.register(this);
 
 		tempCentre.set(centre);
 		tempCentre.subtract(Camera.position);
@@ -82,7 +82,7 @@ public class Explosion extends SolidObject {
 		tempCentre.rotate_YZ(Camera.YZ_angle);
 
 		if (lifeSpan == 15 && damage != 0) {
-			obstacleMap.damageType2Obstacles(damage, boundary2D, groundZero);
+			ObstacleMap.damageType2Obstacles(damage, boundary2D, groundZero);
 		}
 
 		lifeSpan--;
@@ -98,16 +98,16 @@ public class Explosion extends SolidObject {
 		tempCentre.updateLocation();
 		double ratio = size * 2 / tempCentre.z;
 
-		rasterizer.temp = this.type;
-		rasterizer.renderExplosionSprite(
-				main.textures[spriteIndex].explosions[frameIndex], ratio,
+		Rasterizer.temp = this.type;
+		Rasterizer.renderExplosionSprite(
+				Main.textures[spriteIndex].explosions[frameIndex], ratio,
 				tempCentre.screenX, tempCentre.screenY, 64, 64);
 
 		frameIndex++;
 
 	}
 
-	public rectangle2D getBoundary2D() {
+	public Rectangle2D getBoundary2D() {
 		return boundary2D;
 	}
 }

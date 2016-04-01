@@ -5,7 +5,7 @@ public class GameData {
 	public static double[] cos;
 	public static int[][] colorTable;
 	public static int[] screenTable;
-	public static vector[] randomVectors;
+	public static Vector[] randomVectors;
 	public static int[][] size;
 	public static int[] distortion1;
 	public static short[] distortion2;
@@ -138,9 +138,9 @@ public class GameData {
 
 		colorTableTemp = null;
 
-		randomVectors = new vector[1000];
+		randomVectors = new Vector[1000];
 		for (int i = 0; i < 1000; i++)
-			randomVectors[i] = new vector(Math.random() * 0.016 - 0.008, 0.01,
+			randomVectors[i] = new Vector(Math.random() * 0.016 - 0.008, 0.01,
 					Math.random() * 0.016 - 0.008);
 
 		size = new int[9][];
@@ -203,7 +203,7 @@ public class GameData {
 
 	}
 
-	public static vector getRandomVector() {
+	public static Vector getRandomVector() {
 		randomIndex++;
 		if (randomIndex >= 1000)
 			randomIndex = 0;

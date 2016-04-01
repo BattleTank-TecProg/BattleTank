@@ -1,13 +1,13 @@
 public interface model {
 	public void update();
 
-	public polygon3D[] getBoundary();
+	public Polygon3D[] getBoundary();
 
-	public rectangle2D getBoundary2D();
+	public Rectangle2D getBoundary2D();
 
-	public vector getCentre();
+	public Vector getCentre();
 
-	public vector getRealCentre();
+	public Vector getRealCentre();
 
 	public void draw();
 

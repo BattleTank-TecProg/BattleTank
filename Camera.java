@@ -2,13 +2,13 @@ import java.awt.*;
 
 public class Camera {
 
-	public static vector position;
+	public static Vector position;
 
-	public static vector absolutePosition;
+	public static Vector absolutePosition;
 
-	public vector thirdPersonDisplacement;
+	public Vector thirdPersonDisplacement;
 
-	public static vector viewDirection;
+	public static Vector viewDirection;
 
 	public static int XZ_angle, YZ_angle = 319;
 
@@ -21,24 +21,24 @@ public class Camera {
 	public Camera() {
 
 		XZ_angle = 0;
-		position = new vector(10, 0.25, 1.5);
-		absolutePosition = new vector(10, 0.25, 1.5);
-		viewDirection = new vector(0, 0, 1);
-		thirdPersonDisplacement = new vector(0, 0, 0);
+		position = new Vector(10, 0.25, 1.5);
+		absolutePosition = new Vector(10, 0.25, 1.5);
+		viewDirection = new Vector(0, 0, 1);
+		thirdPersonDisplacement = new Vector(0, 0, 0);
 		thirdPersonDisplacement.set(viewDirection.x, 0, -viewDirection.z);
 	}
 
 	public void update() {
 
-		if (main.gameOver) {
+		if (Main.gameOver) {
 			return;
 		}
 
-		if (main.gameNotStart) {
+		if (Main.gameNotStart) {
 			flyThroughTimer++;
 		}
 
-		if (!main.gameNotStart) {
+		if (!Main.gameNotStart) {
 
 			position.subtract(thirdPersonDisplacement);
 
@@ -47,13 +47,13 @@ public class Camera {
 			flyThroughTimer = 0;
 
 			if (!restart) {
-				double d_x = (playerTank.bodyCenter.x - position.x) / 5;
-				double d_z = (playerTank.bodyCenter.z - position.z) / 5;
+				double d_x = (PlayerTank.bodyCenter.x - position.x) / 5;
+				double d_z = (PlayerTank.bodyCenter.z - position.z) / 5;
 				position.x += d_x;
 				position.z += d_z;
 			} else {
-				double d_x = (playerTank.bodyCenter.x - position.x);
-				double d_z = (playerTank.bodyCenter.z - position.z);
+				double d_x = (PlayerTank.bodyCenter.x - position.x);
+				double d_z = (PlayerTank.bodyCenter.z - position.z);
 				position.x += d_x;
 				position.z += d_z;
 

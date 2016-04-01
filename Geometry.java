@@ -8,12 +8,12 @@ public class Geometry {
 
 	}
 
-	public final static void sortPolygons(polygon3D[] polygons, int start) {
+	public final static void sortPolygons(Polygon3D[] polygons, int start) {
 		int length = polygons.length;
 		for (int i = 1; i < length; i++) {
 			for (int j = start; j < length - i; j++) {
 				if (Geometry.comparePolygons(polygons[j], polygons[j + 1])) {
-					polygon3D temp = polygons[j + 1];
+					Polygon3D temp = polygons[j + 1];
 					polygons[j + 1] = polygons[j];
 					polygons[j] = temp;
 				}
@@ -21,7 +21,7 @@ public class Geometry {
 		}
 	}
 
-	public final static boolean comparePolygons(polygon3D a, polygon3D b) {
+	public final static boolean comparePolygons(Polygon3D a, Polygon3D b) {
 		if (!a.visible)
 			return false;
 		if (!b.visible)
@@ -33,7 +33,7 @@ public class Geometry {
 				&& a.tempVertex[3].z < b.tempVertex[3].z)
 			return true;
 
-		vector tempVector = new vector(0, 0, 0);
+		Vector tempVector = new Vector(0, 0, 0);
 
 		boolean inside = true;
 		for (int i = 0; i < b.tempVertex.length; i++) {
