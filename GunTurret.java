@@ -41,15 +41,31 @@ public class GunTurret extends SolidObject {
 	private boolean destoried;
 
 	public GunTurret(double x, double y, double z, int angle) {
+
+		final double XPOS = x - 0.13;
+
+		final double YPOS = z + 0.13;
+
+		final double LENGHTRECTANGLE = 0.26;
+
+		final double HEIGHTRECTANGLE = 0.26;
+
+		final double LENGHT = 0.1;
+
+		final double HEIGHT = 0.25;
+
+		final double WIDTH = 0.1;
+
 		start = new Vector(x, y, z);
 		iDirection = new Vector(0.7, 0, 0);
 		jDirection = new Vector(0, 0.7, 0);
 		kDirection = new Vector(0, 0, 0.7);
 
 		modelType = 2;
-		makeBoundary(0.1, 0.25, 0.1);
+		makeBoundary(LENGHT, HEIGHT, WIDTH);
 
-		boundary2D = new Rectangle2D(x - 0.13, z + 0.13, 0.26, 0.26);
+		boundary2D = new Rectangle2D(XPOS, YPOS, LENGHTRECTANGLE,
+				HEIGHTRECTANGLE);
 		position = (int) (x * 4) + (129 - (int) (z * 4)) * 80;
 		ObstacleMap.registerObstacle2(this, position);
 

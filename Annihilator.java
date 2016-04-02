@@ -1,19 +1,6 @@
 //This class is responsible for enemy annihilator.
 
 public class Annihilator extends SolidObject {
-
-	static final double LENGHT = 0.1;
-	
-	static final double HEIGHT = 0.25;
-	
-	static final double WIDTH = 0.1;
-	
-	//Lenght of rectangle2D.
-	final double LENGHTRECTANGLE = 0.23;
-	
-	//Weight of rectangle2D.
-	final double HEIGHTRECTANGLE = 0.23;
-
 	
 	//Total angle that the body has rotated from the initial position. (in the x-z plane).
 	private int bodyAngle = 0;
@@ -112,15 +99,35 @@ public class Annihilator extends SolidObject {
 	
 	//X, Y, Z are coordinates in space.
 	public Annihilator(double x, double y, double z, int angle) {
+		//Lenght of rectangle2D.
+		final double LENGHTRECTANGLE = 0.23;
+		
+		//Weight of rectangle2D.
+		final double HEIGHTRECTANGLE = 0.23;
+		
+		final double XPOS = x - 0.115;
+		
+		final double YPOS = z + 0.115;
+		
+		final double LENGHT = 0.1;
+		
+		final double HEIGHT = 0.25;
+		
+		final double WIDTH = 0.1;
+		
 		start = new Vector(x, y, z);
+		
 		iDirection = new Vector(1, 0, 0);
+		
 		jDirection = new Vector(0, 1, 0);	
+		
 		kDirection = new Vector(0, 0, 1);
 
 		modelType = 2;
 		makeBoundary(LENGHT, HEIGHT, WIDTH);
 
-		boundary2D = new Rectangle2D(x - 0.115, z + 0.115, LENGHTRECTANGLE, HEIGHTRECTANGLE);
+		boundary2D = new Rectangle2D(XPOS,YPOS, LENGHTRECTANGLE, HEIGHTRECTANGLE);
+		
 		position = (int) (x * 4) + (129 - (int) (z * 4)) * 80;
 		desiredPosition = position;
 		ObstacleMap.registerObstacle2(this, position);

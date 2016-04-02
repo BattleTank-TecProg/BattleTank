@@ -1,7 +1,9 @@
 public class GameHUD {
 
 	public static int[] leftSide;
+	
 	public static int[] rightSide;
+	
 	public static int[] Health, Ammo, BattleTank2, NewGame, Controls,
 			AboutAuthor, controlDescription1, controlDescription2,
 			controlDescription3, controlDescription4, controlDescription5,
@@ -9,13 +11,39 @@ public class GameHUD {
 			controlDescription9, author1, author2, author3, author4, author5,
 			author6, author7, author8, author9, author10, game, over, You, Won,
 			cheat1, cheat2, cheat3;
-	public static int menuOptionStatus;
-	public static int gameoverMessagePosition, winMessagePosition;
-	public static int loadingScreenPosition;
-	public static boolean escapePressed, downPressed, upPressed, enterPressed;
+	
+	public static int menuOptionStatus = 0;
+	
+	public static int gameoverMessagePosition = 0;
+	
+	public static int winMessagePosition = 0;
+	
+	public static int loadingScreenPosition = 0;
+	
+	public static boolean escapePressed;
+	
+	public static boolean downPressed;
+	
+	public static boolean upPressed;
+	
+	public static boolean enterPressed;
+	
 	public static int[] randomDisplacement = new int[640];
+	
 	public static boolean mousePressed;
-	public static int mouseXpos, mouseYpos;
+	
+	public static int mouseXpos;
+	
+	public static int mouseYpos;
+	
+	//X coordinate of the PlayerTank.
+	static final double XCOORDINADE = 10;
+		
+	//Y coordinate of the Player Tank.
+	static final double YCOORDINADE = -0.975;
+		
+	//Z coordinate of the Player Tank.
+	static final double ZCOORDINADE = 2.5;
 	
 	public static void init() {
 		menuOptionStatus = 1;
@@ -186,7 +214,7 @@ public class GameHUD {
 				Projectiles.init();
 				Enemies.init();
 				ObstacleMap.removeObstacle2(Main.PT.position);
-				Main.PT = new PlayerTank(10, -0.975, 2.5);
+				Main.PT = new PlayerTank(XCOORDINADE,YCOORDINADE,ZCOORDINADE);
 				Main.gameNotStart = false;
 				Main.gamePaused = false;
 				Main.gameOver = false;
@@ -227,7 +255,7 @@ public class GameHUD {
 				Projectiles.init();
 				Enemies.init();
 				ObstacleMap.removeObstacle2(Main.PT.position);
-				Main.PT = new PlayerTank(10, -0.975, 2.5);
+				Main.PT = new PlayerTank(XCOORDINADE,YCOORDINADE,ZCOORDINADE);
 				Main.gameNotStart = false;
 				Main.gamePaused = false;
 				Main.gameOver = false;

@@ -13,7 +13,14 @@ public class Helix extends SolidObject {
 	public Vector temp1 = new Vector(0, 0, 0);
 	public Vector temp2 = new Vector(0, 0, 0);
 
+	static final double LENGHT = 0.1;
+
+	static final double HEIGHT = 0.25;
+
+	static final double WIDTH = 0.1;
+	
 	public Helix(Vector centre, int angle) {
+		
 		start = centre.myClone();
 		this.centre = centre;
 		angle += 360;
@@ -24,7 +31,7 @@ public class Helix extends SolidObject {
 		kDirection = new Vector(0, 0, 1);
 
 		modelType = 4;
-		makeBoundary(0.01, 0.025, 0.01);
+		makeBoundary(LENGHT, HEIGHT, WIDTH);
 
 		boundary2D = new Rectangle2D(start.x - 0.01, start.z + 0.01, 0.02, 0.02);
 
