@@ -1,8 +1,14 @@
 public class Explosion extends SolidObject {
 
-	double size;
+	static final double LENGHT = 0.001;
+	
+	static final double HEIGHT = 0.001;
+	
+	static final double WIDTH = 0.001;
+	
+	double size = 0;
 
-	public int spriteIndex;
+	public int spriteIndex = 0;
 
 	public int frameIndex = 0;
 
@@ -10,9 +16,9 @@ public class Explosion extends SolidObject {
 
 	public int damage = 5;
 
-	public int type;
+	public int type = 0;
 
-	public int groundZero;
+	public int groundZero = 0;
 
 	public boolean explicitDrawing;
 
@@ -25,31 +31,31 @@ public class Explosion extends SolidObject {
 		kDirection = new Vector(0, 0, 1);
 
 		int random = GameData.getRandom();
-		if (random >= 75)
+		if (random >= 75) {
 			spriteIndex = 17;
-		else if (random >= 50)
+		} else if (random >= 50) {
 			spriteIndex = 18;
-		else if (random >= 25)
+		} else if (random >= 25) {
 			spriteIndex = 19;
-		else
+		} else {
 			spriteIndex = 20;
-
-		if (size > 1)
+		}
+		if (size > 1) {
 			spriteIndex = 18;
-
+		}
 		Vector[] v = new Vector[] { put(-0.3, 0, 0.3), put(0.3, 0, 0.3),
 				put(0.3, 0, -0.3), put(-0.3, 0, -0.3) };
-		if (size > 3)
+		if (size > 3) {
 			v = new Vector[] { put(-0.12, 0, 0.12), put(0.12, 0, 0.12),
 					put(0.12, 0, -0.12), put(-0.12, 0, -0.12) };
-
+		}
 		explosionAura = new Polygon3D(v, v[0], v[1], v[3], Main.textures[21],
 				1, 1, 2);
 
 		this.size = size;
 
 		modelType = 4;
-		makeBoundary(0.001, 0.001, 0.001);
+		makeBoundary(LENGHT, HEIGHT, WIDTH);
 
 		boundary2D = new Rectangle2D(x - 0.1, z + 0.1, 0.2, 0.2);
 

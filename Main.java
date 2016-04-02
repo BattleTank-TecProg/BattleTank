@@ -5,7 +5,11 @@ import java.awt.image.*;
 
 public class Main extends Applet implements KeyListener, ActionListener,
 		MouseMotionListener, MouseListener {
-
+	
+    static final int HEIGHT = 480;
+	
+	static final int WIDTH = 640;
+	
 	private static final long serialVersionUID = 1L;
 	public Ticker t;
 	public int sleepTime;
@@ -47,7 +51,7 @@ public class Main extends Applet implements KeyListener, ActionListener,
 		terrainBuffer = null;
 		System.gc();
 
-		doubleBuffer = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
+		doubleBuffer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		DataBuffer dest = doubleBuffer.getRaster().getDataBuffer();
 		screen = ((DataBufferInt) dest).getData();
 

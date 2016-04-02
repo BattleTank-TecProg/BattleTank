@@ -2,6 +2,19 @@
 
 public class Annihilator extends SolidObject {
 
+	static final double LENGHT = 0.1;
+	
+	static final double HEIGHT = 0.25;
+	
+	static final double WIDTH = 0.1;
+	
+	//Lenght of rectangle2D.
+	final double LENGHTRECTANGLE = 0.23;
+	
+	//Weight of rectangle2D.
+	final double HEIGHTRECTANGLE = 0.23;
+
+	
 	//Total angle that the body has rotated from the initial position. (in the x-z plane).
 	private int bodyAngle = 0;
 
@@ -101,13 +114,13 @@ public class Annihilator extends SolidObject {
 	public Annihilator(double x, double y, double z, int angle) {
 		start = new Vector(x, y, z);
 		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
+		jDirection = new Vector(0, 1, 0);	
 		kDirection = new Vector(0, 0, 1);
 
 		modelType = 2;
-		makeBoundary(0.1, 0.25, 0.1);
+		makeBoundary(LENGHT, HEIGHT, WIDTH);
 
-		boundary2D = new Rectangle2D(x - 0.115, z + 0.115, 0.23, 0.23);
+		boundary2D = new Rectangle2D(x - 0.115, z + 0.115, LENGHTRECTANGLE, HEIGHTRECTANGLE);
 		position = (int) (x * 4) + (129 - (int) (z * 4)) * 80;
 		desiredPosition = position;
 		ObstacleMap.registerObstacle2(this, position);

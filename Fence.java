@@ -1,5 +1,11 @@
 public class Fence extends SolidObject {
 
+	static final double LENGHT = 0.125;
+	
+	static final double HEIGHT = 0.25;
+	
+	static final double WIDTH = 0.125; 
+	
 	private Polygon3D[] polygons;
 
 	public int orientation;
@@ -16,7 +22,7 @@ public class Fence extends SolidObject {
 		}
 
 		modelType = 6;
-		makeBoundary(0.125, 0.25, 0.125);
+		makeBoundary(LENGHT, HEIGHT, WIDTH);
 
 		if (orientation == 0) {
 			boundary2D = new Rectangle2D(x - 0.06, z + 0.17, 0.12, 0.34);

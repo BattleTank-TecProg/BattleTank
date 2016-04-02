@@ -2,20 +2,43 @@ import java.awt.*;
 
 public class Camera {
 
+	//X coordinate of the rectangle.
+	static final int XCOORDINADE = 0;
+	
+	//Y coordinate of the rectangle.
+	static final int YCOORDINADE = 0;
+	
+	//Widht of rectangle.
+	final static int WIDTH = 640;
+	
+	//Weight of rectangle.
+	final static int HEIGHT = 480;
+	
+	//Position of the camera (third person view).
 	public static Vector position;
 
+	//Position of the camera (absolute).
 	public static Vector absolutePosition;
 
+	//The displacement for creating third person effect.
 	public Vector thirdPersonDisplacement;
 
+	//Direction of the view.
 	public static Vector viewDirection;
 
-	public static int XZ_angle, YZ_angle = 319;
+	//The angle that camera has rotated from the default view direction.
+	public static int XZ_angle = 0;
+	
+	//The YZ_angle is 315 degrees, and it does not change.
+	public static int YZ_angle = 319;
 
-	public static final Rectangle screen = new Rectangle(0, 0, 640, 480);
+	//A rectangle that represents the screen area.
+	public static final Rectangle screen = new Rectangle(XCOORDINADE, YCOORDINADE, WIDTH, HEIGHT);
 
+	//A flag which indicates whether the camera should be positioned at initial point.
 	public static boolean restart;
 
+	//Fly through timer
 	public int flyThroughTimer;
 
 	public Camera() {
