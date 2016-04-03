@@ -9,8 +9,8 @@ public class GameData {
 	public static int[][] size;
 	public static int[] distortion1;
 	public static short[] distortion2;
-	public static int VALUE_DISTORTION = 128 * 128;
-	public static int SIZE_VECTOR_RANDOM = 1000;
+	private static int VALUE_DISTORTION = 128 * 128;
+	private static int SIZE_VALUES_RANDOM_VECTOR = 1000;
 	
 	public static void makeData() {
 
@@ -18,8 +18,8 @@ public class GameData {
 		for (int i = 0; i < 480; i++)
 			screenTable[i] = 640 * i;
 
-		random = new int[1000];
-		for (int i = 0; i < 1000; i++)
+		random = new int[SIZE_VALUES_RANDOM_VECTOR];
+		for (int i = 0; i < SIZE_VALUES_RANDOM_VECTOR; i++)
 			random[i] = (int) (Math.random() * 100);
 
 		random = new int[] { 95, 48, 43, 59, 92, 62, 51, 46, 94, 96, 3, 96, 86,
@@ -140,8 +140,8 @@ public class GameData {
 
 		colorTableTemp = null;
 
-		randomVectors = new Vector[1000];
-		for (int i = 0; i < 1000; i++)
+		randomVectors = new Vector[SIZE_VALUES_RANDOM_VECTOR];
+		for (int i = 0; i < SIZE_VALUES_RANDOM_VECTOR; i++)
 			randomVectors[i] = new Vector(Math.random() * 0.016 - 0.008, 0.01,
 					Math.random() * 0.016 - 0.008);
 
@@ -199,7 +199,7 @@ public class GameData {
 
 	public static int getRandom() {
 		randomIndex++;
-		if (randomIndex >= 1000)
+		if (randomIndex >= SIZE_VALUES_RANDOM_VECTOR)
 			randomIndex = 0;
 		return random[randomIndex];
 
@@ -207,7 +207,7 @@ public class GameData {
 
 	public static Vector getRandomVector() {
 		randomIndex++;
-		if (randomIndex >= 1000)
+		if (randomIndex >= SIZE_VALUES_RANDOM_VECTOR)
 			randomIndex = 0;
 		return randomVectors[randomIndex];
 
