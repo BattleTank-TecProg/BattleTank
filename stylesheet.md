@@ -1,20 +1,19 @@
 ![alt tag](http://cifmc.fis.unb.br/ivefras/logounb.png)
 
-# Universidade de Brasília - Campus Gama
+# University of Brasilia - Campus Gama
 
- **Disciplina**: Técnicas de programação
+ **Course**: Programming Techniques
 
- **Professor**: Maurício Serrano
+ **Teacher**: Maurício Serrano
 
- **Linguagem do Projeto**: Java
-
-
-
-# Folha de padronização de código
+ **Project Language**: Java
 
 
 
-## Integrantes:
+# Style Sheet
+
+
+## Members:
 
 **Nicácio Arruda Bezerra Neto** - 130015857
 
@@ -26,58 +25,59 @@
 
 
 
-## Índice:
+## Index:
 
 
 
-[1. Objetivo](#1-objetivo)
+[1. Objective](#1-objective)
 
-[2. Comentários](#2-comentários)
+[2. Code Comments](#2-code-comments)
 
-[3. Declaração de Variáveis](#3-declaração-de-variáveis)
+[3. Variables](#3-variables)
 
-[4. Declaração de Classes](#4-declaração-de-classes)
+[4. Classes](#4-classes)
 
-[5. Indentação](#5-indentação)
-	
-[6. Quebra de linha](#6-quebra-de-linha)
+[5. Identation](#5-identation)
 
-[7. Sintaxe](#7-sintaxe)
+[6. Line Break](#6-line-break)
 
-[8. Declarações](#8-declarações)
+[7. Syntax](#7-syntax)
 
-
-# 1. Objetivo:
+[8. Statements](#8-statements)
 
 
-Esta folha de padronização de código tem por objetivo tornar padrão toda e qualquer forma de escrita de código no projeto, seja em forma de código ou comentário.
 
-# 2. Comentários:
-
-
-* Os comentários deverão ser postos sempre acima da expressão a que se referem;
-* Todos os comentários deverão começar com letra maiúscula e terminar com ponto final;
-* Não haverá espaço depois ou antes do operador utilizado para declarar o comentário;
-* Os comentários em bloco (mais de uma linha) deverão ser escritos com inicio "```/*```" e fim "```*/```";
-*  Apenas os comentários de linha única deverão começar com ‘//’;
-* Os comentários sempre deverão estar alinhados com a instrução a que se referem;
-Exemplo:
+# 1. Objective:
 
 
-# 3. Declaração de Variáveis:
+That style sheet have the objective to standardize all and any form of code on the project, whether in form of code or comments
 
 
-* As variáveis serão declaradas de preferência no início da classe, ou no início do método, em hipótese alguma as variáveis poderão ser declaradas no meio ou fim do código, salvo em casos em que seja de estrita necessidade ao funcionamento do algoritmo;
-* Deverão ser evitadas as mudanças e conversões de tipo de variável;
-* As variáveis deverão ser inicializadas após a declaração;
-* A declaração de variáveis será realizada em 1 por linha;
-* Os nomes de variáveis deverão ser significativos;
-* Nomes compostos devem ser escritos com o primeiro nome em minúsculo e a primeira letra de cada palavra subsequente em maiúsculo
-* Não deve-se separar o nome das variáveis com ‘-,/,etc’;
-* Constantes: As constantes sempre devem ser utilizadas para substituir valores que não mudam.
+# 2. Code Comments:
 
 
-### Exemplo:
+* The comments should be write always above the expression, which refers to;
+* Alls comments should start with uppercase and finish with full stop;
+* Should not be space after or before the operator used to declare the comment;
+* The comments in block (more than one line) should be write on the begin with "```/*```" and end with "```*/```";
+* Only the comments with one line should start with ‘//’;
+* The Comments always should be aligned with the instruction, which refers to.
+
+
+# 3. Variables:
+
+
+* The variables shoudl be declared at firts of class or at firts of method, no way any variable should be declared on the middle or end of code, except in cases where it is strictly need to work of algorithm;
+* Should be evited the change or conversion of the type of variable;
+* The variables should start after the declaration;
+* The declaration of variables should be fulfilled one by line;
+* The names of variables should be significant;
+* Compost names should be write if the firts name in lowercase and the firts letter of seconde name in uppercase;
+* Should not  divide the name of variables with ‘-,/,etc’;
+* Const Varibles: the const variables should be used to replace values which do not exchange.
+
+
+### Example:
 
 ```	java
 
@@ -92,33 +92,32 @@ public double distance = 0;
 public boolean forward = 0;
 ```
 
-# 4. Declaração de classes:
+# 4. Classes:
 
 
-* Todas as classes deverão conter documentação ```javaDoc``` e deverão ser escritas seguindo o padrão ```CamelCase``` mais precisamente ```UpperCamelCase```, onde a palavra é iniciada com Maiúsculas e unidas sem espaços.
-* As variáveis deverão ser declaradas na seguinte ordem: 1ª - ```public```, 2ª - ```protected``` e 3ª - ```private```.
-Todas as classes deverão conter o método construtor.
+* All classes should contain documentation ```javaDoc``` and should be write following the template ```CamelCase``` , more precisely ```UpperCamelCase```, where the word is started with uppercase and united without space;
+* The variables should be declared on that order: 1ª - ```public```, 2ª - ```protected``` and 3ª - ```private```;
+* All classes shoud contain a constructor method.
 
 
-# 5. Indentação:
+# 5. Identation:
 
+* Use the template of eclipse to indenting the tab;
+* Finish which file with a blank line;
+* Use spaces on around operators, after commas and  semicolon and around keys;
+* Should not use spaces before ```(```, ```[``` or after ```]```, ```)``` ;
+* When not have content between ```{}```,```()```, full with a space ```( )```,```{ }```;
+* Leave a blank line above the declaration of method;
+* Each new function/method should be initialized together the left extreme of the screen;
+* The identation of operators should be separeted of its operands.
 
-* Usar indentação padrão do elipse de uma tabulação;
-* Terminar cada arquivo com uma linha em branco;
-* Usar espaços ao redor de operadores, depois de vírgulas e ponto e vírgula, e ao redor de chaves;
-* Não usar espaços antes de ```(```, ```[``` ou depois de ```]```, ```)```;
-* Quando não houver conteúdo entre ```{}```,```()```, preencher com um espaço ```( )```,```{ }```;
-* Deixar uma linha em branco acima da declaração do método;
-* Cada nova função/método deve ser iniciada junto a extremidade esquerda da tela;
-* A indentação dos operadores deve ser separada de seus operandos.
-
-### Exemplos corretos:
+### Correct Examples:
 ```java
 
 (parameter_1 == parameter_2)
 (parameter_1 != parameter_2)
 ```
-### Exemplos incorretos:
+### Incorrect Examples:
 ```java
 
 (parameter_1== parameter_2)
@@ -127,57 +126,56 @@ Todas as classes deverão conter o método construtor.
 ```
 
 
-## 5.1 Chaves
+## 5.1 Keys:
+* The keys should be open right after the declaration of operators and should be closed on the line below the end of operations;
+* Before use the keys always should have a space.
 
 
-* As chaves deverão ser abertas logo após a declaração das operações e deverão ser fechadas na linha abaixo do fim das operações;
-* Antes de utilizar chaves sempre deve haver um espaço.
-
-# 6. Quebra de linha:
+# 6. Line Break:
 
 
-* Deve-se evitar linhas muito longas;
-* A nova linha deve começar no mesmo nível da linha da expressão de origem.
+* Should be evited very long lines;
+* The new line should start on the same level of the origin expression.
 
 
-# 7. Sintaxe:
+# 7. Syntax:
 
 
-* Classe: Primeira letra de cada palavra maiúscula
-* Membros de uma classe e variáveis locais: Primeira letra minúscula
-* Constantes de classe: Todas as letras em caixa alta (Maiúsculas)
-* Palavras compostas não devem ser separadas, devem ser escritas juntas e não deve haver qualquer símbolo entre elas.
+* Class: firts letter of each word uppercase;
+* Class member and local variables: first letter uppercase;
+* Class constant: all letter on uppercase;
+* Compost wors should not separeted, should be writes together and should not have any symbol between then.
 
 
-# 8. Declarações:
+# 8. Statements:
 
 
-##	8.1 - Métodos:
-* Métodos deverão ter o primeiro nome em minúsculo;
-* Não deve haver espaço entre os parênteses e os atributos;
-* O parêntese de abertura deve estar posicionado após  ao nome do método;
-* Caso existe mais de um parâmetro sendo passado, deve ser colocado uma vírgula rente a variável, e acrescentado um espaço logo em seguida. Ao escrever o ultimo parâmetro, não deve existir nenhum espaço entre o parâmetro e o fechamento dos parênteses;
-* A passagem de parâmetro deve ser feita começando a ser escrita rente ao parêntese.
+## 8.1 - Methods:
+* Methods shoulb have the first name in uppercase;
+* Should not have spaces between parentheses and attributes;
+* The parentheses of open should be setted up after the name of method;
+* If any more than one parameter being passed, should be put a comma close the variable and putting a long space after. Writing the last parameter, should not exist any space between the parameter and the close parantheses;
+* The passing of parameter should be write closo the parantheses.
 
-###	Exemplo Declaração:
+### Declaration Example:
 ```java
 public void damage(int damagePoint) {
-  if (damagePoint == -1) {
+	if (damagePoint == -1) {
 		active = true;
 		enganed = true;
-    return;
+	return;
 	}
 	HP -= damagePoint;
 	engaged = true;
 }
 ```
-###	Exemplo passagem de parâmetros:
-* #### Corretos:
+### Parameter Passing Example:
+* Corrects:
 ```java
 method(parameter);
 method(parameter_1, parameter_2);
 ```
-* #### Incorretos:
+* Incorrects:
 ```java
 method( parameter );
 method( parameter);
@@ -187,12 +185,12 @@ method( parameter_1, parameter_2);
 method(parameter_1 , parameter_2);
 ```
 
-## 8.2 Classes
-* As Classes deverão ser declaradas com a primeira letra maiúscula;
-* Todas as Classes deverão ter documentação ```javaDoc```;
-* Deverão ter o método construtor.
+## 8.2 - Classes:
+* The classes should be declared with the first letter in uppercase;
+* All classes should have the documentation ```javaDoc```;
+* Should have the constructor method.
 
-###	Exemplo:
+### Example:
 ```java
 
 public class Tinker implements Runnable {
@@ -206,15 +204,16 @@ public class Tinker implements Runnable {
 }
 ```
 
-##	8.3 If/Else
-* Não deve haver espaço entre dois ou mais parênteses;
-* Não deve haver espaço entre as operações e os parênteses;
-* Todo "```if```" deverá ser acompanhado do "```else```" obrigatoriamente;
-* Quando não houver nada para se fazer no ‘else’, deverá ser posto um comentário dentro do "```else```" sinalizando que não há nada a se fazer;
-* O "```else```" deverá iniciar na mesma linha do fim do "```if```";
-* Deve haver um espaço entre o fim do "```if```" e o início do "```else```";
-* Mesmo que as instruções só tenham uma linha o uso das chaves é obrigatória.
-###	Exemplo:
+## 8.3 - If/Else:
+* Should not have space between two or more parantheses;
+* Should not have space between the operations and the parantheses;
+* All "```if```" should be accompanied with a "```else```";
+* When do not have to do on ‘else’, should be post a comment inside the "```else```" signaling that there is nothing to do;
+* The "```else```" shoulb be start at same line of end of "```if```";
+* Should have a space between the end of "```if```" and the begin of "```else```";
+* Even if the instructions have just one line, the keys are required.
+
+### Example:
 ```java
 if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
 	if (randomNumber2 > 50) {
@@ -225,12 +224,13 @@ if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
 }
 ```
 
-##	8.4 Switch Case
-* Deve haver uma linha entre a declaração e o primeiro caso;
-* Cada caso do "```switch```" deve estar separado por uma linha;
-* Todo switch deverá ter um "```default```";
-* Quando não houver nada a declarar no default deve conter um comentário sinalizando que não há nada a se fazer.
-###	Exemplo:
+## 8.4 - Switch Case:
+* Should have a line between the declaration and the first case;
+* Each case of "```switch```" should be separeted by one line;
+* All switch should have a "```default```";
+* When not have to declare on the default should have a comment signaling that there is nothing to do.
+
+### Example:
 
 ```java
 
@@ -239,30 +239,31 @@ switch (WeekDay) {
 	case 1:
 		System.out.println("Sunday");
 		break;
-
+	
 	case 2:
 		System.out.println("Monday");
 		break;
-
+	
 	case 3:
 		System.out.println("Tuesday");
 		break;
-
+	
 	case 4:
 		System.out.println("Wednesday");
 		break;
-
+	
 	default:
 		System.out.println("Thats isn't a valid day!");
 
 }
 ```
 
-##	8.5 While
-* Não deve haver espaço entre dois ou mais parênteses;
-* Não deve haver espaço entre as operações e os parênteses;
-* Mesmo que as instruções só tenham uma linha o uso das chaves é obrigatória.
-###	Exemplo:
+## 8.5 While:
+* Should not have space between two or more parantheses;
+* Should not have space between the operations and the parantheses;
+* Even if the instructions have just one line, the keys are required.
+
+### Example:
 
 ```java
 while (count < 50) {
@@ -271,13 +272,13 @@ while (count < 50) {
 }
 ```
 
-## 8.6 Do/While
-* Deve haver um espaço entre o "```do```" e a chave de abertura;
-* Não deve haver espaço entre as operações e os parênteses;
-* O "```while```" deve estar posicionado na mesma linha da chave de encerramento término do "```do```";
-* Deve haver um espaço entre a chave do término do "```do```" e o "```while```".
+## 8.6 Do/While:
+* Should have a space between the "```do```" and the open key;
+* Should not have space between the operations and the parantheses;
+* The "```while```" should be start at same line of the close key of the "```do```";
+* Should have a space between the close key of the "```do```" and the "```while```".
 
-### Exemplo:
+### Example:
 
 ```java
 do {
@@ -290,13 +291,14 @@ do {
 } while (true);
 ```
 
-## 	8.7 For
-* Não deve ter espaço entre o parênteses e a operação;
-* Depois de cada ponto e vírgula dentro dos parênteses deve haver um espaço;
-* Mesmo que as instruções só tenham uma linha o uso das chaves é obrigatória;
-* Entre operadores e números deve haver espaço.
-### 	Exemplo:
-* #### Correto:
+## 8.7 For:
+* Should not have space between the operations and the parantheses;
+* After each semicolon inside the parantheses should have a space;
+* Even if the instructions have just one line, the keys are required;
+* Between operator and number should have a space.
+
+### Example:
+* Correct:
 
 ```java
 //draw body
@@ -305,7 +307,7 @@ for (int i = 0; i < body.lenght; i++) {
 }
 ```
 
-* #### Incorreto:
+* Incorrect:
 
 ```java
 //update boundary
@@ -314,18 +316,18 @@ for(int i = 0; i < 5; i++) {
 }
 ```
 
-##  8.8 Try/Catch
-* Deve haver espaço entre o "```try```" e a chave de abertura;
-* Não deve haver espaço entre as operações e os parênteses;
-* O "```catch```" deve estar posicionado na mesma linha do teŕmino do "```try```";
-* Deve haver um espaço entre a chave do término do "```try```" e o "```catch```".
+## 8.8 Try/Catch:
+* Should have a space between the "```try```" and the open key; 
+* Should not have space between the operations and the parantheses;
+* The "```catch```" should be start at the same line of the close key of the "```try```"
+ Should have a space between the close key of the "```try```" and the "```catch```".
 
-### Exemplo:
+### Example:
 
 ```java
 try {
-		Thread.sleep(delay);
+	Thread.sleep(delay);
 } catch (InterruptedException interruptedexception) {
-		System.out.println("WARNING: Ticker thread interrupted");   
+	System.out.println("WARNING: Ticker thread interrupted");   
 }
 ```
