@@ -1,20 +1,19 @@
 ![alt tag](http://cifmc.fis.unb.br/ivefras/logounb.png)
 
-# Universidade de Brasília - Campus Gama
+# University of Brasilia - Campus Gama
 
- **Disciplina**: Técnicas de programação
+ **Course**: Programming Techniques
 
- **Professor**: Maurício Serrano
+ **Teacher**: Maurício Serrano
 
- **Linguagem do Projeto**: Java
-
-
-
-# Folha de padronização de código
+ **Project Language**: Java
 
 
 
-## Integrantes:
+# Style Sheet
+
+
+## Members:
 
 **Nicácio Arruda Bezerra Neto** - 130015857
 
@@ -26,25 +25,26 @@
 
 
 
-## Índice:
+## Index:
 
 
 
-[1. Objetivo](#1-objetivo)
+[1. Objective](#1-objetivo)
 
-[2. Comentários](#2-comentários)
+[2. Comments](#2-comentários)
 
-[3. Declaração de Variáveis](#3-declaração-de-variáveis)
+[3. Declaration of Variables](#3-declaração-de-variáveis)
 
 [4. Declaração de Classes](#4-declaração-de-classes)
 
-[5. Indentação](#5-indentação)
-	
-[6. Quebra de linha](#6-quebra-de-linha)
+[5. Indent](#5-indentação)
 
-[7. Sintaxe](#7-sintaxe)
+[6. Line break](#6-quebra-de-linha)
 
-[8. Declarações](#8-declarações)
+[7. Syntax](#7-sintaxe)
+
+[8. Statements](#8-declarações)
+
 
 
 # 1. Objetivo:
@@ -61,8 +61,10 @@ Esta folha de padronização de código tem por objetivo tornar padrão toda e q
 * Os comentários em bloco (mais de uma linha) deverão ser escritos com inicio "```/*```" e fim "```*/```";
 *  Apenas os comentários de linha única deverão começar com ‘//’;
 * Os comentários sempre deverão estar alinhados com a instrução a que se referem;
-Exemplo:
 
+### Exemplo:
+
+"```//This class is responsible for enemy annihilator.```"
 
 # 3. Declaração de Variáveis:
 
@@ -213,7 +215,10 @@ public class Tinker implements Runnable {
 * Quando não houver nada para se fazer no ‘else’, deverá ser posto um comentário dentro do "```else```" sinalizando que não há nada a se fazer;
 * O "```else```" deverá iniciar na mesma linha do fim do "```if```";
 * Deve haver um espaço entre o fim do "```if```" e o início do "```else```";
+* Quando houver um "```else if```" deverá haver um espaço entre o fim do "```else```" e o início do ```if```;
 * Mesmo que as instruções só tenham uma linha o uso das chaves é obrigatória.
+* O operador condicional ternário nunca deve ser utilizado para fins de substituição do "```if/else```";
+
 ###	Exemplo:
 ```java
 if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
@@ -224,12 +229,23 @@ if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
 	}
 }
 ```
+###	Exemplo:
+```java
+if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+	 canMoveAngle1 = false;
+ } else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
+	 canMoveAngle1 = false;
+ } else {
+	// Does nothing.
+ }
+```
 
 ##	8.4 Switch Case
 * Deve haver uma linha entre a declaração e o primeiro caso;
 * Cada caso do "```switch```" deve estar separado por uma linha;
 * Todo switch deverá ter um "```default```";
 * Quando não houver nada a declarar no default deve conter um comentário sinalizando que não há nada a se fazer.
+
 ###	Exemplo:
 
 ```java
@@ -262,6 +278,7 @@ switch (WeekDay) {
 * Não deve haver espaço entre dois ou mais parênteses;
 * Não deve haver espaço entre as operações e os parênteses;
 * Mesmo que as instruções só tenham uma linha o uso das chaves é obrigatória.
+
 ###	Exemplo:
 
 ```java
@@ -295,6 +312,7 @@ do {
 * Depois de cada ponto e vírgula dentro dos parênteses deve haver um espaço;
 * Mesmo que as instruções só tenham uma linha o uso das chaves é obrigatória;
 * Entre operadores e números deve haver espaço.
+
 ### 	Exemplo:
 * Correto:
 
