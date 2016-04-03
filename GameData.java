@@ -10,6 +10,7 @@ public class GameData {
 	public static int[] distortion1;
 	public static short[] distortion2;
 	public static int VALUE_DISTORTION = 128 * 128;
+	public static int SIZE_VECTOR_RANDOM = 1000;
 	
 	public static void makeData() {
 
