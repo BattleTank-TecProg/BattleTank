@@ -1,5 +1,6 @@
-public class Explosion extends SolidObject {
+//This class is responsible for explosion in the game.
 
+public class Explosion extends SolidObject {
 	
 	double size = 0;
 
@@ -20,6 +21,7 @@ public class Explosion extends SolidObject {
 	public Polygon3D explosionAura;
 
 	public Explosion(double x, double y, double z, double size) {
+		
 		final double LENGHT = 0.001;
 		
 		final double HEIGHT = 0.001;
@@ -32,9 +34,7 @@ public class Explosion extends SolidObject {
 		
 		final double LENGHTRECTANGLE = 0.2;
 		
-		final double HEIGHTRECTANGLE = 0.2;
-		
-		
+		final double HEIGHTRECTANGLE = 0.2;		
 		
 		start = new Vector(x, y, z);
 		iDirection = new Vector(1, 0, 0);

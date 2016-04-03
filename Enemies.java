@@ -1,10 +1,10 @@
-//In this class contains methods to make the placement of enemies
+//This class contains methods to make the placement enemies
 public class Enemies {
 
 	public static model[] enemy;
 
-	// Each enemy receives the parameters ( x coordinate , y coordinate , z
-	// coordinate and the angle ).
+	/* Each enemy receives the parameters (x coordinate ,y coordinate ,z
+	coordinate and the angle).*/
 	public static void init() {
 		enemy = new model[109];
 		enemy[0] = new MediumTank(9.5, -0.975, 5.5, 30);

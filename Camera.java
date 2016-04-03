@@ -1,5 +1,7 @@
 import java.awt.*;
 
+//This class is responsible for the game camera.
+
 public class Camera {
 
 	//X coordinate of the rectangle.
@@ -8,7 +10,7 @@ public class Camera {
 	//Y coordinate of the rectangle.
 	static final int YCOORDINADE = 0;
 	
-	//Widht of rectangle.
+	//Width of rectangle.
 	final static int WIDTH = 640;
 	
 	//Weight of rectangle.
