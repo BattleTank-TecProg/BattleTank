@@ -172,12 +172,12 @@ public void damage(int damagePoint) {
 }
 ```
 ###	Exemplo passagem de parâmetros:
-* #### Corretos:
+* Corretos:
 ```java
 method(parameter);
 method(parameter_1, parameter_2);
 ```
-* #### Incorretos:
+* Incorretos:
 ```java
 method( parameter );
 method( parameter);
@@ -296,7 +296,7 @@ do {
 * Mesmo que as instruções só tenham uma linha o uso das chaves é obrigatória;
 * Entre operadores e números deve haver espaço.
 ### 	Exemplo:
-* #### Correto:
+* Correto:
 
 ```java
 //draw body
@@ -305,7 +305,7 @@ for (int i = 0; i < body.lenght; i++) {
 }
 ```
 
-* #### Incorreto:
+* Incorreto:
 
 ```java
 //update boundary
