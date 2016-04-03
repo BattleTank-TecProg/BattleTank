@@ -9,7 +9,8 @@ public class GameData {
 	public static int[][] size;
 	public static int[] distortion1;
 	public static short[] distortion2;
-
+	public static int VALUE_DISTORTION = 128 * 128;
+	
 	public static void makeData() {
 
 		screenTable = new int[480];
@@ -158,24 +159,24 @@ public class GameData {
 				-2, -639, 1, 2, 0, -1, -640, 640, 639, 641, 1280 };
 		size[8] = new int[] { 0 };
 
-		distortion1 = new int[128 * 128];
-		distortion2 = new short[128 * 128];
-		for (int i = 0; i < 128 * 128; i++) {
+		distortion1 = new int[VALUE_DISTORTION];
+		distortion2 = new short[VALUE_DISTORTION];
+		for (int i = 0; i < VALUE_DISTORTION; i++) {
 			distortion2[i] = (short) ((getRandom() * 1.5) - 75);
 		}
 
 		for (int j = 0; j < 2; j++) {
 
-			for (int i = 0; i < 128 * 128; i++)
+			for (int i = 0; i < VALUE_DISTORTION; i++)
 				distortion1[i] = distortion2[i];
 
-			for (int i = 0; i < 128 * 128; i++) {
+			for (int i = 0; i < VALUE_DISTORTION; i++) {
 				int average = 0;
 
 				for (int y = -3; y < 4; y++) {
 					for (int x = -3; x < 4; x++) {
-						int index = ((i + 128 * y + x) + 128 * 128)
-								% (128 * 128);
+						int index = ((i + 128 * y + x) + VALUE_DISTORTION)
+								% VALUE_DISTORTION;
 
 						average += distortion1[index];
 					}
@@ -186,7 +187,7 @@ public class GameData {
 			}
 		}
 
-		distortion1 = new int[128 * 128];
+		distortion1 = new int[VALUE_DISTORTION];
 		for (int j = 0; j < 128; j++) {
 			for (int k = 0; k < 128; k++)
 				distortion1[j * 128 + k] = (int) (Math.sin(Math.PI / 32 * k
