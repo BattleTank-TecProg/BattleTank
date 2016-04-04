@@ -60,8 +60,14 @@ That style sheet have the objective to standardize all and any form of code on t
 * Alls comments should start with uppercase and finish with full stop;
 * Should not be space after or before the operator used to declare the comment;
 * The comments in block (more than one line) should be write on the begin with "```/*```" and end with "```*/```";
-* Only the comments with one line should start with ‘//’;
+* Only the comments with one line should start with ```//```;
 * The Comments always should be aligned with the instruction, which refers to.
+
+### Exemple:
+
+```java
+//This class is responsible for enemy annihilator.
+```
 
 
 # 3. Variables:
@@ -211,7 +217,9 @@ public class Tinker implements Runnable {
 * When do not have to do on ‘else’, should be post a comment inside the "```else```" signaling that there is nothing to do;
 * The "```else```" shoulb be start at same line of end of "```if```";
 * Should have a space between the end of "```if```" and the begin of "```else```";
+* When there is a "```else if```" should be a space between the end of "```else```" and the beginning of "```if```";
 * Even if the instructions have just one line, the keys are required.
+* The ternary conditional operator should never be used to replace the "``` if / else```" ;
 
 ### Example:
 ```java
@@ -224,13 +232,27 @@ if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
 }
 ```
 
+###	Exemple:
+```java
+if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+	 canMoveAngle1 = false;
+ } else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
+	 canMoveAngle1 = false;
+ } else {
+	// Does nothing.
+ }
+```
+
+
+
+
 ## 8.4 - Switch Case:
 * Should have a line between the declaration and the first case;
 * Each case of "```switch```" should be separeted by one line;
 * All switch should have a "```default```";
 * When not have to declare on the default should have a comment signaling that there is nothing to do.
 
-### Example:
+### Generic Example:
 
 ```java
 
@@ -239,19 +261,19 @@ switch (WeekDay) {
 	case 1:
 		System.out.println("Sunday");
 		break;
-	
+
 	case 2:
 		System.out.println("Monday");
 		break;
-	
+
 	case 3:
 		System.out.println("Tuesday");
 		break;
-	
+
 	case 4:
 		System.out.println("Wednesday");
 		break;
-	
+
 	default:
 		System.out.println("Thats isn't a valid day!");
 
@@ -317,7 +339,7 @@ for(int i = 0; i < 5; i++) {
 ```
 
 ## 8.8 Try/Catch:
-* Should have a space between the "```try```" and the open key; 
+* Should have a space between the "```try```" and the open key;
 * Should not have space between the operations and the parantheses;
 * The "```catch```" should be start at the same line of the close key of the "```try```"
  Should have a space between the close key of the "```try```" and the "```catch```".
