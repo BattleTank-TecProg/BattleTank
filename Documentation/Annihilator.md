@@ -10,7 +10,7 @@
 ```java
 public Annihilator(double x, double y, double z, int angle);
 ```
-* This is a builder method. X, y and z are coordinates for construction of the annihilator in the space.
+* This is a constructor method. X, y and z are coordinates for construction of the annihilator in the space.
 
 ```java
 private void makeBody();

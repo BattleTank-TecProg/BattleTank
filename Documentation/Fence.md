@@ -9,10 +9,10 @@ public class Fence
 ## Methods:
 
 ```java
-public fence(double x, double y, double z, int orientation)
+public Fence(double x, double y, double z, int orientation)
 ```
 
-* Constructor method receives as parameters the coordinates x, y and z and the orientation of Fence.
+* This is a constructor method, which receives as parameters the coordinates x, y and z and the orientation of Fence.
 
 ```java
 public void makePolygons()

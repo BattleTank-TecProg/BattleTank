@@ -12,7 +12,7 @@ public class Explosion
 public Explosion(double x, double y, double z, double size)
 ```
 
-* This is a builder method. X, y and z are coordinates for the explosion and the size is the diameter of explosion.
+* This is a constructor method. X, y and z are coordinates for the explosion and the size is the diameter of explosion.
 
 ```java
 public void uptade()

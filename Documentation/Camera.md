@@ -9,7 +9,7 @@
 public Camera();
 ```
 
-* This is a builder method, which init camera with default values.
+* This is a constructor method, which init camera with default values.
 
 ```java
 public void update();
