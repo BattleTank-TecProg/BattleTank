@@ -1,52 +1,70 @@
-## public class Camera
-```This class is responsible for the camera for the game.```
+# Class:
+```java
+ public class Camera
+```
+* This class is responsible for the camera for the game.
 
-### Methods:
+## Methods:
+```java
+public Camera();
+```
 
-**public Camera()**
+* This is a builder method, which init camera with default values.
 
-```This is a builder method, which init camera with default values.```
+```java
+public void update();
+```
+* This method is responsible for updating the camera in the scenario, according to the actions in the game.
 
-**public void update()**
+## Variables:
+```java
+vector position
+```
+* This vector represents the position of the camera (third person view).
 
-```This method is responsible for updating the camera in the scenario, according to the actions in the game.```
+```java
+vector absolutePosition
+```
+* This vector represents the  absolute position of the camera.
 
-### Variables:
+```java
+vector thirdPersonDisplacement
+```
 
-**vector position**
+* The vector represents the displacement for creating third person effect.
 
-```This vector represents the position of the camera (third person view).```
+```java
+vector viewDirection
+```
 
-**vector absolutePosition**
+* The vector represents the direction of the view.
 
-```This vector represents the  absolute position of the camera.```
+```java
+XZ_angle
+```
 
-**vector thirdPersonDisplacement**
+* The angle that camera has rotated from the default view direction, this angle is 315 degrees.
 
-```The vector represents the displacement for creating third person effect.```
+```java
+YZ_angle
+```
 
-**vector viewDirection**
+* The angle that camera has rotated from the default view direction, this angle is 315 degrees.
 
-```The vector represents the direction of the view```
+```java
+final Rectangle screen
+```
 
- **XZ_angle**
- 
-```The angle that camera has rotated from the default view direction, this angle is 315 degrees.```
+* This object is a large rectangle that represents the area of the game on the screen.
 
- **YZ_angle** 
- 
-```The angle that camera has rotated from the default view direction, this angle is 315 degrees.```
+```java
+restart
+```
 
-**final Rectangle screen**
+* Variable that indicates whether the camera is positioned at the starting position.
 
-```This object is a large rectangle that represents the area of the game on the screen.```
+```java
+flyThroughTimer
+```
 
-**restart**
-
-```Variable that indicates whether the camera is positioned at the starting position.```
-
-**flyThroughTimer**
-
-```This variable holds the flight time of the camera.```
-
-
+* This variable holds the flight time of the camera.
