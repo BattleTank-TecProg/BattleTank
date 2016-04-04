@@ -5,17 +5,17 @@
 
 **public Annihilator(double x, double y, double z, int angle)**
 
-```Method builder, x, y and z are coordinates for construction of the annihilator in the  space.```
+```This is a builder method. X, y and z are coordinates for construction of the annihilator in the space.```
 
 
 **private void makeBody()**
 
-```Create polygons for the tank body.```
+```This method is responsible to create the polygons of the body of annihilator.```
 
 
 **private void makeTurret()**
 
-```Create polygons for the tank turret.```
+```This method is responsible to create polygons for the tank turret.```
 
 
 **public void update()**

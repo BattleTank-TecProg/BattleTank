@@ -1,11 +1,11 @@
 ## public class Camera
-```This class is the camera of the game.```
+```This class is responsible for the camera for the game.```
 
 ### Methods:
 
 **public Camera()**
 
-```Method builder,  init camera with default values.```
+```This is a builder method, which init camera with default values.```
 
 **public void update()**
 
