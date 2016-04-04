@@ -285,7 +285,7 @@ switch (WeekDay) {
 * Should not have space between the operations and the parantheses;
 * Even if the instructions have just one line, the keys are required.
 
-### Example:
+### Generic Example:
 
 ```java
 while (count < 50) {

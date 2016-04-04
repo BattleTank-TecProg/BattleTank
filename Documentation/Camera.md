@@ -17,6 +17,7 @@ public void update();
 * This method is responsible for updating the camera in the scenario, according to the actions in the game.
 
 ## Variables:
+
 ```java
 vector position
 ```
