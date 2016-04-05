@@ -81,12 +81,12 @@ private polygon3D shadowTurret
 ```java
 private vector bodyCenter
 ```
-* The centre of the body in camera coordinate.
+* The body focuses in the coordinate of the camera.
 
 ```java  
 private vector turretCenter
 ```
-* The centre of the turret (pivot point for rotation).
+* The turret center (pivot point for rotation).
 
 ```java
 private int turretAngle
@@ -96,7 +96,7 @@ private int turretAngle
 ```java
 private int targetAngle
 ```
-* The target angle with respect to  body centre.
+* The target angle with respect to body center.
 
 ```java
 private int turretAngleDelta
@@ -106,7 +106,7 @@ private int turretAngleDelta
 ```java
 private boolean aimRight
 ```
-Tank moves to the Right.
+* GunTurret moves to the Right.
 
 ```java
 private boolean aimLeft
@@ -116,7 +116,7 @@ private boolean aimLeft
 ```java
 private boolean firing
 ```
-* gunTurret shoot.
+* GunTurret shoot.
 
 ```java
 private int coolDown

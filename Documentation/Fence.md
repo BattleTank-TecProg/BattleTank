@@ -44,15 +44,16 @@ public void draw()
 * This method is responsible for drawing the fence.
 
 ## Declaretions:
+
 ```java
-static final double LENGHT
+static final double LENGTH
 ```
-* Returns the health block lenght value.
+* Returns the block health length value.
 
 ```java
 static final double HEIGHT
 ```
-* This Constant represents the health block height value.
+* This Constant represents the block health height value.
 
 ```java
 static final double WIDTH

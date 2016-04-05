@@ -126,22 +126,22 @@ private boolean forward
 ```java
 private boolean aimRight
 ```
-* Tank moves to the right.
+* The aim of the Tank moves to the right.
 
 ```java
 private boolean aimLeft
 ```
-* Tank moves to the left.
+* The aim of the Tank moves to the left.
 
 ```java
 private boolean firingShell
 ```
-* Shoot shell.
+* Shoots shell.
 
 ```java
 private boolean firingRocket
 ```
-* Shoot shell.
+* Shoots Rocket.
 
 ```java
 private boolean isVisiblePreviousFrame
