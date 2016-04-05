@@ -47,7 +47,7 @@ public int auraIndex
 ```java
 public int damage
 ```
-* Amount of damage he can tear the oponent.
+* Amount of damage he can tear the opponent.
 
 ```java
 public int type
