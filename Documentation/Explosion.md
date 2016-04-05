@@ -32,4 +32,44 @@ public rectangle2D getBoundary2D()
 
 * This method is responsible for return the limits of the explosion.
 
-## Variables:
+## Declarations:
+
+```java
+public int frameIndex
+```
+* The square indicate the index.
+
+```java
+public int auraIndex
+```
+* Defines the size of the aura.
+
+```java
+public int damage
+```
+* Amount of damage he can tear the oponent.
+
+```java
+public int type
+```
+* Type of explosion 0 = normal and 1 = plasma.
+
+```java
+public int groundZero
+```
+* Indicates the starting point of explosion.
+
+```java
+public boolean explicitDrawing
+```
+* Enable this boolean if this explosion has be to drawn explicitly
+
+```java
+double size
+```
+* Size of the explosion.
+
+```java
+public polygon3D explosionAura
+```
+* Define the aura explosion
