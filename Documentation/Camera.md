@@ -26,7 +26,7 @@ vector position
 ```java
 vector absolutePosition
 ```
-* This vector represents the  absolute position of the camera.
+* This vector represents the absolute position of the camera.
 
 ```java
 vector thirdPersonDisplacement
