@@ -43,4 +43,28 @@ public void draw()
 ```
 * This method is responsible for drawing the fence.
 
-## Variables:
+## Declaretions:
+```java
+static final double LENGHT
+```
+* Returns the health block lenght value.
+
+```java
+static final double HEIGHT
+```
+* This Constant represents the health block height value.
+
+```java
+static final double WIDTH
+```
+* This Constant represents the health block width value.
+
+```java
+private Polygon3D polygons[ ].
+```
+* The polygons of the model.
+
+```java
+public int orientation
+```
+* The orientation is 0 = vertical   1 = horizontal.

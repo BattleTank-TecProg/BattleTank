@@ -55,4 +55,115 @@ public void damage(int damagePoint)
 ```
 
 * This method intended to withdraw when the turret attacked life points, and its input parameter the value of the damage.
-## Variables:
+
+## Declarations:
+
+```java
+private polygon3D body [ ]
+```
+* Polygons for gunTurret body.
+
+```java
+private polygon3D turret [ ]
+```
+* Polygons for tank turret.
+
+```java
+private polygon3D shadowBody
+```
+* The shadow of tank body.
+
+```java
+private polygon3D shadowTurret
+```
+* The shadow of tank turret.
+
+```java
+private vector bodyCenter
+```
+* The centre of the body in camera coordinate.
+
+```java  
+private vector turretCenter
+```
+* The centre of the turret (pivot point for rotation).
+
+```java
+private int turretAngle
+```
+* Total angle that the turret has rotated from the initial position. (in the x-z plane).
+
+```java
+private int targetAngle
+```
+* The target angle with respect to  body centre.
+
+```java
+private int turretAngleDelta
+```
+* Degrees the  gun turret has rotated in a frame.
+
+```java
+private boolean aimRight
+```
+Tank moves to the Right.
+
+```java
+private boolean aimLeft
+```
+* GunTurret moves to the left.
+
+```java
+private boolean firing
+```
+* gunTurret shoot.
+
+```java
+private int coolDown
+```
+* Time needed before a weapon can be fired again.
+
+```java
+private int currentCoolDown
+```
+* Current coolDown.
+
+```java
+private int position
+```
+* The position index of the turret  in the grid map.
+
+```java
+private smoke Smoke
+```
+* A smoke tail.
+
+```java
+private boolean isVisiblePreviousFrame
+```
+* Whether the gun turret is visible in the previous frame.
+
+```java
+private vector tempVector1 = new vector(0,0,0)
+```
+* Temporary vector which will be used for vector arithmetic.
+
+```java
+private vector tempVector2 = new vector(0,0,0)
+```
+* Temporary vectors which will be used for vector arithmetic.
+
+```java
+private boolean engaged
+```
+* An AI flag  indicates whether it has engaged with player tank
+
+```java
+private double distance
+```
+* Distance from player tank.
+
+```java
+private boolean clearToShoot
+```
+* An AI flag indicates whether there is a type 2 obstacle between gunTurret and player tank.
