@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Polygon3D {
-	public Vector vertex3D[], tempVertex;
+	public Vector vertex3D[], tempVertex[];
 
 	public Vector vertex2D[];
 
