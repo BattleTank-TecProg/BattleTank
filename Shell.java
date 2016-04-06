@@ -1,5 +1,5 @@
 public class Shell extends SolidObject {
-	private Polygon3D[] polygons;
+	private Polygon3D polygons[];
 
 	private Vector direction;
 
@@ -37,7 +37,7 @@ public class Shell extends SolidObject {
 	}
 
 	public void makePolygons() {
-		Vector[] v;
+		Vector v[];
 		int diffuse;
 		Texture t;
 		polygons = new Polygon3D[16];

@@ -1,7 +1,7 @@
 //This class contains methods to make the placement enemies
 public class Enemies {
 
-	public static model[] enemy;
+	public static model enemy[];
 
 	/* Each enemy receives the parameters (x coordinate ,y coordinate ,z
 	coordinate and the angle).*/

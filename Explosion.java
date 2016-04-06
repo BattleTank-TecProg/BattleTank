@@ -54,7 +54,7 @@ public class Explosion extends SolidObject {
 		if (size > 1) {
 			spriteIndex = 18;
 		}
-		Vector[] v = new Vector[] { put(-0.3, 0, 0.3), put(0.3, 0, 0.3),
+		Vector v[] = new Vector[] { put(-0.3, 0, 0.3), put(0.3, 0, 0.3),
 				put(0.3, 0, -0.3), put(-0.3, 0, -0.3) };
 		if (size > 3) {
 			v = new Vector[] { put(-0.12, 0, 0.12), put(0.12, 0, 0.12),

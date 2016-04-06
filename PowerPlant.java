@@ -1,6 +1,6 @@
 public class PowerPlant extends SolidObject {
 
-	private Polygon3D[] polygons;
+	private Polygon3D polygons[];
 
 	public Polygon3D shadow;
 
@@ -77,7 +77,7 @@ public class PowerPlant extends SolidObject {
 
 	public void makePolygons() {
 		polygons = new Polygon3D[36 + 36 + 2 + 32 + 32 + 32];
-		Vector[] v;
+		Vector v[];
 
 		int index = 0;
 

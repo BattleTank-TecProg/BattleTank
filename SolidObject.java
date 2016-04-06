@@ -3,7 +3,7 @@ public abstract class SolidObject implements model {
 
 	protected Vector iDirection, jDirection, kDirection;
 
-	protected Polygon3D[] boundary;
+	protected Polygon3D boundary[];
 
 	protected Rectangle2D boundary2D;
 

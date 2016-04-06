@@ -1,12 +1,12 @@
 public class PlayerTank extends SolidObject {
 
-	private Polygon3D[] body;
+	private Polygon3D body[];
 
 	private int bodyAngle;
 
 	public static Vector bodyCenter;
 
-	private Polygon3D[] turret;
+	private Polygon3D turret[];
 
 	private Polygon3D shadowBody;
 
@@ -20,14 +20,14 @@ public class PlayerTank extends SolidObject {
 
 	private int angularSpeed;
 
-	private Polygon3D[] nukeCannonRear, nukeCannonMiddle, nukeCannonFront;
+	private Polygon3D nukeCannonRear[], nukeCannonMiddle[], nukeCannonFront[];
 
 	public static boolean forward, backward, turnRight, turnLeft, moveRight,
 			moveLeft, firing;
 
 	public int currentWeapon = 1;
 
-	public int[] coolDowns = new int[] { 0, 16, 30, 40, 5 };
+	public int coolDowns[] = new int[] { 0, 16, 30, 40, 5 };
 
 	public int currentCoolDown = 0;
 
@@ -91,7 +91,7 @@ public class PlayerTank extends SolidObject {
 	}
 
 	public void makeBody() {
-		Vector[] v;
+		Vector v[];
 
 		body = new Polygon3D[11];
 
@@ -167,7 +167,7 @@ public class PlayerTank extends SolidObject {
 
 	public void makeTurretCannon() {
 		start = turretCenter.myClone();
-		Vector[] v;
+		Vector v[];
 		turret = new Polygon3D[10];
 
 		iDirection.set(1, 0, 0);
@@ -239,7 +239,7 @@ public class PlayerTank extends SolidObject {
 
 	public void makeTurretRocket() {
 		start = turretCenter.myClone();
-		Vector[] v;
+		Vector v[];
 		turret = new Polygon3D[35];
 
 		iDirection.set(1, 0, 0);
@@ -355,7 +355,7 @@ public class PlayerTank extends SolidObject {
 
 	public void makeTurretRailgun() {
 		start = turretCenter.myClone();
-		Vector[] v;
+		Vector v[];
 		turret = new Polygon3D[72];
 
 		iDirection.set(1, 0, 0);
@@ -447,7 +447,7 @@ public class PlayerTank extends SolidObject {
 
 	public void makeTurretNuke() {
 		start = turretCenter.myClone();
-		Vector[] v;
+		Vector v[];
 		turret = new Polygon3D[171];
 		int polyIndex = 0;
 

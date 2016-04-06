@@ -1,15 +1,15 @@
 public class StealthTank extends SolidObject {
-	private Polygon3D[] body;
+	private Polygon3D body[];
 
-	private Polygon3D[] bodyInvisible;
+	private Polygon3D bodyInvisible[];
 
 	private int bodyAngle;
 
 	private Vector bodyCenter;
 
-	private Polygon3D[] turret;
+	private Polygon3D turret[];
 
-	private Polygon3D[] turretInvisible;
+	private Polygon3D turretInvisible[];
 
 	private Polygon3D shadowBody;
 
@@ -103,7 +103,7 @@ public class StealthTank extends SolidObject {
 		iDirection.rotate_XZ(bodyAngle);
 		kDirection.rotate_XZ(bodyAngle);
 
-		Vector[] v;
+		Vector v[];
 		body = new Polygon3D[43];
 		bodyInvisible = new Polygon3D[43];
 
@@ -354,7 +354,7 @@ public class StealthTank extends SolidObject {
 	private void makeTurret() {
 		turret = new Polygon3D[66];
 		turretInvisible = new Polygon3D[66];
-		Vector[] v;
+		Vector v[];
 		start = turretCenter.myClone();
 
 		iDirection = new Vector(1, 0, 0);

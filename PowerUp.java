@@ -2,7 +2,7 @@ public class PowerUp extends SolidObject {
 
 	public int type;
 
-	public Polygon3D[] polygons;
+	public Polygon3D polygons[];
 
 	public int theta;
 
@@ -35,7 +35,7 @@ public class PowerUp extends SolidObject {
 
 	public void makeBody() {
 		polygons = new Polygon3D[10];
-		Vector[] v;
+		Vector v[];
 
 		int textureIndexA = 0, textureIndexB = 0;
 		if (type == 1) {

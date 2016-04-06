@@ -69,7 +69,7 @@ public class Annihilator extends SolidObject {
 	private Vector bodyCenter;
 
 	//Polygons for tank turret
-	private Polygon3D[] turret;
+	private Polygon3D turret[];
 
 	//The shadow of tank body
 	private Polygon3D shadowBody;
@@ -81,7 +81,7 @@ public class Annihilator extends SolidObject {
 	private Vector turretCenter;
 	
 	//Polygons for tank body.
-	private Polygon3D[] body;
+	private Polygon3D body[];
 
 	//Change in tank's position of each frame.
 	private Vector displacement = new Vector(0, 0, 0);
@@ -95,7 +95,7 @@ public class Annihilator extends SolidObject {
 	private Smoke Smoke;
 
 	private void makeBody() {
-		Vector[] v;
+		Vector v[];
 		start = bodyCenter.myClone();
 
 		iDirection = new Vector(0.95, 0, 0);
@@ -218,7 +218,7 @@ public class Annihilator extends SolidObject {
 
 	private void makeTurret() {
 		start = turretCenter.myClone();
-		Vector[] v;
+		Vector v[];
 
 		iDirection = new Vector(1.6, 0, 0);
 		jDirection = new Vector(0, 1.4, 0);

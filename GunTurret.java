@@ -1,7 +1,7 @@
 public class GunTurret extends SolidObject {
-	private Polygon3D[] body;
+	private Polygon3D body[];
 
-	private Polygon3D[] turret;
+	private Polygon3D turret[];
 
 	private Polygon3D shadowBody;
 
@@ -84,7 +84,7 @@ public class GunTurret extends SolidObject {
 	}
 
 	private void makeBody() {
-		Vector[] v;
+		Vector v[];
 
 		body = new Polygon3D[5];
 
@@ -142,7 +142,7 @@ public class GunTurret extends SolidObject {
 
 		turret = new Polygon3D[22];
 
-		Vector[] v;
+		Vector v[];
 
 		v = new Vector[] { put(-0.04, 0.16, -0.08), put(0.04, 0.16, -0.08),
 				put(0.04, 0.09, -0.08), put(-0.04, 0.09, -0.08) };

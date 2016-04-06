@@ -1,31 +1,31 @@
 public class Terrain {
-	public Polygon3D[] land;
+	public Polygon3D land[];
 
 	public static Polygon3D border;
 
-	public Polygon3D[] water;
+	public Polygon3D water[];
 	public int waveIndex;
 
-	public Polygon3D[] road;
+	public Polygon3D road[];
 
-	public Polygon3D[] concreteFloor;
+	public Polygon3D concreteFloor[];
 
-	public Stone[] underWaterRocks;
+	public Stone underWaterRocks[];
 
-	public Stone[] aboveWaterRocks;
+	public Stone aboveWaterRocks[];
 
-	public Stone[] inlandRocks;
+	public Stone inlandRocks[];
 
-	public Wall[] walls;
+	public Wall walls[];
 
-	public Fence[] fences;
+	public Fence fences[];
 
-	public PalmTree[] palmTrees;
+	public PalmTree palmTrees[];
 
-	public PowerPlant[] powerPlants;
+	public PowerPlant powerPlants[];
 
 	public Terrain() {
-		Vector[] v;
+		Vector v[];
 
 		land = new Polygon3D[26];
 		v = new Vector[] { new Vector(-0.5, -1, -0.5), new Vector(-5, -1, 3),

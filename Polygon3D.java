@@ -1,9 +1,9 @@
 import java.awt.*;
 
 public class Polygon3D {
-	public Vector[] vertex3D, tempVertex;
+	public Vector vertex3D[], tempVertex;
 
-	public Vector[] vertex2D;
+	public Vector vertex2D[];
 
 	public Vector realNormal, normal;
 
@@ -53,7 +53,7 @@ public class Polygon3D {
 
 	public short color;
 
-	public Polygon3D(Vector[] vertex3D, Vector origin, Vector rightEnd,
+	public Polygon3D(Vector vertex3D[], Vector origin, Vector rightEnd,
 			Vector bottomEnd, Texture myTexture, double scaleX, double scaleY,
 			int type) {
 		this.type = type;

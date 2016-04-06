@@ -1,6 +1,6 @@
 public class PalmTree extends SolidObject {
 
-	private Polygon3D[] polygons;
+	private Polygon3D polygons[];
 
 	public Polygon3D shadow;
 
@@ -35,7 +35,7 @@ public class PalmTree extends SolidObject {
 	}
 
 	private void makePolygons() {
-		Vector[] v;
+		Vector v[];
 		double x = start.x;
 		double y = start.y;
 		double z = start.z;

@@ -2,11 +2,11 @@ import java.awt.*;
 
 public class Helix extends SolidObject {
 
-	public Vector[] particles;
+	public Vector particles[];
 
-	public Vector[] directions;
+	public Vector directions[];
 
-	public int[] colors;
+	public int colors[];
 
 	public int ALPHA = 0xFF000000;
 

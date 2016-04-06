@@ -1,17 +1,17 @@
 public class GameData {
-	public static int[] random;
+	public static int random[];
 	public static int randomIndex;
-	public static double[] sin;
-	public static double[] cos;
-	public static int[][] colorTable;
-	public static int[] screenTable;
-	public static Vector[] randomVectors;
-	public static int[][] size;
-	public static int[] distortion1;
-	public static short[] distortion2;
+	public static double sin[];
+	public static double cos[];
+	public static int colorTable[][];
+	public static int screenTable[];
+	public static Vector randomVectors[];
+	public static int size[][];
+	public static int distortion1[];
+	public static short distortion2[];
 	private static int VALUE_DISTORTION = 128 * 128;
 	private static int SIZE_VALUES_RANDOM_VECTOR = 1000;
-	
+
 	public static void makeData() {
 
 		screenTable = new int[480];
@@ -94,7 +94,7 @@ public class GameData {
 		}
 
 		colorTable = new int[64][32768];
-		int[][] colorTableTemp = new int[32768][64];
+		int colorTableTemp[][] = new int[32768][64];
 
 		double r, g, b, dr, dg, db;
 		int r_, g_, b_;

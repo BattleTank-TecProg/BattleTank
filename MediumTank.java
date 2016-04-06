@@ -1,12 +1,12 @@
 public class MediumTank extends SolidObject {
 
-	private Polygon3D[] body;
+	private Polygon3D body[];
 
 	private int bodyAngle;
 
 	private Vector bodyCenter;
 
-	private Polygon3D[] turret;
+	private Polygon3D turret[];
 
 	private Polygon3D shadowBody;
 
@@ -92,7 +92,7 @@ public class MediumTank extends SolidObject {
 	}
 
 	private void makeBody() {
-		Vector[] v;
+		Vector v[];
 
 		start = bodyCenter.myClone();
 		iDirection = new Vector(1, 0, 0);
@@ -196,7 +196,7 @@ public class MediumTank extends SolidObject {
 
 	private void makeTurret() {
 		start = turretCenter.myClone();
-		Vector[] v;
+		Vector v[];
 		turret = new Polygon3D[11];
 
 		iDirection = new Vector(0.9, 0, 0);

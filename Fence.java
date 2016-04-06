@@ -6,7 +6,7 @@ public class Fence extends SolidObject {
 	
 	static final double WIDTH = 0.125; 
 	
-	private Polygon3D[] polygons;
+	private Polygon3D polygons[];
 
 	public int orientation;
 
@@ -44,7 +44,7 @@ public class Fence extends SolidObject {
 	}
 
 	public void makePolygons() {
-		Vector[] v;
+		Vector v[];
 
 		polygons = new Polygon3D[2];
 		v = new Vector[] { put(-0.125, 0.14, 0), put(0.125, 0.14, 0),

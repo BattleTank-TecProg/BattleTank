@@ -1,7 +1,7 @@
 
 public class Wall extends SolidObject{
 
-	private Polygon3D[] polygons;
+	private Polygon3D polygons[];
 
 	public Polygon3D shadow, shadow2;
 
@@ -52,7 +52,7 @@ public class Wall extends SolidObject{
 
 
 	public void makePolygons(){
-		Vector[] v;
+		Vector v[];
 
 
 		if(orientation == 0){

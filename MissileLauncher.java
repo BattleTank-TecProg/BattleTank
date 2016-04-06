@@ -1,14 +1,14 @@
 public class MissileLauncher extends SolidObject {
 
-	private Polygon3D[] polygons;
+	private Polygon3D polygons[];
 
-	private Polygon3D[] body;
+	private Polygon3D body[];
 
 	private int bodyAngle;
 
 	private Vector bodyCenter;
 
-	private Polygon3D[] turret;
+	private Polygon3D turret[];
 
 	private Polygon3D shadowBody;
 
@@ -99,7 +99,7 @@ public class MissileLauncher extends SolidObject {
 	}
 
 	public void makeBody() {
-		Vector[] v;
+		Vector v[];
 
 		start = bodyCenter.myClone();
 		iDirection = new Vector(1, 0, 0);
@@ -198,7 +198,7 @@ public class MissileLauncher extends SolidObject {
 
 	public void makeTurret() {
 		start = turretCenter.myClone();
-		Vector[] v;
+		Vector v[];
 		turret = new Polygon3D[5];
 
 		iDirection = new Vector(1, 0, 0);

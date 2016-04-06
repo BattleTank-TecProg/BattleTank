@@ -13,15 +13,15 @@ public class Main extends Applet implements KeyListener, ActionListener,
 	private static final long serialVersionUID = 1L;
 	public Ticker t;
 	public int sleepTime;
-	public static int[] screen;
-	public static int[] stencilBuffer;
-	public static int[] stencilBuffer2;
-	public static short[] lightMap;
+	public static int screen[];
+	public static int stencilBuffer[];
+	public static int stencilBuffer2[];
+	public static short lightMap[];
 	public BufferedImage doubleBuffer;
 	public Camera Camera;
 	public InputHandler myInputHandler;
-	public static Texture[] textures;
-	public static boolean[] terrainBuffer;
+	public static Texture textures[];
+	public static boolean terrainBuffer[];
 	public static boolean terrainBufferFlag;
 	public static int polyCount;
 

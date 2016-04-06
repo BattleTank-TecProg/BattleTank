@@ -1,6 +1,6 @@
 public class Rocket extends SolidObject {
 
-	private Polygon3D[] polygons;
+	private Polygon3D polygons[];
 
 	private int angle;
 
@@ -45,7 +45,7 @@ public class Rocket extends SolidObject {
 
 		makePolygons();
 
-		Vector[] v = new Vector[] { put(-0.15, -0.05, 0.15),
+		Vector v[] = new Vector[] { put(-0.15, -0.05, 0.15),
 				put(0.15, -0.05, 0.15), put(0.15, -0.05, -0.15),
 				put(-0.15, -0.05, -0.15) };
 		rocketAura = new Polygon3D(v, v[0], v[1], v[3], Main.textures[21], 1,
@@ -54,7 +54,7 @@ public class Rocket extends SolidObject {
 	}
 
 	public void makePolygons() {
-		Vector[] v;
+		Vector v[];
 		polygons = new Polygon3D[17];
 
 		double r = 0.007;

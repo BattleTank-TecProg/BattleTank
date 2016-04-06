@@ -113,6 +113,7 @@ public boolean forward = 0;
 * Use spaces on around operators, after commas and  semicolon and around keys;
 * Should not use spaces before ```(```, ```[``` or after ```]```, ```)``` ;
 * When not have content between ```{}```,```()```, full with a space ```( )```,```{ }```;
+* When not have Content between ```[]```, Dont write nothing;
 * Leave a blank line above the declaration of method;
 * Each new function/method should be initialized together the left extreme of the screen;
 * The identation of operators should be separeted of its operands.
@@ -352,4 +353,21 @@ try {
 } catch (InterruptedException interruptedexception) {
 	System.out.println("WARNING: Ticker thread interrupted");   
 }
+```
+## 8.9 Arrays, Vectors:
+
+* Arrays , Vectors :
+* The opening and closing brackets, ```[]```,should be made at the end of the statement;  
+
+### Correct Examples:
+
+```java
+private polygon3D body[];
+private polygon3D turret[];
+```
+
+### Incorrect Examples:
+```java
+public static model[] enemy;
+private polygon3D[] polygons;
 ```
