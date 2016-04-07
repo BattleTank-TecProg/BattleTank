@@ -17,16 +17,16 @@ public class Camera {
 	final static int HEIGHT = 480;
 	
 	//Position of the camera (third person view).
-	public static Vector position = null;
+	public static Vector position = new Vector(10, 0.25, 1.5);
 
 	//Position of the camera (absolute).
-	public static Vector absolutePosition = null;
+	public static Vector absolutePosition = new Vector(10, 0.25, 1.5);
 
 	//The displacement for creating third person effect.
-	public Vector thirdPersonDisplacement = null;
+	public Vector thirdPersonDisplacement = new Vector(0, 0, 0);
 
 	//Direction of the view.
-	public static Vector viewDirection = null;
+	public static Vector viewDirection = new Vector(0, 0, 1);
 
 	//The angle that camera has rotated from the default view direction.
 	public static int XZ_angle = 0;
@@ -45,12 +45,8 @@ public class Camera {
 
 	public Camera() {
 
-		XZ_angle = 0;
-		position = new Vector(10, 0.25, 1.5);
-		absolutePosition = new Vector(10, 0.25, 1.5);
-		viewDirection = new Vector(0, 0, 1);
-		thirdPersonDisplacement = new Vector(0, 0, 0);
 		thirdPersonDisplacement.set(viewDirection.x, 0, -viewDirection.z);
+		
 	}
 
 	public void update() {
