@@ -35,7 +35,10 @@ public class Main extends Applet implements KeyListener, ActionListener,
 
 	public static boolean appletDestoried;
 
-	public static boolean gameNotStart, gamePaused, gameOver, win;
+	public static boolean gameNotStart;
+	public static boolean gamePaused;
+	public static boolean gameOver;
+	public static boolean win;
 
 	public void init() {
 		gameNotStart = true;

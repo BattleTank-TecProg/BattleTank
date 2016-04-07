@@ -20,14 +20,21 @@ public class PlayerTank extends SolidObject {
 	
 	private Vector tempVector2 = new Vector(0, 0, 0);
 
-	private Polygon3D nukeCannonRear[], nukeCannonMiddle[], nukeCannonFront[];
+	private Polygon3D nukeCannonRear[];
+	private Polygon3D nukeCannonMiddle[];
+	private Polygon3D nukeCannonFront[];
 
 	private int turretAngleDelta;
 	
 	private int bodyAngleDelta;
 	
-	public static boolean forward, backward, turnRight, turnLeft, moveRight,
-			moveLeft, firing;
+	public static boolean forward;
+	public static boolean backward;
+	public static boolean turnRight;
+	public static boolean turnLeft;
+	public static boolean moveRight;
+	public static boolean moveLeft;
+	public static boolean firing;
 	
 	public int currentWeapon = 1;
 

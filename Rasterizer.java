@@ -1,30 +1,65 @@
 public class Rasterizer {
-	public static int[] xLow = new int[480], xHigh = new int[480];
 
-	public static Vector W = new Vector(0, 0, 0), O = new Vector(0, 0, 0),
-			V = new Vector(0, 0, 0), U = new Vector(0, 0, 0), A = new Vector(0,
-					0, 0), B = new Vector(0, 0, 0), C = new Vector(0, 0, 0);
-
-	public static Vector tempVector1 = new Vector(0, 0, 0),
-			tempVector2 = new Vector(0, 0, 0),
-			tempVector3 = new Vector(0, 0, 0),
-			tempVector4 = new Vector(0, 0, 0);
+	public static Vector W = new Vector(0, 0, 0);
+	public static Vector O = new Vector(0, 0, 0);
+	public static Vector V = new Vector(0, 0, 0);
+	public static Vector U = new Vector(0, 0, 0);
+	public static Vector A = new Vector(0, 0, 0);
+	public static Vector B = new Vector(0, 0, 0);
+	public static Vector C = new Vector(0, 0, 0);
+	public static Vector tempVector1 = new Vector(0, 0, 0);
+	public static Vector tempVector2 = new Vector(0, 0, 0);
+	public static Vector tempVector3 = new Vector(0, 0, 0);
+	public static Vector tempVector4 = new Vector(0, 0, 0);
 
 	public static Polygon3D poly;
 
-	public static Vector[] tempVertex, vertex2D;
-	public static int L, widthMask, heightMask, widthBits, diffuse_I;
-	public static double A_offset, B_offset, C_offset;
+	public static Vector[] tempVertex;
+	public static Vector[] vertex2D;
 
+	public static int[] xLow = new int[480];
+	public static int[] xHigh = new int[480];
+
+	public static int L;
+	public static int widthMask;
+	public static int heightMask;
+	public static int widthBits;
+	public static int diffuse_I;
 	public static int alpha;
-
 	public static int visibleCount;
+	public static int BigX;
+	public static int BigY;
+	public static int d_x;
+	public static int d_y;
+	public static int k, X1;
+	public static int Y1;
+	public static int BigDx;
+	public static int BigDy;
+	public static int dx;
+	public static int dy;
+	public static int X;
+	public static int Y;
+	public static int textureIndex;
+	public static int temp;
+	public static int temp1;
+	public static int temp2;
+	public static int r;
+	public static int g;
+	public static int b;
+	public static int scale;
+	public static int yOffset;
+	public static int xOffset;
 
-	public static double aDotW, bDotW, cDotW, cDotWInverse;
-	public static int BigX, BigY, d_x, d_y, k, X1, Y1, BigDx, BigDy, dx, dy, X,
-			Y, textureIndex, temp, temp1, temp2, r, g, b, scale, yOffset,
-			xOffset;
-	public static short I, variation;
+	public static double A_offset;
+	public static double B_offset;
+	public static double C_offset;
+	public static double aDotW;
+	public static double bDotW;
+	public static double cDotW;
+	public static double cDotWInverse;
+
+	public static short I;
+	public static short variation;
 
 	public static void rasterize(Polygon3D polygon) {
 		poly = polygon;
