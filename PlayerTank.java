@@ -4,7 +4,7 @@ public class PlayerTank extends SolidObject {
 
 	private int bodyAngle;
 
-	public static Vector bodyCenter;
+	private int underAttackCount;
 
 	private Polygon3D turret[];
 
@@ -12,61 +12,60 @@ public class PlayerTank extends SolidObject {
 
 	private Polygon3D shadowTurret;
 
-	public static Vector turretCenter;
-
-	public static int turretAngle;
-
 	private int nukeCannonAngle;
 
 	private int angularSpeed;
+	
+	private Vector tempVector1 = new Vector(0, 0, 0);
+	
+	private Vector tempVector2 = new Vector(0, 0, 0);
 
 	private Polygon3D nukeCannonRear[], nukeCannonMiddle[], nukeCannonFront[];
 
+	private int turretAngleDelta;
+	
+	private int bodyAngleDelta;
+	
 	public static boolean forward, backward, turnRight, turnLeft, moveRight,
 			moveLeft, firing;
-
+	
 	public int currentWeapon = 1;
 
 	public int coolDowns[] = new int[] { 0, 16, 30, 40, 5 };
 
 	public int currentCoolDown = 0;
 
-	public static int shells;
-	public static int rockets;
-	public static int slugs;
-	public static int plasma;
+	public static int shells = 50;
+	
+	public static int rockets = 0;
+
+	public static int slugs = 0;
+	
+	public static int plasma = 0;
+	
 	public static int currentAmmo;
 
 	public boolean outOfAmmo;
 
 	public static Vector displacement = new Vector(0, 0, 0);
 
-	private int bodyAngleDelta;
-
 	public static double speed = 0;
 
-	private int turretAngleDelta;
+	public int position;
+	
+	public static Vector turretCenter;
 
-	int position;
+	public static int turretAngle = 0;
 
-	private Vector tempVector1 = new Vector(0, 0, 0);
-	private Vector tempVector2 = new Vector(0, 0, 0);
-
-	private int underAttackCount;
+	public static Vector bodyCenter;
 
 	public PlayerTank(double x, double y, double z) {
-
-		shells = 50;
-		rockets = 0;
-		slugs = 0;
-		plasma = 0;
 
 		start = new Vector(x, y, z);
 		iDirection = new Vector(1, 0, 0);
 		jDirection = new Vector(0, 0.95, 0);
 		kDirection = new Vector(0, 0, 1.05);
 
-		turretAngle = 0;
 		bodyAngle = 0;
 
 		modelType = 1;
