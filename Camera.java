@@ -29,7 +29,7 @@ public class Camera {
 	public static Vector viewDirection;
 
 	//The angle that camera has rotated from the default view direction.
-	public static int XZ_angle = 0;
+	public int XZ_angle = 0;
 	
 	//The YZ_angle is 315 degrees, and it does not change.
 	public static int YZ_angle = 319;
