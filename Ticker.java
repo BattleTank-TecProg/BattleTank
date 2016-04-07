@@ -7,22 +7,26 @@ public class Ticker implements Runnable {
 	Thread thread;
 	int delay;
 	private boolean isTicking;
-
+	public void name() {
+		
+	}
+	
 	public Ticker(int i, ActionListener actionlistener) {
 		actionListen = actionlistener;
-		delay = i;
-		thread = new Thread(this);
-		thread.start();
-		isTicking = false;
+		initingTicker(i);
 	}
 
 	public Ticker(int i) {
+		initingTicker(i);
+	}
+	
+	public void initingTicker(int i) {
 		delay = i;
 		thread = new Thread(this);
 		thread.start();
 		isTicking = false;
 	}
-
+	
 	public void addActionListener(ActionListener actionlistener) {
 		if (actionListen == null) {
 			actionListen = actionlistener;
