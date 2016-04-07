@@ -17,19 +17,19 @@ public class Camera {
 	final static int HEIGHT = 480;
 	
 	//Position of the camera (third person view).
-	public static Vector position;
+	public static Vector position = null;
 
 	//Position of the camera (absolute).
-	public static Vector absolutePosition;
+	public static Vector absolutePosition = null;
 
 	//The displacement for creating third person effect.
-	public Vector thirdPersonDisplacement;
+	public Vector thirdPersonDisplacement = null;
 
 	//Direction of the view.
-	public static Vector viewDirection;
+	public static Vector viewDirection = null;
 
 	//The angle that camera has rotated from the default view direction.
-	public int XZ_angle = 0;
+	public static int XZ_angle = 0;
 	
 	//The YZ_angle is 315 degrees, and it does not change.
 	public static int YZ_angle = 319;
