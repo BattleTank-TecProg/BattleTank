@@ -40,15 +40,9 @@ public class Main extends Applet implements KeyListener, ActionListener,
 	public void init() {
 		gameNotStart = true;
 		appletDestoried = false;
-		screen = null;
-		stencilBuffer = null;
-		lightMap = null;
-		textures = null;
 
-		Camera = null;
-		Terrain = null;
 		GameData.destory();
-		terrainBuffer = null;
+
 		System.gc();
 
 		doubleBuffer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
