@@ -13,5 +13,3 @@ public static void processEvent()
 ```
 
 *This method is responsible for processing the events, which happens in the game.
-
-## Variables:

@@ -14,11 +14,29 @@ public GunTurret(double x, double y, double z, int angle)
 
 * This is a constructor method, which is responsible for initializing the turret and has as parameters the coordinates and the angle of the turret.
 
+#### Declarations of GunTurret()
+```java
+start = new vector(x,y,z);
+  iDirection = new vector(0.7,0,0);
+  jDirection = new vector(0,0.7,0);
+  kDirection = new vector(0,0,0.7);
+```
+* These declaration define the centre point of this model(also the centre point of tank body)
+
+
 ```java
 public void makeBody()
 ```
-
 * This method is responsible for create polygons for gun turret lower part.
+
+#### Declarations of makeBody()
+
+```java
+vector v[]
+body = new polygon3D[5]
+```
+* These Declarations Construct polygons for this model.
+
 
 ```java
 private void makeTurret()

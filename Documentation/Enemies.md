@@ -11,8 +11,15 @@ public class Enemies
 ```java
 public static void init()
 ```
-
 * This method is responsible for initialize the enemies on the map of the game.
+
+#### Declarations in the init():
+```
+enemy = new model[109]
+```
+* This declaration create 109 Enemies possibles in the scenario;
+
+
 
 ```java
 public static void update()

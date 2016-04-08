@@ -17,8 +17,17 @@ public Fence(double x, double y, double z, int orientation)
 ```java
 public void makePolygons()
 ```
-
 * This class is responsibly of Construct polygons for a fence of energy.
+
+#### Declarations of makePolygons()
+```java
+vector v[]
+polygons = new polygon3D[2]
+```
+* These declarations are for construct polygons for this model
+
+
+
 
 ```java
 public rectangle2D getBoundary2D()

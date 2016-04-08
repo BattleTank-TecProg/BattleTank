@@ -23,8 +23,13 @@ public void uptade()
 ```java
 public void draw()
 ```
-
 * This method is responsible for draw the explosion on the scenario.
+
+##### Declarations in the draw()
+```java
+double ratio;
+```
+* This variable holds the proportion of explosion
 
 ```java
 public rectangle2D getBoundary2D()
