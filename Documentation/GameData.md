@@ -12,6 +12,8 @@ public class GameData
 public static void makeData()
 ```
 
+* Initialize the datas on the game.
+
 ```java
 public static int getRandom()
 ```

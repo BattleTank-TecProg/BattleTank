@@ -19,5 +19,3 @@ public final static boolean comparePolygons(polygon3D a, polygon3D b)
 ```
 
 * This method compare two polygons and his input parameters polygon 'a' and polygon 'b'
-
-## Variables:

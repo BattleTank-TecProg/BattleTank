@@ -23,12 +23,14 @@ public void uptade()
 ```java
 public void draw()
 ```
+
 * This method is responsible for draw the explosion on the scenario.
 
-##### Declarations in the draw()
+##### Declarations in the draw():
 ```java
 double ratio;
 ```
+
 * This variable holds the proportion of explosion
 
 ```java
@@ -42,39 +44,47 @@ public rectangle2D getBoundary2D()
 ```java
 public int frameIndex
 ```
+
 * The square indicate the index.
 
 ```java
 public int auraIndex
 ```
+
 * Defines the size of the aura.
 
 ```java
 public int damage
 ```
+
 * Amount of damage he can tear the opponent.
 
 ```java
 public int type
 ```
+
 * Type of explosion 0 = normal and 1 = plasma.
 
 ```java
 public int groundZero
 ```
+
 * Indicates the starting point of explosion.
 
 ```java
 public boolean explicitDrawing
 ```
+
 * Enable this boolean if this explosion has be to drawn explicitly
 
 ```java
 double size
 ```
+
 * Size of the explosion.
 
 ```java
 public polygon3D explosionAura
 ```
+
 * Define the aura explosion

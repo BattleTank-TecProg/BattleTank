@@ -17,17 +17,16 @@ public Fence(double x, double y, double z, int orientation)
 ```java
 public void makePolygons()
 ```
+
 * This class is responsibly of Construct polygons for a fence of energy.
 
-#### Declarations of makePolygons()
+#### Declarations of makePolygons():
 ```java
 vector v[]
 polygons = new polygon3D[2]
 ```
+
 * These declarations are for construct polygons for this model
-
-
-
 
 ```java
 public rectangle2D getBoundary2D()
@@ -50,31 +49,37 @@ public void destory()
 ```java
 public void draw()
 ```
+
 * This method is responsible for drawing the fence.
 
-## Declaretions:
+## Declarations:
 
 ```java
 static final double LENGTH
 ```
+
 * Returns the block health length value.
 
 ```java
 static final double HEIGHT
 ```
+
 * This Constant represents the block health height value.
 
 ```java
 static final double WIDTH
 ```
+
 * This Constant represents the health block width value.
 
 ```java
 private Polygon3D polygons[ ].
 ```
+
 * The polygons of the model.
 
 ```java
 public int orientation
 ```
+
 * The orientation is 0 = vertical   1 = horizontal.
