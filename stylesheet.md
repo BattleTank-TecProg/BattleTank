@@ -336,9 +336,9 @@ for (int i = 0; i < body.lenght; i++) {
 
 ```java
 //update boundary
-for(int i = 0; i < 5; i++) {
+for(int i=0   ;i<5  ;  i++)
 	boundary[i].update();
-}
+
 ```
 
 ## 8.8 Try/Catch:
