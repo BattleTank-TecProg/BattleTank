@@ -166,15 +166,17 @@ public boolean forward = 0;
 
 ### Declaration Example:
 ```java
-public void damage(int damagePoint) {
-	if (damagePoint == -1) {
-		active = true;
-		enganed = true;
-	return;
+public void draw() {
+
+		tempCentre.updateLocation();
+		double ratio = size * 2 / tempCentre.z;
+		Rasterizer.temp = this.type;
+		Rasterizer.renderExplosionSprite(
+				Main.textures[spriteIndex].explosions[frameIndex], ratio,
+				tempCentre.screenX, tempCentre.screenY, 64, 64);
+
+		frameIndex++;
 	}
-	HP -= damagePoint;
-	engaged = true;
-}
 ```
 ### Parameter Passing Example:
 * Corrects:
