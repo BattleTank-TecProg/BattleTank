@@ -5,8 +5,9 @@ public final class Vector {
 
 	public static final int Z_length = 475;
 
-	public static double old_X, old_Y, old_Z, zInverse, lengthInverse;
-
+	public static double old_X, old_Y, old_Z, zInverse;
+	private double  lengthInverse;
+	
 	public Vector(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
@@ -52,12 +53,20 @@ public final class Vector {
 	}
 
 	public void unit() {
-		lengthInverse = 1 / getLength();
+		assigningOneDividedByLenghtInTheVariableLengthInverse();
 		x = x * lengthInverse;
 		y = y * lengthInverse;
 		z = z * lengthInverse;
 	}
-
+	
+	public void assigningOneDividedByLenghtInTheVariableLengthInverse() {
+		lengthInverse = returnOneDividedByLenght();
+	}
+	
+	public double returnOneDividedByLenght() {
+		return 1 / getLength();
+	}
+	
 	public double getLength() {
 		return Math.sqrt(x * x + y * y + z * z);
 	}
