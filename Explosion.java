@@ -39,6 +39,8 @@ public class Explosion extends SolidObject {
 
 	public Explosion(double x, double y, double z, double size) {
 
+		assert(x > 0 || y < 0 || z > 0 || size > 0);
+
 		final double LENGHT = 0.001;
 
 		final double HEIGHT = 0.001;
