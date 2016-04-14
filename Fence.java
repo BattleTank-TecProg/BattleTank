@@ -11,6 +11,9 @@ public class Fence extends SolidObject {
 	public int orientation;
 
 	public Fence(double x, double y, double z, int orientation) {
+		
+	assert( (x > 0 && x < 20000) && y == -0.9 && (z > 0 && z < 25000) && (orientation == 0 || orientation == 1));
+		
 		start = new Vector(x, y, z);
 		iDirection = new Vector(1, 0, 0);
 		jDirection = new Vector(0, 1, 0);
