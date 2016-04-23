@@ -61,33 +61,51 @@ public class GunTurret extends SolidObject {
 	}
 
 	public void update() {
-		if (HP > 0 && !Main.gamePaused)
+		if (HP > 0 && !Main.gamePaused) {
 			processAI();
+		} else {
+			// Does nothing.
+		}
 
 		if (aimLeft) {
 			if (Math.abs(turretAngle - targetAngle) <= 3) {
 				turretAngleDelta = targetAngle - turretAngle;
 				turretAngle += turretAngleDelta;
-				if (turretAngleDelta < 0)
+				
+				if (turretAngleDelta < 0) {
 					turretAngleDelta += 360;
+				} else {
+					// Does nothing.
+				}
 			} else {
 				turretAngleDelta = 3;
 				turretAngle += 3;
 			}
-			if (turretAngle >= 360)
+			
+			if (turretAngle >= 360) {
 				turretAngle -= 360;
+			} else {
+				// Does nothing.
+			}
+			
 		} else if (aimRight) {
 			if (Math.abs(turretAngle - targetAngle) <= 3) {
 				turretAngleDelta = targetAngle - turretAngle;
 				turretAngle += turretAngleDelta;
-				if (turretAngleDelta < 0)
+				if (turretAngleDelta < 0) {
 					turretAngleDelta += 360;
+				} else {
+					// Does nothing.
+				}
+				
 			} else {
 				turretAngleDelta = 357;
 				turretAngle -= 3;
 			}
 			if (turretAngle < 0)
 				turretAngle += 360;
+		} else {
+			// Does nothing.
 		}
 
 		tempCentre.set(centre);
@@ -102,6 +120,8 @@ public class GunTurret extends SolidObject {
 				|| tempCentre.screenX < -400 || tempCentre.screenX > 800) {
 			visible = false;
 			isVisiblePreviousFrame = false;
+		} else {
+			// Does nothing.
 		}
 
 		if (visible) {
@@ -109,14 +129,19 @@ public class GunTurret extends SolidObject {
 
 				makeTurret();
 				isVisiblePreviousFrame = true;
+			} else {
+				// Does nothing.
 			}
+		} else {
+			// Does nothing.
 		}
 
 		if (visible) {
 			ModelDrawList.register(this);
 
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 5; i++) {
 				boundary[i].update();
+			}
 
 			for (int i = 0; i < body.length; i++) {
 				body[i].update();
@@ -125,6 +150,8 @@ public class GunTurret extends SolidObject {
 			shadowBody.update();
 			if (shadowBody.visible) {
 				Rasterizer.rasterize(shadowBody);
+			} else {
+				// Does nothing
 			}
 
 			if (HP > 0) {
@@ -256,6 +283,8 @@ public class GunTurret extends SolidObject {
 
 		if (Smoke != null && visible) {
 			Smoke.draw();
+		} else {
+			// Does nothing.
 		}
 	}
 
@@ -389,6 +418,8 @@ public class GunTurret extends SolidObject {
 				} else {
 					aimRight = true;
 				}
+			} else {
+				// Does nothing.
 			}
 
 		}
