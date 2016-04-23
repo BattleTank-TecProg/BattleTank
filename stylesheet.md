@@ -63,43 +63,119 @@ That style sheet have the objective to standardize all and any form of code on t
 * Only the comments with one line should start with ```//```;
 * The Comments always should be aligned with the instruction, which refers to.
 
-### Exemple:
-
-```java
-//This class is responsible for enemy annihilator.
-```
-
-
 # 3. Variables:
 
+* The variables should be declared at firts of class or at firts of method, no way any variable should be declared on the middle or end of code, except in cases where it is strictly need to work of algorithm;
 
-* The variables shoudl be declared at firts of class or at firts of method, no way any variable should be declared on the middle or end of code, except in cases where it is strictly need to work of algorithm;
-* Should be evited the change or conversion of the type of variable;
-* The variables should start after the declaration;
-* The declaration of variables should be fulfilled one by line;
-* The names of variables should be significant;
-* Compost names should be write if the firts name in lowercase and the firts letter of seconde name in uppercase;
-* Should not  divide the name of variables with ‘-,/,etc’;
-* Const Varibles: the const variables should be used to replace values which do not exchange.
+### Correct example:
 
-
-### Example:
-
-```	java
-
-private int targetAngle = 0;    
-private int targetAngleody = 0;
-private int previousTargetAngleBody = 0;
-protected int bodyAngle = 0;
-protected int turrentAngle = 0;
-protected int coolDownShell = 33;
-public int coolDownShell = 33;
-public double distance = 0;
-public boolean forward = 0;
+``` java
+private void makeTurret() {
+  Vector v[] = v = new Vector[] { put(0.04, 0.035, 0.06), put(-0.04, 0.035, 0.06),
+	   put(-0.04, 0, 0.06), put(0.04, 0, 0.06) };
+}
 ```
 
-# 4. Classes:
+### Incorrect example:
 
+``` java
+private void makeTurret() {
+  Vector v[];
+  v = new Vector[] { put(0.04, 0.035, 0.06), put(-0.04, 0.035, 0.06),
+	   put(-0.04, 0, 0.06), put(0.04, 0, 0.06) };
+}
+```
+
+* Should be evited the change or conversion of the type of variable;
+
+### Incorrect example:
+
+``` java
+short color = (short) ((int) r << 10 | (int) g << 5 | (int) b);
+```
+
+* The variables should start after the declaration;
+
+### Correct example:
+
+``` java
+private int stuckCount = 0;
+```
+
+### Incorrect example:
+
+``` java
+private int stuckCount;
+```
+
+* The declaration of variables should be fulfilled one by line;
+
+### Correct example:
+
+``` java
+private boolean forward;
+private boolean aimRight;
+```
+
+### Incorrect example:
+
+``` java
+private boolean forward, aimRight;
+```
+
+* The names of variables should be significant;
+
+### Correct example:
+
+``` java
+// Exemple does not belong to the code
+private int randomNumberForGenerateTheObstaclesOfCoordenatesInMap = 0;
+private int randomNumberForGenerateTheTanksOfCoordenatesInMap = 0;
+```
+
+### Incorrect example:
+
+``` java
+private int randomNumber1 = 0;
+private int randomNumber2 = 0;
+```
+
+* Compost names should be write if the firts name in lowercase and the firts letter of seconde name in uppercase;
+
+### Correct example:
+
+``` java
+private int bodyAngle = 0;
+```
+
+### Incorrect example:
+
+``` java
+public static double old_X;
+```
+
+* Const Varibles: They must be declared with capital letters and separated by Underline;
+
+### Correct example:
+
+``` java
+final double LENGHT = 0.1;
+// Exemple does not belong to the code
+private static final int MAX_COUNT = 10;
+```
+
+### Incorrect example:
+
+``` java
+final double LENGHTRECTANGLE = 0.23;
+public static final int Z_length = 475;
+private static final long serialVersionUID = 1L;
+```
+
+* Const Varibles: the const variables should be used to replace values which do not exchange;
+
+
+# 4. Classes:
 
 * All classes should contain documentation ```javaDoc``` and should be write following the template ```CamelCase``` , more precisely ```UpperCamelCase```, where the word is started with uppercase and united without space;
 * The variables should be declared on that order: 1ª - ```public```, 2ª - ```protected``` and 3ª - ```private```;
