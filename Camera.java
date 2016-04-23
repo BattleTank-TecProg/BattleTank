@@ -1,4 +1,22 @@
+/*
+ *	This class is part of BattleTank 2.
+ *
+ *  BattleTank 2 is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  BattleTank 2 is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with BattleTank 2.  If not, see <http://www.gnu.org/licenses/>
+ */
+
 import java.awt.*;
+import java.util.logging.Logger;
 
 //This class is responsible for the game camera.
 
@@ -73,6 +91,8 @@ public class Camera {
 				position.x += d_x;
 				position.z += d_z;
 			} else {
+				LOG.info("New game is starting");
+
 				double d_x = (PlayerTank.bodyCenter.x - position.x);
 				double d_z = (PlayerTank.bodyCenter.z - position.z);
 				position.x += d_x;
@@ -303,4 +323,7 @@ public class Camera {
 		}
 
 	}
+	
+    private static final Logger LOG = Logger.getLogger(Annihilator.class.getName());
+
 }

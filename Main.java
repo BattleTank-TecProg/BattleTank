@@ -1,3 +1,20 @@
+/*
+ *	This class is part of BattleTank 2.
+ *
+ *  BattleTank 2 is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  BattleTank 2 is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with BattleTank 2.  If not, see <http://www.gnu.org/licenses/>
+ */
+
 import java.awt.*;
 import java.awt.event.*;
 import java.applet.*;
@@ -6,8 +23,6 @@ import java.util.logging.Logger;
 
 public class Main extends Applet implements KeyListener, ActionListener,
 		MouseMotionListener, MouseListener {
-	
-    private static final Logger LOG = Logger.getLogger(Main.class.getName());
 
     static final int HEIGHT = 480;
 	
@@ -45,7 +60,7 @@ public class Main extends Applet implements KeyListener, ActionListener,
 
 	public void init() {
 		
-	    LOG.info("Iniciando programa...");
+	    LOG.info("Game is starting...");
 
 		gameNotStart = true;
 		appletDestoried = false;
@@ -233,6 +248,8 @@ public class Main extends Applet implements KeyListener, ActionListener,
 		System.gc();
 
 		appletDestoried = true;
+		
+		LOG.info("Game is closing...");
 	}
 
 	public final void actionPerformed(ActionEvent e) {
@@ -358,5 +375,8 @@ public class Main extends Applet implements KeyListener, ActionListener,
 
 	public final void mouseClicked(MouseEvent e) {
 	}
+	
+	// Starts a Logger to Main class
+    private static final Logger LOG = Logger.getLogger(Main.class.getName());
 
 }
