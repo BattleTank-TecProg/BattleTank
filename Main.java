@@ -2,10 +2,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.applet.*;
 import java.awt.image.*;
+import java.util.logging.Logger;
 
 public class Main extends Applet implements KeyListener, ActionListener,
 		MouseMotionListener, MouseListener {
 	
+    private static final Logger LOG = Logger.getLogger(Main.class.getName());
+
     static final int HEIGHT = 480;
 	
 	static final int WIDTH = 640;
@@ -41,6 +44,9 @@ public class Main extends Applet implements KeyListener, ActionListener,
 	public static boolean win;
 
 	public void init() {
+		
+	    LOG.info("Iniciando programa...");
+
 		gameNotStart = true;
 		appletDestoried = false;
 
@@ -219,7 +225,6 @@ public class Main extends Applet implements KeyListener, ActionListener,
 
 		t.start();
 
-		System.out.println("Started!");
 		System.gc();
 	}
 

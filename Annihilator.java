@@ -15,9 +15,13 @@
  *  along with BattleTank 2.  If not, see <http://www.gnu.org/licenses/>
  */
 
+import java.util.logging.Logger;
+
 //This class is responsible for enemy annihilator.
 
 public class Annihilator extends SolidObject {
+	
+    private static final Logger LOG = Logger.getLogger(Annihilator.class.getName());
 
 	// Total angle that the body has rotated from the initial position. (in the
 	// x-z plane).
@@ -30,7 +34,7 @@ public class Annihilator extends SolidObject {
 	// Degrees the tank body has rotated in a frame.
 	private int bodyAngleDelta = 0;
 
-	// Degrees the tank turreet has rotated in a frame.
+	// Degrees the tank turret has rotated in a frame.
 	private int turretAngleDelta = 0;
 
 	// The position index of the tank in the grid map.
@@ -43,10 +47,10 @@ public class Annihilator extends SolidObject {
 
 	private int coolDownRocket = 33;
 
-	// Angle between player tank and turret centre.
+	// Angle between player tank and turret center.
 	private int targetAngle = 0;
 
-	// Angle between a target location and body centre.
+	// Angle between a target location and body center.
 	private int targetAngleBody = 0;
 
 	// TargetAngleBody of the previous frame.
@@ -84,7 +88,7 @@ public class Annihilator extends SolidObject {
 
 	private boolean clearToShoot;
 
-	// The centre of the body in camera coordinate.
+	// The center of the body in camera coordinate.
 	private Vector bodyCenter;
 
 	// Polygons for tank turret
@@ -96,7 +100,7 @@ public class Annihilator extends SolidObject {
 	// The shadow of tank turret
 	private Polygon3D shadowTurret;
 
-	// The centre of the turret (pivot point for rotation).
+	// The center of the turret (pivot point for rotation).
 	private Vector turretCenter;
 
 	// Polygons for tank body.
@@ -689,7 +693,6 @@ public class Annihilator extends SolidObject {
 
 		assert (x == 12.625 && y == -0.975 && (z == 19.375 || z == 21.375) && angle == 90);
 
-		System.out.println(angle);
 		// Length of rectangle2D.
 		final double LENGHTRECTANGLE = 0.23;
 
