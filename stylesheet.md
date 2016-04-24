@@ -71,7 +71,7 @@ That style sheet have the objective to standardize all and any form of code on t
 
 ``` java
 private void makeTurret() {
-  Vector v[] = v = new Vector[] { put(0.04, 0.035, 0.06), put(-0.04, 0.035, 0.06),
+  Vector v[] = new Vector[] { put(0.04, 0.035, 0.06), put(-0.04, 0.035, 0.06),
 	   put(-0.04, 0, 0.06), put(0.04, 0, 0.06) };
 }
 ```
