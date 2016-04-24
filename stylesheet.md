@@ -37,14 +37,25 @@
 
 [4. Classes](#4-classes)
 
-[5. Identation](#5-identation)
+[5. Methods](#5-methods)
 
-[6. Line Break](#6-line-break)
+[6. If/Else](#6-if/else)
 
-[7. Syntax](#7-syntax)
+[7. Switch Case](#7-switch-case)
 
-[8. Statements](#8-statements)
+[8. While](#8-while)
 
+[9. Do/While](#9-do/while)
+
+[10. For](#10-for)
+
+[11. Try/Catch](#11-try/catch)
+
+[12. Arrays, Vectors](#12-Arrays, Vectors)
+
+[13. Identation](#13-identation)
+
+[14. Syntax](#14-syntax)
 
 
 # 1. Objective:
@@ -65,27 +76,15 @@ That style sheet have the objective to standardize all and any form of code on t
 
 # 3. Variables:
 
-* The variables should be declared at firts of class or at firts of method, no way any variable should be declared on the middle or end of code, except in cases where it is strictly need to work of algorithm;
-
-### Correct example:
-
-``` java
-private void makeTurret() {
-  Vector v[] = new Vector[] { put(0.04, 0.035, 0.06), put(-0.04, 0.035, 0.06),
-	   put(-0.04, 0, 0.06), put(0.04, 0, 0.06) };
-}
+* The variables should be declared on that order: 1ª - ```public```, 2ª - ```protected``` and 3ª - ```private```;
+* The variables must be declared at the time of its use. The variables must be declared as late as possible.
+```java
+for (int index = 0; index < body.length; index++) {
+....
+....
+}  
 ```
-
-### Incorrect example:
-
-``` java
-private void makeTurret() {
-  Vector v[];
-  v = new Vector[] { put(0.04, 0.035, 0.06), put(-0.04, 0.035, 0.06),
-	   put(-0.04, 0, 0.06), put(0.04, 0, 0.06) };
-}
-```
-
+* In this case , the variable has been declared within the 'for' , and was immediately used.+
 * Should be evited the change or conversion of the type of variable;
 
 ### Incorrect example:
@@ -93,7 +92,6 @@ private void makeTurret() {
 ``` java
 short color = (short) ((int) r << 10 | (int) g << 5 | (int) b);
 ```
-
 * The variables should start after the declaration;
 
 ### Correct example:
@@ -127,7 +125,7 @@ private boolean forward, aimRight;
 
 ### Correct example:
 
-``` java
+```java
 // Exemple does not belong to the code
 private int randomNumberForGenerateTheObstaclesOfCoordenatesInMap = 0;
 private int randomNumberForGenerateTheTanksOfCoordenatesInMap = 0;
@@ -135,7 +133,7 @@ private int randomNumberForGenerateTheTanksOfCoordenatesInMap = 0;
 
 ### Incorrect example:
 
-``` java
+```java
 private int randomNumber1 = 0;
 private int randomNumber2 = 0;
 ```
@@ -144,13 +142,13 @@ private int randomNumber2 = 0;
 
 ### Correct example:
 
-``` java
+```java
 private int bodyAngle = 0;
 ```
 
 ### Incorrect example:
 
-``` java
+```java
 public static double old_X;
 ```
 
@@ -178,62 +176,25 @@ private static final long serialVersionUID = 1L;
 # 4. Classes:
 
 * All classes should contain documentation ```javaDoc``` and should be write following the template ```CamelCase``` , more precisely ```UpperCamelCase```, where the word is started with uppercase and united without space;
-* The variables should be declared on that order: 1ª - ```public```, 2ª - ```protected``` and 3ª - ```private```;
 * All classes shoud contain a constructor method.
+* The classes should be declared with the first letter in uppercase;
+* Should have the constructor method.
 
-
-# 5. Identation:
-
-* Use the template of eclipse to indenting the tab;
-* Finish which file with a blank line;
-* Use spaces on around operators, after commas and  semicolon and around keys;
-* Should not use spaces before ```(```, ```[``` or after ```]```, ```)``` ;
-* When not have content between ```{}```,```()```, full with a space ```( )```,```{ }```;
-* When not have Content between ```[]```, Dont write nothing;
-* Leave a blank line above the declaration of method;
-* Each new function/method should be initialized together the left extreme of the screen;
-* The identation of operators should be separeted of its operands.
-
-### Correct Examples:
+### Example:
 ```java
 
-(parameter_1 == parameter_2)
-(parameter_1 != parameter_2)
+public class Tinker implements Runnable {
+
+	public Tinker(int i) {
+		delay = i;
+		t = new Thread(this);
+		t.start();
+		isTicking = false;
+	}
+}
 ```
-### Incorrect Examples:
-```java
 
-(parameter_1== parameter_2)
-(parameter_1 !=parameter_2)
-(parameter_1==parameter_2)
-```
-
-
-## 5.1 Keys:
-* The keys should be open right after the declaration of operators and should be closed on the line below the end of operations;
-* Before use the keys always should have a space.
-
-
-# 6. Line Break:
-
-
-* Should be evited very long lines;
-* The new line should start on the same level of the origin expression.
-
-
-# 7. Syntax:
-
-
-* Class: firts letter of each word uppercase;
-* Class member and local variables: first letter uppercase;
-* Class constant: all letter on uppercase;
-* Compost wors should not separeted, should be writes together and should not have any symbol between then.
-
-
-# 8. Statements:
-
-
-## 8.1 - Methods:
+# 5. Methods:
 * Methods shoulb have the first name in uppercase;
 * Should not have spaces between parentheses and attributes;
 * The parentheses of open should be setted up after the name of method;
@@ -270,26 +231,7 @@ method( parameter_1, parameter_2);
 method(parameter_1 , parameter_2);
 ```
 
-## 8.2 - Classes:
-* The classes should be declared with the first letter in uppercase;
-* All classes should have the documentation ```javaDoc```;
-* Should have the constructor method.
-
-### Example:
-```java
-
-public class Tinker implements Runnable {
-
-	public Tinker(int i) {
-		delay = i;
-		t = new Thread(this);
-		t.start();
-		isTicking = false;
-	}
-}
-```
-
-## 8.3 - If/Else:
+# 6. If/Else:
 * Should not have space between two or more parantheses;
 * Should not have space between the operations and the parantheses;
 * All "```if```" should be accompanied with a "```else```";
@@ -303,29 +245,25 @@ public class Tinker implements Runnable {
 ### Example:
 ```java
 if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
-	if (randomNumber2 > 50) {
-		randomNumber = 50;
-	} else {
-		randomNumber = 51;
-	}
+ if (randomNumber2 > 50) {
+   randomNumber = 50;
+ } else {
+   randomNumber = 51;
+ }
 }
 ```
 
 ###	Exemple:
 ```java
 if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
-	 canMoveAngle1 = false;
- } else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
-	 canMoveAngle1 = false;
- } else {
-	// Does nothing.
- }
+  canMoveAngle1 = false;
+} else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
+  canMoveAngle1 = false;
+} else {
+ // Does nothing.
+}
 ```
-
-
-
-
-## 8.4 - Switch Case:
+# 7. Switch Case:
 * Should have a line between the declaration and the first case;
 * Each case of "```switch```" should be separeted by one line;
 * All switch should have a "```default```";
@@ -359,7 +297,7 @@ switch (WeekDay) {
 }
 ```
 
-## 8.5 While:
+# 8. While:
 * Should not have space between two or more parantheses;
 * Should not have space between the operations and the parantheses;
 * Even if the instructions have just one line, the keys are required.
@@ -373,7 +311,7 @@ while (count < 50) {
 }
 ```
 
-## 8.6 Do/While:
+# 9. Do/While:
 * Should have a space between the "```do```" and the open key;
 * Should not have space between the operations and the parantheses;
 * The "```while```" should be start at same line of the close key of the "```do```";
@@ -392,7 +330,7 @@ do {
 } while (true);
 ```
 
-## 8.7 For:
+# 10. For:
 * Should not have space between the operations and the parantheses;
 * After each semicolon inside the parantheses should have a space;
 * Even if the instructions have just one line, the keys are required;
@@ -417,7 +355,7 @@ for(int i=0   ;i<5  ;  i++)
 
 ```
 
-## 8.8 Try/Catch:
+# 11. Try/Catch:
 * Should have a space between the "```try```" and the open key;
 * Should not have space between the operations and the parantheses;
 * The "```catch```" should be start at the same line of the close key of the "```try```"
@@ -432,7 +370,7 @@ try {
 	System.out.println("WARNING: Ticker thread interrupted");   
 }
 ```
-## 8.9 Arrays, Vectors:
+# 12. Arrays, Vectors:
 
 * Arrays , Vectors :
 * The opening and closing brackets, ```[]```,should be made at the end of the statement;  
@@ -449,3 +387,50 @@ private polygon3D turret[];
 public static model[] enemy;
 private polygon3D[] polygons;
 ```
+
+# 13. Identation:
+
+* Use the template of eclipse to indenting the tab;
+* Finish which file with a blank line;
+* Use spaces on around operators, after commas and  semicolon and around keys;
+* Should not use spaces before ```(```, ```[``` or after ```]```, ```)``` ;
+* When not have content between ```{}```,```()```, full with a space ```( )```,```{ }```;
+* When not have Content between ```[]```, Dont write nothing;
+* Leave a blank line above the declaration of method;
+* Each new function/method should be initialized together the left extreme of the screen;
+* The identation of operators should be separeted of its operands.
+
+### Correct Examples:
+```java
+
+(parameter_1 == parameter_2)
+(parameter_1 != parameter_2)
+```
+### Incorrect Examples:
+```java
+
+(parameter_1== parameter_2)
+(parameter_1 !=parameter_2)
+(parameter_1==parameter_2)
+```
+
+
+## 13.1 Keys:
+* The keys should be open right after the declaration of operators and should be closed on the line below the end of operations;
+* Before use the keys always should have a space.
+
+
+# 13.2 Line Break:
+
+
+* Should be evited very long lines;
+* The new line should start on the same level of the origin expression.
+
+
+# 14. Syntax:
+
+
+* Class: firts letter of each word uppercase;
+* Class member and local variables: first letter uppercase;
+* Class constant: all letter on uppercase;
+* Compost wors should not separeted, should be writes together and should not have any symbol between then.
