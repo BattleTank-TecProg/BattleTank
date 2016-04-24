@@ -18,7 +18,13 @@
 public class GunTurret extends SolidObject {
 
 	public GunTurret(double x, double y, double z, int angle) {
-
+		
+		assert(x >= 7.875 && x <= 16.375);
+		
+		assert(y == -1 && z >= 17.25 &&  z<= 30.875);
+	
+		assert(angle >= 0 && angle <= 270);
+		
 		final double XPOS = x - 0.13;
 
 		final double YPOS = z + 0.13;
