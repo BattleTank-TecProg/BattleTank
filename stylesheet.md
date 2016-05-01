@@ -175,10 +175,29 @@ private static final long serialVersionUID = 1L;
 
 # 4. Classes:
 
-* All classes should contain documentation ```javaDoc``` and should be write following the template ```CamelCase``` , more precisely ```UpperCamelCase```, where the word is started with uppercase and united without space;
-* All classes shoud contain a constructor method.
-* The classes should be declared with the first letter in uppercase;
-* Should have the constructor method.
+* All classes should contain documentation ```javaDoc```;
+
+* should write following the model ```UpperCamelCase``` where the word starts with lowercase letters, and each new word begins with capital letter and followed by lowercase letters with no space between them;
+
+### Correct example:
+```java
+
+public class RocketTail extends SolidObject {
+
+}
+
+```
+
+### Incorrect example:
+```java
+// Exemple does not belong to the code
+public class Rockettail extends SolidObject {
+
+}
+
+```
+
+* All classes should contain a constructor method;
 
 ### Example:
 ```java
@@ -191,6 +210,23 @@ public class Tinker implements Runnable {
 		t.start();
 		isTicking = false;
 	}
+
+}
+```
+
+* The classes should be declared with the first letter in uppercase;
+
+### Correct example:
+```java
+public class RocketTail extends SolidObject {
+
+}
+```
+### Incorrect example:
+```java
+// Exemple does not belong to the code
+public class rocketTail extends SolidObject {
+
 }
 ```
 
