@@ -16,55 +16,95 @@
  */
 
 import java.awt.*;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 //This class is responsible for the game camera.
 
 public class Camera {
 
-	//X coordinate of the rectangle.
+	// X coordinate of the rectangle.
 	static final int XCOORDINADE = 0;
-	
-	//Y coordinate of the rectangle.
+
+	// Y coordinate of the rectangle.
 	static final int YCOORDINADE = 0;
-	
-	//Width of rectangle.
+
+	// Width of rectangle.
 	final static int WIDTH = 640;
-	
-	//Weight of rectangle.
+
+	// Weight of rectangle.
 	final static int HEIGHT = 480;
-	
-	//Position of the camera (third person view).
+
+	// Position of the camera (third person view).
 	public static Vector position = new Vector(10, 0.25, 1.5);
 
-	//Position of the camera (absolute).
+	// Position of the camera (absolute).
 	public static Vector absolutePosition = new Vector(10, 0.25, 1.5);
 
-	//The displacement for creating third person effect.
+	// The displacement for creating third person effect.
 	public Vector thirdPersonDisplacement = new Vector(0, 0, 0);
 
-	//Direction of the view.
+	// Direction of the view.
 	public static Vector viewDirection = new Vector(0, 0, 1);
 
-	//The angle that camera has rotated from the default view direction.
+	// The angle that camera has rotated from the default view direction.
 	public static int XZ_angle = 0;
-	
-	//The YZ_angle is 315 degrees, and it does not change.
+
+	// The YZ_angle is 315 degrees, and it does not change.
 	public static int YZ_angle = 319;
 
-	//A rectangle that represents the screen area.
-	public static final Rectangle screen = new Rectangle(XCOORDINADE, YCOORDINADE, WIDTH, HEIGHT);
+	// A rectangle that represents the screen area.
+	public static final Rectangle screen = new Rectangle(XCOORDINADE,
+			YCOORDINADE, WIDTH, HEIGHT);
 
-	//A flag which indicates whether the camera should be positioned at initial point.
+	// A flag which indicates whether the camera should be positioned at initial
+	// point.
 	public static boolean restart;
 
-	//Fly through timer
+	// Fly through timer
 	public int flyThroughTimer;
 
 	public Camera() {
 
 		thirdPersonDisplacement.set(viewDirection.x, 0, -viewDirection.z);
-		
+
+	}
+	
+	private String erroDividedByZero() {
+		return "No is possible divided by zero";
+	}
+	
+	private boolean validateParamsForDivided(double numberForDivided, double valueThatWillDivideTheNumber) {
+		boolean isZero = true;
+		if (numberForDivided != 0 && numberForDivided != 0) {
+			isZero = false;
+		} else {
+			isZero = true;
+		}
+		return isZero;		
+	}
+	
+	private double dividedByNumber(double numberForDivided, double valueThatWillDivideTheNumber) {
+		// -1 is value for initializable variable
+		double numberDivided = -1;
+		try {
+			numberDivided = numberForDivided / valueThatWillDivideTheNumber;
+		}
+		catch (ArithmeticException ImpossibleDividedByZero) {
+			LOG.severe(erroDividedByZero());
+			System.err.println(erroDividedByZero());
+			update();
+		}
+		return numberDivided;
+	}
+
+	private double updateDirectionX() {
+		double tankPositionMinusTheCameraPositionInX = PlayerTank.bodyCenter.x - position.x;
+		return dividedByNumber(tankPositionMinusTheCameraPositionInX, 5);
+	}
+
+	private double updateDirectionZ() {
+		double tankPositionMinusTheCameraPositionInZ = PlayerTank.bodyCenter.z - position.z;
+		return dividedByNumber(tankPositionMinusTheCameraPositionInZ, 5);
 	}
 
 	public void update() {
@@ -86,10 +126,12 @@ public class Camera {
 			flyThroughTimer = 0;
 
 			if (!restart) {
-				double d_x = (PlayerTank.bodyCenter.x - position.x) / 5;
-				double d_z = (PlayerTank.bodyCenter.z - position.z) / 5;
+
+				double d_x = updateDirectionX();
+				double d_z = updateDirectionZ();
 				position.x += d_x;
 				position.z += d_z;
+
 			} else {
 				LOG.info("New game is starting");
 
@@ -323,7 +365,8 @@ public class Camera {
 		}
 
 	}
-	
-    private static final Logger LOG = Logger.getLogger(Annihilator.class.getName());
+
+	private static final Logger LOG = Logger.getLogger(Annihilator.class
+			.getName());
 
 }
