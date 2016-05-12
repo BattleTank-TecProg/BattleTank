@@ -15,8 +15,10 @@
  *  along with BattleTank 2.  If not, see <http://www.gnu.org/licenses/>
  */
 
-//This class is responsible for explosion in the game.
-
+/**
+ * This class is responsible for represent the explosions, which happen while
+ * the game is played.
+ */
 public class Explosion extends SolidObject {
 
 	double size = 0;
@@ -37,9 +39,14 @@ public class Explosion extends SolidObject {
 
 	public Polygon3D explosionAura;
 
+	/**
+	 * This is a constructor method. X, y and z are coordinates for the
+	 * explosion and the size is the diameter of explosion.
+	 */
+
 	public Explosion(double x, double y, double z, double size) {
 
-		assert(x > 0 || y < 0 || z > 0 || size > 0);
+		assert (x > 0 || y < 0 || z > 0 || size > 0);
 
 		final double LENGHT = 0.001;
 
@@ -97,6 +104,10 @@ public class Explosion extends SolidObject {
 		groundZero = (int) (x * 4) + (129 - (int) (z * 4)) * 80;
 	}
 
+	/**
+	 * This method is responsible for updating the explosion in the scenario,
+	 * according to the actions in the game.
+	 */
 	public void update() {
 
 		visible = true;
@@ -130,9 +141,11 @@ public class Explosion extends SolidObject {
 		}
 	}
 
+	/** This method is responsible for draw the explosion on the scenario. */
 	public void draw() {
 
 		tempCentre.updateLocation();
+		/* This variable holds the proportion of explosion */
 		double ratio = size * 2 / tempCentre.z;
 
 		Rasterizer.temp = this.type;
@@ -144,6 +157,7 @@ public class Explosion extends SolidObject {
 
 	}
 
+	/** This method is responsible for return the limits of the explosion. */
 	public Rectangle2D getBoundary2D() {
 		return boundary2D;
 	}
