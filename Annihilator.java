@@ -17,19 +17,28 @@
 
 import java.util.logging.Logger;
 
-//This class is responsible for enemy annihilator.
-
+/**
+ * Class to create objects Anniquilator type, which are contained values ​​and
+ * methods for this purpose
+ */
 public class Annihilator extends SolidObject {
-	
-	// X, Y, Z are coordinates in space.
+
+	/**
+	 * This is a constructor method. X, y and z are coordinates for construction
+	 * of the annihilator in the space.
+	 * 
+	 * @param double - x
+	 * @param double - y
+	 * @param double - y
+	 * @param int - angle
+	 */
+
 	public Annihilator(double x, double y, double z, int angle) {
 
 		assert (x == 12.625 && y == -0.975 && (z == 19.375 || z == 21.375) && angle == 90);
 
-		// Length of rectangle2D.
 		final double LENGHTRECTANGLE = 0.23;
 
-		// Weight of rectangle2D.
 		final double HEIGHTRECTANGLE = 0.23;
 
 		final double XPOS = x - 0.115;
@@ -63,7 +72,9 @@ public class Annihilator extends SolidObject {
 		findCentre();
 
 		bodyCenter = centre;
+
 		bodyAngle = angle;
+
 		turretAngle = angle;
 
 		makeBody();
@@ -76,6 +87,10 @@ public class Annihilator extends SolidObject {
 		lifeSpan = 1;
 	}
 
+	/**
+	 * This method is responsible for updating the annihilator in the scenario,
+	 * according to the actions in the game.
+	 */
 	public void update() {
 		if ((Main.timer + randomNumber1 * 3) % 1000 == 0) {
 			if (randomNumber2 > 50) {
@@ -91,6 +106,7 @@ public class Annihilator extends SolidObject {
 
 		if (aimLeft) {
 			if (Math.abs(turretAngle - targetAngle) <= 3) {
+
 				turretAngleDelta = targetAngle - turretAngle;
 				turretAngle += turretAngleDelta;
 				if (turretAngleDelta < 0) {
@@ -131,6 +147,7 @@ public class Annihilator extends SolidObject {
 			int delta = targetAngleBody - bodyAngle;
 			if (Math.abs(delta) < 5 || Math.abs(delta) > 355) {
 				bodyAngle = targetAngleBody;
+
 				bodyAngleDelta = (delta + 720) % 360;
 				displacement.set(0, 0, 0.01);
 				displacement.rotate_XZ(bodyAngle);
@@ -341,7 +358,7 @@ public class Annihilator extends SolidObject {
 		}
 
 		if (firingShell) {
-						
+
 			if (coolDownShell == 0) {
 				coolDownShell = 100;
 				Vector tempVector1 = new Vector(0, 0, 1);
@@ -444,7 +461,7 @@ public class Annihilator extends SolidObject {
 				}
 				ObstacleMap.removeObstacle2(position);
 				Smoke.stopped = true;
-				
+
 			} else {
 				// Does nothing.
 			}
@@ -472,6 +489,7 @@ public class Annihilator extends SolidObject {
 		}
 	}
 
+	/** This method is responsible for drawing the body annihilator. */
 	public void draw() {
 		if (countDownToDeath < 3) {
 			for (int i = 0; i < body.length; i++) {
@@ -495,8 +513,12 @@ public class Annihilator extends SolidObject {
 
 	public boolean active = true;
 
+	/**
+	 * This method is responsible for specifying the loss of life of
+	 * annihilator.
+	 */
 	public void damage(int damagePoint) {
-				
+
 		if (damagePoint == -1) {
 			active = true;
 			engaged = true;
@@ -509,107 +531,126 @@ public class Annihilator extends SolidObject {
 
 	}
 
+	/**
+	 * This method is responsible for return the 2D boundary of the annihilator.
+	 * 
+	 * @return Rectangle2D - boundary2D
+	 */
 	public Rectangle2D getBoundary2D() {
 		return boundary2D;
 	}
 
-	// Starts a Logger to Annhilator class
-    private static final Logger LOG = Logger.getLogger(Annihilator.class.getName());
+	/** Starts a Logger to Annhilator class */
+	private static final Logger LOG = Logger.getLogger(Annihilator.class
+			.getName());
 
-	// Total angle that the body has rotated from the initial position. (in the
-	// x-z plane).
+	/**
+	 * Total angle that the body has rotated from the initial position. (in the
+	 * x-z plane).
+	 */
 	private int bodyAngle = 0;
 
-	// Total angle that the turret has rotated from the initial position. (in
-	// the x-z plane).
+	/**
+	 * Total angle that the turret has rotated from the initial position. (in
+	 * the x-z plane).
+	 */
 	private int turretAngle = 0;
 
-	// Degrees the tank body has rotated in a frame.
+	/** Degrees the tank body has rotated in a frame. */
 	private int bodyAngleDelta = 0;
 
-	// Degrees the tank turret has rotated in a frame.
+	/** Degrees the tank turret has rotated in a frame. */
 	private int turretAngleDelta = 0;
 
-	// The position index of the tank in the grid map.
+	/** The position index of the tank in the grid map. */
 	private int position = 0;
 
 	private int desiredPosition = 0;
 
-	// Time needed before a weapon can be fired again.
+	/** Time needed before a weapon can be fired again */
 	private int coolDownShell = 33;
 
+	/** Time needed before a weapon can be fired again. */
 	private int coolDownRocket = 33;
 
-	// Angle between player tank and turret center.
+	/** Angle between player tank and turret center. */
 	private int targetAngle = 0;
 
-	// Angle between a target location and body center.
+	/** Angle between a target location and body center. */
 	private int targetAngleBody = 0;
 
-	// TargetAngleBody of the previous frame.
+	/** TargetAngleBody of the previous frame. */
 	private int previousTargetAngleBody = 0;
 
-	// A count down for death after hp = 0.
+	/** A count down for death after hp = 0. */
 	private int countDownToDeath = 0;
 
-	// Represent the time that medium tank has been in stuck status.
+	/** Represent the time that medium tank has been in stuck status. */
 	private int stuckCount = 0;
 
-	// Random numbers.
 	private int randomNumber1 = 0;
 
 	private int randomNumber2 = 0;
 
-	// Distance from player tank.
+	/** Distance from player tank. */
 	private double distance = 0;
 
-	// Movement flag.
-
+	/** Go foward. */
 	private boolean forward;
 
+	/** The aim of the Tank moves to the right. */
 	private boolean aimRight;
 
+	/** The aim of the Tank moves to the left. */
 	private boolean aimLeft;
 
+	/** Shoots shell. */
 	private boolean firingShell;
 
+	/** Shoots Rocket. */
 	private boolean firingRocket;
 
+	/** It indicates whether the previous square is visible. */
 	private boolean isVisiblePreviousFrame;
 
 	private boolean engaged;
 
+	/** It indicates whether this clear to shot. */
 	private boolean clearToShoot;
 
-	// The center of the body in camera coordinate.
+	/** The center of the body in camera coordinate. */
 	private Vector bodyCenter;
 
-	// Polygons for tank turret
+	/** Polygons for tank turret */
 	private Polygon3D turret[];
 
-	// The shadow of tank body
+	/** The shadow of tank body */
 	private Polygon3D shadowBody;
 
-	// The shadow of tank turret
+	/** The shadow of tank turret */
 	private Polygon3D shadowTurret;
 
-	// The center of the turret (pivot point for rotation).
+	/** The center of the turret (pivot point for rotation). */
 	private Vector turretCenter;
 
-	// Polygons for tank body.
+	/** Polygons for tank body. */
 	private Polygon3D body[];
 
-	// Change in tank's position of each frame.
+	/** Change in tank's position of each frame. */
 	private Vector displacement = new Vector(0, 0, 0);
 
-	// Temporary vectors which will be used for vector arithmetic.
+	/** Temporary vectors which will be used for vector arithmetic. */
 	private Vector tempVector1 = new Vector(0, 0, 0);
 
 	private Vector tempVector2 = new Vector(0, 0, 0);
 
-	// A smoke tail will be visible if the tank's health is dropped to half.
+	/** smoke tail will be visible if the tank's health is dropped to half. */
 	private Smoke Smoke;
 
+	/**
+	 * This method is responsible to create the polygons of the body of
+	 * annihilator.
+	 */
 	private void makeBody() {
 		Vector v[];
 		start = bodyCenter.myClone();
@@ -732,6 +773,7 @@ public class Annihilator extends SolidObject {
 
 	}
 
+	/** This method is responsible to create polygons for the tank turret. */
 	private void makeTurret() {
 		start = turretCenter.myClone();
 		Vector v[];
