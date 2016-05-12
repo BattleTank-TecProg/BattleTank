@@ -18,78 +18,91 @@
 import java.awt.*;
 import java.util.logging.*;
 
-//This class is responsible for the game camera.
+/** This class is responsible for the camera for the game. */
 
 public class Camera {
 
-	// X coordinate of the rectangle.
+	/** X coordinate of the rectangle. */
 	static final int XCOORDINADE = 0;
 
-	// Y coordinate of the rectangle.
+	/** Y coordinate of the rectangle. */
 	static final int YCOORDINADE = 0;
 
-	// Width of rectangle.
+	/** Width of rectangle. */
 	final static int WIDTH = 640;
 
-	// Weight of rectangle.
+	/** Weight of rectangle. */
 	final static int HEIGHT = 480;
 
-	// Position of the camera (third person view).
+	/** This vector represents the position of the camera (third person view). */
 	public static Vector position = new Vector(10, 0.25, 1.5);
 
-	// Position of the camera (absolute).
+	/** This vector represents the absolute position of the camera */
 	public static Vector absolutePosition = new Vector(10, 0.25, 1.5);
 
-	// The displacement for creating third person effect.
+	/** The vector represents the displacement for creating third person effect. */
 	public Vector thirdPersonDisplacement = new Vector(0, 0, 0);
 
-	// Direction of the view.
+	/** The vector represents the direction of the view. */
 	public static Vector viewDirection = new Vector(0, 0, 1);
 
-	// The angle that camera has rotated from the default view direction.
+	/**
+	 * The angle that camera has rotated from the default view direction, this
+	 * angle is 315 degrees.
+	 */
 	public static int XZ_angle = 0;
 
-	// The YZ_angle is 315 degrees, and it does not change.
+	/**
+	 * The angle that camera has rotated from the default view direction, this
+	 * angle is 315 degrees.
+	 */
 	public static int YZ_angle = 319;
 
-	// A rectangle that represents the screen area.
+	/**
+	 * This object is a large rectangle that represents the area of the game on
+	 * the screen.
+	 */
 	public static final Rectangle screen = new Rectangle(XCOORDINADE,
 			YCOORDINADE, WIDTH, HEIGHT);
 
-	// A flag which indicates whether the camera should be positioned at initial
-	// point.
+	/**
+	 * Variable that indicates whether the camera is positioned at the starting
+	 * position.
+	 */
 	public static boolean restart;
 
-	// Fly through timer
+	/** This variable holds the flight time of the camera. */
 	public int flyThroughTimer;
 
+	/** This is a constructor method, which init camera with default values. */
 	public Camera() {
 
 		thirdPersonDisplacement.set(viewDirection.x, 0, -viewDirection.z);
 
 	}
-	
+
 	private String erroDividedByZero() {
 		return "No is possible divided by zero";
 	}
-	
-	private boolean validateParamsForDivided(double numberForDivided, double valueThatWillDivideTheNumber) {
+
+	private boolean validateParamsForDivided(double numberForDivided,
+			double valueThatWillDivideTheNumber) {
 		boolean isZero = true;
 		if (numberForDivided != 0 && numberForDivided != 0) {
 			isZero = false;
 		} else {
 			isZero = true;
 		}
-		return isZero;		
+		return isZero;
 	}
-	
-	private double dividedByNumber(double numberForDivided, double valueThatWillDivideTheNumber) {
+
+	private double dividedByNumber(double numberForDivided,
+			double valueThatWillDivideTheNumber) {
 		// -1 is value for initializable variable
 		double numberDivided = -1;
 		try {
 			numberDivided = numberForDivided / valueThatWillDivideTheNumber;
-		}
-		catch (ArithmeticException ImpossibleDividedByZero) {
+		} catch (ArithmeticException ImpossibleDividedByZero) {
 			LOG.severe(erroDividedByZero());
 			System.err.println(erroDividedByZero());
 			update();
@@ -98,15 +111,21 @@ public class Camera {
 	}
 
 	private double updateDirectionX() {
-		double tankPositionMinusTheCameraPositionInX = PlayerTank.bodyCenter.x - position.x;
+		double tankPositionMinusTheCameraPositionInX = PlayerTank.bodyCenter.x
+				- position.x;
 		return dividedByNumber(tankPositionMinusTheCameraPositionInX, 5);
 	}
 
 	private double updateDirectionZ() {
-		double tankPositionMinusTheCameraPositionInZ = PlayerTank.bodyCenter.z - position.z;
+		double tankPositionMinusTheCameraPositionInZ = PlayerTank.bodyCenter.z
+				- position.z;
 		return dividedByNumber(tankPositionMinusTheCameraPositionInZ, 5);
 	}
 
+	/**
+	 * This method is responsible for updating the camera in the scenario,
+	 * according to the actions in the game.
+	 */
 	public void update() {
 
 		if (Main.gameOver) {
