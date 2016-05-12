@@ -1,11 +1,11 @@
-//This class contains methods to make the placement enemies
+/** This class is responsible to include the enemies on the scenario of the game.*/
 public class Enemies {
 
 	public static model enemy[];
 
-	/* Each enemy receives the parameters (x coordinate ,y coordinate ,z
-	coordinate and the angle).*/
+	/** This method is responsible for initialize the enemies on the map of the game.*/
 	public static void init() {
+		/** This declaration create 109 Enemies possibles in the scenario;*/
 		enemy = new model[109];
 		enemy[0] = new MediumTank(9.5, -0.975, 5.5, 30);
 		enemy[1] = new MediumTank(9, -0.975, 5, 75);
@@ -195,7 +195,7 @@ public class Enemies {
 		temp4.active = false;
 
 	}
-
+	/** This method is responsible for updating the enemies in the scenario, according to the actions in the game.*/
 	public static void update() {
 		for (int i = 0; i < enemy.length; i++)
 			if (enemy[i] != null) {
