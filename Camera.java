@@ -1,4 +1,4 @@
-/*
+/**
  *	This class is part of BattleTank 2.
  *
  *  BattleTank 2 is free software: you can redistribute it and/or modify

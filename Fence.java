@@ -1,3 +1,20 @@
+/**
+ *	This class is part of BattleTank 2.
+ *
+ *  BattleTank 2 is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  BattleTank 2 is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with BattleTank 2.  If not, see <http://www.gnu.org/licenses/>
+ */
+
 public class Fence extends SolidObject {
 
 	static final double LENGHT = 0.125;
@@ -10,6 +27,16 @@ public class Fence extends SolidObject {
 
 	public int orientation;
 
+	
+	/**
+	 * 
+	 * 
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param orientation
+	 */
+	
 	public Fence(double x, double y, double z, int orientation) {
 		
 	assert( (x > 0 && x < 20000) && y == -0.9 && (z > 0 && z < 25000) && (orientation == 0 || orientation == 1));
@@ -66,7 +93,9 @@ public class Fence extends SolidObject {
 	}
 
 	public void update() {
-
+		assert(polygons != null);
+		assert(boundary != null);
+		
 		tempCentre.set(centre);
 		tempCentre.y = -1;
 		tempCentre.subtract(Camera.position);

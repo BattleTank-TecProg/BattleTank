@@ -1,4 +1,4 @@
-/*
+/**
  *	This class is part of BattleTank 2.
  *
  *  BattleTank 2 is free software: you can redistribute it and/or modify
@@ -40,10 +40,15 @@ public class Explosion extends SolidObject {
 	public Polygon3D explosionAura;
 
 	/**
+	 * 
 	 * This is a constructor method. X, y and z are coordinates for the
 	 * explosion and the size is the diameter of explosion.
+	 * 
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param size
 	 */
-
 	public Explosion(double x, double y, double z, double size) {
 
 		assert (x > 0 || y < 0 || z > 0 || size > 0);
