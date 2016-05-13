@@ -51,11 +51,13 @@
 
 [11. Try/Catch](#11-try/catch)
 
-[12. Arrays, Vectors](#12-Arrays, Vectors)
+[12. Asserts](#12-asserts)
 
-[13. Identation](#13-identation)
+[13. Arrays, Vectors](#13-Arrays, Vectors)
 
-[14. Syntax](#14-syntax)
+[14. Identation](#14-identation)
+
+[15. Syntax](#15-syntax)
 
 
 # 1. Objective:
@@ -545,7 +547,21 @@ try {
 	System.out.println("WARNING: Ticker thread interrupted");   
 }
 ```
-# 12. Arrays, Vectors:
+
+# 12. Asserts:
+* Assertive should be for the situations that should never happen.
+* They should follow the example below ;
+
+### Example:
+```java
+assert(displacement != null);
+assert(turret != null);
+assert(turret != null);
+assert(centre != null);
+assert(boundary2D != null);
+```
+
+# 13. Arrays, Vectors:
 
 * Arrays , Vectors :
 * The opening and closing brackets, ```[]```,should be made at the end of the statement;  
@@ -563,7 +579,7 @@ public static model[] enemy;
 private polygon3D[] polygons;
 ```
 
-# 13. Identation:
+# 14. Identation:
 
 * Use the template of eclipse to indenting the tab;
 * Finish which file with a blank line;
@@ -590,19 +606,19 @@ private polygon3D[] polygons;
 ```
 
 
-## 13.1 Keys:
+## 14.1 Keys:
 * The keys should be open right after the declaration of operators and should be closed on the line below the end of operations;
 * Before use the keys always should have a space.
 
 
-# 13.2 Line Break:
+# 14.2 Line Break:
 
 
 * Should be evited very long lines;
 * The new line should start on the same level of the origin expression.
 
 
-# 14. Syntax:
+# 15. Syntax:
 
 
 * Class: firts letter of each word uppercase;
