@@ -1,85 +1,100 @@
 # Class:
 
 ```java
+/**This class is responsible for the methods and attributes of energy fence.*/
+
 public class Fence
 ```
-
-* This class is responsible for the methods and attributes of energy fence.
 
 ## Methods:
 
 ```java
 public Fence(double x, double y, double z, int orientation)
 ```
-
-* This is a constructor method, which receives as parameters the coordinates x, y and z and the orientation of Fence.
+```java
+/**This is a constructor method, which receives as parameters the coordinates x, y and z and the orientation of Fence.
+* @param double - x
+* @param double - y
+* @param double - x
+* @param int - orientation
+*/
+```
 
 ```java
 public void makePolygons()
 ```
-
-* This class is responsibly of Construct polygons for a fence of energy.
-
-#### Declarations of makePolygons():
 ```java
+/**This class is responsibly of Construct polygons for a fence of energy.*/
+
+Declarations of makePolygons():
 vector v[]
 polygons = new polygon3D[2]
 ```
-
-* These declarations are for construct polygons for this model
+```java
+/**These declarations are for construct polygons for this model.*/
+```
 
 ```java
 public rectangle2D getBoundary2D()
 ```
-
-* This method is responsible for return the 2D boundary of the fence.
+```java
+/**This method is responsible for return the 2D boundary of the fence.*/
+```
 
 ```java
 public void update()
 ```
-
-* This method is responsible for updating the fence in the scenario, according to the actions in the game.
+```java
+/**This method is responsible for updating the fence in the scenario, according to the actions in the game.*/
+```
 
 ```java
 public void destory()
 ```
-
-* This method is responsible to eliminate the fence of the scenery.
+```java
+/**This method is responsible to eliminate the fence of the scenery.*/
+```
 
 ```java
 public void draw()
 ```
-
-* This method is responsible for drawing the fence.
+```java
+/**This method is responsible for drawing the fence.*/
+```
 
 ## Declarations:
 
 ```java
 static final double LENGTH
 ```
-
-* Returns the block health length value.
+```java
+/**Returns the block health length value.*/
+```
 
 ```java
 static final double HEIGHT
 ```
-
-* This Constant represents the block health height value.
+```java
+/**This Constant represents the block health height value.*/
+```
 
 ```java
 static final double WIDTH
 ```
-
-* This Constant represents the health block width value.
+```java
+/**This Constant represents the health block width value.*/
+```
 
 ```java
 private Polygon3D polygons[ ].
 ```
-
-* The polygons of the model.
+```java
+/**The polygons of the model.*/
+```
 
 ```java
 public int orientation
 ```
-
-* The orientation is 0 = vertical   1 = horizontal.
+```java
+/**The orientation is 0 = vertical   1 = horizontal.*/
+```
