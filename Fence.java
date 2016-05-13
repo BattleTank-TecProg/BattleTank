@@ -26,12 +26,18 @@ public class Fence extends SolidObject {
 	static final double HEIGHT = 0.25;
 	
 	/**This Constant represents the health block width value.*/
-	static final double WIDTH = 0.125; 
+	static final double WIDTH = 0.125;
+	
+	/**This Constant represents the fence orientation vertical*/
+	static final int VERTICAL = 0;
+	
+	/**This Constant represents the fence orientation horizontal*/
+	static final int HORIZONTAL = 1;
 	
 	/**The polygons of the model.*/
 	private Polygon3D polygons[];
 	
-	/**The orientation is 0 = vertical   1 = horizontal.*/
+	/**The fence orientation*/
 	public int orientation;
 
 	
@@ -46,14 +52,14 @@ public class Fence extends SolidObject {
 	
 	public Fence(double x, double y, double z, int orientation) {
 		
-	assert( (x > 0 && x < 20000) && y == -0.9 && (z > 0 && z < 25000) && (orientation == 0 || orientation == 1));
+	assert( (x > 0 && x < 20000) && y == -0.9 && (z > 0 && z < 25000) && (orientation == VERTICAL || orientation == HORIZONTAL));
 		
 		start = new Vector(x, y, z);
 		iDirection = new Vector(1, 0, 0);
 		jDirection = new Vector(0, 1, 0);
 		kDirection = new Vector(0, 0, 1);
 
-		if (orientation == 0) {
+		if (orientation == VERTICAL) {
 			iDirection.rotate_XZ(90);
 			kDirection.rotate_XZ(90);
 		}
@@ -61,14 +67,14 @@ public class Fence extends SolidObject {
 		modelType = 6;
 		makeBoundary(LENGHT, HEIGHT, WIDTH);
 
-		if (orientation == 0) {
+		if (orientation == VERTICAL) {
 			boundary2D = new Rectangle2D(x - 0.06, z + 0.17, 0.12, 0.34);
 			ObstacleMap.registerObstacle2(this, (int) (x * 4)
 					+ (129 - (int) (z * 4)) * 80);
 
 		}
 
-		if (orientation == 1) {
+		if (orientation == HORIZONTAL) {
 			boundary2D = new Rectangle2D(x - 0.17, z + 0.06, 0.34, 0.12);
 			ObstacleMap.registerObstacle2(this, (int) (x * 4)
 					+ (129 - (int) (z * 4)) * 80);
