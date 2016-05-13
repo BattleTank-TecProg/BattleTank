@@ -69,10 +69,33 @@ That style sheet have the objective to standardize all and any form of code on t
 
 * The comments should be write always above the expression, which refers to;
 * Alls comments should start with uppercase and finish with full stop;
-* Should not be space after or before the operator used to declare the comment;
+* There should be space between the operator and the beginning of the comment , and there should be no space between the operator and the end of the comment
 * The comments in block (more than one line) should be write on the begin with "```/*```" and end with "```*/```";
+* And at the beginning of each comment line must be the ```*``` operator .
 * Only the comments with one line should start with ```//```;
 * The Comments always should be aligned with the instruction, which refers to.
+* The JavaDoc comments respect the same rules as normal comments.
+
+### Comments Exemples:
+```java
+/*
+  * If medium tank is engaged with player, it will send alert to
+  * nearby tanks
+ */
+```
+
+### javaDoc comments Examples:
+```java
+/**
+ * This is a constructor method. X, y and z are coordinates for construction
+ * of the annihilator in the space.
+ * 
+ * @param double - x
+ * @param double - y
+ * @param double - y
+ * @param int - angle
+*/
+```
 
 # 3. Variables:
 
