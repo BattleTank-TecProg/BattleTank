@@ -127,6 +127,7 @@ public class Camera {
 	 * according to the actions in the game.
 	 */
 	public void update() {
+		// Stop updating camera when game is finished
 
 		if (Main.gameOver) {
 			return;
@@ -136,8 +137,12 @@ public class Camera {
 			flyThroughTimer++;
 		}
 
-		if (!Main.gameNotStart) {
+		// Move the camera to the player's position
 
+		if (!Main.gameNotStart) {
+			
+			// Update position
+			 
 			position.subtract(thirdPersonDisplacement);
 
 			absolutePosition.set(position);
@@ -161,17 +166,24 @@ public class Camera {
 
 				restart = false;
 			}
-
+			
+			// Update view direction
+			 
 			viewDirection.set(0, 0, 1);
 			viewDirection.rotate_YZ(YZ_angle);
 			viewDirection.rotate_XZ(XZ_angle);
 			viewDirection.unit();
-
+			
+			/* Move the camera back a little bit, so the view becomes more like
+			  third person rather than first person*/
+			 
 			thirdPersonDisplacement.set(viewDirection.x * 0.9, 0,
 					-viewDirection.z * 0.9);
 			position.add(thirdPersonDisplacement);
 
 		} else {
+
+			// Fly through this entire level when the game isn't started 
 
 			if (flyThroughTimer > 0 && flyThroughTimer <= 60) {
 				position.add(0, 0, 0.01);

@@ -69,6 +69,7 @@ public class Annihilator extends SolidObject {
 		desiredPosition = position;
 		ObstacleMap.registerObstacle2(this, position);
 
+		// Find centre of the model in world coordinate
 		findCentre();
 
 		bodyCenter = centre;
@@ -82,6 +83,7 @@ public class Annihilator extends SolidObject {
 
 		randomNumber1 = GameData.getRandom();
 
+		// Annihilator tank has 400 hit points
 		HP = 400;
 
 		lifeSpan = 1;
@@ -144,6 +146,7 @@ public class Annihilator extends SolidObject {
 		}
 
 		if (forward) {
+			// Move forward
 			int delta = targetAngleBody - bodyAngle;
 			if (Math.abs(delta) < 5 || Math.abs(delta) > 355) {
 				bodyAngle = targetAngleBody;
@@ -171,11 +174,14 @@ public class Annihilator extends SolidObject {
 				bodyAngle = (bodyAngle + bodyAngleDelta) % 360;
 			}
 		}
-
+		// Update centre
 		centre.add(displacement);
-
+		// Update bundary2D
 		boundary2D.update(displacement);
 
+		// Update location in the 2d tile map
+
+		// Validating movement is already done in process AI part
 		int newPosition = (int) (boundary2D.xPos * 4)
 				+ (129 - (int) (boundary2D.yPos * 4)) * 80;
 		if (!ObstacleMap.isOccupied(newPosition)) {
@@ -191,6 +197,8 @@ public class Annihilator extends SolidObject {
 			desiredPosition = newPosition;
 		}
 
+		// Find centre in camera coordinate
+
 		tempCentre.set(centre);
 		tempCentre.y = -1;
 		tempCentre.subtract(Camera.position);
@@ -198,6 +206,8 @@ public class Annihilator extends SolidObject {
 		tempCentre.rotate_YZ(Camera.YZ_angle);
 		tempCentre.updateLocation();
 
+		// Test whether the model is visible by comparing the 2D position of its
+		// centre point with the screen
 		visible = true;
 
 		if (tempCentre.z < 0.9 || tempCentre.screenY < -10
@@ -208,8 +218,11 @@ public class Annihilator extends SolidObject {
 			// Does nothing.
 		}
 
+		// If tank is not visible in the previous frame, its need to be
+		// reconstructed
 		if (visible) {
 			if (isVisiblePreviousFrame == false) {
+				// Recreate body and turret polygons
 				makeBody();
 				makeTurret();
 				isVisiblePreviousFrame = true;
@@ -220,12 +233,17 @@ public class Annihilator extends SolidObject {
 			// Does nothing.
 		}
 
+		// If visible then update the geometry to camera coordinate
+
 		if (visible) {
 			ModelDrawList.register(this);
 
 			if (countDownToDeath < 3) {
 
+				// Update body polygons
+
 				for (int i = 0; i < body.length; i++) {
+					// Perform vertex updates in world coordinate
 					body[i].origin.add(displacement);
 					body[i].origin.subtract(centre);
 					body[i].origin.rotate_XZ(bodyAngleDelta);
@@ -250,9 +268,11 @@ public class Annihilator extends SolidObject {
 
 					body[i].findRealNormal();
 					body[i].findDiffuse();
-
+					// Transform the polygon into camera coordinate
 					body[i].update();
 				}
+
+				// Update shadow for tank body
 
 				tempVector1.set(centre);
 				tempVector1.add(-0.03, 0, -0.04);
@@ -280,10 +300,13 @@ public class Annihilator extends SolidObject {
 
 				shadowBody.update();
 				Rasterizer.rasterize(shadowBody);
-
+				// Update turret center
 				turretCenter.add(displacement);
 
+				// Update turret polygons
+
 				for (int i = 0; i < turret.length; i++) {
+					// Perform vertex updates in world coordinate
 					turret[i].origin.add(displacement);
 					turret[i].origin.subtract(turretCenter);
 					turret[i].origin.rotate_XZ(turretAngleDelta);
@@ -308,10 +331,10 @@ public class Annihilator extends SolidObject {
 
 					turret[i].findRealNormal();
 					turret[i].findDiffuse();
-
+					// Transform the polygon into camera coordinate
 					turret[i].update();
 				}
-
+				// Update shadow for tank turret
 				tempVector1.set(turretCenter);
 				tempVector1.add(-0.03, 0, -0.04);
 
@@ -344,7 +367,7 @@ public class Annihilator extends SolidObject {
 		} else {
 			// Does nothing.
 		}
-
+		// Handle attack event
 		if (coolDownShell > 0 && coolDownShell != 92 && !Main.gamePaused) {
 			coolDownShell--;
 		} else {
@@ -361,6 +384,7 @@ public class Annihilator extends SolidObject {
 
 			if (coolDownShell == 0) {
 				coolDownShell = 100;
+				// Calculate laser direction
 				Vector tempVector1 = new Vector(0, 0, 1);
 				tempVector1.rotate_XZ((turretAngle + 270) % 360);
 				tempVector1.scale(0.035);
@@ -378,6 +402,7 @@ public class Annihilator extends SolidObject {
 
 			if (coolDownShell == 92) {
 				coolDownShell = 25;
+				// Calculate shell direction
 				Vector tempVector1 = new Vector(0, 0, 1);
 				tempVector1.rotate_XZ((turretAngle + 270) % 360);
 				tempVector1.scale(-0.035);
@@ -399,6 +424,7 @@ public class Annihilator extends SolidObject {
 
 			if (coolDownRocket == 0) {
 				coolDownRocket = 100;
+				// Calculate laser direction
 				Vector tempVector1 = new Vector(0, 0, 1);
 				tempVector1.rotate_XZ((turretAngle + 270) % 360);
 				tempVector1.scale(0.095);
@@ -417,6 +443,7 @@ public class Annihilator extends SolidObject {
 
 			if (coolDownRocket == 90) {
 				coolDownRocket = 45;
+				// Calculate shell direction
 				Vector tempVector1 = new Vector(0, 0, 1);
 				tempVector1.rotate_XZ((turretAngle + 270) % 360);
 				tempVector1.scale(-0.095);
@@ -474,6 +501,8 @@ public class Annihilator extends SolidObject {
 			// Does nothing.
 		}
 
+		// Reset action flag
+
 		forward = false;
 		aimRight = false;
 		aimLeft = false;
@@ -492,17 +521,20 @@ public class Annihilator extends SolidObject {
 	/** This method is responsible for drawing the body annihilator. */
 	public void draw() {
 		if (countDownToDeath < 3) {
+			// Draw body
 			for (int i = 0; i < body.length; i++) {
 				body[i].draw();
 
 			}
-
+			// Draw turret
 			for (int i = 0; i < turret.length; i++) {
 				turret[i].draw();
 			}
 		} else {
 			// Does nothing.
 		}
+
+		// Draw smoke tail
 
 		if (Smoke != null && visible) {
 			Smoke.draw();
@@ -764,6 +796,7 @@ public class Annihilator extends SolidObject {
 
 		turretCenter = put(0, 0.07, -0);
 
+		// Create shadow for tank body
 		start.add(-0.015, 0, -0.015);
 		start.y = -1;
 		v = new Vector[] { put(-0.3, 0, 0.3), put(0.3, 0, 0.3),
@@ -782,6 +815,7 @@ public class Annihilator extends SolidObject {
 		jDirection = new Vector(0, 1.4, 0);
 		kDirection = new Vector(0, 0, 1.4);
 
+		// Adjust orientation of the turret
 		iDirection.rotate_XZ(turretAngle);
 		kDirection.rotate_XZ(turretAngle);
 
@@ -911,6 +945,7 @@ public class Annihilator extends SolidObject {
 		turret[22] = new Polygon3D(v, v[0], v[1], v[3], null, 0.5, 0.5, 7);
 		turret[22].color = color;
 
+		// Create shadow for tank turret
 		start.add(-0.03, 0, -0.04);
 		start.y = -1;
 		v = new Vector[] { put(-0.18, 0, 0.18), put(0.18, 0, 0.18),
@@ -921,18 +956,22 @@ public class Annihilator extends SolidObject {
 	}
 
 	private void processAI() {
+		// Calculate distance from player's tank
 		tempVector1.set(centre);
 		tempVector1.subtract(PlayerTank.bodyCenter);
 		distance = tempVector1.getLength();
-
+		// Medium tank become aware of player's tank when the distance is less
+		// than 2
 		if (distance < 2) {
 			engaged = true;
 		} else {
 			// Does nothing.
 		}
-
+		// Medium tank will stop chasing the player when the distance is greater
+		// than 4
 		if (distance > 6) {
 			engaged = false;
+			// Rotate the turret to the same angle as the body
 			targetAngle = bodyAngle;
 			int AngleDelta = turretAngle - targetAngle;
 			if (AngleDelta > 0) {
@@ -954,8 +993,17 @@ public class Annihilator extends SolidObject {
 		}
 
 		if (engaged) {
+			/*
+			 * If medium tank is engaged with player, it will send alert to
+			 * nearby tanks
+			 */
 			if ((Main.timer) % 5 == 0) {
 				ObstacleMap.alertNearbyTanks(position);
+				/*
+				 * Test whether there is a type obstacle 2 between medium tank
+				 * and player tank Firing a vision ray from medium tank toward
+				 * player tank
+				 */
 			} else {
 				// Does nothing.
 			}
@@ -964,6 +1012,8 @@ public class Annihilator extends SolidObject {
 			tempVector2.subtract(tempVector1);
 			tempVector2.unit();
 			tempVector2.scale(0.125);
+
+			// Find the angle between target and itself
 
 			clearToShoot = true;
 			int obstacleType = -1;
@@ -1001,7 +1051,7 @@ public class Annihilator extends SolidObject {
 				targetAngle = bodyAngle;
 
 			}
-
+			// Calculate the difference between those 2 angles
 			int AngleDelta = turretAngle - targetAngle;
 			if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 1.7) {
 				firingShell = true;
@@ -1013,6 +1063,7 @@ public class Annihilator extends SolidObject {
 			} else {
 				// Does nothing.
 			}
+			// Aim at a target angle
 			if (AngleDelta > 0) {
 				if (AngleDelta < 180) {
 					aimRight = true;
@@ -1026,7 +1077,11 @@ public class Annihilator extends SolidObject {
 					aimRight = true;
 				}
 			}
-
+			/*
+			 * Move to a target location medium tank will move towards player
+			 * tank's position until distance is less than 1.4, or it detects a
+			 * type 2 obstacle between itself and the player's tank
+			 */
 			forward = true;
 			if (clearToShoot && distance < 1.5) {
 				if (distance < 1.4) {
@@ -1065,6 +1120,13 @@ public class Annihilator extends SolidObject {
 					// Does nothing.
 				}
 
+				// The enemy tank will occasionly (~once every 10 secs) perfom a
+				// 90 degree change in moving angle if:
+				// 1. it cant see the target tank and the target is within 1.2
+				// unit away
+				// 2. it got stucked and the target is within 1.2 units away
+				// 3. blocked by a wall and the target is within 3 units away
+
 				if (!clearToShoot
 						&& (distance < 1.2 || (obstacleType == 6 && distance < 2.5))
 						|| stuckCount == 10) {
@@ -1093,11 +1155,14 @@ public class Annihilator extends SolidObject {
 				int newPosition = (int) (boundary2D.xPos * 4)
 						+ (129 - (int) (boundary2D.yPos * 4)) * 80;
 
+				// Check whether the next move will embed into obstacles
+
 				displacement.set(0, 0, 0.01);
 				displacement.rotate_XZ(targetAngleBody);
 				boundary2D.update(displacement);
 
 				boolean canMove = true;
+				// Test againt type 1 & 2 obstacles
 				if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
 					forward = false;
 					canMove = false;
@@ -1118,7 +1183,10 @@ public class Annihilator extends SolidObject {
 						// Does nothing.
 					}
 
+					// Change direction if unable to move with current direction
+
 					targetAngleBody = targetAngle;
+					// Generate 2 new directions
 					int angle1 = targetAngleBody - targetAngleBody % 90;
 					int angle2 = angle1 + 90;
 
@@ -1143,12 +1211,13 @@ public class Annihilator extends SolidObject {
 					displacement.scale(-1);
 					boundary2D.update(displacement);
 					displacement.reset();
-
+					// Check if tank is able to move freely at angle 1
 					displacement.set(0, 0, 0.01);
 					displacement.rotate_XZ(angle2);
 					boundary2D.update(displacement);
 					newPosition = (int) (boundary2D.xPos * 4)
 							+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+					// Test againt type 1 & 2 obstacles
 					if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
 						canMoveAngle2 = false;
 					} else if (ObstacleMap.collideWithObstacle2(this,
@@ -1160,6 +1229,13 @@ public class Annihilator extends SolidObject {
 					displacement.scale(-1);
 					boundary2D.update(displacement);
 					displacement.reset();
+					/*
+					 * Move to a valid direction. if both directions are valid,
+					 * then move to the direction that is closer to
+					 * targetAngleBody if neither direction is valid, then
+					 * update the AI status to "stucked"(which does nothing at
+					 * this moment)
+					 */
 
 					if (canMoveAngle1 && !canMoveAngle2) {
 						targetAngleBody = angle1;
@@ -1183,9 +1259,10 @@ public class Annihilator extends SolidObject {
 						forward = true;
 
 					} else {
-
+						// Got stucked!!
 						stuckCount = 10;
 
+						// Tell surrounding units to move away
 						ObstacleMap.giveWay(this, position);
 
 					}
@@ -1200,12 +1277,13 @@ public class Annihilator extends SolidObject {
 				} else {
 					// Does nothing.
 				}
+				// Double check whether the move is valid
 				displacement.set(0, 0, 0.01);
 				displacement.rotate_XZ(targetAngleBody);
 				boundary2D.update(displacement);
 				newPosition = (int) (boundary2D.xPos * 4)
 						+ (129 - (int) (boundary2D.yPos * 4)) * 80;
-
+				// Test againt type 1 & 2 obstacles
 				if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
 					forward = false;
 
