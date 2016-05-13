@@ -86,7 +86,7 @@ public class Fence extends SolidObject {
 		makePolygons();
 	}
 
-	/**This class is responsibly of Construct polygons for a fence of energy.*/
+	/**This method is responsibly of Construct polygons for a fence of energy.*/
 	
 	public void makePolygons() {
 		Vector v[];
