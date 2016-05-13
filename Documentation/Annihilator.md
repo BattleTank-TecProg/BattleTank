@@ -59,7 +59,9 @@ public void damage(int damagePoint)
 ```
 
 ```java
-/**This method is responsible for specifying the loss of life of annihilator.*/
+/**This method is responsible for specifying the loss of life of annihilator.
+* @param int - damagePoint
+*/
 ```
 
 ```java
@@ -79,8 +81,7 @@ private int bodyAngle
 ```
 
 ```java
-/**Total angle that the body has rotated from the initial position. (in the x-z plane).
-*/
+/**Total angle that the body has rotated from the initial position. (in the x-z plane).*/
 ```
 
 ```java

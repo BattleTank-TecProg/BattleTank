@@ -1,11 +1,10 @@
 # Class:
 
 ```java
- public class Camera
-```
-
-```java
 /** This class is responsible for the camera for the game.*/
+
+ public class Camera
+
 ```
 
 ## Methods:

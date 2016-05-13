@@ -1,10 +1,9 @@
 # Class:
 
 ```java
-public class Explosion
-```
-```java
 /** This class is responsible for represent the explosions, which happen while the game is played.*/
+
+public class Explosion
 ```
 
 ## Methods:
@@ -14,7 +13,12 @@ public Explosion(double x, double y, double z, double size)
 ```
 
 ```java
-/** This is a constructor method. X, y and z are coordinates for the explosion and the size is the diameter of explosion.*/
+/** This is a constructor method. X, y and z are coordinates for the explosion and the size is the diameter of explosion.
+* @param double - x
+* @param double - y
+* @param double - z
+* @param double - size
+*/
 ```
 
 ```java
@@ -31,10 +35,8 @@ public void draw()
 
 ```java
 /** This method is responsible for draw the explosion on the scenario.*/
-```
 
-##### Declarations in the draw():
-```java
+Declarations in the draw():
 double ratio;
 ```
 
@@ -56,8 +58,8 @@ public rectangle2D getBoundary2D()
 public int frameIndex
 ```
 ```java
-```
 /** The square indicate the index.*/
+```
 
 ```java
 public int auraIndex

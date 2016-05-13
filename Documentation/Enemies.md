@@ -1,11 +1,9 @@
 # Class:
 
 ```java
-public class Enemies
-```
-
-```java
 /** This class is responsible to include the enemies on the scenario of the game.*/
+
+public class Enemies
 ```
 
 ## Methods:
@@ -16,10 +14,8 @@ public static void init()
 
 ```java
 /** This method is responsible for initialize the enemies on the map of the game.*/
-```
 
-#### Declarations in the init():
-```
+Declarations in the init():
 enemy = new model[109]
 ```
 
