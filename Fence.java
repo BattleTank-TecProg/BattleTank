@@ -103,7 +103,10 @@ public class Fence extends SolidObject {
 				1), new Vector(-1, -1, -1), null, 1, 1, 9);
 	}
 
-	/**This method is responsible for return the 2D boundary of the fence.*/
+	/**This method is responsible for return the 2D boundary of the fence.
+	 * 
+	 * @return boundary2D
+	 */
 	
 	public Rectangle2D getBoundary2D() {
 		return boundary2D;

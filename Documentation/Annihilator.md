@@ -10,68 +10,51 @@ public class Annihilator
 ## Methods:
 
 ```java
-public Annihilator(double x, double y, double z, int angle);
-```
-
-```java
 /**This is a constructor method. X, y and z are coordinates for construction of the annihilator in the space.
 * @param double - x
 * @param double - y
 * @param double - y
 * @param int - angle
 */
+public Annihilator(double x, double y, double z, int angle);
 ```
 
-```java
-private void makeBody();
-```
 
 ```java
 /**This method is responsible to create the polygons of the body of annihilator.*/
+private void makeBody();
 ```
 
-```java
-private void makeTurret()
-```
 
 ```java
 /**This method is responsible to create polygons for the tank turret.*/
+private void makeTurret()
 ```
 
+
 ```java
+/**This method is responsible for updating the annihilator in the scenario, according to the actions in the game.*/
 public void update()
 ```
 
 ```java
-/**This method is responsible for updating the annihilator in the scenario, according to the actions in the game.*/
-```
-
-```java
-public void draw()
-```
-
-```java
 /**This method is responsible for drawing the body annihilator.*/
-```
-
-```java
-public void damage(int damagePoint)
+public void draw()
 ```
 
 ```java
 /**This method is responsible for specifying the loss of life of annihilator.
 * @param int - damagePoint
 */
+public void damage(int damagePoint)
 ```
 
-```java
-public Rectangle2D getBoundary2D();
-```
 
 ```java
 /**This method is responsible for return the 2D boundary of the annihilator.
 * @return Rectangle2D - boundary2D
 */
+public Rectangle2D getBoundary2D();
 ```
 
 ## Declarations:

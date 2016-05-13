@@ -31,7 +31,10 @@ polygons = new polygon3D[2]
 ```
 
 ```java
-/**This method is responsible for return the 2D boundary of the fence.*/
+/**This method is responsible for return the 2D boundary of the fence.
+  *
+  *@return boundary2D
+  */
 public rectangle2D getBoundary2D()
 ```
 
@@ -42,7 +45,7 @@ public void update()
 
 ```java
 /**This method is responsible to eliminate the fence of the scenery.*/
-public void destory()
+public void destroy()
 ```
 
 
