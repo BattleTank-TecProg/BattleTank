@@ -306,7 +306,6 @@ public class rocketTail extends SolidObject {
 
 }
 ```
-
 # 5. Methods:
 * Should not have spaces between parentheses and attributes;
 
@@ -404,6 +403,8 @@ method(parameter_1 , parameter_2 );
 method( parameter_1, parameter_2);
 method(parameter_1 , parameter_2);
 ```
+
+
 
 # 6. If/Else:
 * Should not have space between two or more parantheses;
