@@ -6,7 +6,7 @@ public class GameEventHandler {
 				&& Main.Terrain.powerPlants[1] == null
 				&& Main.Terrain.fences[26] != null) {
 			for (int i = 26; i < 38; i++) {
-				Main.Terrain.fences[i].destory();
+				Main.Terrain.fences[i].destroy();
 				Main.Terrain.fences[i] = null;
 			}
 		}
@@ -15,7 +15,7 @@ public class GameEventHandler {
 				&& Main.Terrain.powerPlants[6] == null
 				&& Main.Terrain.fences[14] != null) {
 			for (int i = 14; i < 26; i++) {
-				Main.Terrain.fences[i].destory();
+				Main.Terrain.fences[i].destroy();
 				Main.Terrain.fences[i] = null;
 			}
 		}
@@ -26,7 +26,7 @@ public class GameEventHandler {
 				&& Main.Terrain.powerPlants[6] == null
 				&& Main.Terrain.fences[0] != null) {
 			for (int i = 0; i < 14; i++) {
-				Main.Terrain.fences[i].destory();
+				Main.Terrain.fences[i].destroy();
 				Main.Terrain.fences[i] = null;
 			}
 
@@ -45,7 +45,7 @@ public class GameEventHandler {
 				&& Main.Terrain.powerPlants[4] == null
 				&& Main.Terrain.fences[39] != null) {
 			for (int i = 38; i < 62; i++) {
-				Main.Terrain.fences[i].destory();
+				Main.Terrain.fences[i].destroy();
 				Main.Terrain.fences[i] = null;
 			}
 			Enemies.enemy[107].damage(-1);

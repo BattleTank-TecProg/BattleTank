@@ -1,4 +1,6 @@
 /**
+ * 	This class is responsible for the methods and attributes of energy fence.
+ * 
  *	This class is part of BattleTank 2.
  *
  *  BattleTank 2 is free software: you can redistribute it and/or modify
@@ -16,20 +18,25 @@
  */
 
 public class Fence extends SolidObject {
-
+	
+	/**Returns the block health length value.*/
 	static final double LENGHT = 0.125;
 	
+	/**This Constant represents the block health height value.*/
 	static final double HEIGHT = 0.25;
 	
+	/**This Constant represents the health block width value.*/
 	static final double WIDTH = 0.125; 
 	
+	/**The polygons of the model.*/
 	private Polygon3D polygons[];
-
+	
+	/**The orientation is 0 = vertical   1 = horizontal.*/
 	public int orientation;
 
 	
 	/**
-	 * 
+	 * This is a constructor method, which receives as parameters the coordinates x, y and z and the orientation of Fence.
 	 * 
 	 * @param x
 	 * @param y
@@ -73,6 +80,8 @@ public class Fence extends SolidObject {
 		makePolygons();
 	}
 
+	/**This class is responsibly of Construct polygons for a fence of energy.*/
+	
 	public void makePolygons() {
 		Vector v[];
 
@@ -88,9 +97,13 @@ public class Fence extends SolidObject {
 				1), new Vector(-1, -1, -1), null, 1, 1, 9);
 	}
 
+	/**This method is responsible for return the 2D boundary of the fence.*/
+	
 	public Rectangle2D getBoundary2D() {
 		return boundary2D;
 	}
+	
+	/**This method is responsible for updating the fence in the scenario, according to the actions in the game.*/
 
 	public void update() {
 		assert(polygons != null);
@@ -119,12 +132,16 @@ public class Fence extends SolidObject {
 			polygons[i].update();
 		}
 	}
+	
+	/**This method is responsible to eliminate the fence of the scenery.*/
 
-	public void destory() {
+	public void destroy() {
 		int position = (int) (start.x * 4) + (129 - (int) (start.z * 4)) * 80;
 		ObstacleMap.removeObstacle2(position);
 	}
 
+	/**This method is responsible for drawing the fence.*/
+	
 	public void draw() {
 		if (visible) {
 			for (int i = 0; i < polygons.length; i++) {
