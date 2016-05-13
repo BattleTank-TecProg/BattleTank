@@ -808,6 +808,9 @@ public class Annihilator extends SolidObject {
 
 	/** This method is responsible to create polygons for the tank turret. */
 	private void makeTurret() {
+		assert(turretCenter != null);
+		assert(turret == null);
+		
 		start = turretCenter.myClone();
 		Vector v[];
 
@@ -956,6 +959,10 @@ public class Annihilator extends SolidObject {
 	}
 
 	private void processAI() {
+		assert(tempVector1 == null);
+		assert(tempVector2 == null);
+		assert(bodyCenter == null);
+		
 		// Calculate distance from player's tank
 		tempVector1.set(centre);
 		tempVector1.subtract(PlayerTank.bodyCenter);
