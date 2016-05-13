@@ -93,7 +93,6 @@ public class Camera {
 			numberDivided = numberForDivided / valueThatWillDivideTheNumber;
 		} catch (ArithmeticException ImpossibleDividedByZero) {
 			LOG.severe(erroDividedByZero());
-			System.err.println(erroDividedByZero());
 			update();
 		}
 		return numberDivided;

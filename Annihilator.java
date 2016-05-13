@@ -36,7 +36,8 @@ public class Annihilator extends SolidObject {
 	public Annihilator(double x, double y, double z, int angle) {
 
 		assert (x == 12.625 && y == -0.975 && (z == 19.375 || z == 21.375) && angle == 90);
-
+		assert (bodyCenter == null);
+		
 		final double LENGHTRECTANGLE = 0.23;
 
 		final double HEIGHTRECTANGLE = 0.23;
@@ -96,6 +97,8 @@ public class Annihilator extends SolidObject {
 	public void update() {
 		assert(displacement != null);
 		assert(turret != null);
+		assert(centre != null);
+		assert(boundary2D != null);
 		
 		if ((Main.timer + randomNumber1 * 3) % 1000 == 0) {
 			if (randomNumber2 > 50) {
@@ -566,7 +569,6 @@ public class Annihilator extends SolidObject {
 		}
 		HP -= damagePoint;
 		engaged = true;
-
 	}
 
 	/**
