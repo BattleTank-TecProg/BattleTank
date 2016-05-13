@@ -27,10 +27,10 @@ public class Annihilator extends SolidObject {
 	 * This is a constructor method. X, y and z are coordinates for construction
 	 * of the annihilator in the space.
 	 * 
-	 * @param double - x
-	 * @param double - y
-	 * @param double - y
-	 * @param int - angle
+	 * @param x
+	 * @param y
+	 * @param y
+	 * @param angle
 	 */
 
 	public Annihilator(double x, double y, double z, int angle) {
@@ -94,6 +94,9 @@ public class Annihilator extends SolidObject {
 	 * according to the actions in the game.
 	 */
 	public void update() {
+		assert(displacement != null);
+		assert(turret != null);
+		
 		if ((Main.timer + randomNumber1 * 3) % 1000 == 0) {
 			if (randomNumber2 > 50) {
 				randomNumber2 = 50;
@@ -548,7 +551,10 @@ public class Annihilator extends SolidObject {
 	/**
 	 * This method is responsible for specifying the loss of life of
 	 * annihilator.
+	 * 
+	 * @param damagePoint 
 	 */
+	
 	public void damage(int damagePoint) {
 
 		if (damagePoint == -1) {
@@ -566,7 +572,7 @@ public class Annihilator extends SolidObject {
 	/**
 	 * This method is responsible for return the 2D boundary of the annihilator.
 	 * 
-	 * @return Rectangle2D - boundary2D
+	 * @return boundary2D
 	 */
 	public Rectangle2D getBoundary2D() {
 		return boundary2D;
@@ -1006,6 +1012,7 @@ public class Annihilator extends SolidObject {
 			 */
 			if ((Main.timer) % 5 == 0) {
 				ObstacleMap.alertNearbyTanks(position);
+				
 				/*
 				 * Test whether there is a type obstacle 2 between medium tank
 				 * and player tank Firing a vision ray from medium tank toward

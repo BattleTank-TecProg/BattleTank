@@ -349,7 +349,6 @@ public class Main extends Applet implements KeyListener, ActionListener,
 
 	public final void mousePressed(MouseEvent e) {
 		InputHandler.mousePressed(e);
-
 	}
 
 	public final void mouseReleased(MouseEvent e) {
@@ -359,10 +358,13 @@ public class Main extends Applet implements KeyListener, ActionListener,
 
 	public final void mouseEntered(MouseEvent e) {
 		InputHandler.mouseEntered(e);
+		LOG.info("Mouse pointer is on the screen");
+
 	}
 
 	public final void mouseExited(MouseEvent e) {
 		InputHandler.mouseExited(e);
+		LOG.warning("Mouse pointer is off the screen");
 	}
 
 	public final void keyTyped(KeyEvent e) {

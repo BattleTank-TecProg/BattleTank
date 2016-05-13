@@ -85,17 +85,6 @@ public class Camera {
 		return "No is possible divided by zero";
 	}
 
-	private boolean validateParamsForDivided(double numberForDivided,
-			double valueThatWillDivideTheNumber) {
-		boolean isZero = true;
-		if (numberForDivided != 0 && numberForDivided != 0) {
-			isZero = false;
-		} else {
-			isZero = true;
-		}
-		return isZero;
-	}
-
 	private double dividedByNumber(double numberForDivided,
 			double valueThatWillDivideTheNumber) {
 		// -1 is value for initializable variable
