@@ -66,90 +66,13 @@ That style sheet have the objective to standardize all and any form of code on t
 
 # 2. Code Comments:
 
+
 * The comments should be write always above the expression, which refers to;
-
-### Incorrect example:
-
-``` java
-findCentre();
-// Find centre of the model in world coordinate.
-```
-### Correct example:
-
-``` java
-// Find centre of the model in world coordinate.
-findCentre();
-```
-
 * Alls comments should start with uppercase and finish with full stop;
-
-### Incorrect example:
-
-``` java
-// this class is part of BattleTank 2
-```
-
-### Correct example:
-
-``` java
-// This class is part of BattleTank 2.
-```
-
-
+* Should not be space after or before the operator used to declare the comment;
 * The comments in block (more than one line) should be write on the begin with "```/*```" and end with "```*/```";
-
-### Incorrect example:
-
-``` java
-// Class to create objects Anniquilator type, which are contained values ​​and
-// methods for this purpose
-```
-
-### Correct example:
-
-``` java
-/**
-* Class to create objects Anniquilator type, which are contained values ​​and
-* methods for this purpose
-*/
-```
-
 * Only the comments with one line should start with ```//```;
-
-### Incorrect Exemples:
-```java
-/* Find centre of the model in world coordinate. */
-```
-
-### Correct comments Examples:
-```java
-// Find centre of the model in world coordinate.
-```
-
 * The Comments always should be aligned with the instruction, which refers to.
-
-* The JavaDoc comments respect the same rules as normal comments.
-
-### Comments Exemples:
-```java
-/*
-  * If medium tank is engaged with player, it will send alert to
-  * nearby tanks
- */
-```
-
-### javaDoc comments Examples:
-```java
-/**
- * This is a constructor method. X, y and z are coordinates for construction
- * of the annihilator in the space.
- *
- * @param double - x
- * @param double - y
- * @param double - y
- * @param int - angle
-*/
-```
 
 # 3. Variables:
 
@@ -252,29 +175,10 @@ private static final long serialVersionUID = 1L;
 
 # 4. Classes:
 
-* All classes should contain documentation ```javaDoc```;
-
-* should write following the model ```UpperCamelCase``` where the word starts with lowercase letters, and each new word begins with capital letter and followed by lowercase letters with no space between them;
-
-### Correct example:
-```java
-
-public class RocketTail extends SolidObject {
-
-}
-
-```
-
-### Incorrect example:
-```java
-// Exemple does not belong to the code
-public class Rockettail extends SolidObject {
-
-}
-
-```
-
-* All classes should contain a constructor method;
+* All classes should contain documentation ```javaDoc``` and should be write following the template ```CamelCase``` , more precisely ```UpperCamelCase```, where the word is started with uppercase and united without space;
+* All classes shoud contain a constructor method.
+* The classes should be declared with the first letter in uppercase;
+* Should have the constructor method.
 
 ### Example:
 ```java
@@ -287,93 +191,15 @@ public class Tinker implements Runnable {
 		t.start();
 		isTicking = false;
 	}
-
-}
-```
-
-* The classes should be declared with the first letter in uppercase;
-
-### Correct example:
-```java
-public class RocketTail extends SolidObject {
-
-}
-```
-### Incorrect example:
-```java
-// Exemple does not belong to the code
-public class rocketTail extends SolidObject {
-
 }
 ```
 
 # 5. Methods:
+* Methods shoulb have the first name in uppercase;
 * Should not have spaces between parentheses and attributes;
-
-### Incorrect example:
-
-```java
-public static int translate( String s) {
-  .
-  .
-  .
-}
-```
-
-### Correct example:
-
-```java
-public static int translate(String s) {
-  .
-  .
-  .
-}
-```
-
 * The parentheses of open should be setted up after the name of method;
-
-```java
-public static int translate (String s) {
-  .
-  .
-  .
-}
-```
-
-### Correct example:
-
-```java
-public static int translate(String s) {
-  .
-  .
-  .
-}
-```
-
 * If any more than one parameter being passed, should be put a comma close the variable and putting a long space after. Writing the last parameter, should not exist any space between the parameter and the close parantheses;
-
-### Incorrect example:
-
-```java
-private double dividedByNumber( double numberForDivided ,double valueThatWillDivideTheNumber ) {
-	.
-  .
-  .
-}
-```
-
-### Correct example:
-
-```java
-private double dividedByNumber(double numberForDivided, double valueThatWillDivideTheNumber) {
-  .
-  .
-  .
-}
-```
-
-
-* The passing of parameter should be write close the brackets, there is no space between the brackets.
+* The passing of parameter should be write closo the parantheses.
 
 ### Declaration Example:
 ```java
