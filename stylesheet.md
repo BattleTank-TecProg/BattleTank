@@ -66,14 +66,68 @@ That style sheet have the objective to standardize all and any form of code on t
 
 # 2. Code Comments:
 
-
 * The comments should be write always above the expression, which refers to;
+
+### Incorrect example:
+
+``` java
+findCentre();
+// Find centre of the model in world coordinate.
+```
+### Correct example:
+
+``` java
+// Find centre of the model in world coordinate.
+findCentre();
+```
+
 * Alls comments should start with uppercase and finish with full stop;
-* There should be space between the operator and the beginning of the comment , and there should be no space between the operator and the end of the comment
+
+### Incorrect example:
+
+``` java
+// this class is part of BattleTank 2
+```
+
+### Correct example:
+
+``` java
+// This class is part of BattleTank 2.
+```
+
+
 * The comments in block (more than one line) should be write on the begin with "```/*```" and end with "```*/```";
-* And at the beginning of each comment line must be the ```*``` operator .
+
+### Incorrect example:
+
+``` java
+// Class to create objects Anniquilator type, which are contained values ​​and
+// methods for this purpose
+```
+
+### Correct example:
+
+``` java
+/**
+* Class to create objects Anniquilator type, which are contained values ​​and
+* methods for this purpose
+*/
+```
+
 * Only the comments with one line should start with ```//```;
+
+### Incorrect Exemples:
+```java
+/* Find centre of the model in world coordinate. */
+```
+
+### Correct comments Examples:
+```java
+// Find centre of the model in world coordinate.
+```
+
 * The Comments always should be aligned with the instruction, which refers to.
+
 * The JavaDoc comments respect the same rules as normal comments.
 
 ### Comments Exemples:
@@ -89,7 +143,7 @@ That style sheet have the objective to standardize all and any form of code on t
 /**
  * This is a constructor method. X, y and z are coordinates for construction
  * of the annihilator in the space.
- * 
+ *
  * @param double - x
  * @param double - y
  * @param double - y
