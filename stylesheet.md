@@ -31,43 +31,54 @@
 
 [1. Objective](#1-objective)
 
-[2. Code Comments](#2-code-comments)
+[2. Naming Files](#2-naming-files)
 
-[3. Variables](#3-variables)
+[3. Code Comments](#3-code-comments)
 
-[4. Classes](#4-classes)
+[4. Variables](#4-variables)
 
-[5. Methods](#5-methods)
+[5. Classes](#5-classes)
 
-[6. If/Else](#6-if/else)
+[6. Methods](#6-methods)
 
-[7. Switch Case](#7-switch-case)
+[7. If/Else](#7-if/else)
 
-[8. While](#8-while)
+[8. Switch Case](#8-switch-case)
 
-[9. Do/While](#9-do/while)
+[9. While](#9-while)
 
-[10. For](#10-for)
+[10. Do/While](#10-do/while)
 
-[11. Try/Catch](#11-try/catch)
+[11. For](#11-for)
 
-[12. Asserts](#12-asserts)
+[12. Try/Catch](#12-try/catch)
 
-[13. Arrays, Vectors](#13-Arrays, Vectors)
+[13. Asserts](#13-asserts)
 
-[14. Identation](#14-identation)
+[14. Arrays, Vectors](#14-Arrays, Vectors)
 
-[15. Syntax](#15-syntax)
+[15. Identation](#15-identation)
 
-[16. Good Programming Practices](#15-Good Programming Practices)
+[16. Syntax](#16-syntax)
+
+[17. Good Programming Practices](#17-Good Programming Practices)
 
 # 1. Objective:
 
 
 That style sheet have the objective to standardize all and any form of code on the project, whether in form of code or comments
 
+# 2. Naming Files:
+* File names must be written in English. Should be meaningful and simple names.
+* The name of the test classes should be "Test" followed by the name of the test class.
+* The order of statements in the file will be:
+* File Initial Comment
+* Package
+* Imports
+* Class
+* Methods
 
-# 2. Code Comments:
+# 3. Code Comments:
 
 * The comments should be write always above the expression, which refers to;
 
@@ -177,7 +188,7 @@ findCentre();
  */
  ```
 
-# 3. Variables:
+# 4. Variables:
 
 * The variables should be declared on that order: 1ª - ```public```, 2ª - ```protected``` and 3ª - ```private```;
 * The variables must be declared at the time of its use. The variables must be declared as late as possible.
@@ -276,7 +287,7 @@ private static final long serialVersionUID = 1L;
 * Const Varibles: the const variables should be used to replace values which do not exchange;
 
 
-# 4. Classes:
+# 5. Classes:
 
 * All classes should contain documentation ```javaDoc```;
 
@@ -332,7 +343,7 @@ public class rocketTail extends SolidObject {
 
 }
 ```
-# 5. Methods:
+# 6. Methods:
 * Should not have spaces between parentheses and attributes;
 
 ### Incorrect example:
@@ -432,7 +443,7 @@ method(parameter_1 , parameter_2);
 
 
 
-# 6. If/Else:
+# 7. If/Else:
 * Should not have space between two or more parantheses;
 * Should not have space between the operations and the parantheses;
 * All "```if```" should be accompanied with a "```else```";
@@ -464,7 +475,7 @@ if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
  // Does nothing.
 }
 ```
-# 7. Switch Case:
+# 8. Switch Case:
 * Should have a line between the declaration and the first case;
 * Each case of "```switch```" should be separeted by one line;
 * All switch should have a "```default```";
@@ -498,7 +509,7 @@ switch (WeekDay) {
 }
 ```
 
-# 8. While:
+# 9. While:
 * Should not have space between two or more parantheses;
 * Should not have space between the operations and the parantheses;
 * Even if the instructions have just one line, the keys are required.
@@ -512,7 +523,7 @@ while (count < 50) {
 }
 ```
 
-# 9. Do/While:
+# 10. Do/While:
 * Should have a space between the "```do```" and the open key;
 * Should not have space between the operations and the parantheses;
 * The "```while```" should be start at same line of the close key of the "```do```";
@@ -531,7 +542,7 @@ do {
 } while (true);
 ```
 
-# 10. For:
+# 11. For:
 * Should not have space between the operations and the parantheses;
 * After each semicolon inside the parantheses should have a space;
 * Even if the instructions have just one line, the keys are required;
@@ -556,7 +567,7 @@ for(int i=0   ;i<5  ;  i++)
 
 ```
 
-# 11. Try/Catch:
+# 12. Try/Catch:
 * Should have a space between the "```try```" and the open key;
 * Should not have space between the operations and the parantheses;
 * The "```catch```" should be start at the same line of the close key of the "```try```"
@@ -572,7 +583,7 @@ try {
 }
 ```
 
-# 12. Asserts:
+# 13. Asserts:
 * Assertive should be for the situations that should never happen.
 * They should follow the example below ;
 
@@ -585,7 +596,7 @@ assert(centre != null);
 assert(boundary2D != null);
 ```
 
-# 13. Arrays, Vectors:
+# 14. Arrays, Vectors:
 
 * Arrays , Vectors :
 * The opening and closing brackets, ```[]```,should be made at the end of the statement;  
@@ -603,7 +614,7 @@ public static model[] enemy;
 private polygon3D[] polygons;
 ```
 
-# 14. Identation:
+# 15. Identation:
 
 * Use the template of eclipse to indenting the tab;
 * Finish which file with a blank line;
@@ -630,28 +641,28 @@ private polygon3D[] polygons;
 ```
 
 
-## 14.1 Keys:
+## 15.1 Keys:
 * The keys should be open right after the declaration of operators and should be closed on the line below the end of operations;
 * Before use the keys always should have a space.
 
 
-# 14.2 Line Break:
+## 15.2 Line Break:
 
 
-* Should be evited very long lines;
+* Should be evited very long lines, must have up to 80 characters
 * The new line should start on the same level of the origin expression.
 
 
-# 15. Syntax:
+# 16. Syntax:
 
 
 * Class: firts letter of each word uppercase;
 * Class member and local variables: first letter uppercase;
 * Class constant: all letter on uppercase;
 * Compost wors should not separeted, should be writes together and should not have any symbol between then.
-* File names: File names must be written in English. Should be meaningful and simple names.
 
-# 16. Good Programming Practices:
+
+# 17. Good Programming Practices:
 * High cohesion, (A class must have only one responsibility and do it satisfactorily, a class should not assume responsibilities that are not yours)
 * Low coupling (Low dependency between classes)
 * Data and internal functions must be protected whenever possible
