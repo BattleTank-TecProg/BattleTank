@@ -60,231 +60,175 @@ public Rectangle2D getBoundary2D();
 ## Declarations:
 
 ```java
+/**Total angle that the body has rotated from the initial position. (in the x-z plane).*/
+
 private int bodyAngle
 ```
 
 ```java
-/**Total angle that the body has rotated from the initial position. (in the x-z plane).*/
-```
+/**Total angle that the turret has rotated from the initial position. (in the x-z plane).*/
 
-```java
 private int turretAngle
 ```
 
 ```java
-/**Total angle that the turret has rotated from the initial position. (in the x-z plane).*/
-```
+/**Degrees the tank body has rotated in a frame.*/
 
-```java
 private int bodyAngleDelta
 ```
 
 ```java
 /**Degrees the tank body has rotated in a frame.*/
-```
 
-```java
 private int turretAngleDelta
-```
-```java
-/**Degrees the tank body has rotated in a frame.*/
-```
-
-```java
-private int position
 ```
 
 ```java
 /**The position index of the tank in the grid map.*/
-```
 
-```java
-private int desiredPosition
+private int position
 ```
 
 ```java
 /**Position that you want to get arround.*/
+
+private int desiredPosition
 ```
 
 ```java
+/**Time needed before a weapon can be fired again.*/
+
 private int coolDownShell
 ```
 
 ```java
 /**Time needed before a weapon can be fired again.*/
-```
 
-```java
 private int coolDownRocket
 ```
 
 ```java
-/**Time needed before a weapon can be fired again.*/
-```
+/**Angle between player tank and turret centre.*/
 
-```java
 private int targetAngle
 ```
 
 ```java
-/**Angle between player tank and turret centre.*/
-```
+/**Angle between a target location and body centre.*/
 
-```java
 private int targetAngleBody
 ```
 
 ```java
-/**Angle between a target location and body centre.*/
-```
+/**TargetAngleBody of the previous frame.*/
 
-```java
 private int previousTargetAngleBody
 ```
 
 ```java
-/**TargetAngleBody of the previous frame.*/
-```
+/**A count down for death after hp = 0.*/
 
-```java
 private int countDownToDeath
 ```
 
 ```java
-/**A count down for death after hp = 0.*/
-```
+/**Represent the time that medium tank has been in stuck status.*/
 
-```java
 private int stuckCount
 ```
 
 ```java
-/**Represent the time that medium tank has been in stuck status.*/
-```
+/**Distance from player tank.*/
 
-```java
 private double distance
 ```
 
 ```java
-/**Distance from player tank.*/
-```
+/**Go foward.*/
 
-```java
 private boolean forward
 ```
 
 ```java
-/**Go foward.*/
-```
+/**The aim of the Tank moves to the right.*/
 
-```java
 private boolean aimRight
 ```
 
 ```java
-/**The aim of the Tank moves to the right.*/
-```
+/**The aim of the Tank moves to the left.*/
 
-```java
 private boolean aimLeft
 ```
 
 ```java
-/**The aim of the Tank moves to the left.*/
-```
+/** Shoots shell.*/
 
-```java
 private boolean firingShell
 ```
 
 ```java
-/** Shoots shell.*/
-```
+/**Shoots Rocket.*/
 
-```java
 private boolean firingRocket
 ```
 
 ```java
-/**Shoots Rocket.*/
-```
+/**It indicates whether the previous square is visible.*/
 
-```java
 private boolean isVisiblePreviousFrame
 ```
 
 ```java
-/**It indicates whether the previous square is visible.*/
-```
+/**This active there is an enemy activation artifice.*/
 
-```java
 public boolean active
 ```
 
 ```java
-/**This active there is an enemy activation artifice.*/
-```
+/**It indicates whether this clear to shot.*/
 
-```java
 private boolean clearToShoot
 ```
 
 ```java
-/**It indicates whether this clear to shot.*/
-```
-
-```java
-private Vector bodyCenter
-```
-```java
 /**The centre of the body in camera coordinate.*/
-```
 
-```java
-private polygon3D turret [ ]
+private Vector bodyCenter
 ```
 
 ```java
 /**Polygons for tank turret.*/
-```
 
-```java
-private polygon3D shadowBody
+private polygon3D turret [ ]
 ```
 
 ```java
 /**The shadow of tank body.*/
-```
 
-```java
-private polygon3D shadowTurret
+private polygon3D shadowBody
 ```
 
 ```java
 /**The shadow of tank turret.*/
-```
 
-```java
-private Vector turretCenter
+private polygon3D shadowTurret
 ```
 
 ```java
 /**The centre of the turret (pivot point for rotation).*/
-```
 
-```java
-private polygon3D body [ ]
+private Vector turretCenter
 ```
 
 ```java
 /**Polygons for tank body.*/
-```
 
-```java
-private Smoke Smoke
+private polygon3D body [ ]
 ```
 
 ```java
 /** smoke tail will be visible if the tank's health is dropped to half.*/
+
+private Smoke Smoke
 ```
