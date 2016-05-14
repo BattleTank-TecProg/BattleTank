@@ -817,7 +817,7 @@ public class Annihilator extends SolidObject {
 	/** This method is responsible to create polygons for the tank turret. */
 	private void makeTurret() {
 		assert(turretCenter != null);
-		assert(turret == null);
+		//assert(turret != null);
 		
 		start = turretCenter.myClone();
 		Vector v[];

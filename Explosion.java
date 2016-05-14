@@ -21,7 +21,7 @@
  */
 public class Explosion extends SolidObject {
 
-	double size = 0;
+	public double size = 0;
 
 	public int spriteIndex = 0;
 
@@ -84,12 +84,16 @@ public class Explosion extends SolidObject {
 		}
 		if (size > 1) {
 			spriteIndex = 18;
+		} else {
+			// Does nothing
 		}
 		Vector v[] = new Vector[] { put(-0.3, 0, 0.3), put(0.3, 0, 0.3),
 				put(0.3, 0, -0.3), put(-0.3, 0, -0.3) };
 		if (size > 3) {
 			v = new Vector[] { put(-0.12, 0, 0.12), put(0.12, 0, 0.12),
 					put(0.12, 0, -0.12), put(-0.12, 0, -0.12) };
+		} else {
+			// Does nothing
 		}
 		explosionAura = new Polygon3D(v, v[0], v[1], v[3], Main.textures[21],
 				1, 1, 2);
@@ -114,21 +118,27 @@ public class Explosion extends SolidObject {
 	 * according to the actions in the game.
 	 */
 	public void update() {
-
+		assert (explosionAura != null);
 		visible = true;
 
-		if (explosionAura != null && damage != 0) {
+		if (damage != 0) {
 			explosionAura.update();
 			if (explosionAura.visible) {
 				explosionAura.myTexture.Texture = explosionAura.myTexture.lightMapData[auraIndex];
 				Rasterizer.rasterize(explosionAura);
+			} else {
+				// Does nothing
 			}
+		} else {
+			// Does nothing
 		}
 		auraIndex++;
 
-		if (!explicitDrawing)
+		if (!explicitDrawing) {
 			ModelDrawList.register(this);
-
+		} else {
+			//Does nothing
+		}
 		tempCentre.set(centre);
 		tempCentre.subtract(Camera.position);
 		tempCentre.rotate_XZ(Camera.XZ_angle);
@@ -136,13 +146,17 @@ public class Explosion extends SolidObject {
 
 		if (lifeSpan == 15 && damage != 0) {
 			ObstacleMap.damageType2Obstacles(damage, boundary2D, groundZero);
+		} else {
+			//Does nothing
 		}
 
 		lifeSpan--;
 
 		if (lifeSpan == 0) {
 			lifeSpan = -1;
-			return;
+		
+		} else {
+			//Does nothing
 		}
 	}
 
@@ -164,6 +178,7 @@ public class Explosion extends SolidObject {
 
 	/** This method is responsible for return the limits of the explosion. */
 	public Rectangle2D getBoundary2D() {
+		assert (boundary2D != null);
 		return boundary2D;
 	}
 }
