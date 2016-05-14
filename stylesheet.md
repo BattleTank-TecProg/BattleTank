@@ -591,15 +591,40 @@ switch (WeekDay) {
 ```
 
 # 9. While:
-* Should not have space between two or more parantheses;
-* Should not have space between the operations and the parantheses;
-* Even if the instructions have just one line, the keys are required.
 
-### Generic Example:
+* Should not have space between the operations and the parantheses;
+
+### Incorrect example:
+
+```java
+while ( count < 50 ) {
+	System.out.println("Number Repetition: " + count);
+	count++;
+}
+```
+
+### Correct example:
 
 ```java
 while (count < 50) {
 	System.out.println("Number Repetition: " + count);
+	count++;
+}
+```
+
+* Even if the instructions have just one line, the keys are required.
+
+### Incorrect example:
+
+```java
+while ( count < 50 )
+	count++;
+```
+
+### Correct example:
+
+```java
+while (count < 50) {
 	count++;
 }
 ```
