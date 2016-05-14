@@ -59,6 +59,7 @@
 
 [15. Syntax](#15-syntax)
 
+[16. Good Programming Practices](#15-Good Programming Practices)
 
 # 1. Objective:
 
@@ -152,6 +153,29 @@ findCentre();
  * @param int - angle
 */
 ```
+
+* Every class must have a header.
+* The header should follow the example model.
+
+### Header Example:
+```java
+/**
+ *	This class is part of BattleTank 2.
+ *
+ *  BattleTank 2 is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  BattleTank 2 is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with BattleTank 2.  If not, see <http://www.gnu.org/licenses/>
+ */
+ ```
 
 # 3. Variables:
 
@@ -625,3 +649,12 @@ private polygon3D[] polygons;
 * Class member and local variables: first letter uppercase;
 * Class constant: all letter on uppercase;
 * Compost wors should not separeted, should be writes together and should not have any symbol between then.
+* File names: File names must be written in English. Should be meaningful and simple names.
+
+# 16. Good Programming Practices:
+* High cohesion, (A class must have only one responsibility and do it satisfactorily, a class should not assume responsibilities that are not yours)
+* Low coupling (Low dependency between classes)
+* Data and internal functions must be protected whenever possible
+* Do not reuse the same name for auxiliary variables
+* The "normal" way must be obvious in the code, the alternative flows should not be made as normal flow.
+* For values that can not be negative, declare as unsigned
