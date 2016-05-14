@@ -85,29 +85,36 @@ public class Camera {
 		return "No is possible divided by zero";
 	}
 
-	private double dividedByNumber(double numberForDivided,
-			double valueThatWillDivideTheNumber) {
+	public double divider(double divider,
+			double dividend) {
 		// -1 is value for initializable variable
-		double numberDivided = -1;
+		double quotient= -1;
 		try {
-			numberDivided = numberForDivided / valueThatWillDivideTheNumber;
+			quotient = divider / dividend;
 		} catch (ArithmeticException ImpossibleDividedByZero) {
 			LOG.severe(erroDividedByZero());
 			update();
 		}
-		return numberDivided;
+		return quotient;
 	}
-
+	
+	public int centreZLessBodyCenterZPlayerTank(int dividerInt, int dividendInt) {
+		double dividerDouble = (double) dividerInt;
+		double dividendDouble = (double) dividendInt;
+		int quotientInt = (int) divider(dividerDouble, dividendDouble);
+		return quotientInt;
+	}
+	
 	private double updateDirectionX() {
 		double tankPositionMinusTheCameraPositionInX = PlayerTank.bodyCenter.x
 				- position.x;
-		return dividedByNumber(tankPositionMinusTheCameraPositionInX, 5);
+		return divider(tankPositionMinusTheCameraPositionInX, 5);
 	}
 
 	private double updateDirectionZ() {
 		double tankPositionMinusTheCameraPositionInZ = PlayerTank.bodyCenter.z
 				- position.z;
-		return dividedByNumber(tankPositionMinusTheCameraPositionInZ, 5);
+		return divider(tankPositionMinusTheCameraPositionInZ, 5);
 	}
 
 	/**
