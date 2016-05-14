@@ -128,9 +128,9 @@ public class Camera {
 		// Move the camera to the player's position
 
 		if (!Main.gameNotStart) {
-			
+
 			// Update position
-			 
+
 			position.subtract(thirdPersonDisplacement);
 
 			absolutePosition.set(position);
@@ -154,31 +154,31 @@ public class Camera {
 
 				restart = false;
 			}
-			
+
 			// Update view direction
-			 
+
 			viewDirection.set(0, 0, 1);
 			viewDirection.rotate_YZ(YZ_angle);
 			viewDirection.rotate_XZ(XZ_angle);
 			viewDirection.unit();
-			
-			/* Move the camera back a little bit, so the view becomes more like
-			  third person rather than first person*/
-			 
+
+			/*
+			 * Move the camera back a little bit, so the view becomes more like
+			 * third person rather than first person
+			 */
+
 			thirdPersonDisplacement.set(viewDirection.x * 0.9, 0,
 					-viewDirection.z * 0.9);
 			position.add(thirdPersonDisplacement);
 
 		} else {
 
-			// Fly through this entire level when the game isn't started 
+			// Fly through this entire level when the game isn't started
 
-			if (flyThroughTimer > 0 && flyThroughTimer <= 60) {
+			if (flyThroughTimer <= 60) {
 				position.add(0, 0, 0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 60 && flyThroughTimer <= 130) {
+			} else if (flyThroughTimer <= 130) {
 
 				XZ_angle -= 1;
 				XZ_angle = (XZ_angle + 360) % 360;
@@ -189,14 +189,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(0, 0, 0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 130 && flyThroughTimer <= 430) {
+			} else if (flyThroughTimer <= 430) {
 				position.add(-0.01, 0, 0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 430 && flyThroughTimer <= 480) {
+			} else if (flyThroughTimer <= 480) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -206,14 +202,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(0, 0, 0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 480 && flyThroughTimer <= 800) {
+			} else if (flyThroughTimer <= 800) {
 				position.add(-0.005, 0, 0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 800 && flyThroughTimer <= 825) {
+			} else if (flyThroughTimer <= 825) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -223,14 +215,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(-0.005, 0, 0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 825 && flyThroughTimer <= 1100) {
+			} else if (flyThroughTimer <= 1100) {
 				position.add(0, 0, 0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 1100 && flyThroughTimer <= 1130) {
+			} else if (flyThroughTimer <= 1130) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -240,14 +228,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(0, 0, 0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 1130 && flyThroughTimer <= 1250) {
+			} else if (flyThroughTimer <= 1250) {
 				position.add(0.005, 0, 0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 1250 && flyThroughTimer <= 1290) {
+			} else if (flyThroughTimer <= 1290) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -257,14 +241,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(0, 0, 0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 1290 && flyThroughTimer <= 1550) {
+			} else if (flyThroughTimer <= 1550) {
 				position.add(0.01, 0, 0.005);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 1550 && flyThroughTimer <= 1567) {
+			} else if (flyThroughTimer <= 1567) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -274,14 +254,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(0.01, 0, 0.005);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 1567 && flyThroughTimer <= 1867) {
+			} else if (flyThroughTimer <= 1867) {
 				position.add(0.012, 0, 0);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 1867 && flyThroughTimer <= 1900) {
+			} else if (flyThroughTimer <= 1900) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -291,14 +267,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(0.01, 0, 0.005);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 1900 && flyThroughTimer <= 2100) {
+			} else if (flyThroughTimer <= 2100) {
 				position.add(0.007, 0, -0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 2100 && flyThroughTimer <= 2130) {
+			}else if (flyThroughTimer <= 2130) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -308,14 +280,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(0.007, 0, -0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 2130 && flyThroughTimer <= 2330) {
+			}else if (flyThroughTimer <= 2330) {
 				position.add(0.003, 0, -0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 2330 && flyThroughTimer <= 2360) {
+			}else if (flyThroughTimer <= 2360) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -325,14 +293,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(0.003, 0, -0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 2360 && flyThroughTimer <= 2560) {
+			}else if (flyThroughTimer <= 2560) {
 				position.add(0, 0, -0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 2560 && flyThroughTimer <= 2590) {
+			}else if (flyThroughTimer <= 2590) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -342,14 +306,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(0, 0, -0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 2590 && flyThroughTimer <= 2900) {
+			} else if (flyThroughTimer <= 2900) {
 				position.add(-0.005, 0, -0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 2900 && flyThroughTimer <= 2920) {
+			} else if (flyThroughTimer <= 2920) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -359,14 +319,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(-0.007, 0, -0.01);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 2920 && flyThroughTimer <= 3255) {
+			} else if (flyThroughTimer <= 3255) {
 				position.add(-0.009, 0, -0.011);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer > 3255 && flyThroughTimer <= 3380) {
+			} else if (flyThroughTimer <= 3380) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -376,10 +332,10 @@ public class Camera {
 				viewDirection.unit();
 				position.set(10, 0.25, 1.5);
 				absolutePosition.set(position);
-			}
-
-			if (flyThroughTimer == 3380)
+			} else if (flyThroughTimer == 3380) {
 				flyThroughTimer = 0;
+
+			}
 
 		}
 
