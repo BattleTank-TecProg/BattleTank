@@ -445,27 +445,61 @@ method(parameter_1 , parameter_2);
 
 # 7. If/Else:
 * Should not have space between two or more parantheses;
-* Should not have space between the operations and the parantheses;
-* All "```if```" should be accompanied with a "```else```";
-* When do not have to do on ‘else’, should be post a comment inside the "```else```" signaling that there is nothing to do;
-* The "```else```" shoulb be start at same line of end of "```if```";
-* Should have a space between the end of "```if```" and the begin of "```else```";
-* When there is a "```else if```" should be a space between the end of "```else```" and the beginning of "```if```";
-* Even if the instructions have just one line, the keys are required.
-* The ternary conditional operator should never be used to replace the "``` if / else```" ;
 
-### Example:
-```java
+* Should not have space between the operations and the parantheses;
 if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
- if (randomNumber2 > 50) {
-   randomNumber = 50;
- } else {
-   randomNumber = 51;
- }
+
+### incorrect example:
+```java
+if ( (main.timer + randomNumber1 * 3) % 1000 == 0) {
+ // Code.
 }
 ```
 
-###	Exemple:
+### Correct example:
+```java
+if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
+ // Code.
+}
+```
+
+* All "```if```" should be accompanied with a "```else```";
+
+### incorrect example:
+```java
+if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
+  if (randomNumber2 > 50) {
+    randomNumber = 50;
+  }
+}
+```
+
+### Correct example:
+```java
+if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
+  if (randomNumber2 > 50) {
+    randomNumber = 50;
+  } else {
+    // Nothing to do.
+  }
+}
+```
+
+* The "```else```" shoulb be start at same line of end of "```if```";
+
+###	Incorrect exemple:
+```java
+if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+  canMoveAngle1 = false;
+} else
+if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
+  canMoveAngle1 = false;
+} else {
+ // Nothing to do.
+}
+```
+
+###	Correct exemple:
 ```java
 if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
   canMoveAngle1 = false;
@@ -475,11 +509,58 @@ if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
  // Does nothing.
 }
 ```
+
+* Should have a space between the end of "```if```" and the begin of "```else```";
+
+###	Incorrect exemple:
+```java
+if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+  canMoveAngle1 = false;
+}else
+if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
+  canMoveAngle1 = false;
+}else {
+ // Nothing to do.
+}
+```
+
+###	Correct exemple:
+```java
+if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+  canMoveAngle1 = false;
+} else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
+  canMoveAngle1 = false;
+} else {
+ // Does nothing.
+}
+```
+
+* Even if the instructions have just one line, the keys are required.
+
+###	Incorrect exemple:
+```java
+if (ObstacleMap.collideWithObstacle1(this, newPosition))
+  canMoveAngle1 = false;
+else if (ObstacleMap.collideWithObstacle2(this, newPosition))
+  canMoveAngle1 = false;
+else
+ // Nothing to do.
+```
+
+###	Correct exemple:
+```java
+if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+  canMoveAngle1 = false;
+} else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
+  canMoveAngle1 = false;
+} else {
+ // Does nothing.
+}
+```
+* Do not use the ternary operators, use "``` if / else```" ;
+
 # 8. Switch Case:
-* Should have a line between the declaration and the first case;
-* Each case of "```switch```" should be separeted by one line;
 * All switch should have a "```default```";
-* When not have to declare on the default should have a comment signaling that there is nothing to do.
 
 ### Generic Example:
 
