@@ -126,15 +126,9 @@ public class Camera {
 
 		if (Main.gameOver) {
 			return;
-		}
-
-		if (Main.gameNotStart) {
-			flyThroughTimer++;
-		}
-
 		// Move the camera to the player's position
 
-		if (!Main.gameNotStart) {
+		} else if (!Main.gameNotStart) {
 
 			// Update position
 
@@ -179,7 +173,8 @@ public class Camera {
 			position.add(thirdPersonDisplacement);
 
 		} else {
-
+			flyThroughTimer++;
+			
 			// Fly through this entire level when the game isn't started
 
 			if (flyThroughTimer <= 60) {
@@ -340,9 +335,7 @@ public class Camera {
 				position.set(10, 0.25, 1.5);
 				absolutePosition.set(position);
 				flyThroughTimer = 0;
-			} else {
-				// Does nothing.
-			}
+			} 
 
 		}
 
