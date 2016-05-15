@@ -24,12 +24,12 @@ public class PowerPlant extends SolidObject {
 
 	public PowerPlant(double x, double y, double z) {
 		start = new Vector(x, y, z);
-		iDirection = new Vector(1.1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1.1);
+		xDirection = new Vector(1.1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1.1);
 
-		iDirection.rotate_XZ(255);
-		kDirection.rotate_XZ(255);
+		xDirection.rotate_XZ(255);
+		zDirection.rotate_XZ(255);
 
 		modelType = 3;
 		makeBoundary(0.25, 0.5, 0.25);
@@ -57,9 +57,9 @@ public class PowerPlant extends SolidObject {
 
 		makePolygons();
 
-		iDirection = new Vector(1.1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1.1);
+		xDirection = new Vector(1.1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1.1);
 
 		smokeCentres = new Vector[10];
 		smokeCentresCamera = new Vector[10];
@@ -453,10 +453,10 @@ public class PowerPlant extends SolidObject {
 			polygons[i].findDiffuse();
 		}
 
-		iDirection.rotate_XZ(105);
-		kDirection.rotate_XZ(105);
-		iDirection.scale(1.1);
-		kDirection.scale(0.85);
+		xDirection.rotate_XZ(105);
+		zDirection.rotate_XZ(105);
+		xDirection.scale(1.1);
+		zDirection.scale(0.85);
 
 		start.add(0.02, 0, -0.085);
 

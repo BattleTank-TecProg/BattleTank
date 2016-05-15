@@ -69,9 +69,9 @@ public class PlayerTank extends SolidObject {
 	public PlayerTank(double x, double y, double z) {
 
 		start = new Vector(x, y, z);
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 0.95, 0);
-		kDirection = new Vector(0, 0, 1.05);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 0.95, 0);
+		zDirection = new Vector(0, 0, 1.05);
 
 		bodyAngle = 0;
 
@@ -176,12 +176,12 @@ public class PlayerTank extends SolidObject {
 		Vector v[];
 		turret = new Polygon3D[10];
 
-		iDirection.set(1, 0, 0);
-		jDirection.set(0, 0.95, 0);
-		kDirection.set(0, 0, 1.05);
+		xDirection.set(1, 0, 0);
+		yDirection.set(0, 0.95, 0);
+		zDirection.set(0, 0, 1.05);
 
-		iDirection.rotate_XZ(turretAngle);
-		kDirection.rotate_XZ(turretAngle);
+		xDirection.rotate_XZ(turretAngle);
+		zDirection.rotate_XZ(turretAngle);
 
 		v = new Vector[] { put(0, 0.025, 0.18), put(0.004, 0.022, 0.18),
 				put(0.007, 0.022, 0.06), put(0, 0.025, 0.06) };
@@ -248,12 +248,12 @@ public class PlayerTank extends SolidObject {
 		Vector v[];
 		turret = new Polygon3D[35];
 
-		iDirection.set(1, 0, 0);
-		jDirection.set(0, 0.95, 0);
-		kDirection.set(0, 0, 1.05);
+		xDirection.set(1, 0, 0);
+		yDirection.set(0, 0.95, 0);
+		zDirection.set(0, 0, 1.05);
 
-		iDirection.rotate_XZ(turretAngle);
-		kDirection.rotate_XZ(turretAngle);
+		xDirection.rotate_XZ(turretAngle);
+		zDirection.rotate_XZ(turretAngle);
 
 		v = new Vector[] { put(-0.05, 0.035, 0.04), put(-0.05, 0.035, -0.03),
 				put(-0.05, 0, -0.03), put(-0.05, 0, 0.04) };
@@ -364,12 +364,12 @@ public class PlayerTank extends SolidObject {
 		Vector v[];
 		turret = new Polygon3D[72];
 
-		iDirection.set(1, 0, 0);
-		jDirection.set(0, 0.95, 0);
-		kDirection.set(0, 0, 1.05);
+		xDirection.set(1, 0, 0);
+		yDirection.set(0, 0.95, 0);
+		zDirection.set(0, 0, 1.05);
 
-		iDirection.rotate_XZ(turretAngle);
-		kDirection.rotate_XZ(turretAngle);
+		xDirection.rotate_XZ(turretAngle);
+		zDirection.rotate_XZ(turretAngle);
 
 		double r = 0.025;
 		double theta = Math.PI / 16;
@@ -457,9 +457,9 @@ public class PlayerTank extends SolidObject {
 		turret = new Polygon3D[171];
 		int polyIndex = 0;
 
-		iDirection.set(1, 0, 0);
-		jDirection.set(0, 1, 0);
-		kDirection.set(0, 0, 1);
+		xDirection.set(1, 0, 0);
+		yDirection.set(0, 1, 0);
+		zDirection.set(0, 0, 1);
 
 		if (!firing) {
 			angularSpeed--;
@@ -469,13 +469,13 @@ public class PlayerTank extends SolidObject {
 
 		nukeCannonAngle += angularSpeed;
 		nukeCannonAngle %= 360;
-		iDirection.rotate_XY(nukeCannonAngle);
-		jDirection.rotate_XY(nukeCannonAngle);
+		xDirection.rotate_XY(nukeCannonAngle);
+		yDirection.rotate_XY(nukeCannonAngle);
 
 		int angle = (turretAngle - turretAngleDelta + 360) % 360;
-		iDirection.rotate_XZ(angle);
-		kDirection.rotate_XZ(angle);
-		jDirection.rotate_XZ(angle);
+		xDirection.rotate_XZ(angle);
+		zDirection.rotate_XZ(angle);
+		yDirection.rotate_XZ(angle);
 
 		double r = 0.012;
 		int theta = 20;
@@ -652,12 +652,12 @@ public class PlayerTank extends SolidObject {
 
 		start = turretCenter.myClone();
 
-		iDirection.set(1, 0, 0);
-		jDirection.set(0, 0.95, 0);
-		kDirection.set(0, 0, 1.05);
+		xDirection.set(1, 0, 0);
+		yDirection.set(0, 0.95, 0);
+		zDirection.set(0, 0, 1.05);
 
-		iDirection.rotate_XZ(angle);
-		kDirection.rotate_XZ(angle);
+		xDirection.rotate_XZ(angle);
+		zDirection.rotate_XZ(angle);
 
 		v = new Vector[] { put(-0.04, 0.035, 0.06), put(0.04, 0.035, 0.06),
 				put(0.05, 0.035, 0.04), put(0.05, 0.035, -0.03),

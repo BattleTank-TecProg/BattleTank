@@ -106,6 +106,9 @@ public class Explosion extends SolidObject {
 	public Explosion(double x, double y, double z, double size) {
 
 		assert (x > 0 || y < 0 || z > 0 || size > 0);
+		assert (xDirection == null);
+		assert (yDirection == null);
+		assert (zDirection == null);
 
 		final double LENGHT = 0.001;
 
@@ -122,9 +125,9 @@ public class Explosion extends SolidObject {
 		final double HEIGHTRECTANGLE = 0.2;
 
 		start = new Vector(x, y, z);
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
 		int random = GameData.getRandom();
 		if (random >= 75) {
@@ -215,7 +218,7 @@ public class Explosion extends SolidObject {
 	}
 
 	/** This method is responsible for draw the explosion on the scenario. */
-	public void draw() {
+	public synchronized void draw() {
 
 		tempCentre.updateLocation();
 		/* This variable holds the proportion of explosion */
@@ -230,7 +233,10 @@ public class Explosion extends SolidObject {
 
 	}
 
-	/** This method is responsible for return the limits of the explosion. */
+	/** This method is responsible for return the limits of the explosion.
+	 *
+	 * @return boundary2D
+	 */
 	public Rectangle2D getBoundary2D() {
 		assert (boundary2D != null);
 		return boundary2D;

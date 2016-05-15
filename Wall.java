@@ -10,9 +10,9 @@ public class Wall extends SolidObject {
 
 	public Wall(double x, double y, double z, int orientation, int open) {
 		start = new Vector(x, y, z);
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
 		this.orientation = orientation;
 		this.open = open;
@@ -93,8 +93,8 @@ public class Wall extends SolidObject {
 			}
 
 			start.add(-0.06, 0, -0.07);
-			iDirection.scale(1.5);
-			kDirection.scale(1.6);
+			xDirection.scale(1.5);
+			zDirection.scale(1.6);
 			v = new Vector[] { put(-0.125, -0.1, 0.125),
 					put(0.125, -0.1, 0.125), put(0.125, -0.1, -0.125),
 					put(-0.125, -0.1, -0.125) };
@@ -138,8 +138,8 @@ public class Wall extends SolidObject {
 			}
 
 			start.add(-0.06, 0, -0.052);
-			iDirection.scale(2);
-			kDirection.scale(1.2);
+			xDirection.scale(2);
+			zDirection.scale(1.2);
 			v = new Vector[] { put(-0.125, -0.1, 0.125),
 					put(0.125, -0.1, 0.125), put(0.125, -0.1, -0.125),
 					put(-0.125, -0.1, -0.125) };
@@ -183,8 +183,8 @@ public class Wall extends SolidObject {
 					1, 1, 6);
 
 			start.add(-0.06, 0, -0.15);
-			iDirection.scale(1.5);
-			kDirection.scale(1.6);
+			xDirection.scale(1.5);
+			zDirection.scale(1.6);
 			v = new Vector[] { put(-0.125, -0.1, 0.125),
 					put(0.125, -0.1, 0.125), put(0.125, -0.1, -0.125),
 					put(-0.125, -0.1, -0.125) };
@@ -192,11 +192,11 @@ public class Wall extends SolidObject {
 					1, 2);
 
 			start.add(0.06, 0, 0.15);
-			iDirection.scale(1.0 / 1.5);
-			kDirection.scale(1.0 / 1.6);
+			xDirection.scale(1.0 / 1.5);
+			zDirection.scale(1.0 / 1.6);
 			start.add(-0.14, 0, -0.052);
-			iDirection.scale(2);
-			kDirection.scale(1.2);
+			xDirection.scale(2);
+			zDirection.scale(1.2);
 			v = new Vector[] { put(-0.125, -0.1, 0.125),
 					put(0.125, -0.1, 0.125), put(0.125, -0.1, -0.125),
 					put(-0.125, -0.1, -0.125) };
@@ -245,8 +245,8 @@ public class Wall extends SolidObject {
 					1, 1, 6);
 
 			start.add(-0.06, 0, -0.16);
-			iDirection.scale(1.5);
-			kDirection.scale(1.6);
+			xDirection.scale(1.5);
+			zDirection.scale(1.6);
 			v = new Vector[] { put(-0.125, -0.1, 0.125),
 					put(0.125, -0.1, 0.125), put(0.125, -0.1, -0.125),
 					put(-0.125, -0.1, -0.125) };
@@ -296,8 +296,8 @@ public class Wall extends SolidObject {
 					1, 1, 6);
 
 			start.add(-0.145, 0, -0.052);
-			iDirection.scale(2);
-			kDirection.scale(1.2);
+			xDirection.scale(2);
+			zDirection.scale(1.2);
 			v = new Vector[] { put(-0.125, -0.1, 0.125),
 					put(0.125, -0.1, 0.125), put(0.125, -0.1, -0.125),
 					put(-0.125, -0.1, -0.125) };
@@ -345,8 +345,8 @@ public class Wall extends SolidObject {
 					1, 1, 6);
 
 			start.add(-0.00, 0, 0.03);
-			iDirection.scale(1.9);
-			kDirection.scale(2);
+			xDirection.scale(1.9);
+			zDirection.scale(2);
 			v = new Vector[] { put(-0.125, -0.1, 0.125),
 					put(0.125, -0.1, 0.125), put(0.125, -0.1, -0.125),
 					put(-0.125, -0.1, -0.125) };
@@ -380,8 +380,8 @@ public class Wall extends SolidObject {
 					1, 1, 3);
 
 			start.add(-0.06, 0, -0.07);
-			iDirection.scale(1.5);
-			kDirection.scale(1.6);
+			xDirection.scale(1.5);
+			zDirection.scale(1.6);
 			v = new Vector[] { put(-0.125, -0.1, 0.125),
 					put(0.125, -0.1, 0.125), put(0.125, -0.1, -0.125),
 					put(-0.125, -0.1, -0.125) };
@@ -407,8 +407,8 @@ public class Wall extends SolidObject {
 					1, 1, 6);
 
 			start.add(-0.06, 0, -0.052);
-			iDirection.scale(2);
-			kDirection.scale(1.2);
+			xDirection.scale(2);
+			zDirection.scale(1.2);
 			v = new Vector[] { put(-0.125, -0.1, 0.125),
 					put(0.125, -0.1, 0.125), put(0.125, -0.1, -0.125),
 					put(-0.125, -0.1, -0.125) };
@@ -469,8 +469,8 @@ public class Wall extends SolidObject {
 			polygons[4] = new Polygon3D(v, v[0], v[1], v[3], Main.textures[41],
 					1, 1, 6);
 
-			iDirection.scale(1.2);
-			kDirection.scale(1.2);
+			xDirection.scale(1.2);
+			zDirection.scale(1.2);
 			start.add(-0.04, 0, -0.055);
 			v = new Vector[] { put(-0.125, -0.1, 0.125),
 					put(0.125, -0.1, 0.125), put(0.125, -0.1, -0.125),

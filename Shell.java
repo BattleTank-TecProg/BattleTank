@@ -12,9 +12,9 @@ public class Shell extends SolidObject {
 		start = new Vector(x, y, z);
 		this.type = type;
 
-		iDirection = new Vector(0.8, 0, 0);
-		jDirection = new Vector(0, 0.8, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(0.8, 0, 0);
+		yDirection = new Vector(0, 0.8, 0);
+		zDirection = new Vector(0, 0, 1);
 
 		this.isHostile = isHostile;
 
@@ -23,8 +23,8 @@ public class Shell extends SolidObject {
 
 		boundary2D = new Rectangle2D(x - 0.005, z + 0.005, 0.01, 0.01);
 
-		iDirection.rotate_XZ(angle);
-		kDirection.rotate_XZ(angle);
+		xDirection.rotate_XZ(angle);
+		zDirection.rotate_XZ(angle);
 
 		direction = new Vector(0, 0, 0.13);
 		lifeSpan = 14;
@@ -45,7 +45,7 @@ public class Shell extends SolidObject {
 		if (type == 1) {
 			t = Main.textures[52];
 			diffuse = 50;
-			kDirection.scale(1.3);
+			zDirection.scale(1.3);
 
 		} else {
 			t = Main.textures[16];
@@ -74,12 +74,12 @@ public class Shell extends SolidObject {
 
 		}
 
-		kDirection.scale(-0.08);
-		start.add(kDirection);
-		kDirection.scale(-(double) 1 / 0.08);
+		zDirection.scale(-0.08);
+		start.add(zDirection);
+		zDirection.scale(-(double) 1 / 0.08);
 
-		iDirection.scale(0.85);
-		jDirection.scale(0.85);
+		xDirection.scale(0.85);
+		yDirection.scale(0.85);
 
 		v = new Vector[] { put(-0.005, 0.05, 0.06), put(0.005, 0.05, 0.06),
 				put(0.005, 0.05, -0.06), put(-0.005, 0.05, -0.06) };
@@ -102,14 +102,14 @@ public class Shell extends SolidObject {
 			polygons[i].diffuse_I = diffuse;
 		}
 
-		kDirection.scale(1.4);
+		zDirection.scale(1.4);
 
-		kDirection.scale(-0.11);
-		start.add(kDirection);
-		kDirection.scale(-(double) 1 / 0.11);
+		zDirection.scale(-0.11);
+		start.add(zDirection);
+		zDirection.scale(-(double) 1 / 0.11);
 
-		iDirection.scale(0.8);
-		jDirection.scale(0.8);
+		xDirection.scale(0.8);
+		yDirection.scale(0.8);
 
 		v = new Vector[] { put(-0.005, 0.05, 0.06), put(0.005, 0.05, 0.06),
 				put(0.005, 0.05, -0.06), put(-0.005, 0.05, -0.06) };
@@ -132,12 +132,12 @@ public class Shell extends SolidObject {
 			polygons[i].diffuse_I = diffuse;
 		}
 
-		kDirection.scale(-0.11);
-		start.add(kDirection);
-		kDirection.scale(-(double) 1 / 0.11);
+		zDirection.scale(-0.11);
+		start.add(zDirection);
+		zDirection.scale(-(double) 1 / 0.11);
 
-		iDirection.scale(0.75);
-		jDirection.scale(0.75);
+		xDirection.scale(0.75);
+		yDirection.scale(0.75);
 
 		v = new Vector[] { put(-0.005, 0.05, 0.06), put(0.005, 0.05, 0.06),
 				put(0.005, 0.05, -0.06), put(-0.005, 0.05, -0.06) };

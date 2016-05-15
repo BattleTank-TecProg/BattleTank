@@ -26,9 +26,9 @@ public class Helix extends SolidObject {
 		angle += 360;
 		angle %= 360;
 
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
 		modelType = 4;
 		makeBoundary(LENGHT, HEIGHT, WIDTH);
@@ -41,13 +41,13 @@ public class Helix extends SolidObject {
 		int zAxisRotation = 0;
 
 		temp1.set(centre);
-		temp2.set(kDirection);
+		temp2.set(zDirection);
 		temp2.rotate_XZ(angle);
 		temp2.scale(0.05);
 		temp1.subtract(temp2);
 		temp2.scale(0.1);
 		for (int i = 0; i < particles.length; i++) {
-			directions[i] = iDirection.myClone();
+			directions[i] = xDirection.myClone();
 			directions[i].rotate_XY(zAxisRotation);
 			directions[i].rotate_XZ(angle);
 			directions[i].scale(0.02);

@@ -15,9 +15,9 @@ public class PowerUp extends SolidObject {
 
 		start = new Vector(x, y, z);
 
-		iDirection = new Vector(0.65, 0, 0);
-		jDirection = new Vector(0, 0.65, 0);
-		kDirection = new Vector(0, 0, 0.65);
+		xDirection = new Vector(0.65, 0, 0);
+		yDirection = new Vector(0, 0.65, 0);
+		zDirection = new Vector(0, 0, 0.65);
 
 		modelType = 5;
 		makeBoundary(0.01, 0.025, 0.01);
@@ -115,10 +115,10 @@ public class PowerUp extends SolidObject {
 		double temp = start.y;
 		start.y = -1;
 
-		kDirection.scale(0.8);
-		iDirection.scale(0.9);
-		iDirection.rotate_XZ(90);
-		kDirection.rotate_XZ(90);
+		zDirection.scale(0.8);
+		xDirection.scale(0.9);
+		xDirection.rotate_XZ(90);
+		zDirection.rotate_XZ(90);
 		start.add(-0.05, 0, -0.05);
 		v = new Vector[] { put(-0.17, 0, 0.17), put(0.17, 0, 0.17),
 				put(0.17, 0, -0.17), put(-0.17, 0, -0.17) };

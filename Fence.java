@@ -55,13 +55,13 @@ public class Fence extends SolidObject {
 		assert ((x > 0 && x < 20000) && y == -0.9 && (z > 0 && z < 25000) && (orientation == VERTICAL || orientation == HORIZONTAL));
 
 		start = new Vector(x, y, z);
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
 		if (orientation == VERTICAL) {
-			iDirection.rotate_XZ(90);
-			kDirection.rotate_XZ(90);
+			xDirection.rotate_XZ(90);
+			zDirection.rotate_XZ(90);
 		}
 
 		modelType = 6;

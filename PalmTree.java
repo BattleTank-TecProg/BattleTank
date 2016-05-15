@@ -11,9 +11,9 @@ public class PalmTree extends SolidObject {
 
 		start = new Vector(x, y, z);
 
-		iDirection = new Vector(0.7 + 0.3 * 1.1, 0, 0);
-		jDirection = new Vector(0, 0.8 + 0.3, 0);
-		kDirection = new Vector(0, 0, 0.7 + 0.3 * 1.1);
+		xDirection = new Vector(0.7 + 0.3 * 1.1, 0, 0);
+		yDirection = new Vector(0, 0.8 + 0.3, 0);
+		zDirection = new Vector(0, 0, 0.7 + 0.3 * 1.1);
 
 		modelType = 7;
 		makeBoundary(0.1, 0.25, 0.1);
@@ -22,8 +22,8 @@ public class PalmTree extends SolidObject {
 		ObstacleMap.registerObstacle1(this, (int) (x * 4)
 				+ (129 - (int) (z * 4)) * 80);
 
-		iDirection.rotate_XZ(angle);
-		kDirection.rotate_XZ(angle);
+		xDirection.rotate_XZ(angle);
+		zDirection.rotate_XZ(angle);
 
 		findCentre();
 
@@ -114,8 +114,8 @@ public class PalmTree extends SolidObject {
 		polygons[13] = new Polygon3D(v, v[0], v[1], v[2], Main.textures[9], 1,
 				1, 6);
 
-		iDirection.rotate_XZ(360 / 5);
-		kDirection.rotate_XZ(360 / 5);
+		xDirection.rotate_XZ(360 / 5);
+		zDirection.rotate_XZ(360 / 5);
 
 		v = new Vector[] { put(0.015, 0.3, 0.01), put(0, 0.3, 0),
 				put(0, 0.34, 0.05), put(0.015, 0.32, 0.05) };
@@ -147,8 +147,8 @@ public class PalmTree extends SolidObject {
 		polygons[19] = new Polygon3D(v, v[0], v[1], v[2], Main.textures[9], 1,
 				1, 6);
 
-		iDirection.rotate_XZ(360 / 5);
-		kDirection.rotate_XZ(360 / 5);
+		xDirection.rotate_XZ(360 / 5);
+		zDirection.rotate_XZ(360 / 5);
 
 		v = new Vector[] { put(0.015, 0.3, 0.01), put(0, 0.3, 0),
 				put(0, 0.34, 0.05), put(0.015, 0.32, 0.05) };
@@ -180,8 +180,8 @@ public class PalmTree extends SolidObject {
 		polygons[25] = new Polygon3D(v, v[0], v[1], v[2], Main.textures[9], 1,
 				1, 6);
 
-		iDirection.rotate_XZ(360 / 5);
-		kDirection.rotate_XZ(360 / 5);
+		xDirection.rotate_XZ(360 / 5);
+		zDirection.rotate_XZ(360 / 5);
 
 		v = new Vector[] { put(0.015, 0.3, 0.01), put(0, 0.3, 0),
 				put(0, 0.34, 0.05), put(0.015, 0.32, 0.05) };
@@ -213,8 +213,8 @@ public class PalmTree extends SolidObject {
 		polygons[31] = new Polygon3D(v, v[0], v[1], v[2], Main.textures[9], 1,
 				1, 6);
 
-		iDirection.rotate_XZ(360 / 5);
-		kDirection.rotate_XZ(360 / 5);
+		xDirection.rotate_XZ(360 / 5);
+		zDirection.rotate_XZ(360 / 5);
 
 		v = new Vector[] { put(0.015, 0.3, 0.01), put(0, 0.3, 0),
 				put(0, 0.34, 0.05), put(0.015, 0.32, 0.05) };
@@ -246,9 +246,9 @@ public class PalmTree extends SolidObject {
 		polygons[37] = new Polygon3D(v, v[0], v[1], v[2], Main.textures[9], 1,
 				1, 6);
 
-		iDirection = new Vector(0.4 + 0.3 * 0.4, 0, 0);
-		jDirection = new Vector(0, 0.5, 0);
-		kDirection = new Vector(0, 0, 0.7 + 0.3 * 0.7);
+		xDirection = new Vector(0.4 + 0.3 * 0.4, 0, 0);
+		yDirection = new Vector(0, 0.5, 0);
+		zDirection = new Vector(0, 0, 0.7 + 0.3 * 0.7);
 
 		start.add(0.03, 0, 0);
 
@@ -257,12 +257,12 @@ public class PalmTree extends SolidObject {
 		shadow = new Polygon3D(v, v[0], v[1], v[3], Main.textures[10], 1, 1, 2);
 
 		start.set(x, y, z);
-		iDirection = new Vector(0.7 + 0.3 * 1.1, 0, 0);
-		jDirection = new Vector(0, 0.8 + 0.3, 0);
-		kDirection = new Vector(0, 0, 0.7 + 0.3 * 1.1);
+		xDirection = new Vector(0.7 + 0.3 * 1.1, 0, 0);
+		yDirection = new Vector(0, 0.8 + 0.3, 0);
+		zDirection = new Vector(0, 0, 0.7 + 0.3 * 1.1);
 
-		iDirection.rotate_XZ(angle);
-		kDirection.rotate_XZ(angle);
+		xDirection.rotate_XZ(angle);
+		zDirection.rotate_XZ(angle);
 	}
 
 	public void update() {

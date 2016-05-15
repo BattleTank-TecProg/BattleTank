@@ -12,9 +12,9 @@ public class RocketTail extends SolidObject {
 		start = centre.myClone();
 		this.centre = centre;
 
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
 		modelType = 4;
 		makeBoundary(0.01, 0.025, 0.01);

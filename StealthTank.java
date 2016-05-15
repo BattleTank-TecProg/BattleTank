@@ -64,12 +64,12 @@ public class StealthTank extends SolidObject {
 
 	public StealthTank(double x, double y, double z, int angle) {
 		start = new Vector(x, y, z);
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
-		iDirection.rotate_XZ(angle);
-		kDirection.rotate_XZ(angle);
+		xDirection.rotate_XZ(angle);
+		zDirection.rotate_XZ(angle);
 
 		modelType = 2;
 		makeBoundary(0.1, 0.25, 0.1);
@@ -96,12 +96,12 @@ public class StealthTank extends SolidObject {
 
 	private void makeBody() {
 		start = bodyCenter.myClone();
-		iDirection = new Vector(1.1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1.1);
+		xDirection = new Vector(1.1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1.1);
 
-		iDirection.rotate_XZ(bodyAngle);
-		kDirection.rotate_XZ(bodyAngle);
+		xDirection.rotate_XZ(bodyAngle);
+		zDirection.rotate_XZ(bodyAngle);
 
 		Vector v[];
 		body = new Polygon3D[43];
@@ -357,12 +357,12 @@ public class StealthTank extends SolidObject {
 		Vector v[];
 		start = turretCenter.myClone();
 
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1.1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1.1);
 
-		iDirection.rotate_XZ(turretAngle);
-		kDirection.rotate_XZ(turretAngle);
+		xDirection.rotate_XZ(turretAngle);
+		zDirection.rotate_XZ(turretAngle);
 
 		double r1 = 0.028;
 		double r2 = 0.017;

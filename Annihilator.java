@@ -54,11 +54,11 @@ public class Annihilator extends SolidObject {
 
 		start = new Vector(x, y, z);
 
-		iDirection = new Vector(1, 0, 0);
+		xDirection = new Vector(1, 0, 0);
 
-		jDirection = new Vector(0, 1, 0);
+		yDirection = new Vector(0, 1, 0);
 
-		kDirection = new Vector(0, 0, 1);
+		zDirection = new Vector(0, 0, 1);
 
 		modelType = 2;
 		makeBoundary(LENGHT, HEIGHT, WIDTH);
@@ -695,12 +695,12 @@ public class Annihilator extends SolidObject {
 		Vector v[];
 		start = bodyCenter.myClone();
 
-		iDirection = new Vector(0.95, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(0.95, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
-		iDirection.rotate_XZ(bodyAngle);
-		kDirection.rotate_XZ(bodyAngle);
+		xDirection.rotate_XZ(bodyAngle);
+		zDirection.rotate_XZ(bodyAngle);
 
 		body = new Polygon3D[19];
 
@@ -822,13 +822,13 @@ public class Annihilator extends SolidObject {
 		start = turretCenter.myClone();
 		Vector v[];
 
-		iDirection = new Vector(1.6, 0, 0);
-		jDirection = new Vector(0, 1.4, 0);
-		kDirection = new Vector(0, 0, 1.4);
+		xDirection = new Vector(1.6, 0, 0);
+		yDirection = new Vector(0, 1.4, 0);
+		zDirection = new Vector(0, 0, 1.4);
 
 		// Adjust orientation of the turret
-		iDirection.rotate_XZ(turretAngle);
-		kDirection.rotate_XZ(turretAngle);
+		xDirection.rotate_XZ(turretAngle);
+		zDirection.rotate_XZ(turretAngle);
 
 		turret = new Polygon3D[23];
 

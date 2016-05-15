@@ -1,7 +1,7 @@
 public abstract class SolidObject implements model {
 	protected Vector start;
 
-	protected Vector iDirection, jDirection, kDirection;
+	protected Vector xDirection, yDirection, zDirection;
 
 	protected Polygon3D boundary[];
 
@@ -78,17 +78,17 @@ public abstract class SolidObject implements model {
 
 	public final Vector put(double i, double j, double k) {
 		Vector temp = start.myClone();
-		temp.add(iDirection, i);
-		temp.add(jDirection, j);
-		temp.add(kDirection, k);
+		temp.add(xDirection, i);
+		temp.add(yDirection, j);
+		temp.add(zDirection, k);
 		return temp;
 	}
 
 	public final void change(double i, double j, double k, Vector v) {
 		v.set(start);
-		v.add(iDirection, i);
-		v.add(jDirection, j);
-		v.add(kDirection, k);
+		v.add(xDirection, i);
+		v.add(yDirection, j);
+		v.add(zDirection, k);
 	}
 
 	public final double getZDepth() {

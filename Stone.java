@@ -22,13 +22,13 @@ public class Stone extends SolidObject {
 		this.testCollision = testCollision;
 
 		start = new Vector(x, y, z);
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
-		iDirection.scale(scale);
-		jDirection.scale(scale);
-		kDirection.scale(scale);
+		xDirection.scale(scale);
+		yDirection.scale(scale);
+		zDirection.scale(scale);
 
 		modelType = 3;
 		makeBoundary(0.25 * scale, 0.5 * scale, 0.25 * scale);
@@ -51,8 +51,8 @@ public class Stone extends SolidObject {
 			}
 		}
 
-		iDirection.rotate_XZ(angle);
-		kDirection.rotate_XZ(angle);
+		xDirection.rotate_XZ(angle);
+		zDirection.rotate_XZ(angle);
 
 		findCentre();
 
@@ -237,13 +237,13 @@ public class Stone extends SolidObject {
 			polygons[23] = new Polygon3D(v, put(-1, 0, 0), put(0, 0, 0), put(
 					-1, 0, -1), Main.textures[textureIndex], 3, 3, 6);
 
-			iDirection = new Vector(0.9, 0, 0);
-			jDirection = new Vector(0, 1, 0);
-			kDirection = new Vector(0, 0, 0.9);
+			xDirection = new Vector(0.9, 0, 0);
+			yDirection = new Vector(0, 1, 0);
+			zDirection = new Vector(0, 0, 0.9);
 
-			iDirection.scale(scale);
-			jDirection.scale(scale);
-			kDirection.scale(scale);
+			xDirection.scale(scale);
+			yDirection.scale(scale);
+			zDirection.scale(scale);
 
 			v = new Vector[] { put(-0.5, -0.25, 0.4), put(0.4, -0.25, 0.4),
 					put(0.4, -0.25, -0.5), put(-0.5, -0.25, -0.5) };
@@ -252,7 +252,7 @@ public class Stone extends SolidObject {
 		}
 
 		if (type == 4) {
-			jDirection.scale(1.3);
+			yDirection.scale(1.3);
 			start.add(0, 0.03, 0);
 
 			polygons = new Polygon3D[15];
@@ -335,16 +335,16 @@ public class Stone extends SolidObject {
 		}
 
 		start = new Vector(x, y, z);
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
-		iDirection.scale(scale);
-		jDirection.scale(scale);
-		kDirection.scale(scale);
+		xDirection.scale(scale);
+		yDirection.scale(scale);
+		zDirection.scale(scale);
 
-		iDirection.rotate_XZ(angle);
-		kDirection.rotate_XZ(angle);
+		xDirection.rotate_XZ(angle);
+		zDirection.rotate_XZ(angle);
 	}
 
 	public void update() {

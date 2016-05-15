@@ -22,9 +22,9 @@ public class Rocket extends SolidObject {
 		start = new Vector(x, y, z);
 		this.angle = angle;
 
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
 		this.isHostile = isHostile;
 
@@ -33,8 +33,8 @@ public class Rocket extends SolidObject {
 
 		boundary2D = new Rectangle2D(x - 0.005, z + 0.005, 0.01, 0.01);
 
-		iDirection.rotate_XZ(angle);
-		kDirection.rotate_XZ(angle);
+		xDirection.rotate_XZ(angle);
+		zDirection.rotate_XZ(angle);
 
 		direction = new Vector(0, 0, 0.075);
 		direction.rotate_XZ(angle);

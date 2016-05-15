@@ -40,9 +40,9 @@ public class GunTurret extends SolidObject {
 		final double WIDTH = 0.1;
 
 		start = new Vector(x, y, z);
-		iDirection = new Vector(0.7, 0, 0);
-		jDirection = new Vector(0, 0.7, 0);
-		kDirection = new Vector(0, 0, 0.7);
+		xDirection = new Vector(0.7, 0, 0);
+		yDirection = new Vector(0, 0.7, 0);
+		zDirection = new Vector(0, 0, 0.7);
 
 		modelType = 2;
 		makeBoundary(LENGHT, HEIGHT, WIDTH);
@@ -434,15 +434,15 @@ public class GunTurret extends SolidObject {
 	}
 
 	private void makeTurret() {
-		iDirection = new Vector(0.7, 0, 0);
-		jDirection = new Vector(0, 0.7, 0);
-		kDirection = new Vector(0, 0, 0.7);
+		xDirection = new Vector(0.7, 0, 0);
+		yDirection = new Vector(0, 0.7, 0);
+		zDirection = new Vector(0, 0, 0.7);
 
-		iDirection.rotate_XZ(turretAngle);
-		kDirection.rotate_XZ(turretAngle);
+		xDirection.rotate_XZ(turretAngle);
+		zDirection.rotate_XZ(turretAngle);
 
-		iDirection.rotate_XZ(180);
-		kDirection.rotate_XZ(180);
+		xDirection.rotate_XZ(180);
+		zDirection.rotate_XZ(180);
 
 		turret = new Polygon3D[22];
 
@@ -514,8 +514,8 @@ public class GunTurret extends SolidObject {
 				1, 2);
 		start.add(0.05, 0, 0.05);
 
-		iDirection.rotate_XZ(180);
-		kDirection.rotate_XZ(180);
+		xDirection.rotate_XZ(180);
+		zDirection.rotate_XZ(180);
 
 	}
 
@@ -546,7 +546,7 @@ public class GunTurret extends SolidObject {
 
 		tempVector1 = start.myClone();
 
-		iDirection.scale(1.2);
+		xDirection.scale(1.2);
 		start.add(0, 0, -0.03);
 		v = new Vector[] { put(-0.2, 0, 0.2), put(0.2, 0, 0.2),
 				put(0.2, 0, -0.2), put(-0.2, 0, -0.2) };
@@ -561,7 +561,7 @@ public class GunTurret extends SolidObject {
 		}
 
 		start.set(tempVector1);
-		iDirection.scale(0.8333333333);
+		xDirection.scale(0.8333333333);
 
 	}
 

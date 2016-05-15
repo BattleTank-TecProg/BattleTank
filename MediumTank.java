@@ -60,12 +60,12 @@ public class MediumTank extends SolidObject {
 	public MediumTank(double x, double y, double z, int angle) {
 
 		start = new Vector(x, y, z);
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
-		iDirection.rotate_XZ(angle);
-		kDirection.rotate_XZ(angle);
+		xDirection.rotate_XZ(angle);
+		zDirection.rotate_XZ(angle);
 
 		modelType = 2;
 		makeBoundary(0.1, 0.25, 0.1);
@@ -95,12 +95,12 @@ public class MediumTank extends SolidObject {
 		Vector v[];
 
 		start = bodyCenter.myClone();
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 0.95, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 0.95, 0);
+		zDirection = new Vector(0, 0, 1);
 
-		iDirection.rotate_XZ(bodyAngle);
-		kDirection.rotate_XZ(bodyAngle);
+		xDirection.rotate_XZ(bodyAngle);
+		zDirection.rotate_XZ(bodyAngle);
 
 		body = new Polygon3D[15];
 		v = new Vector[] { put(-0.07, 0.025, 0.11), put(-0.07, 0.025, -0.11),
@@ -199,12 +199,12 @@ public class MediumTank extends SolidObject {
 		Vector v[];
 		turret = new Polygon3D[11];
 
-		iDirection = new Vector(0.9, 0, 0);
-		jDirection = new Vector(0, 0.95, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(0.9, 0, 0);
+		yDirection = new Vector(0, 0.95, 0);
+		zDirection = new Vector(0, 0, 1);
 
-		iDirection.rotate_XZ(turretAngle);
-		kDirection.rotate_XZ(turretAngle);
+		xDirection.rotate_XZ(turretAngle);
+		zDirection.rotate_XZ(turretAngle);
 
 		v = new Vector[] { put(0.04, 0.035, 0.06), put(-0.04, 0.035, 0.06),
 				put(-0.04, 0, 0.06), put(0.04, 0, 0.06) };

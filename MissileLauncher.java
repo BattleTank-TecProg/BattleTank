@@ -66,12 +66,12 @@ public class MissileLauncher extends SolidObject {
 	public MissileLauncher(double x, double y, double z, int angle) {
 
 		start = new Vector(x, y, z);
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
-		iDirection.rotate_XZ(angle);
-		kDirection.rotate_XZ(angle);
+		xDirection.rotate_XZ(angle);
+		zDirection.rotate_XZ(angle);
 		bodyAngle = angle;
 		turretAngle = angle;
 
@@ -102,12 +102,12 @@ public class MissileLauncher extends SolidObject {
 		Vector v[];
 
 		start = bodyCenter.myClone();
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 0.8, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 0.8, 0);
+		zDirection = new Vector(0, 0, 1);
 
-		iDirection.rotate_XZ(bodyAngle);
-		kDirection.rotate_XZ(bodyAngle);
+		xDirection.rotate_XZ(bodyAngle);
+		zDirection.rotate_XZ(bodyAngle);
 
 		body = new Polygon3D[14];
 		v = new Vector[] { put(-0.07, 0.055, 0.07), put(0.07, 0.055, 0.07),
@@ -201,16 +201,16 @@ public class MissileLauncher extends SolidObject {
 		Vector v[];
 		turret = new Polygon3D[5];
 
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
-		jDirection.rotate_YZ(350);
-		kDirection.rotate_YZ(350);
+		yDirection.rotate_YZ(350);
+		zDirection.rotate_YZ(350);
 
-		iDirection.rotate_XZ(turretAngle);
-		kDirection.rotate_XZ(turretAngle);
-		jDirection.rotate_XZ(turretAngle);
+		xDirection.rotate_XZ(turretAngle);
+		zDirection.rotate_XZ(turretAngle);
+		yDirection.rotate_XZ(turretAngle);
 
 		v = new Vector[] { put(-0.06, 0.055, 0.09), put(0.06, 0.055, 0.09),
 				put(0.06, 0.055, -0.08), put(-0.06, 0.055, -0.08) };
@@ -238,13 +238,13 @@ public class MissileLauncher extends SolidObject {
 				0.5, 6);
 
 		start.add(-0.05, 0, -0.04);
-		iDirection = new Vector(1, 0, 0);
-		jDirection = new Vector(0, 1, 0);
-		kDirection = new Vector(0, 0, 1);
+		xDirection = new Vector(1, 0, 0);
+		yDirection = new Vector(0, 1, 0);
+		zDirection = new Vector(0, 0, 1);
 
-		iDirection.rotate_XZ(turretAngle);
-		kDirection.rotate_XZ(turretAngle);
-		jDirection.rotate_XZ(turretAngle);
+		xDirection.rotate_XZ(turretAngle);
+		zDirection.rotate_XZ(turretAngle);
+		yDirection.rotate_XZ(turretAngle);
 
 		start.y = -1;
 		v = new Vector[] { put(-0.18, 0, 0.18), put(0.18, 0, 0.18),
