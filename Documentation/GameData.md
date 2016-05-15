@@ -9,29 +9,25 @@ public class GameData
 ## Methods:
 
 ```java
+/**Initialize the datas on the game.*/
+
 public static void makeData()
 ```
-```java
-/**Initialize the datas on the game.*/
-```
 
-```java
-public static int getRandom()
-```
 ```java
 /**Get a random number.*/
+
+public static int getRandom()
 ```
 
-```java
-public static vector getRandomVector()
-```
 ```java
 /**This method is responsible for get a random vector.*/
+
+public static vector getRandomVector()
 ```
 
 ```java
-public static void destroy()
-```
-```java
 /**This methods is responsible for  frees the data stored when the applet is finished.*/
+
+public static void destroy()
 ```
