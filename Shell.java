@@ -179,9 +179,9 @@ public class Shell extends SolidObject {
 			direction.scale(0.5);
 			centre.add(direction);
 			Explosion e = new Explosion(centre.x, centre.y, centre.z, 1);
-			e.type = this.type;
+			e.setType(this.type);
 			if (type == 1)
-				e.damage = 10;
+				e.setDamage(10);
 			Projectiles.register(e);
 
 			return;
@@ -217,9 +217,9 @@ public class Shell extends SolidObject {
 
 		if (lifeSpan < 0) {
 			Explosion e = new Explosion(centre.x, centre.y, centre.z, 1);
-			e.type = this.type;
+			e.setType(this.type);
 			if (type == 1)
-				e.damage = 10;
+				e.setDamage(10);
 			Projectiles.register(e);
 
 		}

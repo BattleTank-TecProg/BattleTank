@@ -21,23 +21,95 @@
  */
 public class Explosion extends SolidObject {
 
-	public double size = 0;
+	private double size = 0;
 
-	public int spriteIndex = 0;
+	private int spriteIndex = 0;
 
-	public int frameIndex = 0;
+	private int frameIndex = 0;
 
-	public int auraIndex = 0;
+	private int auraIndex = 0;
 
-	public int damage = 5;
+	private int damage = 5;
 
-	public int type = 0;
+	private int type = 0;
 
-	public int groundZero = 0;
+	private int groundZero = 0;
 
-	public boolean explicitDrawing;
+	private boolean explicitDrawing;
 
-	public Polygon3D explosionAura;
+	private Polygon3D explosionAura;
+	
+	public double getSize() {
+		return size;
+	}
+
+	public void setSize(double size) {
+		this.size = size;
+	}
+
+	public int getSpriteIndex() {
+		return spriteIndex;
+	}
+
+	public void setSpriteIndex(int spriteIndex) {
+		this.spriteIndex = spriteIndex;
+	}
+
+	public int getFrameIndex() {
+		return frameIndex;
+	}
+
+	public void setFrameIndex(int frameIndex) {
+		this.frameIndex = frameIndex;
+	}
+
+	public int getAuraIndex() {
+		return auraIndex;
+	}
+
+	public void setAuraIndex(int auraIndex) {
+		this.auraIndex = auraIndex;
+	}
+
+	public int getDamage() {
+		return damage;
+	}
+
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public int getGroundZero() {
+		return groundZero;
+	}
+
+	public void setGroundZero(int groundZero) {
+		this.groundZero = groundZero;
+	}
+
+	public boolean isExplicitDrawing() {
+		return explicitDrawing;
+	}
+
+	public void setExplicitDrawing(boolean explicitDrawing) {
+		this.explicitDrawing = explicitDrawing;
+	}
+
+	public Polygon3D getExplosionAura() {
+		return explosionAura;
+	}
+
+	public void setExplosionAura(Polygon3D explosionAura) {
+		this.explosionAura = explosionAura;
+	}
 
 	/**
 	 * 

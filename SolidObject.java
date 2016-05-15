@@ -33,7 +33,7 @@ public abstract class SolidObject implements model {
 		return centre;
 	}
 
-	public final int getType() {
+	public int getType() {
 		return modelType;
 	}
 

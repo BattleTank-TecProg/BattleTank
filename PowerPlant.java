@@ -494,73 +494,73 @@ public class PowerPlant extends SolidObject {
 
 			if (countDownToDeath == 10) {
 				explosions[0] = new Explosion(centre.x, centre.y, centre.z, 1.7);
-				explosions[0].explicitDrawing = true;
+				explosions[0].setExplicitDrawing(true);
 			}
 
 			if (countDownToDeath == 13) {
 				explosions[1] = new Explosion(centre.x + 0.2, centre.y,
 						centre.z, 1.7);
-				explosions[1].explicitDrawing = true;
+				explosions[1].setExplicitDrawing(true);
 			}
 
 			if (countDownToDeath == 16) {
 				explosions[2] = new Explosion(centre.x + 0.1, centre.y - 0.1,
 						centre.z + 0.1, 1.7);
-				explosions[2].explicitDrawing = true;
+				explosions[2].setExplicitDrawing(true);
 			}
 
 			if (countDownToDeath == 16) {
 				explosions[3] = new Explosion(centre.x, centre.y - 0.2,
 						centre.z, 1.7);
-				explosions[3].explicitDrawing = true;
+				explosions[3].setExplicitDrawing(true);
 			}
 
 			if (countDownToDeath == 19) {
 				explosions[4] = new Explosion(centre.x - 0.1, centre.y,
 						centre.z + 0.15, 1.7);
-				explosions[4].explicitDrawing = true;
+				explosions[4].setExplicitDrawing(true);
 			}
 
 			if (countDownToDeath == 19) {
 				explosions[4] = new Explosion(centre.x, centre.y + 0.1,
 						centre.z + 0.15, 1.7);
-				explosions[4].explicitDrawing = true;
+				explosions[4].setExplicitDrawing(true);
 			}
 
 			if (countDownToDeath == 19) {
 				explosions[5] = new Explosion(centre.x - 0.05, centre.y + 0.05,
 						centre.z, 1.7);
-				explosions[5].explicitDrawing = true;
+				explosions[5].setExplicitDrawing(true);
 			}
 
 			if (countDownToDeath == 19) {
 				explosions[6] = new Explosion(centre.x + 0.01, centre.y + 0.05,
 						centre.z - 0.01, 1.7);
-				explosions[6].explicitDrawing = true;
+				explosions[6].setExplicitDrawing(true);
 			}
 
 			if (countDownToDeath == 22) {
 				explosions[7] = new Explosion(centre.x + 0.01, centre.y + 0.15,
 						centre.z - 0.01, 1.7);
-				explosions[7].explicitDrawing = true;
+				explosions[7].setExplicitDrawing(true);
 			}
 
 			if (countDownToDeath == 22) {
 				explosions[8] = new Explosion(centre.x + 0.15, centre.y + 0.1,
 						centre.z + 0.1, 1.7);
-				explosions[8].explicitDrawing = true;
+				explosions[8].setExplicitDrawing(true);
 			}
 
 			if (countDownToDeath == 22) {
 				explosions[9] = new Explosion(centre.x - 0.15, centre.y - 0.03,
 						centre.z + 0.1, 1.7);
-				explosions[9].explicitDrawing = true;
+				explosions[9].setExplicitDrawing(true);
 			}
 
 			if (countDownToDeath == 25) {
 				explosions[10] = new Explosion(centre.x, centre.y + 0.05,
 						centre.z, 3.5);
-				explosions[10].explicitDrawing = true;
+				explosions[10].setExplicitDrawing(true);
 			}
 
 			for (int i = 0; i < explosions.length; i++) {

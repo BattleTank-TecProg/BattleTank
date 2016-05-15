@@ -176,7 +176,7 @@ public class Rocket extends SolidObject {
 			centre.add(direction);
 			Explosion theExplosion = new Explosion(centre.x, centre.y,
 					centre.z, 1);
-			theExplosion.damage = 10;
+			theExplosion.setDamage(10);
 			Projectiles.register(theExplosion);
 			return;
 		}
@@ -214,7 +214,7 @@ public class Rocket extends SolidObject {
 		if (lifeSpan < 0) {
 			Explosion theExplosion = new Explosion(centre.x, centre.y,
 					centre.z, 1);
-			theExplosion.damage = 10;
+			theExplosion.setDamage(10);
 			Projectiles.register(theExplosion);
 			return;
 		}

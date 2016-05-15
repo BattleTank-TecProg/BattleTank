@@ -218,8 +218,8 @@ public class ObstacleMap {
 						Explosion theExplosion = new Explosion(
 								projectile.getRealCentre().x, -0.9,
 								projectile.getRealCentre().z, 0.5);
-						theExplosion.damage = 0;
-						theExplosion.type = 2;
+						theExplosion.setDamage(0);
+						theExplosion.setType(2);
 						Projectiles.register(theExplosion);
 						obstacleMap2[temp].damage(100);
 
@@ -229,8 +229,8 @@ public class ObstacleMap {
 						Explosion theExplosion = new Explosion(
 								projectile.getRealCentre().x, -0.9,
 								projectile.getRealCentre().z, 0.5);
-						theExplosion.damage = 0;
-						theExplosion.type = 2;
+						theExplosion.setDamage(0);
+						theExplosion.setType(2);
 						Projectiles.register(theExplosion);
 						obstacleMap2[temp].damage(10);
 
@@ -252,8 +252,8 @@ public class ObstacleMap {
 						Explosion theExplosion = new Explosion(
 								projectile.getRealCentre().x, -0.9,
 								projectile.getRealCentre().z, 0.5);
-						theExplosion.damage = 0;
-						theExplosion.type = 2;
+						theExplosion.setDamage(0);
+						theExplosion.setType(2);
 						Projectiles.register(theExplosion);
 						obstacleMap2[temp].damage(100);
 
@@ -264,8 +264,8 @@ public class ObstacleMap {
 						Explosion theExplosion = new Explosion(
 								projectile.getRealCentre().x, -0.9,
 								projectile.getRealCentre().z, 0.5);
-						theExplosion.damage = 0;
-						theExplosion.type = 2;
+						theExplosion.setDamage(0);
+						theExplosion.setType(2);
 						Projectiles.register(theExplosion);
 					}
 				}
