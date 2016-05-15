@@ -1,11 +1,28 @@
+/**
+ *	This class is part of BattleTank 2.
+ *
+ *  BattleTank 2 is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  BattleTank 2 is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with BattleTank 2. If not, see <http://www.gnu.org/licenses/>
+ */
+
 public class Geometry {
 	public static boolean compareModels(model a, model b) {
 
-		if (a.getZDepth() > b.getZDepth())
+		if (a.getZDepth() > b.getZDepth()) {
 			return true;
-		else
+		} else {
 			return false;
-
+		}
 	}
 
 	public final static void sortPolygons(Polygon3D[] polygons, int start) {
@@ -16,23 +33,35 @@ public class Geometry {
 					Polygon3D temp = polygons[j + 1];
 					polygons[j + 1] = polygons[j];
 					polygons[j] = temp;
+				} else {
+					// Does nothing.
 				}
 			}
 		}
 	}
 
 	public final static boolean comparePolygons(Polygon3D a, Polygon3D b) {
-		if (!a.visible)
+		if (!a.visible) {
 			return false;
-		if (!b.visible)
+		} else {
+			// Does nothing.
+		}
+		
+		if (!b.visible) {
 			return true;
+		} else {
+			// Does nothing.
+		}
 
 		if (a.tempVertex[0].z < b.tempVertex[0].z
 				&& a.tempVertex[1].z < b.tempVertex[1].z
 				&& a.tempVertex[2].z < b.tempVertex[2].z
-				&& a.tempVertex[3].z < b.tempVertex[3].z)
+				&& a.tempVertex[3].z < b.tempVertex[3].z) {
 			return true;
-
+		} else {
+			// Does nothing.
+		}
+		
 		Vector tempVector = new Vector(0, 0, 0);
 
 		boolean inside = true;
@@ -44,12 +73,18 @@ public class Geometry {
 			if (tempVector.dot(a.normal) > 0.0001) {
 				inside = false;
 				break;
+			} else {
+				// Does nothing.
 			}
 
 		}
-		if (inside)
+		
+		if (inside) {
 			return true;
-
+		} else {
+			// Does nothing.
+		}
+		
 		inside = true;
 		for (int i = 0; i < a.tempVertex.length; i++) {
 			tempVector.set(a.tempVertex[i]);
@@ -59,12 +94,15 @@ public class Geometry {
 			if (tempVector.dot(b.normal) < -0.0001) {
 				inside = false;
 				break;
+			} else {
+				// Does nothing.
 			}
 		}
 
-		if (inside)
+		if (inside) {
 			return true;
-
+		}
+		
 		return false;
 	}
 }

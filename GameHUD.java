@@ -1,3 +1,20 @@
+/**
+ *	This class is part of BattleTank 2.
+ *
+ *  BattleTank 2 is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  BattleTank 2 is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with BattleTank 2. If not, see <http://www.gnu.org/licenses/>
+ */
+
 import java.util.logging.Logger;
 
 public class GameHUD {
@@ -378,49 +395,49 @@ public class GameHUD {
 
 	public static void drawMenu() {
 		int[] screen = Main.screen;
-		int yPos = 50;
+		int yPosition = 50;
 		int index = 0;
 		int pixel;
-		int r, g, b;
+		int red, green, blue;
 
 		for (int i = 0; i < 4; i++) {
 			for (int j = leftSide[i] + 150; j < rightSide[i] + 290; j++) {
-				index = yPos * 640 + j - 20;
+				index = yPosition * 640 + j - 20;
 				pixel = screen[index];
-				r = (pixel & 0x00ff0000) >> 17;
-				g = (pixel & 0x0000ff00) >> 9;
-				b = (pixel & 0x000000ff) >> 1;
-				pixel = b + (g << 8) + (r << 16);
+				red = (pixel & 0x00ff0000) >> 17;
+				green = (pixel & 0x0000ff00) >> 9;
+				blue = (pixel & 0x000000ff) >> 1;
+				pixel = blue + (green << 8) + (red << 16);
 				screen[index] = pixel;
 			}
-			yPos++;
+			yPosition++;
 		}
 
-		int loweryPos = yPos + 330;
-		for (int i = yPos; i < loweryPos; i++) {
+		int loweryPos = yPosition + 330;
+		for (int i = yPosition; i < loweryPos; i++) {
 			for (int j = 200; j < 490; j++) {
-				index = yPos * 640 + j - 20;
+				index = yPosition * 640 + j - 20;
 				pixel = screen[index];
-				r = (pixel & 0x00ff0000) >> 17;
-				g = (pixel & 0x0000ff00) >> 9;
-				b = (pixel & 0x000000ff) >> 1;
-				pixel = b + (g << 8) + (r << 16);
+				red = (pixel & 0x00ff0000) >> 17;
+				green = (pixel & 0x0000ff00) >> 9;
+				blue = (pixel & 0x000000ff) >> 1;
+				pixel = blue + (green << 8) + (red << 16);
 				screen[index] = pixel;
 			}
-			yPos++;
+			yPosition++;
 		}
 
 		for (int i = 4; i < 8; i++) {
 			for (int j = leftSide[i] + 150; j < rightSide[i] + 290; j++) {
-				index = yPos * 640 + j - 20;
+				index = yPosition * 640 + j - 20;
 				pixel = screen[index];
-				r = (pixel & 0x00ff0000) >> 17;
-				g = (pixel & 0x0000ff00) >> 9;
-				b = (pixel & 0x000000ff) >> 1;
-				pixel = b + (g << 8) + (r << 16);
+				red = (pixel & 0x00ff0000) >> 17;
+				green = (pixel & 0x0000ff00) >> 9;
+				blue = (pixel & 0x000000ff) >> 1;
+				pixel = blue + (green << 8) + (red << 16);
 				screen[index] = pixel;
 			}
-			yPos++;
+			yPosition++;
 		}
 
 		int color = 0x00d0d0d0;
