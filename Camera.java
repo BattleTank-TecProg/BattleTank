@@ -340,6 +340,7 @@ public class Camera {
 				viewDirection.unit();
 				position.set(10, 0.25, 1.5);
 				absolutePosition.set(position);
+				flyThroughTimer = 0;
 			} else if (flyThroughTimer == 3380) {
 				flyThroughTimer = 0;
 

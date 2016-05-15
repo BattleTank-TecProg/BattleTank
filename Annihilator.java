@@ -458,9 +458,9 @@ public class Annihilator extends SolidObject {
 				direction.scale(0.05);
 				direction.add(turretCenter);
 				direction.add(tempVector1);
-				Rocket r = new Rocket(direction.x, direction.y, direction.z,
+				Rocket rocket = new Rocket(direction.x, direction.y, direction.z,
 						turretAngle, true);
-				Projectiles.register(r);
+				Projectiles.register(rocket);
 			} else {
 				// Does nothing.
 			}
@@ -972,9 +972,13 @@ public class Annihilator extends SolidObject {
 		assert(bodyCenter == null);
 		
 		// Calculate distance from player's tank
-		tempVector1.set(centre);
-		tempVector1.subtract(PlayerTank.bodyCenter);
-		distance = tempVector1.getLength();
+		try {
+			tempVector1.set(centre);
+			tempVector1.subtract(PlayerTank.bodyCenter);
+			distance = tempVector1.getLength();
+		} catch (NullPointerException erro) {
+			LOG.severe("Null Point Error" + erro);
+		}
 		// Medium tank become aware of player's tank when the distance is less
 		// than 2
 		if (distance < 2) {
@@ -1023,35 +1027,44 @@ public class Annihilator extends SolidObject {
 			} else {
 				// Does nothing.
 			}
-			tempVector1.set(bodyCenter);
-			tempVector2.set(PlayerTank.bodyCenter);
-			tempVector2.subtract(tempVector1);
-			tempVector2.unit();
-			tempVector2.scale(0.125);
+			
+			try {
+				tempVector1.set(bodyCenter);
+				tempVector2.set(PlayerTank.bodyCenter);
+				tempVector2.subtract(tempVector1);
+				tempVector2.unit();
+				tempVector2.scale(0.125);
+			} catch (NullPointerException erro) {
+				LOG.severe("Null Point Error" + erro);
+			}
 
 			// Find the angle between target and itself
 
 			clearToShoot = true;
 			int obstacleType = -1;
 			double d = 0;
-			for (int i = 0; (d < distance) && (i < 30); i++, tempVector1
-					.add(tempVector2), d += 0.125) {
-				model temp = ObstacleMap.isOccupied2(tempVector1);
-				if (temp == null) {
-					continue;
-				} else {
-					// Does nothing.
+			try {
+				for (int i = 0; (d < distance) && (i < 30); i++, tempVector1
+						.add(tempVector2), d += 0.125) {
+					model temp = ObstacleMap.isOccupied2(tempVector1);
+					if (temp == null) {
+						continue;
+					} else {
+						// Does nothing.
+					}
+					obstacleType = temp.getType();
+					if (obstacleType == 1) {
+						break;
+					} else {
+						clearToShoot = false;
+						break;
+					}
+	
 				}
-				obstacleType = temp.getType();
-				if (obstacleType == 1) {
-					break;
-				} else {
-					clearToShoot = false;
-					break;
-				}
-
+			} catch (NullPointerException erro) {
+				LOG.severe("Null Point Error" + erro);
 			}
-
+			
 			if (clearToShoot) {
 				Camera camera = new Camera();
 				double centreZLessBodyCenterZPlayerTank = camera.divided(
