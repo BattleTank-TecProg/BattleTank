@@ -20,24 +20,6 @@
  * the game is played.
  */
 public class Explosion extends SolidObject {
-
-	private double size = 0;
-
-	private int spriteIndex = 0;
-
-	private int frameIndex = 0;
-
-	private int auraIndex = 0;
-
-	private int damage = 5;
-
-	private int type = 0;
-
-	private int groundZero = 0;
-
-	private boolean explicitDrawing;
-
-	private Polygon3D explosionAura;
 	
 	public double getSize() {
 		return size;
@@ -253,4 +235,22 @@ public class Explosion extends SolidObject {
 		assert (boundary2D != null);
 		return boundary2D;
 	}
+
+	private double size = 0;
+
+	private int spriteIndex = 0;
+
+	private int frameIndex = 0;
+
+	private int auraIndex = 0;
+
+	private int damage = 5;
+
+	private int type = 0;
+
+	private int groundZero = 0;
+
+	private boolean explicitDrawing;
+
+	private Polygon3D explosionAura;
 }
