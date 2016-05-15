@@ -17,8 +17,6 @@
 
 import java.util.logging.Logger;
 
-import Operacoes.Division;
-
 /**
  * Class to create objects Anniquilator type, which are contained values ​​and
  * methods for this purpose
@@ -39,7 +37,7 @@ public class Annihilator extends SolidObject {
 
 		assert (x == 12.625 && y == -0.975 && (z == 19.375 || z == 21.375) && angle == 90);
 		assert (bodyCenter == null);
-		
+
 		final double LENGHTRECTANGLE = 0.23;
 
 		final double HEIGHTRECTANGLE = 0.23;
@@ -97,11 +95,11 @@ public class Annihilator extends SolidObject {
 	 * according to the actions in the game.
 	 */
 	public void update() {
-		assert(displacement != null);
-		assert(turret != null);
-		assert(centre != null);
-		assert(boundary2D != null);
-		
+		assert (displacement != null);
+		assert (turret != null);
+		assert (centre != null);
+		assert (boundary2D != null);
+
 		if ((Main.timer + randomNumber1 * 3) % 1000 == 0) {
 			if (randomNumber2 > 50) {
 				randomNumber2 = 50;
@@ -209,9 +207,9 @@ public class Annihilator extends SolidObject {
 
 		tempCentre.set(centre);
 		tempCentre.y = -1;
-		tempCentre.subtract(Camera.position);
-		tempCentre.rotate_XZ(Camera.XZ_angle);
-		tempCentre.rotate_YZ(Camera.YZ_angle);
+		tempCentre.subtract(Camera.getPosition());
+		tempCentre.rotate_XZ(Camera.getXZ_angle());
+		tempCentre.rotate_YZ(Camera.getYZ_angle());
 		tempCentre.updateLocation();
 
 		// Test whether the model is visible by comparing the 2D position of its
@@ -460,8 +458,8 @@ public class Annihilator extends SolidObject {
 				direction.scale(0.05);
 				direction.add(turretCenter);
 				direction.add(tempVector1);
-				Rocket rocket = new Rocket(direction.x, direction.y, direction.z,
-						turretAngle, true);
+				Rocket rocket = new Rocket(direction.x, direction.y,
+						direction.z, turretAngle, true);
 				Projectiles.register(rocket);
 			} else {
 				// Does nothing.
@@ -557,9 +555,9 @@ public class Annihilator extends SolidObject {
 	 * This method is responsible for specifying the loss of life of
 	 * annihilator.
 	 * 
-	 * @param damagePoint 
+	 * @param damagePoint
 	 */
-	
+
 	public void damage(int damagePoint) {
 
 		if (damagePoint == -1) {
@@ -818,9 +816,9 @@ public class Annihilator extends SolidObject {
 
 	/** This method is responsible to create polygons for the tank turret. */
 	private void makeTurret() {
-		assert(turretCenter != null);
-		//assert(turret != null);
-		
+		assert (turretCenter != null);
+		// assert(turret != null);
+
 		start = turretCenter.myClone();
 		Vector v[];
 
@@ -969,10 +967,10 @@ public class Annihilator extends SolidObject {
 	}
 
 	private void processAI() {
-		assert(tempVector1 == null);
-		assert(tempVector2 == null);
-		assert(bodyCenter == null);
-		
+		assert (tempVector1 == null);
+		assert (tempVector2 == null);
+		assert (bodyCenter == null);
+
 		// Calculate distance from player's tank
 		try {
 			tempVector1.set(centre);
@@ -1020,7 +1018,7 @@ public class Annihilator extends SolidObject {
 			 */
 			if ((Main.timer) % 5 == 0) {
 				ObstacleMap.alertNearbyTanks(position);
-				
+
 				/*
 				 * Test whether there is a type obstacle 2 between medium tank
 				 * and player tank Firing a vision ray from medium tank toward
@@ -1029,7 +1027,7 @@ public class Annihilator extends SolidObject {
 			} else {
 				// Does nothing.
 			}
-			
+
 			try {
 				tempVector1.set(bodyCenter);
 				tempVector2.set(PlayerTank.bodyCenter);
@@ -1061,18 +1059,19 @@ public class Annihilator extends SolidObject {
 						clearToShoot = false;
 						break;
 					}
-	
+
 				}
 			} catch (NullPointerException erro) {
 				LOG.severe("Null Point Error" + erro);
 			}
-			
+
 			if (clearToShoot) {
-				Division camera = new Division();
+				Camera camera = new Camera();
 				double centreZLessBodyCenterZPlayerTank = camera.divided(
 						180 * Math.atan(centre.z - PlayerTank.bodyCenter.z),
 						centre.x - PlayerTank.bodyCenter.x);
-				targetAngle = 90 + (int) camera.divided(centreZLessBodyCenterZPlayerTank, Math.PI);
+				targetAngle = 90 + (int) camera.divided(
+						centreZLessBodyCenterZPlayerTank, Math.PI);
 				if (PlayerTank.bodyCenter.x > turretCenter.x
 						&& targetAngle <= 180) {
 					targetAngle += 180;
@@ -1143,11 +1142,12 @@ public class Annihilator extends SolidObject {
 			}
 
 			if (forward) {
-				Division camera = new Division();
+				Camera camera = new Camera();
 				double centreZLessBodyCenterZPlayerTank = camera.divided(
 						180 * Math.atan(centre.z - PlayerTank.bodyCenter.z),
 						centre.x - PlayerTank.bodyCenter.x);
-				targetAngle = 90 + (int) camera.divided(centreZLessBodyCenterZPlayerTank, Math.PI);
+				targetAngle = 90 + (int) camera.divided(
+						centreZLessBodyCenterZPlayerTank, Math.PI);
 				if (PlayerTank.bodyCenter.x > centre.x
 						&& targetAngleBody <= 180) {
 					targetAngleBody += 180;

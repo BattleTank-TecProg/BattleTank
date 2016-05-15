@@ -187,9 +187,9 @@ public class Rocket extends SolidObject {
 
 		tempCentre.set(centre);
 		tempCentre.y = -1;
-		tempCentre.subtract(Camera.position);
-		tempCentre.rotate_XZ(Camera.XZ_angle);
-		tempCentre.rotate_YZ(Camera.YZ_angle);
+		tempCentre.subtract(Camera.getPosition());
+		tempCentre.rotate_XZ(Camera.getXZ_angle());
+		tempCentre.rotate_YZ(Camera.getYZ_angle());
 
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 4; j++)

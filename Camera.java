@@ -18,47 +18,47 @@
 import java.awt.*;
 import java.util.logging.*;
 
-import Operacoes.Division;
-
 /** This class is responsible for the camera for the game. */
 
 public class Camera {
-	
+
+	public static final double LARGER_SIZE_FOR_A_DOUBLE_VARIABLE = 321321.3123435;
+	public static final double MINIMUM_MOST_FOR_A_DOUBLE_VARIABLE = -3123.434354;
 	/** X coordinate of the rectangle. */
-	public static final int XCOORDINADE = 0;
+	private static final int XCOORDINADE = 0;
 
 	/** Y coordinate of the rectangle. */
-	static final int YCOORDINADE = 0;
+	private static final int YCOORDINADE = 0;
 
 	/** Width of rectangle. */
-	final static int WIDTH = 640;
+	private final static int WIDTH = 640;
 
 	/** Weight of rectangle. */
-	final static int HEIGHT = 480;
+	private final static int HEIGHT = 480;
 
 	/** This vector represents the position of the camera (third person view). */
-	public static Vector position = new Vector(10, 0.25, 1.5);
+	private static Vector position = new Vector(10, 0.25, 1.5);
 
 	/** This vector represents the absolute position of the camera */
-	public static Vector absolutePosition = new Vector(10, 0.25, 1.5);
+	private static Vector absolutePosition = new Vector(10, 0.25, 1.5);
 
 	/** The vector represents the displacement for creating third person effect. */
-	public Vector thirdPersonDisplacement = new Vector(0, 0, 0);
+	private Vector thirdPersonDisplacement = new Vector(0, 0, 0);
 
 	/** The vector represents the direction of the view. */
-	public static Vector viewDirection = new Vector(0, 0, 1);
+	private static Vector viewDirection = new Vector(0, 0, 1);
 
 	/**
 	 * The angle that camera has rotated from the default view direction, this
 	 * angle is 315 degrees.
 	 */
-	public static int XZ_angle = 0;
+	private static int XZ_angle = 0;
 
 	/**
 	 * The angle that camera has rotated from the default view direction, this
 	 * angle is 315 degrees.
 	 */
-	public static int YZ_angle = 319;
+	private static int YZ_angle = 319;
 
 	/**
 	 * This object is a large rectangle that represents the area of the game on
@@ -71,7 +71,103 @@ public class Camera {
 	 * Variable that indicates whether the camera is positioned at the starting
 	 * position.
 	 */
-	public static boolean restart;
+	private static boolean restart;
+
+	public static Vector getPosition() {
+		return position;
+	}
+
+	public static void setPosition(Vector position) {
+		Camera.position = position;
+	}
+
+	public static Vector getAbsolutePosition() {
+		return absolutePosition;
+	}
+
+	public static void setAbsolutePosition(Vector absolutePosition) {
+		Camera.absolutePosition = absolutePosition;
+	}
+
+	public Vector getThirdPersonDisplacement() {
+		return thirdPersonDisplacement;
+	}
+
+	public void setThirdPersonDisplacement(Vector thirdPersonDisplacement) {
+		this.thirdPersonDisplacement = thirdPersonDisplacement;
+	}
+
+	public static Vector getViewDirection() {
+		return viewDirection;
+	}
+
+	public static void setViewDirection(Vector viewDirection) {
+		Camera.viewDirection = viewDirection;
+	}
+
+	public static int getXZ_angle() {
+		return XZ_angle;
+	}
+
+	public static void setXZ_angle(int xZ_angle) {
+		XZ_angle = xZ_angle;
+	}
+
+	public static int getYZ_angle() {
+		return YZ_angle;
+	}
+
+	public static void setYZ_angle(int yZ_angle) {
+		YZ_angle = yZ_angle;
+	}
+
+	public static boolean isRestart() {
+		return restart;
+	}
+
+	public static void setRestart(boolean restart) {
+		Camera.restart = restart;
+	}
+
+	public int getFlyThroughTimer() {
+		return flyThroughTimer;
+	}
+
+	public void setFlyThroughTimer(int flyThroughTimer) {
+		this.flyThroughTimer = flyThroughTimer;
+	}
+
+	public static double getLargerSizeForADoubleVariable() {
+		return LARGER_SIZE_FOR_A_DOUBLE_VARIABLE;
+	}
+
+	public static double getMinimumMostForADoubleVariable() {
+		return MINIMUM_MOST_FOR_A_DOUBLE_VARIABLE;
+	}
+
+	public static int getXcoordinade() {
+		return XCOORDINADE;
+	}
+
+	public static int getYcoordinade() {
+		return YCOORDINADE;
+	}
+
+	public static int getWidth() {
+		return WIDTH;
+	}
+
+	public static int getHeight() {
+		return HEIGHT;
+	}
+
+	public static Rectangle getScreen() {
+		return screen;
+	}
+
+	public static Logger getLog() {
+		return LOG;
+	}
 
 	/** This variable holds the flight time of the camera. */
 	public int flyThroughTimer;
@@ -81,19 +177,39 @@ public class Camera {
 		thirdPersonDisplacement.set(viewDirection.x, 0, -viewDirection.z);
 	}
 
-		
+	private String erroDividedByZero() {
+		return "No is possible divided by zero";
+	}
+
+	public double divided(double divider, double dividend) {
+		// -1 is value for initializable variable
+		double quotient = -1;
+		try {
+			quotient = divider / dividend;
+		} catch (ArithmeticException ImpossibleDividedByZero) {
+			LOG.severe(erroDividedByZero());
+			divided(divider, dividend);
+		}
+		return quotient;
+	}
+
+	public int centreZLessBodyCenterZPlayerTank(int dividerInt, int dividendInt) {
+		double dividerDouble = (double) dividerInt;
+		double dividendDouble = (double) dividendInt;
+		int quotientInt = (int) divided(dividerDouble, dividendDouble);
+		return quotientInt;
+	}
+
 	private double updateDirectionX() {
 		double tankPositionMinusTheCameraPositionInX = PlayerTank.bodyCenter.x
 				- position.x;
-		Division division = new Division();
-		return division.divided(tankPositionMinusTheCameraPositionInX, 5);
+		return divided(tankPositionMinusTheCameraPositionInX, 5);
 	}
 
 	private double updateDirectionZ() {
 		double tankPositionMinusTheCameraPositionInZ = PlayerTank.bodyCenter.z
 				- position.z;
-		Division division = new Division();
-		return division.divided(tankPositionMinusTheCameraPositionInZ, 5);
+		return divided(tankPositionMinusTheCameraPositionInZ, 5);
 	}
 
 	/**
@@ -105,7 +221,7 @@ public class Camera {
 
 		if (Main.gameOver) {
 			return;
-		// Move the camera to the player's position
+			// Move the camera to the player's position
 
 		} else if (!Main.gameNotStart) {
 
@@ -153,7 +269,7 @@ public class Camera {
 
 		} else {
 			flyThroughTimer++;
-			
+
 			// Fly through this entire level when the game isn't started
 
 			if (flyThroughTimer <= 60) {
@@ -251,7 +367,7 @@ public class Camera {
 			} else if (flyThroughTimer <= 2100) {
 				position.add(0.007, 0, -0.01);
 				absolutePosition.set(position);
-			}else if (flyThroughTimer <= 2130) {
+			} else if (flyThroughTimer <= 2130) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -261,10 +377,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(0.007, 0, -0.01);
 				absolutePosition.set(position);
-			}else if (flyThroughTimer <= 2330) {
+			} else if (flyThroughTimer <= 2330) {
 				position.add(0.003, 0, -0.01);
 				absolutePosition.set(position);
-			}else if (flyThroughTimer <= 2360) {
+			} else if (flyThroughTimer <= 2360) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -274,10 +390,10 @@ public class Camera {
 				viewDirection.unit();
 				position.add(0.003, 0, -0.01);
 				absolutePosition.set(position);
-			}else if (flyThroughTimer <= 2560) {
+			} else if (flyThroughTimer <= 2560) {
 				position.add(0, 0, -0.01);
 				absolutePosition.set(position);
-			}else if (flyThroughTimer <= 2590) {
+			} else if (flyThroughTimer <= 2590) {
 				XZ_angle += 1;
 				XZ_angle = (XZ_angle + 360) % 360;
 
@@ -314,7 +430,7 @@ public class Camera {
 				position.set(10, 0.25, 1.5);
 				absolutePosition.set(position);
 				flyThroughTimer = 0;
-			} 
+			}
 
 		}
 

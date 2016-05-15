@@ -18,13 +18,13 @@
 public class GunTurret extends SolidObject {
 
 	public GunTurret(double x, double y, double z, int angle) {
-		
-		assert(x >= 7.875 && x <= 16.375);
-		
-		assert(y == -1 && z >= 17.25 &&  z<= 30.875);
-	
-		assert(angle >= 0 && angle <= 270);
-		
+
+		assert (x >= 7.875 && x <= 16.375);
+
+		assert (y == -1 && z >= 17.25 && z <= 30.875);
+
+		assert (angle >= 0 && angle <= 270);
+
 		final double XPOS = x - 0.13;
 
 		final double YPOS = z + 0.13;
@@ -77,7 +77,7 @@ public class GunTurret extends SolidObject {
 			if (Math.abs(turretAngle - targetAngle) <= 3) {
 				turretAngleDelta = targetAngle - turretAngle;
 				turretAngle += turretAngleDelta;
-				
+
 				if (turretAngleDelta < 0) {
 					turretAngleDelta += 360;
 				} else {
@@ -87,13 +87,13 @@ public class GunTurret extends SolidObject {
 				turretAngleDelta = 3;
 				turretAngle += 3;
 			}
-			
+
 			if (turretAngle >= 360) {
 				turretAngle -= 360;
 			} else {
 				// Does nothing.
 			}
-			
+
 		} else if (aimRight) {
 			if (Math.abs(turretAngle - targetAngle) <= 3) {
 				turretAngleDelta = targetAngle - turretAngle;
@@ -103,7 +103,7 @@ public class GunTurret extends SolidObject {
 				} else {
 					// Does nothing.
 				}
-				
+
 			} else {
 				turretAngleDelta = 357;
 				turretAngle -= 3;
@@ -116,9 +116,9 @@ public class GunTurret extends SolidObject {
 
 		tempCentre.set(centre);
 		tempCentre.y = -1;
-		tempCentre.subtract(Camera.position);
-		tempCentre.rotate_XZ(Camera.XZ_angle);
-		tempCentre.rotate_YZ(Camera.YZ_angle);
+		tempCentre.subtract(Camera.getPosition());
+		tempCentre.rotate_XZ(Camera.getXZ_angle());
+		tempCentre.rotate_YZ(Camera.getYZ_angle());
 		tempCentre.updateLocation();
 
 		visible = true;
@@ -231,7 +231,9 @@ public class GunTurret extends SolidObject {
 				Vector direction = new Vector(0, 0, 1);
 				direction.rotate_XZ(turretAngle);
 				direction.scale(0.06);
-				Projectiles.register(new Shell(centre.x + direction.x, centre.y,centre.z + direction.z, turretAngle, true, 1));
+				Projectiles
+						.register(new Shell(centre.x + direction.x, centre.y,
+								centre.z + direction.z, turretAngle, true, 1));
 			} else {
 				// Does nothing.
 			}
@@ -262,7 +264,7 @@ public class GunTurret extends SolidObject {
 			} else {
 				// Does nothing.
 			}
-				
+
 			destoried = true;
 		}
 
@@ -301,7 +303,7 @@ public class GunTurret extends SolidObject {
 	public void damage(int damagePoint) {
 		HP -= damagePoint;
 	}
-	
+
 	private Polygon3D body[];
 
 	private Polygon3D turret[];
@@ -333,7 +335,7 @@ public class GunTurret extends SolidObject {
 	private boolean isVisiblePreviousFrame;
 
 	private Vector tempVector1 = new Vector(0, 0, 0);
-	
+
 	private Vector tempVector2 = new Vector(0, 0, 0);
 
 	private boolean engaged;
@@ -343,7 +345,7 @@ public class GunTurret extends SolidObject {
 	private boolean clearToShoot;
 
 	private boolean destoried;
-	
+
 	private void processAI() {
 
 		tempVector1.set(centre);
@@ -355,14 +357,14 @@ public class GunTurret extends SolidObject {
 		} else {
 			engaged = false;
 		}
-		
+
 		if (engaged) {
 			if ((Main.timer) % 5 == 0) {
 				ObstacleMap.alertNearbyTanks(position);
 			} else {
 				// Does nothing.
 			}
-			
+
 			tempVector1.set(bodyCenter);
 			tempVector2.set(PlayerTank.bodyCenter);
 			tempVector2.subtract(tempVector1);
@@ -380,7 +382,7 @@ public class GunTurret extends SolidObject {
 				} else {
 					// Does nothing
 				}
-				
+
 				obstacleType = temp.getType();
 				if (obstacleType == 1) {
 					break;
@@ -407,7 +409,7 @@ public class GunTurret extends SolidObject {
 			}
 
 			int AngleDelta = turretAngle - targetAngle;
-			
+
 			if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 2.25) {
 				firing = true;
 			}
@@ -430,7 +432,7 @@ public class GunTurret extends SolidObject {
 
 		}
 	}
-	
+
 	private void makeTurret() {
 		iDirection = new Vector(0.7, 0, 0);
 		jDirection = new Vector(0, 0.7, 0);
@@ -488,12 +490,12 @@ public class GunTurret extends SolidObject {
 		}
 
 		v = new Vector[16];
-		
+
 		for (int i = 1; i < 17; i++) {
 			v[16 - i] = put(r1 * Math.cos(i * theta), r1 * Math.sin(i * theta),
 					-0.22);
 		}
-		
+
 		turret[21] = new Polygon3D(v, v[0], v[1], v[3], Main.textures[23], 1,
 				1, 6);
 

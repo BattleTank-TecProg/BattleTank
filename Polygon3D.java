@@ -128,14 +128,17 @@ public class Polygon3D {
 	}
 
 	public void update() {
-		tempVector1.set(Camera.position);
+		tempVector1.set(Camera.getPosition());
 		tempVector1.subtract(vertex3D[0]);
 		if (tempVector1.dot(realNormal) <= 0) {
 			visible = false;
 			return;
 		}
 
-		double x = 0, y = 0, z = 0, camX = Camera.position.x, camY = Camera.position.y, camZ = Camera.position.z, sinXZ = GameData.sin[Camera.XZ_angle], cosXZ = GameData.cos[Camera.XZ_angle], sinYZ = GameData.sin[Camera.YZ_angle], cosYZ = GameData.cos[Camera.YZ_angle];
+		double x = 0, y = 0, z = 0, camX = Camera.getPosition().x, camY = Camera
+				.getPosition().y, camZ = Camera.getPosition().z, sinXZ = GameData.sin[Camera
+				.getXZ_angle()], cosXZ = GameData.cos[Camera.getXZ_angle()], sinYZ = GameData.sin[Camera
+				.getYZ_angle()], cosYZ = GameData.cos[Camera.getYZ_angle()];
 
 		for (int i = 0; i < L; i++) {
 			x = vertex3D[i].x - camX;

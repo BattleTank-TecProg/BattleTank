@@ -137,26 +137,26 @@ public class Explosion extends SolidObject {
 		if (!explicitDrawing) {
 			ModelDrawList.register(this);
 		} else {
-			//Does nothing
+			// Does nothing
 		}
 		tempCentre.set(centre);
-		tempCentre.subtract(Camera.position);
-		tempCentre.rotate_XZ(Camera.XZ_angle);
-		tempCentre.rotate_YZ(Camera.YZ_angle);
+		tempCentre.subtract(Camera.getPosition());
+		tempCentre.rotate_XZ(Camera.getXZ_angle());
+		tempCentre.rotate_YZ(Camera.getYZ_angle());
 
 		if (lifeSpan == 15 && damage != 0) {
 			ObstacleMap.damageType2Obstacles(damage, boundary2D, groundZero);
 		} else {
-			//Does nothing
+			// Does nothing
 		}
 
 		lifeSpan--;
 
 		if (lifeSpan == 0) {
 			lifeSpan = -1;
-		
+
 		} else {
-			//Does nothing
+			// Does nothing
 		}
 	}
 

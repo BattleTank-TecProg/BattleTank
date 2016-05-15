@@ -15,9 +15,9 @@ public class PlayerTank extends SolidObject {
 	private int nukeCannonAngle;
 
 	private int angularSpeed;
-	
+
 	private Vector tempVector1 = new Vector(0, 0, 0);
-	
+
 	private Vector tempVector2 = new Vector(0, 0, 0);
 
 	private Polygon3D nukeCannonRear[];
@@ -25,9 +25,9 @@ public class PlayerTank extends SolidObject {
 	private Polygon3D nukeCannonFront[];
 
 	private int turretAngleDelta;
-	
+
 	private int bodyAngleDelta;
-	
+
 	public static boolean forward;
 	public static boolean backward;
 	public static boolean turnRight;
@@ -35,7 +35,7 @@ public class PlayerTank extends SolidObject {
 	public static boolean moveRight;
 	public static boolean moveLeft;
 	public static boolean firing;
-	
+
 	public int currentWeapon = 1;
 
 	public int coolDowns[] = new int[] { 0, 16, 30, 40, 5 };
@@ -43,13 +43,13 @@ public class PlayerTank extends SolidObject {
 	public int currentCoolDown = 0;
 
 	public static int shells = 50;
-	
+
 	public static int rockets = 0;
 
 	public static int slugs = 0;
-	
+
 	public static int plasma = 0;
-	
+
 	public static int currentAmmo;
 
 	public boolean outOfAmmo;
@@ -59,7 +59,7 @@ public class PlayerTank extends SolidObject {
 	public static double speed = 0;
 
 	public int position;
-	
+
 	public static Vector turretCenter;
 
 	public static int turretAngle = 0;
@@ -821,9 +821,9 @@ public class PlayerTank extends SolidObject {
 
 		tempCentre.set(centre);
 		tempCentre.y = -1;
-		tempCentre.subtract(Camera.position);
-		tempCentre.rotate_XZ(Camera.XZ_angle);
-		tempCentre.rotate_YZ(Camera.YZ_angle);
+		tempCentre.subtract(Camera.getPosition());
+		tempCentre.rotate_XZ(Camera.getXZ_angle());
+		tempCentre.rotate_YZ(Camera.getYZ_angle());
 
 		for (int i = 0; i < body.length; i++) {
 			body[i].origin.add(displacement);

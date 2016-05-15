@@ -20,9 +20,9 @@ import java.util.logging.Logger;
 public class GameHUD {
 
 	public static int[] leftSide;
-	
+
 	public static int[] rightSide;
-	
+
 	public static int[] Health, Ammo, BattleTank2, NewGame, Controls,
 			AboutAuthor, controlDescription1, controlDescription2,
 			controlDescription3, controlDescription4, controlDescription5,
@@ -30,40 +30,40 @@ public class GameHUD {
 			controlDescription9, author1, author2, author3, author4, author5,
 			author6, author7, author8, author9, author10, game, over, You, Won,
 			cheat1, cheat2, cheat3;
-	
+
 	public static int menuOptionStatus = 0;
-	
+
 	public static int gameoverMessagePosition = 0;
-	
+
 	public static int winMessagePosition = 0;
-	
+
 	public static int loadingScreenPosition = 0;
-	
+
 	public static boolean escapePressed;
-	
+
 	public static boolean downPressed;
-	
+
 	public static boolean upPressed;
-	
+
 	public static boolean enterPressed;
-	
+
 	public static int[] randomDisplacement = new int[640];
-	
+
 	public static boolean mousePressed;
-	
+
 	public static int mouseXpos;
-	
+
 	public static int mouseYpos;
-	
-	//X coordinate of the PlayerTank.
+
+	// X coordinate of the PlayerTank.
 	static final double XCOORDINADE = 10;
-		
-	//Y coordinate of the Player Tank.
+
+	// Y coordinate of the Player Tank.
 	static final double YCOORDINADE = -0.975;
-		
-	//Z coordinate of the Player Tank.
+
+	// Z coordinate of the Player Tank.
 	static final double ZCOORDINADE = 2.5;
-	
+
 	public static void init() {
 		menuOptionStatus = 1;
 		gameoverMessagePosition = 0;
@@ -160,7 +160,7 @@ public class GameHUD {
 		} else {
 			// Does nothing.
 		}
-		
+
 		if (Main.gamePaused == true
 				|| (Main.gameNotStart && menuOptionStatus != 0)) {
 			drawMenu();
@@ -182,7 +182,7 @@ public class GameHUD {
 					} else {
 						// Does nothing.
 					}
-					
+
 					Main.screen[currentPosition] = Main.stencilBuffer2[j * 640
 							+ i];
 				}
@@ -253,15 +253,15 @@ public class GameHUD {
 				loadingScreenPosition = 0;
 				ObstacleMap.clear();
 
-				Camera.viewDirection = new Vector(0, 0, 1);
-				Camera.XZ_angle = 0;
-				Camera.restart = true;
+				Camera.setViewDirection(new Vector(0, 0, 1));
+				Camera.setXZ_angle(0);
+				Camera.setRestart(true);
 
 				PowerUps.init();
 				Projectiles.init();
 				Enemies.init();
 				ObstacleMap.removeObstacle2(Main.PT.position);
-				Main.PT = new PlayerTank(XCOORDINADE,YCOORDINADE,ZCOORDINADE);
+				Main.PT = new PlayerTank(XCOORDINADE, YCOORDINADE, ZCOORDINADE);
 				Main.gameNotStart = false;
 				Main.gamePaused = false;
 				Main.gameOver = false;
@@ -302,15 +302,15 @@ public class GameHUD {
 				loadingScreenPosition = 0;
 				ObstacleMap.clear();
 
-				Camera.viewDirection = new Vector(0, 0, 1);
-				Camera.XZ_angle = 0;
-				Camera.restart = true;
+				Camera.setViewDirection(new Vector(0, 0, 1));
+				Camera.setXZ_angle(0);
+				Camera.setRestart(true);
 
 				PowerUps.init();
 				Projectiles.init();
 				Enemies.init();
 				ObstacleMap.removeObstacle2(Main.PT.position);
-				Main.PT = new PlayerTank(XCOORDINADE,YCOORDINADE,ZCOORDINADE);
+				Main.PT = new PlayerTank(XCOORDINADE, YCOORDINADE, ZCOORDINADE);
 				Main.gameNotStart = false;
 				Main.gamePaused = false;
 				Main.gameOver = false;
@@ -325,14 +325,14 @@ public class GameHUD {
 			} else {
 				// Does nothing.
 			}
-			
+
 			if (mouseXpos > 234 && mouseXpos < 412 && mouseYpos > 197
 					&& mouseYpos < 222) {
 				menuOptionStatus = 3;
 			} else {
 				// Does nothing.
 			}
-			
+
 			if (menuOptionStatus == 2) {
 				menuOptionStatus = 4;
 				LOG.info("You selected controls menu with mouse");
@@ -449,19 +449,22 @@ public class GameHUD {
 				color = 0x0055ffaa;
 			} else {
 				color = 0x00d0d0d0;
-			} TextFactory.draw(NewGame, 265, 120, 1, color);
+			}
+			TextFactory.draw(NewGame, 265, 120, 1, color);
 
 			if (menuOptionStatus == 2) {
 				color = 0x0055ffaa;
 			} else {
 				color = 0x00d0d0d0;
-			} TextFactory.draw(Controls, 265, 160, 1, color);
+			}
+			TextFactory.draw(Controls, 265, 160, 1, color);
 
 			if (menuOptionStatus == 3) {
 				color = 0x0055ffaa;
 			} else {
 				color = 0x00d0d0d0;
-			} TextFactory.draw(AboutAuthor, 235, 200, 1, color);
+			}
+			TextFactory.draw(AboutAuthor, 235, 200, 1, color);
 		} else {
 			// Does nothing.
 		}
@@ -597,9 +600,8 @@ public class GameHUD {
 		TextFactory.draw(Ammo, 482, 427, 1, 0x00d0d0d0);
 
 	}
-	
+
 	/** Starts a Logger to GameHUD class */
-	private static final Logger LOG = Logger.getLogger(GameHUD.class
-			.getName());
+	private static final Logger LOG = Logger.getLogger(GameHUD.class.getName());
 
 }

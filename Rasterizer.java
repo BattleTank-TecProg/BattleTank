@@ -105,19 +105,19 @@ public class Rasterizer {
 
 	public static void findVectorOUV() {
 		O.set(poly.origin);
-		O.subtract(Camera.position);
-		O.rotate_XZ(Camera.XZ_angle);
-		O.rotate_YZ(Camera.YZ_angle);
+		O.subtract(Camera.getPosition());
+		O.rotate_XZ(Camera.getXZ_angle());
+		O.rotate_YZ(Camera.getYZ_angle());
 
 		U.set(poly.rightEnd);
-		U.subtract(Camera.position);
-		U.rotate_XZ(Camera.XZ_angle);
-		U.rotate_YZ(Camera.YZ_angle);
+		U.subtract(Camera.getPosition());
+		U.rotate_XZ(Camera.getXZ_angle());
+		U.rotate_YZ(Camera.getYZ_angle());
 
 		V.set(poly.bottomEnd);
-		V.subtract(Camera.position);
-		V.rotate_XZ(Camera.XZ_angle);
-		V.rotate_YZ(Camera.YZ_angle);
+		V.subtract(Camera.getPosition());
+		V.rotate_XZ(Camera.getXZ_angle());
+		V.rotate_YZ(Camera.getYZ_angle());
 
 		U.subtract(O);
 		U.unit();

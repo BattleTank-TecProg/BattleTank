@@ -269,7 +269,7 @@ public class PalmTree extends SolidObject {
 
 		tempCentre.set(centre);
 		tempCentre.y = 0.25;
-		tempCentre.subtract(Camera.absolutePosition);
+		tempCentre.subtract(Camera.getAbsolutePosition());
 		if (tempCentre.getLength() > 5.5) {
 			polygons = null;
 			visible = false;
@@ -278,9 +278,9 @@ public class PalmTree extends SolidObject {
 
 		tempCentre.set(centre);
 		tempCentre.y = -1;
-		tempCentre.subtract(Camera.position);
-		tempCentre.rotate_XZ(Camera.XZ_angle);
-		tempCentre.rotate_YZ(Camera.YZ_angle);
+		tempCentre.subtract(Camera.getPosition());
+		tempCentre.rotate_XZ(Camera.getXZ_angle());
+		tempCentre.rotate_YZ(Camera.getYZ_angle());
 		tempCentre.updateLocation();
 
 		if (tempCentre.z < 0.9 || tempCentre.screenY < -10

@@ -18,9 +18,9 @@ public class Helix extends SolidObject {
 	static final double HEIGHT = 0.25;
 
 	static final double WIDTH = 0.1;
-	
+
 	public Helix(Vector centre, int angle) {
-		
+
 		start = centre.myClone();
 		this.centre = centre;
 		angle += 360;
@@ -90,9 +90,9 @@ public class Helix extends SolidObject {
 
 		tempCentre.set(centre);
 		tempCentre.y = -1;
-		tempCentre.subtract(Camera.position);
-		tempCentre.rotate_XZ(Camera.XZ_angle);
-		tempCentre.rotate_YZ(Camera.YZ_angle);
+		tempCentre.subtract(Camera.getPosition());
+		tempCentre.rotate_XZ(Camera.getXZ_angle());
+		tempCentre.rotate_YZ(Camera.getYZ_angle());
 
 	}
 
@@ -125,9 +125,9 @@ public class Helix extends SolidObject {
 
 		for (int i = 19; i >= 0; i--) {
 			temp1.set(particles[i]);
-			temp1.subtract(Camera.position);
-			temp1.rotate_XZ(Camera.XZ_angle);
-			temp1.rotate_YZ(Camera.YZ_angle);
+			temp1.subtract(Camera.getPosition());
+			temp1.rotate_XZ(Camera.getXZ_angle());
+			temp1.rotate_YZ(Camera.getYZ_angle());
 			temp1.updateLocation();
 
 			if (temp1.screenX >= 2 && temp1.screenX < 638 && temp1.screenY >= 0
