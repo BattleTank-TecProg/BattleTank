@@ -18,8 +18,6 @@
 import java.awt.*;
 import java.util.logging.*;
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
-
 /** This class is responsible for the camera for the game. */
 
 public class Camera {
@@ -89,14 +87,9 @@ public class Camera {
 
 	public double divided(double divider,
 			double dividend) {
-		assert(divider == 0);
-		assert(dividend == 0);
-		assert(divider < LARGER_SIZE_FOR_A_DOUBLE_VARIABLE);
-		assert(divider > MINIMUM_MOST_FOR_A_DOUBLE_VARIABLE);
 		// -1 is value for initializable variable
 		double quotient= -1;
 		try {
-			LOG.warning("Fazendo divisão");
 			quotient = divider / dividend;
 		} catch (ArithmeticException ImpossibleDividedByZero) {
 			LOG.severe(erroDividedByZero());
