@@ -131,9 +131,9 @@ public class Explosion extends SolidObject {
 
 		final double WIDTH = 0.001;
 
-		final double XPOS = x - 0.1;
+		final double XPOSITION = x - 0.1;
 
-		final double YPOS = z + 0.1;
+		final double YPOSITION = z + 0.1;
 
 		final double LENGHTRECTANGLE = 0.2;
 
@@ -175,7 +175,7 @@ public class Explosion extends SolidObject {
 		modelType = 4;
 		makeBoundary(LENGHT, HEIGHT, WIDTH);
 
-		boundary2D = new Rectangle2D(XPOS, YPOS, LENGHTRECTANGLE,
+		boundary2D = new Rectangle2D(XPOSITION, YPOSITION, LENGHTRECTANGLE,
 				HEIGHTRECTANGLE);
 
 		lifeSpan = 16;

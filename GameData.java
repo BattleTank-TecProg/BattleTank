@@ -1,3 +1,22 @@
+/**
+ * This class is responsible for store useful arithmetic data for the game engine such as Cos/Sin, look up table, color palette, etc…
+ * 
+ * This class is part of BattleTank 2.
+ * 
+ * BattleTank 2 is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ * 
+ * BattleTank 2 is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * BattleTank 2. If not, see <http://www.gnu.org/licenses/>
+ */
+
 public class GameData {
 	public static int random[];
 	public static int randomIndex;
@@ -13,16 +32,21 @@ public class GameData {
 	private static int VALUE_DISTORTION = VALUE_SIMPLE_DISTORTION * VALUE_SIMPLE_DISTORTION;
 	private static int SIZE_VALUES_RANDOM_VECTOR = 1000;
 
+	/**Initialize the datas on the game.*/
 	public static void makeData() {
 
 		screenTable = new int[480];
-		for (int i = 0; i < 480; i++)
+		
+		for (int i = 0; i < 480; i++) {
 			screenTable[i] = 640 * i;
-
+		}
+		
 		random = new int[SIZE_VALUES_RANDOM_VECTOR];
-		for (int i = 0; i < SIZE_VALUES_RANDOM_VECTOR; i++)
+		
+		for (int i = 0; i < SIZE_VALUES_RANDOM_VECTOR; i++) {
 			random[i] = (int) (Math.random() * 100);
-
+		}
+		
 		random = new int[] { 95, 48, 43, 59, 92, 62, 51, 46, 94, 96, 3, 96, 86,
 				92, 67, 96, 53, 87, 21, 39, 77, 66, 89, 19, 88, 74, 90, 84, 16,
 				97, 31, 1, 17, 60, 38, 5, 6, 53, 60, 55, 78, 6, 66, 68, 49, 26,
@@ -124,28 +148,40 @@ public class GameData {
 				r_ = (int) (r + dr * j);
 				g_ = (int) (g + dg * j);
 				b_ = (int) (b + db * j);
-				if (r_ > 245)
+				if (r_ > 245) {
 					r_ = 245;
-				if (g_ > 245)
+				} else {
+					// Does nothing.
+				}
+				
+				if (g_ > 245) {
 					g_ = 245;
-				if (b_ > 245)
+				} else {
+					// Does nothing.
+				}
+				if (b_ > 245) {
 					b_ = 245;
+				} else {
+					// Does nothing.
+				}
 				colorTableTemp[i][31 + j] = b_ + (g_ << 8) + (r_ << 16);
 			}
 		}
 
 		for (int i = 0; i < 64; i++) {
-			for (int j = 0; j < 32768; j++)
+			for (int j = 0; j < 32768; j++) {
 				colorTable[i][j] = colorTableTemp[j][i];
+			}
 		}
 
 		colorTableTemp = null;
 
 		randomVectors = new Vector[SIZE_VALUES_RANDOM_VECTOR];
-		for (int i = 0; i < SIZE_VALUES_RANDOM_VECTOR; i++)
+		for (int i = 0; i < SIZE_VALUES_RANDOM_VECTOR; i++) {
 			randomVectors[i] = new Vector(Math.random() * 0.016 - 0.008, 0.01,
 					Math.random() * 0.016 - 0.008);
-
+		}
+		
 		size = new int[9][];
 		size[0] = new int[] { 0, -1, -640 };
 		size[1] = new int[] { -641, 0, -1, -640 };
@@ -169,9 +205,10 @@ public class GameData {
 
 		for (int j = 0; j < 2; j++) {
 
-			for (int i = 0; i < VALUE_DISTORTION; i++)
+			for (int i = 0; i < VALUE_DISTORTION; i++) {
 				distortion1[i] = distortion2[i];
-
+			}
+			
 			for (int i = 0; i < VALUE_DISTORTION; i++) {
 				int average = 0;
 
@@ -191,30 +228,46 @@ public class GameData {
 
 		distortion1 = new int[VALUE_DISTORTION];
 		for (int j = 0; j < VALUE_SIMPLE_DISTORTION; j++) {
-			for (int k = 0; k < VALUE_SIMPLE_DISTORTION; k++)
+			for (int k = 0; k < VALUE_SIMPLE_DISTORTION; k++) {
 				distortion1[j * VALUE_SIMPLE_DISTORTION + k] = (int) (Math.sin(Math.PI / 32 * k
 						+ Math.PI / 8) * 10 * Math.sin(Math.PI / 16 * j));
+			}
 		}
 
 	}
-
+	
+	/**Get a random number.
+	 * 
+	 * @return random[randomIndex] 
+	 */
 	public static int getRandom() {
 		randomIndex++;
-		if (randomIndex >= SIZE_VALUES_RANDOM_VECTOR)
+		if (randomIndex >= SIZE_VALUES_RANDOM_VECTOR) {
 			randomIndex = 0;
+		} else {
+			//Does nothing.
+		}
 		return random[randomIndex];
 
 	}
 
+	/**This method is responsible for get a random vector.
+	 * 
+	 * @return randomVectors[randomIndex]
+	 */
 	public static Vector getRandomVector() {
 		randomIndex++;
-		if (randomIndex >= SIZE_VALUES_RANDOM_VECTOR)
+		if (randomIndex >= SIZE_VALUES_RANDOM_VECTOR) {
 			randomIndex = 0;
+		} else {
+			// Does nothing.
+		}
 		return randomVectors[randomIndex];
 
 	}
 
-	public static void destory() {
+	/**This methods is responsible for  frees the data stored when the applet is finished.*/
+	public static void destroy() {
 		random = null;
 		randomVectors = null;
 		sin = null;

@@ -101,6 +101,8 @@ public class Geometry {
 
 		if (inside) {
 			return true;
+		} else {
+			// Does nothing.
 		}
 		
 		return false;

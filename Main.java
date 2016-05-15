@@ -65,7 +65,7 @@ public class Main extends Applet implements KeyListener, ActionListener,
 		gameNotStart = true;
 		appletDestoried = false;
 
-		GameData.destory();
+		GameData.destroy();
 
 		System.gc();
 
