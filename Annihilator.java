@@ -17,6 +17,8 @@
 
 import java.util.logging.Logger;
 
+import Operacoes.Division;
+
 /**
  * Class to create objects Anniquilator type, which are contained values ​​and
  * methods for this purpose
@@ -1066,7 +1068,7 @@ public class Annihilator extends SolidObject {
 			}
 			
 			if (clearToShoot) {
-				Camera camera = new Camera();
+				Division camera = new Division();
 				double centreZLessBodyCenterZPlayerTank = camera.divided(
 						180 * Math.atan(centre.z - PlayerTank.bodyCenter.z),
 						centre.x - PlayerTank.bodyCenter.x);
@@ -1141,7 +1143,7 @@ public class Annihilator extends SolidObject {
 			}
 
 			if (forward) {
-				Camera camera = new Camera();
+				Division camera = new Division();
 				double centreZLessBodyCenterZPlayerTank = camera.divided(
 						180 * Math.atan(centre.z - PlayerTank.bodyCenter.z),
 						centre.x - PlayerTank.bodyCenter.x);

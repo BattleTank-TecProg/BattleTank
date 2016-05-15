@@ -18,12 +18,12 @@
 import java.awt.*;
 import java.util.logging.*;
 
+import Operacoes.Division;
+
 /** This class is responsible for the camera for the game. */
 
 public class Camera {
 	
-	public static final double LARGER_SIZE_FOR_A_DOUBLE_VARIABLE = 321321.3123435;
-	public static final double MINIMUM_MOST_FOR_A_DOUBLE_VARIABLE = -3123.434354;
 	/** X coordinate of the rectangle. */
 	public static final int XCOORDINADE = 0;
 
@@ -81,40 +81,19 @@ public class Camera {
 		thirdPersonDisplacement.set(viewDirection.x, 0, -viewDirection.z);
 	}
 
-	private String erroDividedByZero() {
-		return "No is possible divided by zero";
-	}
-
-	public double divided(double divider,
-			double dividend) {
-		// -1 is value for initializable variable
-		double quotient= -1;
-		try {
-			quotient = divider / dividend;
-		} catch (ArithmeticException ImpossibleDividedByZero) {
-			LOG.severe(erroDividedByZero());
-			divided(divider, dividend);
-		} 
-		return quotient;
-	}
-	
-	public int centreZLessBodyCenterZPlayerTank(int dividerInt, int dividendInt) {
-		double dividerDouble = (double) dividerInt;
-		double dividendDouble = (double) dividendInt;
-		int quotientInt = (int) divided(dividerDouble, dividendDouble);
-		return quotientInt;
-	}
-	
+		
 	private double updateDirectionX() {
 		double tankPositionMinusTheCameraPositionInX = PlayerTank.bodyCenter.x
 				- position.x;
-		return divided(tankPositionMinusTheCameraPositionInX, 5);
+		Division division = new Division();
+		return division.divided(tankPositionMinusTheCameraPositionInX, 5);
 	}
 
 	private double updateDirectionZ() {
 		double tankPositionMinusTheCameraPositionInZ = PlayerTank.bodyCenter.z
 				- position.z;
-		return divided(tankPositionMinusTheCameraPositionInZ, 5);
+		Division division = new Division();
+		return division.divided(tankPositionMinusTheCameraPositionInZ, 5);
 	}
 
 	/**
