@@ -1,3 +1,5 @@
+import java.util.logging.Logger;
+
 public class GameHUD {
 
 	public static int[] leftSide;
@@ -126,20 +128,28 @@ public class GameHUD {
 	public static void draw() {
 		if (Main.gameOver) {
 			drawGameoverMessage();
+		} else {
+			// Does nothing.
 		}
 
 		if (Main.win) {
 			drawWinMessage();
+		} else {
+			// Does nothing.
 		}
 
 		if (Main.gamePaused == false && !Main.gameNotStart) {
 			drawInfo();
+		} else {
+			// Does nothing.
 		}
 		
 		if (Main.gamePaused == true
 				|| (Main.gameNotStart && menuOptionStatus != 0)) {
 			drawMenu();
 			Main.copyScreen();
+		} else {
+			// Does nothing.
 		}
 
 		if (loadingScreenPosition < 800) {
@@ -152,13 +162,18 @@ public class GameHUD {
 							+ (j + randomDisplacement[i]) * 640 + i;
 					if (currentPosition >= 640 * 480) {
 						currentPosition = 640 * 479 + i;
+					} else {
+						// Does nothing.
 					}
+					
 					Main.screen[currentPosition] = Main.stencilBuffer2[j * 640
 							+ i];
 				}
 			}
 
 			loadingScreenPosition += 15;
+		} else {
+			// Does nothing.
 		}
 
 	}
@@ -168,33 +183,48 @@ public class GameHUD {
 			if (menuOptionStatus == 0) {
 				Main.gamePaused = true;
 				menuOptionStatus = 1;
+				LOG.info("Menu options opened");
 			} else if (menuOptionStatus == 1 || menuOptionStatus == 2
 					|| menuOptionStatus == 3) {
 				Main.gamePaused = false;
 				menuOptionStatus = 0;
+				LOG.info("Menu options closed");
 			} else if (menuOptionStatus == 4 || menuOptionStatus == 5) {
 				menuOptionStatus = 1;
+			} else {
+				// Does nothing.
 			}
 
+		} else {
+			// Does nothing.
 		}
 
 		if (downPressed) {
-			if (menuOptionStatus == 1)
+			if (menuOptionStatus == 1) {
 				menuOptionStatus = 2;
-			else if (menuOptionStatus == 2)
+			} else if (menuOptionStatus == 2) {
 				menuOptionStatus = 3;
-			else if (menuOptionStatus == 3)
+			} else if (menuOptionStatus == 3) {
 				menuOptionStatus = 1;
-
+			} else {
+				// Does nothing.
+			}
+		} else {
+			// Does nothing.
 		}
 
 		if (upPressed) {
-			if (menuOptionStatus == 1)
+			if (menuOptionStatus == 1) {
 				menuOptionStatus = 3;
-			else if (menuOptionStatus == 2)
+			} else if (menuOptionStatus == 2) {
 				menuOptionStatus = 1;
-			else if (menuOptionStatus == 3)
+			} else if (menuOptionStatus == 3) {
 				menuOptionStatus = 2;
+			} else {
+				// Does nothing.
+			}
+		} else {
+			// Does nothing.
 		}
 
 		if (enterPressed) {
@@ -222,9 +252,15 @@ public class GameHUD {
 
 			} else if (menuOptionStatus == 2) {
 				menuOptionStatus = 4;
+				LOG.info("You selected controls menu with enter button");
 			} else if (menuOptionStatus == 3) {
 				menuOptionStatus = 5;
+				LOG.info("You selected about author menu with enter button");
+			} else {
+				// Does nothing.
 			}
+		} else {
+			// Does nothing.
 		}
 
 		if (mousePressed) {
@@ -236,6 +272,8 @@ public class GameHUD {
 				mouseXpos = -1234567;
 				mouseYpos = -1234567;
 				return;
+			} else {
+				// Does nothing.
 			}
 
 			if (mouseXpos > 264 && mouseXpos < 385 && mouseYpos > 120
@@ -260,24 +298,36 @@ public class GameHUD {
 				Main.gamePaused = false;
 				Main.gameOver = false;
 				Main.win = false;
+			} else {
+				// Does nothing.
 			}
 
 			if (mouseXpos > 262 && mouseXpos < 385 && mouseYpos > 161
 					&& mouseYpos < 183) {
 				menuOptionStatus = 2;
+			} else {
+				// Does nothing.
 			}
 			
 			if (mouseXpos > 234 && mouseXpos < 412 && mouseYpos > 197
 					&& mouseYpos < 222) {
 				menuOptionStatus = 3;
+			} else {
+				// Does nothing.
 			}
 			
 			if (menuOptionStatus == 2) {
 				menuOptionStatus = 4;
+				LOG.info("You selected controls menu with mouse");
 			} else if (menuOptionStatus == 3) {
 				menuOptionStatus = 5;
+				LOG.info("You selected about author menu with mouse");
+			} else {
+				// Does nothing.
 			}
 
+		} else {
+			// Does nothing.
 		}
 
 		escapePressed = false;
@@ -290,8 +340,11 @@ public class GameHUD {
 
 	public static void drawGameoverMessage() {
 
-		if (gameoverMessagePosition < 500)
+		if (gameoverMessagePosition < 500) {
 			gameoverMessagePosition += 6;
+		} else {
+			// Does nothing.
+		}
 
 		if (gameoverMessagePosition > 310) {
 
@@ -299,13 +352,15 @@ public class GameHUD {
 					0x00eec64d);
 			TextFactory.draw(over, 527 - gameoverMessagePosition + 310, 190, 2,
 					0x00eec64d);
+		} else {
+			// Does nothing.
 		}
 	}
 
 	public static void drawWinMessage() {
-		if (winMessagePosition < 500)
+		if (winMessagePosition < 500) {
 			winMessagePosition += 6;
-		else {
+		} else {
 			TextFactory.draw(cheat1, 80, 220, 1, 0x005d07f7);
 			TextFactory.draw(cheat2, 80, 240, 1, 0x005d07f7);
 			TextFactory.draw(cheat3, 80, 260, 1, 0x005d07f7);
@@ -315,6 +370,8 @@ public class GameHUD {
 			TextFactory.draw(You, winMessagePosition - 310, 170, 2, 0x00ed07b7);
 			TextFactory.draw(Won, 527 - winMessagePosition + 310, 170, 2,
 					0x00ed07b7);
+		} else {
+			// Does nothing.
 		}
 
 	}
@@ -388,6 +445,8 @@ public class GameHUD {
 			} else {
 				color = 0x00d0d0d0;
 			} TextFactory.draw(AboutAuthor, 235, 200, 1, color);
+		} else {
+			// Does nothing.
 		}
 
 		if (menuOptionStatus == 4) {
@@ -401,6 +460,8 @@ public class GameHUD {
 			TextFactory.draw(controlDescription7, 183, 259, 1, color);
 			TextFactory.draw(controlDescription8, 183, 297, 1, color);
 			TextFactory.draw(controlDescription9, 183, 319, 1, color);
+		} else {
+			// Does nothing.
 		}
 
 		if (menuOptionStatus == 5) {
@@ -416,6 +477,8 @@ public class GameHUD {
 			TextFactory.draw(author9, 183, 276, 1, color);
 			TextFactory.draw(author10, 183, 320, 1, color);
 
+		} else {
+			// Does nothing.
 		}
 
 	}
@@ -517,5 +580,9 @@ public class GameHUD {
 		TextFactory.draw(Ammo, 482, 427, 1, 0x00d0d0d0);
 
 	}
+	
+	/** Starts a Logger to GameHUD class */
+	private static final Logger LOG = Logger.getLogger(GameHUD.class
+			.getName());
 
 }
