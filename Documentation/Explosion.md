@@ -9,104 +9,88 @@ public class Explosion
 ## Methods:
 
 ```java
-public Explosion(double x, double y, double z, double size)
-```
-
-```java
 /** This is a constructor method. X, y and z are coordinates for the explosion and the size is the diameter of explosion.
 * @param double - x
 * @param double - y
 * @param double - z
 * @param double - size
 */
-```
 
-```java
-public void uptade()
+public Explosion(double x, double y, double z, double size)
 ```
 
 ```java
 /** This method is responsible for updating the explosion in the scenario, according to the actions in the game.*/
-```
 
-```java
-public void draw()
+public void uptade()
 ```
 
 ```java
 /** This method is responsible for draw the explosion on the scenario.*/
 
-Declarations in the draw():
-double ratio;
+public void draw()
 ```
 
 ```java
 /* This variable holds the proportion of explosion*/
+
+Declarations in the draw():
+double ratio;
 ```
 
-
-```java
-public rectangle2D getBoundary2D()
-```
 
 ```java
 /** This method is responsible for return the limits of the explosion.*/
+
+public rectangle2D getBoundary2D()
 ```
+
 ## Declarations:
 
 ```java
+/** The square indicate the index.*/
+
 public int frameIndex
 ```
-```java
-/** The square indicate the index.*/
-```
 
-```java
-public int auraIndex
-```
 ```java
 /** Defines the size of the aura.*/
+
+public int auraIndex
 ```
 
-```java
-public int damage
-```
 ```java
 /** Amount of damage he can tear the opponent.*/
+
+public int damage
 ```
 
-```java
-public int type
-```
 ```java
 /** Type of explosion 0 = normal and 1 = plasma.*/
+
+public int type
 ```
 
-```java
-public int groundZero
-```
 ```java
 /** Indicates the starting point of explosion.*/
+
+public int groundZero
 ```
 
-```java
-public boolean explicitDrawing
-```
 ```java
 /** Enable this boolean if this explosion has be to drawn explicitly*/
-```
 
-```java
-double size
+public boolean explicitDrawing
 ```
 
 ```java
 /** Size of the explosion.*/
+
+double size
 ```
 
 ```java
-public polygon3D explosionAura
-```
-```java
 /** Define the aura explosion*/
+
+public polygon3D explosionAura
 ```

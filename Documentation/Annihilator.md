@@ -16,29 +16,34 @@ public class Annihilator
 * @param double - y
 * @param int - angle
 */
+
 public Annihilator(double x, double y, double z, int angle);
 ```
 
 
 ```java
 /**This method is responsible to create the polygons of the body of annihilator.*/
+
 private void makeBody();
 ```
 
 
 ```java
 /**This method is responsible to create polygons for the tank turret.*/
+
 private void makeTurret()
 ```
 
 
 ```java
 /**This method is responsible for updating the annihilator in the scenario, according to the actions in the game.*/
+
 public void update()
 ```
 
 ```java
 /**This method is responsible for drawing the body annihilator.*/
+
 public void draw()
 ```
 
@@ -46,6 +51,7 @@ public void draw()
 /**This method is responsible for specifying the loss of life of annihilator.
 * @param int - damagePoint
 */
+
 public void damage(int damagePoint)
 ```
 
@@ -54,6 +60,7 @@ public void damage(int damagePoint)
 /**This method is responsible for return the 2D boundary of the annihilator.
 * @return Rectangle2D - boundary2D
 */
+
 public Rectangle2D getBoundary2D();
 ```
 
