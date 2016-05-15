@@ -90,10 +90,10 @@ public class Camera {
 		// -1 is value for initializable variable
 		double quotient= -1;
 		try {
+			LOG.warning("Making division");
 			quotient = divider / dividend;
 		} catch (ArithmeticException ImpossibleDividedByZero) {
 			LOG.severe(erroDividedByZero());
-			System.err.println(erroDividedByZero());
 			divided(divider, dividend);
 		} 
 		return quotient;
