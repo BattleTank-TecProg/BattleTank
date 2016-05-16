@@ -253,9 +253,7 @@ public class GunTurret extends SolidObject {
 					// Does nothing.
 				}
 			}
-		}
-
-		if (HP <= 0) {
+		} else if (HP <= 0) {
 			if (!destoried) {
 				Projectiles.register(new Explosion(centre.x, centre.y,
 						centre.z, 2));
@@ -266,6 +264,8 @@ public class GunTurret extends SolidObject {
 			}
 
 			destoried = true;
+		} else {
+			//Does nothing.
 		}
 
 		aimRight = false;
@@ -412,6 +412,8 @@ public class GunTurret extends SolidObject {
 
 			if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 2.25) {
 				firing = true;
+			} else {
+				//Does nothing.
 			}
 
 			if (AngleDelta > 0) {
@@ -430,6 +432,8 @@ public class GunTurret extends SolidObject {
 				// Does nothing.
 			}
 
+		} else {
+			//Does nothing.
 		}
 	}
 
