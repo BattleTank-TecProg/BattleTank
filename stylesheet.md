@@ -59,9 +59,7 @@
 
 [15. Identation](#15-identation)
 
-[16. Syntax](#16-syntax)
-
-[17. Good Programming Practices](#17-Good Programming Practices)
+[16. Good Programming Practices](#16-Good Programming Practices)
 
 # 1. Objective:
 
@@ -72,11 +70,11 @@ That style sheet have the objective to standardize all and any form of code on t
 * File names must be written in English. Should be meaningful and simple names.
 * The name of the test classes should be "Test" followed by the name of the test class.
 * The order of statements in the file will be:
-* File Initial Comment
-* Package
-* Imports
-* Class
-* Methods
+1 - File Initial Comment
+2 - Package
+3 - Imports
+4 - Class
+5 - Methods
 
 # 3. Code Comments:
 
@@ -111,6 +109,7 @@ findCentre();
 
 
 * The comments in block (more than one line) should be write on the begin with "```/*```" and end with "```*/```";
+* The beginning of each line should be the operator "```*```";
 
 ### Incorrect example:
 
@@ -192,6 +191,8 @@ findCentre();
 
 * The variables should be declared on that order: 1ª - ```public```, 2ª - ```protected``` and 3ª - ```private```;
 * The variables must be declared at the time of its use. The variables must be declared as late as possible.
+
+### Correct example:
 ```java
 for (int index = 0; index < body.length; index++) {
 ....
@@ -447,8 +448,11 @@ method(parameter_1 , parameter_2);
 * Should not have space between two or more parantheses;
 
 * Should not have space between the operations and the parantheses;
-if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
 
+### Correct example:
+```java
+if ((main.timer + randomNumber1 * 3) % 1000 == 0) {
+```
 ### incorrect example:
 ```java
 if ( (main.timer + randomNumber1 * 3) % 1000 == 0) {
@@ -759,16 +763,7 @@ private polygon3D[] polygons;
 * The new line should start on the same level of the origin expression.
 
 
-# 16. Syntax:
-
-
-* Class: firts letter of each word uppercase;
-* Class member and local variables: first letter uppercase;
-* Class constant: all letter on uppercase;
-* Compost wors should not separeted, should be writes together and should not have any symbol between then.
-
-
-# 17. Good Programming Practices:
+# 16. Good Programming Practices:
 * High cohesion, (A class must have only one responsibility and do it satisfactorily, a class should not assume responsibilities that are not yours)
 * Low coupling (Low dependency between classes)
 * Data and internal functions must be protected whenever possible
