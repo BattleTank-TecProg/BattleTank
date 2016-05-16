@@ -164,6 +164,8 @@ public class Fence extends SolidObject {
 			ObstacleMap.registerObstacle2(this, (int) (x * 4)
 					+ (129 - (int) (z * 4)) * 80);
 
+		} else {
+			// Does nothing.
 		}
 		// Find centre of the model in world coordinate
 		findCentre();
