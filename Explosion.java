@@ -22,10 +22,10 @@
 public class Explosion extends SolidObject {
 
 	/**
-	 * 
+	 *
 	 * This is a constructor method. X, y and z are coordinates for the
 	 * explosion and the size is the diameter of explosion.
-	 * 
+	 *
 	 * @param x
 	 * @param y
 	 * @param z
@@ -107,7 +107,7 @@ public class Explosion extends SolidObject {
 	 */
 	public void update() {
 		assert (explosionAura != null);
-		
+
 		visible = true;
 		explosionAura.update();
 		if (explosionAura.visible) {
@@ -116,7 +116,7 @@ public class Explosion extends SolidObject {
 		} else {
 				// Does nothing
 		}
-	
+
 		auraIndex++;
 
 		if (!explicitDrawing) {
@@ -145,7 +145,9 @@ public class Explosion extends SolidObject {
 		}
 	}
 
-	/** This method is responsible for draw the explosion on the scenario. */
+	/**
+	* This method is responsible for draw the explosion on the scenario.
+	*/
 	public synchronized void draw() {
 
 		tempCentre.updateLocation();
@@ -163,108 +165,182 @@ public class Explosion extends SolidObject {
 
 	/**
 	 * This method is responsible for return the limits of the explosion.
-	 * 
+	 *
 	 * @return boundary2D
 	 */
 	public Rectangle2D getBoundary2D() {
 		assert (boundary2D != null);
 		return boundary2D;
 	}
-	
+
 	/** Size of the explosion.*/
 	private double size = 0;
 
 	private int spriteIndex = 0;
-	
+
 	/** The square indicate the index.*/
 	private int frameIndex = 0;
-	
+
 	/** Defines the size of the aura.*/
 	private int auraIndex = 0;
-	
+
 	/** Amount of damage he can tear the opponent.*/
 	private int damage = 5;
-	
+
 	/** Type of explosion 0 = normal and 1 = plasma.*/
 	private int type = 0;
-	
+
 	/** Indicates the starting point of explosion.*/
 	private int groundZero = 0;
-	
+
 	/** Enable this boolean if this explosion has be to drawn explicitly*/
 	private boolean explicitDrawing;
-	
+
 	/** Define the aura explosion*/
 	private Polygon3D explosionAura;
 
+	/**
+	 * This method return the size.
+	 * @return size
+	 */
 	public double getSize() {
 		return size;
 	}
 
+	/**
+	 * This method set the size.
+	 * @param size
+	 */
 	public void setSize(double size) {
 		this.size = size;
 	}
 
+	/**
+	 * This method return the index of sprite.
+	 * @return spriteIndex
+	 */
 	public int getSpriteIndex() {
 		return spriteIndex;
 	}
 
+	/**
+	 * This method set the index of sprite.
+	 * @param spriteIndex
+	 */
 	public void setSpriteIndex(int spriteIndex) {
 		this.spriteIndex = spriteIndex;
 	}
 
+	/**
+	 * This method return the index of frame.
+	 * @return frameIndex
+	 */
 	public int getFrameIndex() {
 		return frameIndex;
 	}
 
+	/**
+	 * This method set the index of frame.
+	 * @param frameIndex
+	 */
 	public void setFrameIndex(int frameIndex) {
 		this.frameIndex = frameIndex;
 	}
 
+	/**
+	 * This method return the index of frame.
+	 * @return auraIndex
+	 */
 	public int getAuraIndex() {
 		return auraIndex;
 	}
 
+	/**
+	 * This method set the index of frame.
+	 * @param auraIndex
+	 */
 	public void setAuraIndex(int auraIndex) {
 		this.auraIndex = auraIndex;
 	}
 
+	/**
+	 * This method return the index of damege.
+	 * @return damage
+	 */
 	public int getDamage() {
 		return damage;
 	}
 
+	/**
+	 * This method return the index of damege.
+	 * @param damage
+	 */
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
 
+	/**
+	 * This method return the type.
+	 * @return type
+	 */
 	public int getType() {
 		return type;
 	}
 
+	/**
+	 * This method set the type.
+	 * @param type
+	 */
 	public void setType(int type) {
 		this.type = type;
 	}
 
+	/**
+	 * This method return the index of ground zero.
+	 * @return groundZero
+	 */
 	public int getGroundZero() {
 		return groundZero;
 	}
 
+	/**
+	 * This method set the index of ground zero.
+	 * @param groundZero
+	 */
 	public void setGroundZero(int groundZero) {
 		this.groundZero = groundZero;
 	}
 
+	/**
+	 * This method returns boolean if the design will be explicit or not.
+	 * @return explicitDrawing
+	 */
 	public boolean isExplicitDrawing() {
 		return explicitDrawing;
 	}
 
+
+	/**
+	 * This method set boolean if the design will be explicit or not.
+	 * @param explicitDrawing
+	 */
 	public void setExplicitDrawing(boolean explicitDrawing) {
 		this.explicitDrawing = explicitDrawing;
 	}
 
+
+	/**
+	 * This method returns a polygon referring to the explosion of the aura.
+	 * @return explosionAura
+	 */
 	public Polygon3D getExplosionAura() {
 		return explosionAura;
 	}
 
+	/**
+	 * This method set a polygon referring to the explosion of the aura.
+	 * @param explosionAura
+	 */
 	public void setExplosionAura(Polygon3D explosionAura) {
 		this.explosionAura = explosionAura;
 	}
