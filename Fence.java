@@ -168,7 +168,7 @@ public class Fence extends SolidObject {
 			// Does nothing.
 		}
 		// Find centre of the model in world coordinate
-		findCentre();
+		findCenter();
 
 		makePolygons();
 	}

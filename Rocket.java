@@ -41,7 +41,7 @@ public class Rocket extends SolidObject {
 
 		lifeSpan = 38;
 
-		findCentre();
+		findCenter();
 
 		makePolygons();
 

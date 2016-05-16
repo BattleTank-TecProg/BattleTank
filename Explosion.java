@@ -104,9 +104,9 @@ public class Explosion extends SolidObject {
 				HEIGHTRECTANGLE);
 
 		lifeSpan = 16;
-		//Find centre of the model in world coordinate
-		findCentre();
-		//Find centre of explosion
+		//Find center of the model in world coordinate
+		findCenter();
+		//Find center of explosion
 		groundZero = (int) (x * 4) + (129 - (int) (z * 4)) * 80;
 	}
 

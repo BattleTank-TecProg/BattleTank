@@ -50,7 +50,7 @@ public class PowerPlant extends SolidObject {
 
 		HP = 500;
 
-		findCentre();
+		findCenter();
 		centre.set(start);
 
 		explosions = new Explosion[11];

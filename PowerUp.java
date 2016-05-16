@@ -24,7 +24,7 @@ public class PowerUp extends SolidObject {
 
 		boundary2D = new Rectangle2D(x - 0.01, z + 0.01, 0.02, 0.02);
 
-		findCentre();
+		findCenter();
 
 		lifeSpan = 1;
 

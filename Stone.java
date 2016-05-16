@@ -54,7 +54,7 @@ public class Stone extends SolidObject {
 		xDirection.rotate_XZ(angle);
 		zDirection.rotate_XZ(angle);
 
-		findCentre();
+		findCenter();
 
 		makePolygons(type, textureIndex);
 	}

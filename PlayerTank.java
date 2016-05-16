@@ -82,7 +82,7 @@ public class PlayerTank extends SolidObject {
 		position = (int) (x * 4) + (129 - (int) (z * 4)) * 80;
 		ObstacleMap.registerObstacle2(this, position);
 
-		findCentre();
+		findCenter();
 
 		bodyCenter = centre;
 

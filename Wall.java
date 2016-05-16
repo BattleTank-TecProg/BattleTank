@@ -48,7 +48,7 @@ public class Wall extends SolidObject {
 					+ (129 - (int) (z * 4)) * 80);
 		}
 
-		findCentre();
+		findCenter();
 
 		makePolygons();
 	}

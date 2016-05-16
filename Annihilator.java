@@ -71,7 +71,7 @@ public class Annihilator extends SolidObject {
 		ObstacleMap.registerObstacle2(this, position);
 
 		// Find centre of the model in world coordinate.
-		findCentre();
+		findCenter();
 
 		bodyCenter = centre;
 

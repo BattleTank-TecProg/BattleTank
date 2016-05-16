@@ -277,7 +277,9 @@ public class Camera {
 	/** This variable holds the flight time of the camera. */
 	public int flyThroughTimer;
 
-
+	
+	
+	
 	/**
 	 * This is a constructor method, which init camera with default values.
 	 */
@@ -508,6 +510,8 @@ public class Camera {
 				position.set(10, 0.25, 1.5);
 				absolutePosition.set(position);
 				flyThroughTimer = 0;
+			} else {
+				// Does nothing.
 			}
 
 		}

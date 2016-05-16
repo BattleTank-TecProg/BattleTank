@@ -75,7 +75,7 @@ public class MediumTank extends SolidObject {
 		desiredPosition = position;
 		ObstacleMap.registerObstacle2(this, position);
 
-		findCentre();
+		findCenter();
 
 		bodyCenter = centre;
 		bodyAngle = angle;

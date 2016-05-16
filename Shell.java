@@ -31,7 +31,7 @@ public class Shell extends SolidObject {
 
 		direction.rotate_XZ(angle);
 
-		findCentre();
+		findCenter();
 
 		makePolygons();
 	}
