@@ -106,10 +106,14 @@ public class Annihilator extends SolidObject {
 			} else {
 				randomNumber2 = 51;
 			}
+		} else {
+			// Does nothing.
 		}
 
 		if (countDownToDeath <= 0 && active && !Main.gamePaused) {
 			processAI();
+		} else {
+			// Does nothing.
 		}
 
 		if (aimLeft) {
@@ -149,6 +153,8 @@ public class Annihilator extends SolidObject {
 			} else {
 				// Does nothing.
 			}
+		} else {
+			// Does nothing.
 		}
 
 		if (forward) {
@@ -168,17 +174,20 @@ public class Annihilator extends SolidObject {
 					} else {
 						bodyAngleDelta = 355;
 					}
-				}
-				if (delta < 0) {
+				} else if (delta < 0) {
 					if (delta > -180) {
 						bodyAngleDelta = 355;
 					} else {
 						bodyAngleDelta = 5;
 					}
+				} else {
+					// Does nothing.
 				}
 
 				bodyAngle = (bodyAngle + bodyAngleDelta) % 360;
 			}
+		} else {
+			// Does nothing.
 		}
 		// Update centre
 		centre.add(displacement);
@@ -1006,6 +1015,9 @@ public class Annihilator extends SolidObject {
 					aimRight = true;
 				}
 			}
+			else {
+				// Does nothing.
+			}
 			return;
 		} else {
 			// Does nothing.
@@ -1105,6 +1117,8 @@ public class Annihilator extends SolidObject {
 				} else {
 					aimRight = true;
 				}
+			} else {
+				// Does nothing.
 			}
 			/*
 			 * Move to a target location medium tank will move towards player
