@@ -73,34 +73,68 @@ public class Camera {
 	 */
 	private static boolean restart;
 
+	/**
+	 * Method that returns a Vector regarding the position of the object.
+	 * @return position
+	 */
 	public static Vector getPosition() {
 		return position;
 	}
 
+	/**
+	 * Method that set a Vector regarding the position of the object.
+	 * @param position
+	 */
 	public static void setPosition(Vector position) {
 		Camera.position = position;
 	}
 
+	/**
+	 * Method that return a Vector regarding the absolute position of the object.
+	 * @return position
+	 */
 	public static Vector getAbsolutePosition() {
 		return absolutePosition;
 	}
 
+
+	/**
+	 * Method that set a Vector regarding the absolute position of the object.
+	 * @param position
+	 */
 	public static void setAbsolutePosition(Vector absolutePosition) {
 		Camera.absolutePosition = absolutePosition;
 	}
 
+
+	/**
+	 * This method returns a vector referring to the third person displacement.
+	 * @return thirdPersonDisplacement
+	 */
 	public Vector getThirdPersonDisplacement() {
 		return thirdPersonDisplacement;
 	}
 
+	/**
+	 * This method set a vector referring to the third person displacement.
+	 * @param thirdPersonDisplacement
+	 */
 	public void setThirdPersonDisplacement(Vector thirdPersonDisplacement) {
 		this.thirdPersonDisplacement = thirdPersonDisplacement;
 	}
 
+	/**
+	 * This method returns an array refers to the vision of direction.
+	 * @return viewDirection
+	 */
 	public static Vector getViewDirection() {
 		return viewDirection;
 	}
 
+	/**
+	 * This method set an array refers to the vision of direction.
+	 * @param viewDirection
+	 */
 	public static void setViewDirection(Vector viewDirection) {
 		Camera.viewDirection = viewDirection;
 	}
