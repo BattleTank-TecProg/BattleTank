@@ -20,25 +20,61 @@
 public class Fence extends SolidObject {
 
 	/** Returns the block health length value. */
-	static final double LENGHT = 0.125;
+	private static final double LENGHT = 0.125;
 
 	/** This Constant represents the block health height value. */
-	static final double HEIGHT = 0.25;
+	private static final double HEIGHT = 0.25;
 
 	/** This Constant represents the health block width value. */
-	static final double WIDTH = 0.125;
+	private static final double WIDTH = 0.125;
 
 	/** This Constant represents the fence orientation vertical */
-	static final int VERTICAL = 0;
+	private static final int VERTICAL = 0;
 
 	/** This Constant represents the fence orientation horizontal */
-	static final int HORIZONTAL = 1;
+	private static final int HORIZONTAL = 1;
 
 	/** The polygons of the model. */
 	private Polygon3D polygons[];
 
 	/** The fence orientation */
-	public int orientation;
+	private int orientation;
+
+	public Polygon3D[] getPolygons() {
+		return polygons;
+	}
+
+	public void setPolygons(Polygon3D[] polygons) {
+		this.polygons = polygons;
+	}
+
+	public int getOrientation() {
+		return orientation;
+	}
+
+	public void setOrientation(int orientation) {
+		this.orientation = orientation;
+	}
+
+	public static double getLenght() {
+		return LENGHT;
+	}
+
+	public static double getHeight() {
+		return HEIGHT;
+	}
+
+	public static double getWidth() {
+		return WIDTH;
+	}
+
+	public static int getVertical() {
+		return VERTICAL;
+	}
+
+	public static int getHorizontal() {
+		return HORIZONTAL;
+	}
 
 	/**
 	 * This is a constructor method, which receives as parameters the
@@ -52,7 +88,10 @@ public class Fence extends SolidObject {
 
 	public Fence(double x, double y, double z, int orientation) {
 
-		assert ((x > 0 && x < 20000) && y == -0.9 && (z > 0 && z < 25000) && (orientation == VERTICAL || orientation == HORIZONTAL));
+		assert (x > 0 && x < 20000);
+		assert (y == -0.9);
+		assert (z > 0 && z < 25000);
+		assert (orientation == VERTICAL || orientation == HORIZONTAL);
 
 		start = new Vector(x, y, z);
 		xDirection = new Vector(1, 0, 0);
@@ -63,24 +102,23 @@ public class Fence extends SolidObject {
 			xDirection.rotate_XZ(90);
 			zDirection.rotate_XZ(90);
 		}
-
+		// 3D boundary of this model has a cubic shape (ie l = w)
 		modelType = 6;
 		makeBoundary(LENGHT, HEIGHT, WIDTH);
+		// Create 2D boundary
 
 		if (orientation == VERTICAL) {
 			boundary2D = new Rectangle2D(x - 0.06, z + 0.17, 0.12, 0.34);
 			ObstacleMap.registerObstacle2(this, (int) (x * 4)
 					+ (129 - (int) (z * 4)) * 80);
 
-		}
-
-		if (orientation == HORIZONTAL) {
+		} else if (orientation == HORIZONTAL) {
 			boundary2D = new Rectangle2D(x - 0.17, z + 0.06, 0.34, 0.12);
 			ObstacleMap.registerObstacle2(this, (int) (x * 4)
 					+ (129 - (int) (z * 4)) * 80);
 
 		}
-
+		// Find centre of the model in world coordinate
 		findCentre();
 
 		makePolygons();
@@ -119,6 +157,7 @@ public class Fence extends SolidObject {
 	 */
 
 	public void update() {
+		// Find centre in camera coordinate
 		assert (polygons != null);
 		assert (boundary != null);
 
@@ -128,7 +167,8 @@ public class Fence extends SolidObject {
 		tempCentre.rotate_XZ(Camera.getXZ_angle());
 		tempCentre.rotate_YZ(Camera.getYZ_angle());
 		tempCentre.updateLocation();
-
+		// Test whether the model is visible by comparing the 2D position of its
+		// centre point and the screen area
 		if (tempCentre.z < 0.5 || tempCentre.screenY < -30
 				|| tempCentre.screenX < -400 || tempCentre.screenX > 800) {
 			visible = false;
@@ -137,10 +177,11 @@ public class Fence extends SolidObject {
 		visible = true;
 
 		ModelDrawList.register(this);
-
-		for (int i = 0; i < 5; i++)
+		// Update boundary
+		for (int i = 0; i < 5; i++) {
 			boundary[i].update();
-
+		}
+		// Update polygons
 		for (int i = 0; i < polygons.length; i++) {
 			polygons[i].update();
 		}
