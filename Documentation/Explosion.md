@@ -17,80 +17,164 @@ public class Explosion
 */
 
 public Explosion(double x, double y, double z, double size)
+
+/**
+ * This method is responsible for updating the explosion in the scenario,
+ * according to the actions in the game.
+ */
+public void update()
+
+/**
+* This method is responsible for draw the explosion on the scenario.
+*/
+public synchronized void draw()
 ```
 
+### Declarations in the draw
 ```java
-/** This method is responsible for updating the explosion in the scenario, according to the actions in the game.*/
-
-public void uptade()
-```
-
-```java
-/** This method is responsible for draw the explosion on the scenario.*/
-
-public void draw()
-```
-
-```java
-/* This variable holds the proportion of explosion*/
-
-Declarations in the draw():
+// This variable holds the proportion of explosion
 double ratio;
-```
+
+/**
+ * This method is responsible for return the limits of the explosion.
+ * @return boundary2D
+ */
+public Rectangle2D getBoundary2D()
+
+/**
+ * This method return the size.
+ * @return size
+ */
+public double getSize()
+
+/**
+ * This method set the size.
+ * @param size
+ */
+public void setSize(double size)
+
+/**
+ * This method return the index of sprite.
+ * @return spriteIndex
+ */
+public int getSpriteIndex()
+
+/**
+ * This method set the index of sprite.
+ * @param spriteIndex
+ */
+public void setSpriteIndex(int spriteIndex)
+
+/**
+ * This method return the index of frame.
+ * @return frameIndex
+ */
+public int getFrameIndex()
+
+/**
+ * This method set the index of frame.
+ * @param frameIndex
+ */
+public void setFrameIndex(int frameIndex)
+
+/**
+ * This method return the index of frame.
+ * @return auraIndex
+ */
+public int getAuraIndex()
+
+/**
+ * This method set the index of frame.
+ * @param auraIndex
+ */
+public void setAuraIndex(int auraIndex)
+
+/**
+ * This method return the index of damege.
+ * @return damage
+ */
+public int getDamage()
+
+/**
+ * This method return the index of damege.
+ * @param damage
+ */
+public void setDamage(int damage)
+
+/**
+ * This method return the type.
+ * @return type
+ */
+public int getType()
+
+/**
+ * This method set the type.
+ * @param type
+ */
+public void setType(int type)
+
+/**
+ * This method return the index of ground zero.
+ * @return groundZero
+ */
+public int getGroundZero()
+
+/**
+ * This method set the index of ground zero.
+ * @param groundZero
+ */
+public void setGroundZero(int groundZero)
+
+/**
+ * This method returns boolean if the design will be explicit or not.
+ * @return explicitDrawing
+ */
+public boolean isExplicitDrawing()
 
 
-```java
-/** This method is responsible for return the limits of the explosion.*/
+/**
+ * This method set boolean if the design will be explicit or not.
+ * @param explicitDrawing
+ */
+public void setExplicitDrawing(boolean explicitDrawing)
 
-public rectangle2D getBoundary2D()
+/**
+ * This method returns a polygon referring to the explosion of the aura.
+ * @return explosionAura
+ */
+public Polygon3D getExplosionAura()
+
+/**
+ * This method set a polygon referring to the explosion of the aura.
+ * @param explosionAura
+ */
+public void setExplosionAura(Polygon3D explosionAura)
 ```
 
 ## Declarations:
 
 ```java
-/** The square indicate the index.*/
-
-public int frameIndex
-```
-
-```java
-/** Defines the size of the aura.*/
-
-public int auraIndex
-```
-
-```java
-/** Amount of damage he can tear the opponent.*/
-
-public int damage
-```
-
-```java
-/** Type of explosion 0 = normal and 1 = plasma.*/
-
-public int type
-```
-
-```java
-/** Indicates the starting point of explosion.*/
-
-public int groundZero
-```
-
-```java
-/** Enable this boolean if this explosion has be to drawn explicitly*/
-
-public boolean explicitDrawing
-```
-
-```java
 /** Size of the explosion.*/
+private double size
 
-double size
-```
+/** The square indicate the index.*/
+private int frameIndex
 
-```java
+/** Defines the size of the aura.*/
+private int auraIndex
+
+/** Amount of damage he can tear the opponent.*/
+private int damage
+
+/** Type of explosion 0 = normal and 1 = plasma.*/
+private int type
+
+/** Indicates the starting point of explosion.*/
+private int groundZero
+
+/** Enable this boolean if this explosion has be to drawn explicitly*/
+private boolean
+
 /** Define the aura explosion*/
-
-public polygon3D explosionAura
+private Polygon3D explosionAura
 ```
