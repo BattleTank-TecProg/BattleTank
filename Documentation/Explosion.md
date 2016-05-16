@@ -9,31 +9,12 @@ public class Explosion
 ## Methods:
 
 ```java
-/** This is a constructor method. X, y and z are coordinates for the explosion and the size is the diameter of explosion.
-* @param double - x
-* @param double - y
-* @param double - z
-* @param double - size
-*/
-
-public Explosion(double x, double y, double z, double size)
 
 /**
  * This method is responsible for updating the explosion in the scenario,
  * according to the actions in the game.
  */
 public void update()
-
-/**
-* This method is responsible for draw the explosion on the scenario.
-*/
-public synchronized void draw()
-```
-
-### Declarations in the draw
-```java
-// This variable holds the proportion of explosion
-double ratio;
 
 /**
  * This method is responsible for return the limits of the explosion.
@@ -149,6 +130,46 @@ public Polygon3D getExplosionAura()
  * @param explosionAura
  */
 public void setExplosionAura(Polygon3D explosionAura)
+```
+
+```java
+/**
+* This method is responsible for draw the explosion on the scenario.
+*/
+public synchronized void draw()
+```
+
+##### Declarations in the draw
+```java
+/**This variable holds the proportion of explosion*/
+double ratio;
+
+/** This is a constructor method. X, y and z are coordinates for the explosion and the size is the diameter of explosion.
+* @param double - x
+* @param double - y
+* @param double - z
+* @param double - size
+*/
+
+public Explosion(double x, double y, double z, double size)
+```
+##### Declarations in the Explosion
+
+```java
+final double LENGHT
+
+final double HEIGHT
+
+final double WIDTH
+
+final double XPOSITION
+
+final double YPOSITION
+
+final double LENGHTRECTANGLE
+
+final double HEIGHTRECTANGLE
+
 ```
 
 ## Declarations:

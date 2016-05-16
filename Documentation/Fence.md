@@ -70,23 +70,9 @@ public static int getVertical()
  */
 public static int getHorizontal()
 
-/**This method is responsibly of Construct polygons for a fence of energy.*/
-public void makePolygons()
-```
-
-### Declarations of makePolygons
-
-```java
-/**These declarations are for construct polygons for this model.*/
-vector v[]
-polygons = new polygon3D[2]
-```
-
-```java
 /**This method is responsible for return the 2D boundary of the fence.
 * @return boundary2D
 */
-
 public rectangle2D getBoundary2D()
 
 /**
@@ -95,15 +81,32 @@ public rectangle2D getBoundary2D()
  */
 public void update()
 
-/**This method is responsible to eliminate the fence of the scenery.*/
-
-public void destroy()
-
 /**This method is responsible for drawing the fence.*/
-
 public void draw()
+
+
+/**This method is responsibly of Construct polygons for a fence of energy.*/
+public void makePolygons()
 ```
 
+##### Declarations of makePolygons
+
+```java
+/**These declarations are for construct polygons for this model.*/
+vector v[]
+polygons = new polygon3D[2]
+```
+
+```java
+/**This method is responsible to eliminate the fence of the scenery.*/
+public void destroy()
+```
+
+##### Declarations of destroy
+```java
+/*Position of destruction of the fence**/
+int position;
+```
 
 ## Declarations:
 ```java
