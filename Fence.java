@@ -1,18 +1,18 @@
 /**
  * This class is responsible for the methods and attributes of energy fence.
- * 
+ *
  * This class is part of BattleTank 2.
- * 
+ *
  * BattleTank 2 is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
  * Foundation, either version 3 of the License, or (at your option) any later
  * version.
- * 
+ *
  * BattleTank 2 is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along with
  * BattleTank 2. If not, see <http://www.gnu.org/licenses/>
  */
@@ -40,38 +40,74 @@ public class Fence extends SolidObject {
 	/** The fence orientation */
 	private int orientation;
 
+	/**
+	 * This method return a polygon referring to polygons.
+	 * @return polygons
+	 */
 	public Polygon3D[] getPolygons() {
 		return polygons;
 	}
 
+	/**
+	 * This method set a polygon referring to polygons.
+	 * @param polygons
+	 */
 	public void setPolygons(Polygon3D[] polygons) {
 		this.polygons = polygons;
 	}
 
+	/**
+	 * This method return a orientation referring to object.
+	 * @return orientation
+	 */
 	public int getOrientation() {
 		return orientation;
 	}
 
+	/**
+	 * This method set a orientation referring to object.
+	 * @param orientation
+	 */
 	public void setOrientation(int orientation) {
 		this.orientation = orientation;
 	}
 
+	/**
+	 * This method return a lenght referring to object.
+	 * @return LENGHT
+	 */
 	public static double getLenght() {
 		return LENGHT;
 	}
 
+	/**
+	 * This method return a height referring to object.
+	 * @return HEIGHT
+	 */
 	public static double getHeight() {
 		return HEIGHT;
 	}
 
+	/**
+	 * This method return a width referring to object.
+	 * @return WIDTH
+	 */
 	public static double getWidth() {
 		return WIDTH;
 	}
 
+	/**
+	 * This method return a vertical referring to object.
+	 * @return VERTICAL
+	 */
 	public static int getVertical() {
 		return VERTICAL;
 	}
 
+	/**
+	 * This method return a horizontal referring to object.
+	 * @return HORIZONTAL
+	 */
 	public static int getHorizontal() {
 		return HORIZONTAL;
 	}
@@ -79,7 +115,7 @@ public class Fence extends SolidObject {
 	/**
 	 * This is a constructor method, which receives as parameters the
 	 * coordinates x, y and z and the orientation of Fence.
-	 * 
+	 *
 	 * @param x
 	 * @param y
 	 * @param z
@@ -143,7 +179,7 @@ public class Fence extends SolidObject {
 
 	/**
 	 * This method is responsible for return the 2D boundary of the fence.
-	 * 
+	 *
 	 * @return boundary2D
 	 */
 
