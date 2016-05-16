@@ -156,18 +156,25 @@ public Explosion(double x, double y, double z, double size)
 ##### Declarations in the Explosion
 
 ```java
+/**Cubic shape lenght of the Explosion*/
 final double LENGHT
 
+/**Cubic shape height of the Explosion*/
 final double HEIGHT
 
+/**Cubic shape width of the Explosion*/
 final double WIDTH
 
+/**Position in the axis X at scenario of the explosion*/
 final double XPOSITION
 
+/**Position in the axis Y at scenario of the explosion*/
 final double YPOSITION
 
+/** Rectangle lenght, using to build explosion*/
 final double LENGHTRECTANGLE
 
+/** Rectangle height, using to build explosion*/
 final double HEIGHTRECTANGLE
 
 ```

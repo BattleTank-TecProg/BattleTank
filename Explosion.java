@@ -40,19 +40,26 @@ public class Explosion extends SolidObject {
 		assert (xDirection == null);
 		assert (yDirection == null);
 		assert (zDirection == null);
-
+		
+		/**Cubic shape lenght of the Explosion*/
 		final double LENGHT = 0.001;
-
+		
+		/**Cubic shape height of the Explosion*/
 		final double HEIGHT = 0.001;
-
+		
+		/**Cubic shape width of the Explosion*/
 		final double WIDTH = 0.001;
-
+		
+		/**Position in the axis X at scenario of the explosion*/
 		final double XPOSITION = x - 0.1;
-
+		
+		/**Position in the axis Y at scenario of the explosion*/
 		final double YPOSITION = z + 0.1;
-
+		
+		/** Rectangle lenght, using to build explosion*/
 		final double LENGHTRECTANGLE = 0.2;
-
+		
+		/** Rectangle height, using to build explosion*/
 		final double HEIGHTRECTANGLE = 0.2;
 
 		start = new Vector(x, y, z);
