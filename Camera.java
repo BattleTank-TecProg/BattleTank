@@ -75,7 +75,7 @@ public class Camera {
 
 	/**
 	 * Method that returns a Vector regarding the position of the object.
-	 * 
+	 *
 	 * @return position
 	 */
 	public static Vector getPosition() {
@@ -84,7 +84,7 @@ public class Camera {
 
 	/**
 	 * Method that set a Vector regarding the position of the object.
-	 * 
+	 *
 	 * @param position
 	 */
 	public static void setPosition(Vector position) {
@@ -94,7 +94,7 @@ public class Camera {
 	/**
 	 * Method that return a Vector regarding the absolute position of the
 	 * object.
-	 * 
+	 *
 	 * @return position
 	 */
 	public static Vector getAbsolutePosition() {
@@ -103,7 +103,7 @@ public class Camera {
 
 	/**
 	 * Method that set a Vector regarding the absolute position of the object.
-	 * 
+	 *
 	 * @param position
 	 */
 	public static void setAbsolutePosition(Vector absolutePosition) {
@@ -112,7 +112,7 @@ public class Camera {
 
 	/**
 	 * This method returns a vector referring to the third person displacement.
-	 * 
+	 *
 	 * @return thirdPersonDisplacement
 	 */
 	public Vector getThirdPersonDisplacement() {
@@ -121,7 +121,7 @@ public class Camera {
 
 	/**
 	 * This method set a vector referring to the third person displacement.
-	 * 
+	 *
 	 * @param thirdPersonDisplacement
 	 */
 	public void setThirdPersonDisplacement(Vector thirdPersonDisplacement) {
@@ -130,7 +130,7 @@ public class Camera {
 
 	/**
 	 * This method returns an array refers to the vision of direction.
-	 * 
+	 *
 	 * @return viewDirection
 	 */
 	public static Vector getViewDirection() {
@@ -139,73 +139,137 @@ public class Camera {
 
 	/**
 	 * This method set an array refers to the vision of direction.
-	 * 
+	 *
 	 * @param viewDirection
 	 */
 	public static void setViewDirection(Vector viewDirection) {
 		Camera.viewDirection = viewDirection;
 	}
 
+	/**
+	 * This method returns the angle related to X and Z coordinates.
+	 * @return XZ_angle
+	 */
 	public static int getXZ_angle() {
 		return XZ_angle;
 	}
 
+	/**
+	 * This method set the angle related to X and Z coordinates.
+	 * @param XZ_angle
+	 */
 	public static void setXZ_angle(int xZ_angle) {
 		XZ_angle = xZ_angle;
 	}
 
+	/**
+	 * This method returns the angle related to Y and Z coordinates.
+	 * @return YZ_angle
+	 */
 	public static int getYZ_angle() {
 		return YZ_angle;
 	}
 
+	/**
+	 * This method set the angle related to Y and Z coordinates.
+	 * @param YZ_angle
+	 */
 	public static void setYZ_angle(int yZ_angle) {
 		YZ_angle = yZ_angle;
 	}
 
+
+	/**
+	 * This method boolean indicating whether the user has restarted the game or not.
+	 * @return restart
+	 */
 	public static boolean isRestart() {
 		return restart;
 	}
 
+	/**
+	 * This method boolean set whether the user has restarted the game or not.
+	 * @param restart
+	 */
 	public static void setRestart(boolean restart) {
 		Camera.restart = restart;
 	}
 
+	/**
+	 * This method returns the flight through time.
+	 * @return flyThroughTimer
+	 */
 	public int getFlyThroughTimer() {
 		return flyThroughTimer;
 	}
 
+	/**
+	 * This method set the flight through time.
+	 * @param flyThroughTimer
+	 */
 	public void setFlyThroughTimer(int flyThroughTimer) {
 		this.flyThroughTimer = flyThroughTimer;
 	}
 
+	/**
+	 * This method returns the size larger than a variable type double may have.
+	 * @return LARGER_SIZE_FOR_A_DOUBLE_VARIABLE
+	 */
 	public static double getLargerSizeForADoubleVariable() {
 		return LARGER_SIZE_FOR_A_DOUBLE_VARIABLE;
 	}
-
+	/**
+	 * This method returns the size smaller than a variable type double may have.
+	 * @return MINIMUM_MOST_FOR_A_DOUBLE_VARIABLE
+	 */
 	public static double getMinimumMostForADoubleVariable() {
 		return MINIMUM_MOST_FOR_A_DOUBLE_VARIABLE;
 	}
 
+	/**
+	 * This method returns the X coordinate of.
+	 * @return XCOORDINADE
+	 */
 	public static int getXcoordinade() {
 		return XCOORDINADE;
 	}
 
+	/**
+	 * This method returns the Y coordinate of.
+	 * @return YCOORDINADE
+	 */
 	public static int getYcoordinade() {
 		return YCOORDINADE;
 	}
 
+	/**
+	 * This method returns the width.
+	 * @return WIDTH
+	 */
 	public static int getWidth() {
 		return WIDTH;
 	}
 
+	/**
+	 * This method returns the height.
+	 * @return HEIGHT
+	 */
 	public static int getHeight() {
 		return HEIGHT;
 	}
 
+	/**
+	 * This method returns a rectangle related to screen position.
+	 * @return screen
+	 */
 	public static Rectangle getScreen() {
 		return screen;
 	}
 
+	/**
+	 * This method returns the record concerning what the code is doing.
+	 * @return LOG
+	 */
 	public static Logger getLog() {
 		return LOG;
 	}
@@ -213,7 +277,10 @@ public class Camera {
 	/** This variable holds the flight time of the camera. */
 	public int flyThroughTimer;
 
-	/** This is a constructor method, which init camera with default values. */
+
+	/**
+	 * This is a constructor method, which init camera with default values.
+	 */
 	public Camera() {
 		XZ_angle = 0;
 		position = new Vector(10, 0.25, 1.5);
