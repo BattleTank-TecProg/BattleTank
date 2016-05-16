@@ -75,6 +75,7 @@ public class Camera {
 
 	/**
 	 * Method that returns a Vector regarding the position of the object.
+	 * 
 	 * @return position
 	 */
 	public static Vector getPosition() {
@@ -83,6 +84,7 @@ public class Camera {
 
 	/**
 	 * Method that set a Vector regarding the position of the object.
+	 * 
 	 * @param position
 	 */
 	public static void setPosition(Vector position) {
@@ -90,25 +92,27 @@ public class Camera {
 	}
 
 	/**
-	 * Method that return a Vector regarding the absolute position of the object.
+	 * Method that return a Vector regarding the absolute position of the
+	 * object.
+	 * 
 	 * @return position
 	 */
 	public static Vector getAbsolutePosition() {
 		return absolutePosition;
 	}
 
-
 	/**
 	 * Method that set a Vector regarding the absolute position of the object.
+	 * 
 	 * @param position
 	 */
 	public static void setAbsolutePosition(Vector absolutePosition) {
 		Camera.absolutePosition = absolutePosition;
 	}
 
-
 	/**
 	 * This method returns a vector referring to the third person displacement.
+	 * 
 	 * @return thirdPersonDisplacement
 	 */
 	public Vector getThirdPersonDisplacement() {
@@ -117,6 +121,7 @@ public class Camera {
 
 	/**
 	 * This method set a vector referring to the third person displacement.
+	 * 
 	 * @param thirdPersonDisplacement
 	 */
 	public void setThirdPersonDisplacement(Vector thirdPersonDisplacement) {
@@ -125,6 +130,7 @@ public class Camera {
 
 	/**
 	 * This method returns an array refers to the vision of direction.
+	 * 
 	 * @return viewDirection
 	 */
 	public static Vector getViewDirection() {
@@ -133,6 +139,7 @@ public class Camera {
 
 	/**
 	 * This method set an array refers to the vision of direction.
+	 * 
 	 * @param viewDirection
 	 */
 	public static void setViewDirection(Vector viewDirection) {
@@ -208,42 +215,12 @@ public class Camera {
 
 	/** This is a constructor method, which init camera with default values. */
 	public Camera() {
+		XZ_angle = 0;
+		position = new Vector(10, 0.25, 1.5);
+		absolutePosition = new Vector(10, 0.25, 1.5);
+		viewDirection = new Vector(0, 0, 1);
+		thirdPersonDisplacement = new Vector(0, 0, 0);
 		thirdPersonDisplacement.set(viewDirection.x, 0, -viewDirection.z);
-	}
-
-	private String erroDividedByZero() {
-		return "No is possible divided by zero";
-	}
-
-	public double divided(double divider, double dividend) {
-		// -1 is value for initializable variable
-		double quotient = -1;
-		try {
-			quotient = divider / dividend;
-		} catch (ArithmeticException ImpossibleDividedByZero) {
-			LOG.severe(erroDividedByZero());
-			divided(divider, dividend);
-		}
-		return quotient;
-	}
-
-	public int centreZLessBodyCenterZPlayerTank(int dividerInt, int dividendInt) {
-		double dividerDouble = (double) dividerInt;
-		double dividendDouble = (double) dividendInt;
-		int quotientInt = (int) divided(dividerDouble, dividendDouble);
-		return quotientInt;
-	}
-
-	private double updateDirectionX() {
-		double tankPositionMinusTheCameraPositionInX = PlayerTank.bodyCenter.x
-				- position.x;
-		return divided(tankPositionMinusTheCameraPositionInX, 5);
-	}
-
-	private double updateDirectionZ() {
-		double tankPositionMinusTheCameraPositionInZ = PlayerTank.bodyCenter.z
-				- position.z;
-		return divided(tankPositionMinusTheCameraPositionInZ, 5);
 	}
 
 	/**
@@ -269,8 +246,8 @@ public class Camera {
 
 			if (!restart) {
 
-				double d_x = updateDirectionX();
-				double d_z = updateDirectionZ();
+				double d_x = (PlayerTank.bodyCenter.x - position.x) / 5;
+				double d_z = (PlayerTank.bodyCenter.z - position.z) / 5;
 				position.x += d_x;
 				position.z += d_z;
 

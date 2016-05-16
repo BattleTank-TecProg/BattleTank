@@ -1066,12 +1066,9 @@ public class Annihilator extends SolidObject {
 			}
 
 			if (clearToShoot) {
-				Camera camera = new Camera();
-				double centreZLessBodyCenterZPlayerTank = camera.divided(
-						180 * Math.atan(centre.z - PlayerTank.bodyCenter.z),
-						centre.x - PlayerTank.bodyCenter.x);
-				targetAngle = 90 + (int) camera.divided(
-						centreZLessBodyCenterZPlayerTank, Math.PI);
+				targetAngle = 90 + (int) (180 * Math
+						.atan((centre.z - PlayerTank.bodyCenter.z)
+								/ (centre.x - PlayerTank.bodyCenter.x)) / Math.PI);
 				if (PlayerTank.bodyCenter.x > turretCenter.x
 						&& targetAngle <= 180) {
 					targetAngle += 180;
@@ -1142,12 +1139,9 @@ public class Annihilator extends SolidObject {
 			}
 
 			if (forward) {
-				Camera camera = new Camera();
-				double centreZLessBodyCenterZPlayerTank = camera.divided(
-						180 * Math.atan(centre.z - PlayerTank.bodyCenter.z),
-						centre.x - PlayerTank.bodyCenter.x);
-				targetAngle = 90 + (int) camera.divided(
-						centreZLessBodyCenterZPlayerTank, Math.PI);
+				targetAngleBody = 90 + (int) (180 * Math
+						.atan((centre.z - PlayerTank.bodyCenter.z)
+								/ (centre.x - PlayerTank.bodyCenter.x)) / Math.PI);
 				if (PlayerTank.bodyCenter.x > centre.x
 						&& targetAngleBody <= 180) {
 					targetAngleBody += 180;
