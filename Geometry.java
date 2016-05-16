@@ -17,12 +17,13 @@
 
 public class Geometry {
 	public static boolean compareModels(model a, model b) {
-
+		boolean resultCompareModels;
 		if (a.getZDepth() > b.getZDepth()) {
-			return true;
+			resultCompareModels = true;
 		} else {
-			return false;
+			resultCompareModels = false;
 		}
+		return resultCompareModels;
 	}
 
 	public final static void sortPolygons(Polygon3D[] polygons, int start) {
@@ -41,14 +42,15 @@ public class Geometry {
 	}
 
 	public final static boolean comparePolygons(Polygon3D a, Polygon3D b) {
+		boolean resultComparePolygons = false; 
 		if (!a.visible) {
-			return false;
+			resultComparePolygons = false;
 		} else {
 			// Does nothing.
 		}
 		
 		if (!b.visible) {
-			return true;
+			resultComparePolygons = true;
 		} else {
 			// Does nothing.
 		}
@@ -57,7 +59,7 @@ public class Geometry {
 				&& a.tempVertex[1].z < b.tempVertex[1].z
 				&& a.tempVertex[2].z < b.tempVertex[2].z
 				&& a.tempVertex[3].z < b.tempVertex[3].z) {
-			return true;
+			resultComparePolygons = true;
 		} else {
 			// Does nothing.
 		}
@@ -80,7 +82,7 @@ public class Geometry {
 		}
 		
 		if (inside) {
-			return true;
+			resultComparePolygons =  true;
 		} else {
 			// Does nothing.
 		}
@@ -100,11 +102,11 @@ public class Geometry {
 		}
 
 		if (inside) {
-			return true;
+			resultComparePolygons =  true;
 		} else {
 			// Does nothing.
 		}
 		
-		return false;
+		return resultComparePolygons;
 	}
 }
