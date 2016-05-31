@@ -712,11 +712,10 @@ public class PlayerTank extends SolidObject {
 
 	public void update() {
 		if (Main.gameOver) {
-			// Nothing to do
+			// Nothing to do.
 		} else {
-			if (underAttackCount > 0) {
+			if (underAttackCount > 0)
 				underAttackCount--;
-			}
 
 			if (HP < 150 && HP > 0 && underAttackCount == 0 && !Main.gamePaused) {
 				if (Main.timer % 2 == 0)

@@ -215,6 +215,7 @@ public class Rocket extends SolidObject {
 						centre.z, 1);
 				theExplosion.setDamage(10);
 				Projectiles.register(theExplosion);
+				return;
 			} else {
 				if (Main.timer % 2 == 0) {
 					centre.subtract(direction);

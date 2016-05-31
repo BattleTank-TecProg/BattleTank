@@ -180,10 +180,10 @@ public class Shell extends SolidObject {
 			centre.add(direction);
 			Explosion e = new Explosion(centre.x, centre.y, centre.z, 1);
 			e.setType(this.type);
-			if (type == 1) {
+			if (type == 1)
 				e.setDamage(10);
-			}
 			Projectiles.register(e);
+
 		} else {
 
 			ModelDrawList.register(this);
@@ -217,9 +217,8 @@ public class Shell extends SolidObject {
 			if (lifeSpan < 0) {
 				Explosion e = new Explosion(centre.x, centre.y, centre.z, 1);
 				e.setType(this.type);
-				if (type == 1) {
+				if (type == 1)
 					e.setDamage(10);
-				}
 				Projectiles.register(e);
 
 			}

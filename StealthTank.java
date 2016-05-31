@@ -742,6 +742,7 @@ public class StealthTank extends SolidObject {
 					aimRight = true;
 			}
 		} else {
+
 			if (engaged) {
 				if ((Main.timer) % 5 == 0)
 					ObstacleMap.alertNearbyTanks(position);
