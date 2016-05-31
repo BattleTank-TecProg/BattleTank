@@ -300,9 +300,7 @@ public class Camera {
 		// Stop updating camera when game is finished
 
 		if (Main.gameOver) {
-			return;
 			// Move the camera to the player's position
-
 		} else if (!Main.gameNotStart) {
 
 			// Update position
@@ -513,7 +511,7 @@ public class Camera {
 			} else {
 				// Does nothing.
 			}
-
+			
 		}
 
 	}

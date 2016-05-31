@@ -288,35 +288,31 @@ public class GameHUD {
 
 				mouseXpos = -1234567;
 				mouseYpos = -1234567;
-				return;
 			} else {
-				// Does nothing.
-			}
+				if (mouseXpos > 264 && mouseXpos < 385 && mouseYpos > 120
+						&& mouseYpos < 144
+						&& !(!Main.gamePaused && !Main.gameNotStart)) {
+					menuOptionStatus = 0;
+					gameoverMessagePosition = 0;
+					winMessagePosition = 0;
+					loadingScreenPosition = 0;
+					ObstacleMap.clear();
 
-			if (mouseXpos > 264 && mouseXpos < 385 && mouseYpos > 120
-					&& mouseYpos < 144
-					&& !(!Main.gamePaused && !Main.gameNotStart)) {
-				menuOptionStatus = 0;
-				gameoverMessagePosition = 0;
-				winMessagePosition = 0;
-				loadingScreenPosition = 0;
-				ObstacleMap.clear();
+					Camera.setViewDirection(new Vector(0, 0, 1));
+					Camera.setXZ_angle(0);
+					Camera.setRestart(true);
 
-				Camera.setViewDirection(new Vector(0, 0, 1));
-				Camera.setXZ_angle(0);
-				Camera.setRestart(true);
-
-				PowerUps.init();
-				Projectiles.init();
-				Enemies.init();
-				ObstacleMap.removeObstacle2(Main.PT.position);
-				Main.PT = new PlayerTank(XCOORDINADE, YCOORDINADE, ZCOORDINADE);
-				Main.gameNotStart = false;
-				Main.gamePaused = false;
-				Main.gameOver = false;
-				Main.win = false;
-			} else {
-				// Does nothing.
+					PowerUps.init();
+					Projectiles.init();
+					Enemies.init();
+					ObstacleMap.removeObstacle2(Main.PT.position);
+					Main.PT = new PlayerTank(XCOORDINADE, YCOORDINADE,
+							ZCOORDINADE);
+					Main.gameNotStart = false;
+					Main.gamePaused = false;
+					Main.gameOver = false;
+					Main.win = false;
+				}
 			}
 
 			if (mouseXpos > 262 && mouseXpos < 385 && mouseYpos > 161

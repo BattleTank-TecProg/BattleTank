@@ -568,16 +568,13 @@ public class Annihilator extends SolidObject {
 	 */
 
 	public void damage(int damagePoint) {
-
 		if (damagePoint == -1) {
 			active = true;
 			engaged = true;
-			return;
 		} else {
-			// Does nothing.
+			HP -= damagePoint;
+			engaged = true;
 		}
-		HP -= damagePoint;
-		engaged = true;
 	}
 
 	/**
@@ -1014,331 +1011,336 @@ public class Annihilator extends SolidObject {
 				} else {
 					aimRight = true;
 				}
-			}
-			else {
-				// Does nothing.
-			}
-			return;
-		} else {
-			// Does nothing.
-		}
-
-		if (engaged) {
-			/*
-			 * If medium tank is engaged with player, it will send alert to
-			 * nearby tanks
-			 */
-			if ((Main.timer) % 5 == 0) {
-				ObstacleMap.alertNearbyTanks(position);
-
-				/*
-				 * Test whether there is a type obstacle 2 between medium tank
-				 * and player tank Firing a vision ray from medium tank toward
-				 * player tank
-				 */
 			} else {
 				// Does nothing.
 			}
+		} else {
+			// Does nothing.
 
-			try {
-				tempVector1.set(bodyCenter);
-				tempVector2.set(PlayerTank.bodyCenter);
-				tempVector2.subtract(tempVector1);
-				tempVector2.unit();
-				tempVector2.scale(0.125);
-			} catch (NullPointerException erro) {
-				LOG.severe("Null Point Error" + erro);
-			}
+			if (engaged) {
+				/*
+				 * If medium tank is engaged with player, it will send alert to
+				 * nearby tanks
+				 */
+				if ((Main.timer) % 5 == 0) {
+					ObstacleMap.alertNearbyTanks(position);
 
-			// Find the angle between target and itself
+					/*
+					 * Test whether there is a type obstacle 2 between medium
+					 * tank and player tank Firing a vision ray from medium tank
+					 * toward player tank
+					 */
+				} else {
+					// Does nothing.
+				}
 
-			clearToShoot = true;
-			int obstacleType = -1;
-			double d = 0;
-			try {
-				for (int i = 0; (d < distance) && (i < 30); i++, tempVector1
-						.add(tempVector2), d += 0.125) {
-					model temp = ObstacleMap.isOccupied2(tempVector1);
-					if (temp == null) {
-						continue;
+				try {
+					tempVector1.set(bodyCenter);
+					tempVector2.set(PlayerTank.bodyCenter);
+					tempVector2.subtract(tempVector1);
+					tempVector2.unit();
+					tempVector2.scale(0.125);
+				} catch (NullPointerException erro) {
+					LOG.severe("Null Point Error" + erro);
+				}
+
+				// Find the angle between target and itself
+
+				clearToShoot = true;
+				int obstacleType = -1;
+				double d = 0;
+				try {
+					for (int i = 0; (d < distance) && (i < 30); i++, tempVector1
+							.add(tempVector2), d += 0.125) {
+						model temp = ObstacleMap.isOccupied2(tempVector1);
+						if (temp == null) {
+							continue;
+						} else {
+							// Does nothing.
+						}
+						obstacleType = temp.getType();
+						if (obstacleType == 1) {
+							break;
+						} else {
+							clearToShoot = false;
+							break;
+						}
+
+					}
+				} catch (NullPointerException erro) {
+					LOG.severe("Null Point Error" + erro);
+				}
+
+				if (clearToShoot) {
+					targetAngle = 90 + (int) (180 * Math
+							.atan((centre.z - PlayerTank.bodyCenter.z)
+									/ (centre.x - PlayerTank.bodyCenter.x)) / Math.PI);
+					if (PlayerTank.bodyCenter.x > turretCenter.x
+							&& targetAngle <= 180) {
+						targetAngle += 180;
 					} else {
 						// Does nothing.
 					}
-					obstacleType = temp.getType();
-					if (obstacleType == 1) {
-						break;
+
+				} else {
+					targetAngle = bodyAngle;
+
+				}
+				// Calculate the difference between those 2 angles
+				int AngleDelta = turretAngle - targetAngle;
+				if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 1.7) {
+					firingShell = true;
+				} else {
+					// Does nothing.
+				}
+				if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 3) {
+					firingRocket = true;
+				} else {
+					// Does nothing.
+				}
+				// Aim at a target angle
+				if (AngleDelta > 0) {
+					if (AngleDelta < 180) {
+						aimRight = true;
 					} else {
-						clearToShoot = false;
-						break;
+						aimLeft = true;
 					}
-
-				}
-			} catch (NullPointerException erro) {
-				LOG.severe("Null Point Error" + erro);
-			}
-
-			if (clearToShoot) {
-				targetAngle = 90 + (int) (180 * Math
-						.atan((centre.z - PlayerTank.bodyCenter.z)
-								/ (centre.x - PlayerTank.bodyCenter.x)) / Math.PI);
-				if (PlayerTank.bodyCenter.x > turretCenter.x
-						&& targetAngle <= 180) {
-					targetAngle += 180;
+				} else if (AngleDelta < 0) {
+					if (AngleDelta > -180) {
+						aimLeft = true;
+					} else {
+						aimRight = true;
+					}
 				} else {
 					// Does nothing.
 				}
-
-			} else {
-				targetAngle = bodyAngle;
-
-			}
-			// Calculate the difference between those 2 angles
-			int AngleDelta = turretAngle - targetAngle;
-			if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 1.7) {
-				firingShell = true;
-			} else {
-				// Does nothing.
-			}
-			if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 3) {
-				firingRocket = true;
-			} else {
-				// Does nothing.
-			}
-			// Aim at a target angle
-			if (AngleDelta > 0) {
-				if (AngleDelta < 180) {
-					aimRight = true;
-				} else {
-					aimLeft = true;
-				}
-			} else if (AngleDelta < 0) {
-				if (AngleDelta > -180) {
-					aimLeft = true;
-				} else {
-					aimRight = true;
-				}
-			} else {
-				// Does nothing.
-			}
-			/*
-			 * Move to a target location medium tank will move towards player
-			 * tank's position until distance is less than 1.4, or it detects a
-			 * type 2 obstacle between itself and the player's tank
-			 */
-			forward = true;
-			if (clearToShoot && distance < 1.5) {
-				if (distance < 1.4) {
-					forward = false;
-				} else {
-					// Does nothing.
-				}
-				if (distance >= 1.4) {
-					if (randomNumber2 > 50) {
+				/*
+				 * Move to a target location medium tank will move towards
+				 * player tank's position until distance is less than 1.4, or it
+				 * detects a type 2 obstacle between itself and the player's
+				 * tank
+				 */
+				forward = true;
+				if (clearToShoot && distance < 1.5) {
+					if (distance < 1.4) {
 						forward = false;
 					} else {
 						// Does nothing.
 					}
-				} else {
-					// Does nothing.
-				}
-			} else {
-				// Does nothing.Inicia a classe Logger para Principal
-			}
-
-			if (unstuck && distance > 0.8) {
-				forward = true;
-				ObstacleMap.giveWay(this, position);
-			} else {
-				// Does nothing.
-			}
-
-			if (forward) {
-				targetAngleBody = 90 + (int) (180 * Math
-						.atan((centre.z - PlayerTank.bodyCenter.z)
-								/ (centre.x - PlayerTank.bodyCenter.x)) / Math.PI);
-				if (PlayerTank.bodyCenter.x > centre.x
-						&& targetAngleBody <= 180) {
-					targetAngleBody += 180;
-				} else {
-					// Does nothing.
-				}
-
-				// The enemy tank will occasionly (~once every 10 secs) perfom a
-				// 90 degree change in moving angle if:
-				// 1. it cant see the target tank and the target is within 1.2
-				// unit away
-				// 2. it got stucked and the target is within 1.2 units away
-				// 3. blocked by a wall and the target is within 3 units away
-
-				if (!clearToShoot
-						&& (distance < 1.2 || (obstacleType == 6 && distance < 2.5))
-						|| stuckCount == 10) {
-					if (stuckCount == 10) {
+					if (distance >= 1.4) {
 						if (randomNumber2 > 50) {
-							randomNumber2 = 50;
+							forward = false;
 						} else {
-							randomNumber2 = 51;
+							// Does nothing.
 						}
-						stuckCount = 0;
 					} else {
 						// Does nothing.
 					}
+				} else {
+					// Does nothing.Inicia a classe Logger para Principal
+				}
 
-					if (randomNumber2 > 50) {
-						targetAngleBody += 90;
-					} else {
-						targetAngleBody -= 90;
-					}
-
-					targetAngleBody = (targetAngleBody + 360) % 360;
+				if (unstuck && distance > 0.8) {
+					forward = true;
+					ObstacleMap.giveWay(this, position);
 				} else {
 					// Does nothing.
 				}
 
-				int newPosition = (int) (boundary2D.xPos * 4)
-						+ (129 - (int) (boundary2D.yPos * 4)) * 80;
-
-				// Check whether the next move will embed into obstacles
-
-				displacement.set(0, 0, 0.01);
-				displacement.rotate_XZ(targetAngleBody);
-				boundary2D.update(displacement);
-
-				boolean canMove = true;
-				// Test againt type 1 & 2 obstacles
-				if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
-					forward = false;
-					canMove = false;
-				} else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
-					forward = false;
-					canMove = false;
-				} else {
-					// Does nothing.
-				}
-				displacement.scale(-1);
-				boundary2D.update(displacement);
-				displacement.reset();
-
-				if (!canMove) {
-					if (unstuck) {
-						ObstacleMap.giveWay(this, position);
+				if (forward) {
+					targetAngleBody = 90 + (int) (180 * Math
+							.atan((centre.z - PlayerTank.bodyCenter.z)
+									/ (centre.x - PlayerTank.bodyCenter.x)) / Math.PI);
+					if (PlayerTank.bodyCenter.x > centre.x
+							&& targetAngleBody <= 180) {
+						targetAngleBody += 180;
 					} else {
 						// Does nothing.
 					}
 
-					// Change direction if unable to move with current direction
+					// The enemy tank will occasionly (~once every 10 secs)
+					// perfom a
+					// 90 degree change in moving angle if:
+					// 1. it cant see the target tank and the target is within
+					// 1.2
+					// unit away
+					// 2. it got stucked and the target is within 1.2 units away
+					// 3. blocked by a wall and the target is within 3 units
+					// away
 
-					targetAngleBody = targetAngle;
-					// Generate 2 new directions
-					int angle1 = targetAngleBody - targetAngleBody % 90;
-					int angle2 = angle1 + 90;
+					if (!clearToShoot
+							&& (distance < 1.2 || (obstacleType == 6 && distance < 2.5))
+							|| stuckCount == 10) {
+						if (stuckCount == 10) {
+							if (randomNumber2 > 50) {
+								randomNumber2 = 50;
+							} else {
+								randomNumber2 = 51;
+							}
+							stuckCount = 0;
+						} else {
+							// Does nothing.
+						}
 
-					angle2 = angle2 % 360;
+						if (randomNumber2 > 50) {
+							targetAngleBody += 90;
+						} else {
+							targetAngleBody -= 90;
+						}
 
-					boolean canMoveAngle1 = true;
-					boolean canMoveAngle2 = true;
+						targetAngleBody = (targetAngleBody + 360) % 360;
+					} else {
+						// Does nothing.
+					}
+
+					int newPosition = (int) (boundary2D.xPos * 4)
+							+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+
+					// Check whether the next move will embed into obstacles
 
 					displacement.set(0, 0, 0.01);
-					displacement.rotate_XZ(angle1);
+					displacement.rotate_XZ(targetAngleBody);
 					boundary2D.update(displacement);
-					newPosition = (int) (boundary2D.xPos * 4)
-							+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+
+					boolean canMove = true;
+					// Test againt type 1 & 2 obstacles
 					if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
-						canMoveAngle1 = false;
+						forward = false;
+						canMove = false;
 					} else if (ObstacleMap.collideWithObstacle2(this,
 							newPosition)) {
-						canMoveAngle1 = false;
+						forward = false;
+						canMove = false;
 					} else {
 						// Does nothing.
 					}
 					displacement.scale(-1);
 					boundary2D.update(displacement);
 					displacement.reset();
-					// Check if tank is able to move freely at angle 1
+
+					if (!canMove) {
+						if (unstuck) {
+							ObstacleMap.giveWay(this, position);
+						} else {
+							// Does nothing.
+						}
+
+						// Change direction if unable to move with current
+						// direction
+
+						targetAngleBody = targetAngle;
+						// Generate 2 new directions
+						int angle1 = targetAngleBody - targetAngleBody % 90;
+						int angle2 = angle1 + 90;
+
+						angle2 = angle2 % 360;
+
+						boolean canMoveAngle1 = true;
+						boolean canMoveAngle2 = true;
+
+						displacement.set(0, 0, 0.01);
+						displacement.rotate_XZ(angle1);
+						boundary2D.update(displacement);
+						newPosition = (int) (boundary2D.xPos * 4)
+								+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+						if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+							canMoveAngle1 = false;
+						} else if (ObstacleMap.collideWithObstacle2(this,
+								newPosition)) {
+							canMoveAngle1 = false;
+						} else {
+							// Does nothing.
+						}
+						displacement.scale(-1);
+						boundary2D.update(displacement);
+						displacement.reset();
+						// Check if tank is able to move freely at angle 1
+						displacement.set(0, 0, 0.01);
+						displacement.rotate_XZ(angle2);
+						boundary2D.update(displacement);
+						newPosition = (int) (boundary2D.xPos * 4)
+								+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+						// Test againt type 1 & 2 obstacles
+						if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+							canMoveAngle2 = false;
+						} else if (ObstacleMap.collideWithObstacle2(this,
+								newPosition)) {
+							canMoveAngle2 = false;
+						} else {
+							// Does nothing.
+						}
+						displacement.scale(-1);
+						boundary2D.update(displacement);
+						displacement.reset();
+						/*
+						 * Move to a valid direction. if both directions are
+						 * valid, then move to the direction that is closer to
+						 * targetAngleBody if neither direction is valid, then
+						 * update the AI status to "stucked"(which does nothing
+						 * at this moment)
+						 */
+
+						if (canMoveAngle1 && !canMoveAngle2) {
+							targetAngleBody = angle1;
+							forward = true;
+
+							ObstacleMap.giveWay(this, position);
+						} else if (!canMoveAngle1 && canMoveAngle2) {
+							targetAngleBody = angle2;
+							forward = true;
+
+							ObstacleMap.giveWay(this, position);
+						} else if (canMoveAngle1 && canMoveAngle2) {
+							if (Math.abs(angle1 - targetAngleBody) < Math
+									.abs(angle2 - targetAngleBody)) {
+								targetAngleBody = angle1;
+
+							} else {
+								targetAngleBody = angle2;
+
+							}
+							forward = true;
+
+						} else {
+							// Got stucked!!
+							stuckCount = 10;
+
+							// Tell surrounding units to move away
+							ObstacleMap.giveWay(this, position);
+
+						}
+
+						if (Math.abs((previousTargetAngleBody + 180) % 360
+								- targetAngleBody) <= 50) {
+							targetAngleBody = previousTargetAngleBody;
+						} else {
+							// Does nothing.
+						}
+
+					} else {
+						// Does nothing.
+					}
+					// Double check whether the move is valid
 					displacement.set(0, 0, 0.01);
-					displacement.rotate_XZ(angle2);
+					displacement.rotate_XZ(targetAngleBody);
 					boundary2D.update(displacement);
 					newPosition = (int) (boundary2D.xPos * 4)
 							+ (129 - (int) (boundary2D.yPos * 4)) * 80;
 					// Test againt type 1 & 2 obstacles
 					if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
-						canMoveAngle2 = false;
+						forward = false;
+
 					} else if (ObstacleMap.collideWithObstacle2(this,
 							newPosition)) {
-						canMoveAngle2 = false;
+						forward = false;
+
 					} else {
 						// Does nothing.
 					}
 					displacement.scale(-1);
 					boundary2D.update(displacement);
 					displacement.reset();
-					/*
-					 * Move to a valid direction. if both directions are valid,
-					 * then move to the direction that is closer to
-					 * targetAngleBody if neither direction is valid, then
-					 * update the AI status to "stucked"(which does nothing at
-					 * this moment)
-					 */
-
-					if (canMoveAngle1 && !canMoveAngle2) {
-						targetAngleBody = angle1;
-						forward = true;
-
-						ObstacleMap.giveWay(this, position);
-					} else if (!canMoveAngle1 && canMoveAngle2) {
-						targetAngleBody = angle2;
-						forward = true;
-
-						ObstacleMap.giveWay(this, position);
-					} else if (canMoveAngle1 && canMoveAngle2) {
-						if (Math.abs(angle1 - targetAngleBody) < Math
-								.abs(angle2 - targetAngleBody)) {
-							targetAngleBody = angle1;
-
-						} else {
-							targetAngleBody = angle2;
-
-						}
-						forward = true;
-
-					} else {
-						// Got stucked!!
-						stuckCount = 10;
-
-						// Tell surrounding units to move away
-						ObstacleMap.giveWay(this, position);
-
-					}
-
-					if (Math.abs((previousTargetAngleBody + 180) % 360
-							- targetAngleBody) <= 50) {
-						targetAngleBody = previousTargetAngleBody;
-					} else {
-						// Does nothing.
-					}
-
-				} else {
-					// Does nothing.
 				}
-				// Double check whether the move is valid
-				displacement.set(0, 0, 0.01);
-				displacement.rotate_XZ(targetAngleBody);
-				boundary2D.update(displacement);
-				newPosition = (int) (boundary2D.xPos * 4)
-						+ (129 - (int) (boundary2D.yPos * 4)) * 80;
-				// Test againt type 1 & 2 obstacles
-				if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
-					forward = false;
-
-				} else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
-					forward = false;
-
-				} else {
-					// Does nothing.
-				}
-				displacement.scale(-1);
-				boundary2D.update(displacement);
-				displacement.reset();
 			}
 		}
 		previousTargetAngleBody = targetAngleBody;

@@ -559,243 +559,249 @@ public class MissileLauncher extends SolidObject {
 		tempVector1.subtract(PlayerTank.bodyCenter);
 		distance = tempVector1.getLength();
 
-		if (distance < 2.5)
+		if (distance < 2.5) {
 			engaged = true;
-
+		}
 		if (distance > 4.5) {
-			engaged = false;
 
+			engaged = false;
 			targetAngle = bodyAngle;
 			int AngleDelta = turretAngle - targetAngle;
+
 			if (AngleDelta > 0) {
-				if (AngleDelta < 180)
+				if (AngleDelta < 180) {
 					aimRight = true;
-				else
-					aimLeft = true;
-			} else if (AngleDelta < 0) {
-				if (AngleDelta > -180)
-					aimLeft = true;
-				else
-					aimRight = true;
-			}
-			return;
-		}
-
-		if (engaged) {
-
-			if ((Main.timer) % 5 == 0)
-				ObstacleMap.alertNearbyTanks(position);
-
-			tempVector1.set(bodyCenter);
-			tempVector2.set(PlayerTank.bodyCenter);
-			tempVector2.subtract(tempVector1);
-			tempVector2.unit();
-			tempVector2.scale(0.125);
-
-			clearToShoot = true;
-			double d = 0;
-			int obstacleType = -1;
-			for (int i = 0; i < 40 && d < distance; i++, tempVector1
-					.add(tempVector2), d += 0.125) {
-				model temp = ObstacleMap.isOccupied2(tempVector1);
-				if (temp == null)
-					continue;
-				obstacleType = temp.getType();
-				if (obstacleType == 1) {
-					break;
 				} else {
-					clearToShoot = false;
-					break;
+					aimLeft = true;
 				}
-
-			}
-
-			if (clearToShoot) {
-				targetAngle = 90 + (int) (180 * Math
-						.atan((turretCenter.z - PlayerTank.bodyCenter.z)
-								/ (turretCenter.x - PlayerTank.bodyCenter.x)) / Math.PI);
-				if (PlayerTank.bodyCenter.x > turretCenter.x
-						&& targetAngle <= 180)
-					targetAngle += 180;
-
 			} else {
-				targetAngle = bodyAngle;
-
+				if (AngleDelta < 0) {
+					if (AngleDelta > -180) {
+						aimLeft = true;
+					} else {
+						aimRight = true;
+					}
+				}
 			}
+		} else {
+			if (engaged) {
 
-			int AngleDelta = turretAngle - targetAngle;
-			if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 2.5)
-				firing = true;
+				if ((Main.timer) % 5 == 0) {
+					ObstacleMap.alertNearbyTanks(position);
+				}
+				tempVector1.set(bodyCenter);
+				tempVector2.set(PlayerTank.bodyCenter);
+				tempVector2.subtract(tempVector1);
+				tempVector2.unit();
+				tempVector2.scale(0.125);
 
-			if (AngleDelta > 0) {
-				if (AngleDelta < 180)
-					aimRight = true;
-				else
-					aimLeft = true;
-			} else if (AngleDelta < 0) {
-				if (AngleDelta > -180)
-					aimLeft = true;
-				else
-					aimRight = true;
-			}
-
-			forward = true;
-			if (clearToShoot && distance < 3) {
-				if (distance < 2.49)
-					forward = false;
-
-			}
-
-			if (unstuck && distance > 0.8) {
-				forward = true;
-
-			}
-
-			if (forward) {
-				targetAngleBody = 90 + (int) (180 * Math
-						.atan((centre.z - PlayerTank.bodyCenter.z)
-								/ (centre.x - PlayerTank.bodyCenter.x)) / Math.PI);
-				if (PlayerTank.bodyCenter.x > centre.x
-						&& targetAngleBody <= 180)
-					targetAngleBody += 180;
-
-				if (!clearToShoot
-						&& (distance < 1.2 || (obstacleType == 6 && distance < 2.5))
-						|| stuckCount == 10) {
-
-					if (stuckCount == 10) {
-						if (randomNumber2 > 50)
-							randomNumber2 = 50;
-						else
-							randomNumber2 = 51;
-						stuckCount = 0;
+				clearToShoot = true;
+				double d = 0;
+				int obstacleType = -1;
+				for (int i = 0; i < 40 && d < distance; i++, tempVector1
+						.add(tempVector2), d += 0.125) {
+					model temp = ObstacleMap.isOccupied2(tempVector1);
+					if (temp == null) {
+						continue;
+					}
+					obstacleType = temp.getType();
+					if (obstacleType == 1) {
+						break;
+					} else {
+						clearToShoot = false;
+						break;
 					}
 
-					if (randomNumber2 > 50)
-						targetAngleBody += 90;
+				}
+
+				if (clearToShoot) {
+					targetAngle = 90 + (int) (180 * Math
+							.atan((turretCenter.z - PlayerTank.bodyCenter.z)
+									/ (turretCenter.x - PlayerTank.bodyCenter.x)) / Math.PI);
+					if (PlayerTank.bodyCenter.x > turretCenter.x
+							&& targetAngle <= 180) {
+						targetAngle += 180;
+					}
+				} else {
+					targetAngle = bodyAngle;
+				}
+
+				int AngleDelta = turretAngle - targetAngle;
+				if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 2.5)
+					firing = true;
+
+				if (AngleDelta > 0) {
+					if (AngleDelta < 180)
+						aimRight = true;
 					else
-						targetAngleBody -= 90;
-
-					targetAngleBody = (targetAngleBody + 360) % 360;
+						aimLeft = true;
+				} else if (AngleDelta < 0) {
+					if (AngleDelta > -180)
+						aimLeft = true;
+					else
+						aimRight = true;
 				}
 
-				displacement.set(0, 0, 0.01);
-				displacement.rotate_XZ(targetAngleBody);
-				boundary2D.update(displacement);
-				int newPosition = (int) (boundary2D.xPos * 4)
-						+ (129 - (int) (boundary2D.yPos * 4)) * 80;
-				boolean canMove = true;
+				forward = true;
+				if (clearToShoot && distance < 3) {
+					if (distance < 2.49)
+						forward = false;
 
-				if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
-					forward = false;
-					canMove = false;
-				} else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
-					forward = false;
-					canMove = false;
 				}
-				displacement.scale(-1);
-				boundary2D.update(displacement);
-				displacement.reset();
 
-				if (!canMove) {
-					if (unstuck) {
-						ObstacleMap.giveWay(this, position);
+				if (unstuck && distance > 0.8) {
+					forward = true;
+
+				}
+
+				if (forward) {
+					targetAngleBody = 90 + (int) (180 * Math
+							.atan((centre.z - PlayerTank.bodyCenter.z)
+									/ (centre.x - PlayerTank.bodyCenter.x)) / Math.PI);
+					if (PlayerTank.bodyCenter.x > centre.x
+							&& targetAngleBody <= 180)
+						targetAngleBody += 180;
+
+					if (!clearToShoot
+							&& (distance < 1.2 || (obstacleType == 6 && distance < 2.5))
+							|| stuckCount == 10) {
+
+						if (stuckCount == 10) {
+							if (randomNumber2 > 50)
+								randomNumber2 = 50;
+							else
+								randomNumber2 = 51;
+							stuckCount = 0;
+						}
+
+						if (randomNumber2 > 50)
+							targetAngleBody += 90;
+						else
+							targetAngleBody -= 90;
+
+						targetAngleBody = (targetAngleBody + 360) % 360;
 					}
 
-					targetAngleBody = targetAngle;
-
-					int angle1 = targetAngleBody - targetAngleBody % 90;
-					int angle2 = angle1 + 90;
-
-					angle2 = angle2 % 360;
-
-					boolean canMoveAngle1 = true;
-					boolean canMoveAngle2 = true;
-
 					displacement.set(0, 0, 0.01);
-					displacement.rotate_XZ(angle1);
+					displacement.rotate_XZ(targetAngleBody);
 					boundary2D.update(displacement);
-					newPosition = (int) (boundary2D.xPos * 4)
+					int newPosition = (int) (boundary2D.xPos * 4)
 							+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+					boolean canMove = true;
 
 					if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
-						canMoveAngle1 = false;
+						forward = false;
+						canMove = false;
 					} else if (ObstacleMap.collideWithObstacle2(this,
 							newPosition)) {
-						canMoveAngle1 = false;
+						forward = false;
+						canMove = false;
 					}
 					displacement.scale(-1);
 					boundary2D.update(displacement);
 					displacement.reset();
 
-					displacement.set(0, 0, 0.01);
-					displacement.rotate_XZ(angle2);
-					boundary2D.update(displacement);
-					newPosition = (int) (boundary2D.xPos * 4)
-							+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+					if (!canMove) {
+						if (unstuck) {
+							ObstacleMap.giveWay(this, position);
+						}
 
-					if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
-						canMoveAngle2 = false;
-					} else if (ObstacleMap.collideWithObstacle2(this,
-							newPosition)) {
-						canMoveAngle2 = false;
-					}
-					displacement.scale(-1);
-					boundary2D.update(displacement);
-					displacement.reset();
+						targetAngleBody = targetAngle;
 
-					if (canMoveAngle1 && !canMoveAngle2) {
-						targetAngleBody = angle1;
-						forward = true;
-						stuckCount = 0;
-						ObstacleMap.giveWay(this, position);
-					} else if (!canMoveAngle1 && canMoveAngle2) {
-						targetAngleBody = angle2;
-						forward = true;
-						stuckCount = 0;
-						ObstacleMap.giveWay(this, position);
-					} else if (canMoveAngle1 && canMoveAngle2) {
-						if (Math.abs(angle1 - targetAngleBody) < Math
-								.abs(angle2 - targetAngleBody)) {
+						int angle1 = targetAngleBody - targetAngleBody % 90;
+						int angle2 = angle1 + 90;
+
+						angle2 = angle2 % 360;
+
+						boolean canMoveAngle1 = true;
+						boolean canMoveAngle2 = true;
+
+						displacement.set(0, 0, 0.01);
+						displacement.rotate_XZ(angle1);
+						boundary2D.update(displacement);
+						newPosition = (int) (boundary2D.xPos * 4)
+								+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+
+						if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+							canMoveAngle1 = false;
+						} else if (ObstacleMap.collideWithObstacle2(this,
+								newPosition)) {
+							canMoveAngle1 = false;
+						}
+						displacement.scale(-1);
+						boundary2D.update(displacement);
+						displacement.reset();
+
+						displacement.set(0, 0, 0.01);
+						displacement.rotate_XZ(angle2);
+						boundary2D.update(displacement);
+						newPosition = (int) (boundary2D.xPos * 4)
+								+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+
+						if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+							canMoveAngle2 = false;
+						} else if (ObstacleMap.collideWithObstacle2(this,
+								newPosition)) {
+							canMoveAngle2 = false;
+						}
+						displacement.scale(-1);
+						boundary2D.update(displacement);
+						displacement.reset();
+
+						if (canMoveAngle1 && !canMoveAngle2) {
 							targetAngleBody = angle1;
+							forward = true;
+							stuckCount = 0;
+							ObstacleMap.giveWay(this, position);
+						} else if (!canMoveAngle1 && canMoveAngle2) {
+							targetAngleBody = angle2;
+							forward = true;
+							stuckCount = 0;
+							ObstacleMap.giveWay(this, position);
+						} else if (canMoveAngle1 && canMoveAngle2) {
+							if (Math.abs(angle1 - targetAngleBody) < Math
+									.abs(angle2 - targetAngleBody)) {
+								targetAngleBody = angle1;
+
+							} else {
+								targetAngleBody = angle2;
+
+							}
+							forward = true;
+							stuckCount = 0;
 
 						} else {
-							targetAngleBody = angle2;
+
+							stuckCount++;
+
+							ObstacleMap.giveWay(this, position);
 
 						}
-						forward = true;
-						stuckCount = 0;
 
-					} else {
-
-						stuckCount++;
-
-						ObstacleMap.giveWay(this, position);
+						if ((previousTargetAngleBody + 180) % 360 == targetAngleBody) {
+							targetAngleBody = previousTargetAngleBody;
+						}
 
 					}
 
-					if ((previousTargetAngleBody + 180) % 360 == targetAngleBody) {
-						targetAngleBody = previousTargetAngleBody;
+					displacement.set(0, 0, 0.01);
+					displacement.rotate_XZ(targetAngleBody);
+					boundary2D.update(displacement);
+					newPosition = (int) (boundary2D.xPos * 4)
+							+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+
+					if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+						forward = false;
+
+					} else if (ObstacleMap.collideWithObstacle2(this,
+							newPosition)) {
+						forward = false;
+
 					}
-
+					displacement.scale(-1);
+					boundary2D.update(displacement);
+					displacement.reset();
 				}
-
-				displacement.set(0, 0, 0.01);
-				displacement.rotate_XZ(targetAngleBody);
-				boundary2D.update(displacement);
-				newPosition = (int) (boundary2D.xPos * 4)
-						+ (129 - (int) (boundary2D.yPos * 4)) * 80;
-
-				if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
-					forward = false;
-
-				} else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
-					forward = false;
-
-				}
-				displacement.scale(-1);
-				boundary2D.update(displacement);
-				displacement.reset();
 			}
 		}
 		previousTargetAngleBody = targetAngleBody;
@@ -819,9 +825,9 @@ public class MissileLauncher extends SolidObject {
 
 		if (damagePoint == -1) {
 			active = true;
-			return;
+		} else {
+			HP -= damagePoint;
+			engaged = true;
 		}
-		HP -= damagePoint;
-		engaged = true;
 	}
 }

@@ -24,21 +24,27 @@ public class ObstacleMap {
 	}
 
 	public static void registerObstacle1(model obstacle, int position) {
-		if (obstacleMap1[position] == null)
+		if (obstacleMap1[position] == null) {
 			obstacleMap1[position] = obstacle;
+		}
 	}
 
 	public static void registerObstacle2(model obstacle, int position) {
-		if (position < 0 || position >= 10400)
-			return;
-		if (obstacleMap2[position] == null)
-			obstacleMap2[position] = obstacle;
+		if (position < 0 || position >= 10400) {
+			// Nothing to do.
+		} else {
+			if (obstacleMap2[position] == null) {
+				obstacleMap2[position] = obstacle;
+			}
+		}
 	}
 
 	public static void removeObstacle2(int position) {
-		if (position < 0 || position >= 10400)
-			return;
-		obstacleMap2[position] = null;
+		if (position < 0 || position >= 10400) {
+			// Nothing to do.
+		} else {
+			obstacleMap2[position] = null;
+		}
 	}
 
 	public static void clear() {

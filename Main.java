@@ -24,10 +24,10 @@ import java.util.logging.Logger;
 public class Main extends Applet implements KeyListener, ActionListener,
 		MouseMotionListener, MouseListener {
 
-    static final int HEIGHT = 480;
-	
+	static final int HEIGHT = 480;
+
 	static final int WIDTH = 640;
-	
+
 	private static final long serialVersionUID = 1L;
 	public Ticker t;
 	public int sleepTime;
@@ -59,8 +59,8 @@ public class Main extends Applet implements KeyListener, ActionListener,
 	public static boolean win;
 
 	public void init() {
-		
-	    LOG.info("Game is starting...");
+
+		LOG.info("Game is starting...");
 
 		gameNotStart = true;
 		appletDestoried = false;
@@ -69,7 +69,8 @@ public class Main extends Applet implements KeyListener, ActionListener,
 
 		System.gc();
 
-		doubleBuffer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+		doubleBuffer = new BufferedImage(WIDTH, HEIGHT,
+				BufferedImage.TYPE_INT_RGB);
 		DataBuffer dest = doubleBuffer.getRaster().getDataBuffer();
 		screen = ((DataBufferInt) dest).getData();
 
@@ -248,59 +249,61 @@ public class Main extends Applet implements KeyListener, ActionListener,
 		System.gc();
 
 		appletDestoried = true;
-		
+
 		LOG.info("Game is closing...");
 	}
 
 	public final void actionPerformed(ActionEvent e) {
 		if (appletDestoried) {
 			System.gc();
-			return;
+		} else {
+			if (timer == 2) {
+				requestFocus();
+			}
+			polyCount = 0;
+
+			timer++;
+			tm += sleepTime;
+			long temp = Math.max(0, tm - System.currentTimeMillis());
+			if (temp == 0)
+				temp = (long) (lastTime * 0.5);
+			if (temp > 33)
+				temp = 33;
+			t.setDelay((int) temp);
+			lastTime = temp;
+
+			InputHandler.handleInput();
+
+			Camera.update();
+
+			ModelDrawList.makeList();
+
+			Terrain.update();
+			PT.update();
+			Enemies.update();
+			Projectiles.update();
+			PowerUps.update();
+			GameEventHandler.processEvent();
+
+			if (terrainBufferFlag == true) {
+				terrainBufferFlag = false;
+			} else {
+				terrainBufferFlag = true;
+			}
+
+			Terrain.draw();
+
+			ModelDrawList.sort();
+			ModelDrawList.draw();
+
+			GameHUD.update();
+
+			GameHUD.draw();
+
+			if (this.getGraphics() != null) {
+				myPaint(this.getGraphics());
+			}
 		}
-
-		if (timer == 2)
-			requestFocus();
-
-		polyCount = 0;
-
-		timer++;
-		tm += sleepTime;
-		long temp = Math.max(0, tm - System.currentTimeMillis());
-		if (temp == 0)
-			temp = (long) (lastTime * 0.5);
-		if (temp > 33)
-			temp = 33;
-		t.setDelay((int) temp);
-		lastTime = temp;
-
-		InputHandler.handleInput();
-
-		Camera.update();
-
-		ModelDrawList.makeList();
-
-		Terrain.update();
-		PT.update();
-		Enemies.update();
-		Projectiles.update();
-		PowerUps.update();
-		GameEventHandler.processEvent();
-
-		if (terrainBufferFlag == true)
-			terrainBufferFlag = false;
-		else
-			terrainBufferFlag = true;
-		Terrain.draw();
-
-		ModelDrawList.sort();
-		ModelDrawList.draw();
-
-		GameHUD.update();
-
-		GameHUD.draw();
-
-		if (this.getGraphics() != null)
-			myPaint(this.getGraphics());
 
 	}
 
@@ -311,15 +314,17 @@ public class Main extends Applet implements KeyListener, ActionListener,
 	}
 
 	public final void paint(Graphics g) {
-		if (timer > 0)
-			return;
-		screen[0] = -134250;
+		if (timer > 0) {
+			// Nothing to do.
+		} else {
+			screen[0] = -134250;
 
-		for (int i = 1; i < 307200; i += i) {
-			System.arraycopy(screen, 0, screen, i, 307200 - i >= i ? i
-					: 307200 - i);
+			for (int i = 1; i < 307200; i += i) {
+				System.arraycopy(screen, 0, screen, i, 307200 - i >= i ? i
+						: 307200 - i);
+			}
+			myPaint(this.getGraphics());
 		}
-		myPaint(this.getGraphics());
 	}
 
 	public static void copyScreen() {
@@ -377,8 +382,8 @@ public class Main extends Applet implements KeyListener, ActionListener,
 
 	public final void mouseClicked(MouseEvent e) {
 	}
-	
+
 	// Starts a Logger to Main class
-    private static final Logger LOG = Logger.getLogger(Main.class.getName());
+	private static final Logger LOG = Logger.getLogger(Main.class.getName());
 
 }

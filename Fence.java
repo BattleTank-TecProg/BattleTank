@@ -221,20 +221,18 @@ public class Fence extends SolidObject {
 		if (tempCentre.z < 0.5 || tempCentre.screenY < -30
 				|| tempCentre.screenX < -400 || tempCentre.screenX > 800) {
 			visible = false;
-			return;
 		} else {
-			// Does nothing
-		}
-		visible = true;
+			visible = true;
 
-		ModelDrawList.register(this);
-		// Update boundary
-		for (int i = 0; i < 5; i++) {
-			boundary[i].update();
-		}
-		// Update polygons
-		for (int i = 0; i < polygons.length; i++) {
-			polygons[i].update();
+			ModelDrawList.register(this);
+			// Update boundary
+			for (int i = 0; i < 5; i++) {
+				boundary[i].update();
+			}
+			// Update polygons
+			for (int i = 0; i < polygons.length; i++) {
+				polygons[i].update();
+			}
 		}
 	}
 

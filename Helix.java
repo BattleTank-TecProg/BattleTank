@@ -77,23 +77,21 @@ public class Helix extends SolidObject {
 
 		if (lifeSpan == 0) {
 			lifeSpan = -1;
-			return;
+		} else {
+			ModelDrawList.register(this);
+
+			for (int i = 0; i < 5; i++)
+				boundary[i].update();
+
+			for (int i = 0; i < particles.length; i++)
+				particles[i].add(directions[i]);
+
+			tempCentre.set(centre);
+			tempCentre.y = -1;
+			tempCentre.subtract(Camera.getPosition());
+			tempCentre.rotate_XZ(Camera.getXZ_angle());
+			tempCentre.rotate_YZ(Camera.getYZ_angle());
 		}
-
-		ModelDrawList.register(this);
-
-		for (int i = 0; i < 5; i++)
-			boundary[i].update();
-
-		for (int i = 0; i < particles.length; i++)
-			particles[i].add(directions[i]);
-
-		tempCentre.set(centre);
-		tempCentre.y = -1;
-		tempCentre.subtract(Camera.getPosition());
-		tempCentre.rotate_XZ(Camera.getXZ_angle());
-		tempCentre.rotate_YZ(Camera.getYZ_angle());
-
 	}
 
 	public void draw() {
