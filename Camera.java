@@ -299,10 +299,6 @@ public class Camera {
 	 * This is a constructor method, which init camera with default values.
 	 */
 	public Camera() {
-		XZ_angle = 0;
-		position = new Vector(10, 0.25, 1.5);
-		absolutePosition = new Vector(10, 0.25, 1.5);
-		viewDirection = new Vector(0, 0, 1);
 		thirdPersonDisplacement = new Vector(0, 0, 0);
 		thirdPersonDisplacement.set(viewDirection.x, 0, -viewDirection.z);
 	}
