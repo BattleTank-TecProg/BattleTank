@@ -222,6 +222,7 @@ public class Fence extends SolidObject {
 				|| tempCentre.screenX < -400 || tempCentre.screenX > 800) {
 			visible = false;
 		} else {
+
 			visible = true;
 
 			ModelDrawList.register(this);

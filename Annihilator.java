@@ -568,13 +568,16 @@ public class Annihilator extends SolidObject {
 	 */
 
 	public void damage(int damagePoint) {
+
 		if (damagePoint == -1) {
 			active = true;
 			engaged = true;
+			return;
 		} else {
-			HP -= damagePoint;
-			engaged = true;
+			// Does nothing.
 		}
+		HP -= damagePoint;
+		engaged = true;
 	}
 
 	/**
@@ -1015,8 +1018,6 @@ public class Annihilator extends SolidObject {
 				// Does nothing.
 			}
 		} else {
-			// Does nothing.
-
 			if (engaged) {
 				/*
 				 * If medium tank is engaged with player, it will send alert to
@@ -1342,8 +1343,7 @@ public class Annihilator extends SolidObject {
 					displacement.reset();
 				}
 			}
+			previousTargetAngleBody = targetAngleBody;
 		}
-		previousTargetAngleBody = targetAngleBody;
 	}
-
 }

@@ -257,6 +257,7 @@ public class Main extends Applet implements KeyListener, ActionListener,
 		if (appletDestoried) {
 			System.gc();
 		} else {
+
 			if (timer == 2) {
 				requestFocus();
 			}
@@ -285,12 +286,10 @@ public class Main extends Applet implements KeyListener, ActionListener,
 			PowerUps.update();
 			GameEventHandler.processEvent();
 
-			if (terrainBufferFlag == true) {
+			if (terrainBufferFlag == true)
 				terrainBufferFlag = false;
-			} else {
+			else
 				terrainBufferFlag = true;
-			}
-
 			Terrain.draw();
 
 			ModelDrawList.sort();
@@ -304,7 +303,6 @@ public class Main extends Applet implements KeyListener, ActionListener,
 				myPaint(this.getGraphics());
 			}
 		}
-
 	}
 
 	public final void myPaint(Graphics g) {

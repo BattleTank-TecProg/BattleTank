@@ -559,36 +559,32 @@ public class MissileLauncher extends SolidObject {
 		tempVector1.subtract(PlayerTank.bodyCenter);
 		distance = tempVector1.getLength();
 
-		if (distance < 2.5) {
+		if (distance < 2.5)
 			engaged = true;
-		}
-		if (distance > 4.5) {
 
+		if (distance > 4.5) {
 			engaged = false;
+
 			targetAngle = bodyAngle;
 			int AngleDelta = turretAngle - targetAngle;
-
 			if (AngleDelta > 0) {
-				if (AngleDelta < 180) {
+				if (AngleDelta < 180)
 					aimRight = true;
-				} else {
+				else
 					aimLeft = true;
-				}
-			} else {
-				if (AngleDelta < 0) {
-					if (AngleDelta > -180) {
-						aimLeft = true;
-					} else {
-						aimRight = true;
-					}
-				}
+			} else if (AngleDelta < 0) {
+				if (AngleDelta > -180)
+					aimLeft = true;
+				else
+					aimRight = true;
 			}
 		} else {
+
 			if (engaged) {
 
-				if ((Main.timer) % 5 == 0) {
+				if ((Main.timer) % 5 == 0)
 					ObstacleMap.alertNearbyTanks(position);
-				}
+
 				tempVector1.set(bodyCenter);
 				tempVector2.set(PlayerTank.bodyCenter);
 				tempVector2.subtract(tempVector1);
@@ -601,9 +597,8 @@ public class MissileLauncher extends SolidObject {
 				for (int i = 0; i < 40 && d < distance; i++, tempVector1
 						.add(tempVector2), d += 0.125) {
 					model temp = ObstacleMap.isOccupied2(tempVector1);
-					if (temp == null) {
+					if (temp == null)
 						continue;
-					}
 					obstacleType = temp.getType();
 					if (obstacleType == 1) {
 						break;
@@ -619,11 +614,12 @@ public class MissileLauncher extends SolidObject {
 							.atan((turretCenter.z - PlayerTank.bodyCenter.z)
 									/ (turretCenter.x - PlayerTank.bodyCenter.x)) / Math.PI);
 					if (PlayerTank.bodyCenter.x > turretCenter.x
-							&& targetAngle <= 180) {
+							&& targetAngle <= 180)
 						targetAngle += 180;
-					}
+
 				} else {
 					targetAngle = bodyAngle;
+
 				}
 
 				int AngleDelta = turretAngle - targetAngle;
@@ -803,8 +799,8 @@ public class MissileLauncher extends SolidObject {
 					displacement.reset();
 				}
 			}
+			previousTargetAngleBody = targetAngleBody;
 		}
-		previousTargetAngleBody = targetAngleBody;
 	}
 
 	public void draw() {

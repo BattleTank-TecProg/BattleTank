@@ -148,6 +148,7 @@ public class Camera {
 
 	/**
 	 * This method returns the angle related to X and Z coordinates.
+	 * 
 	 * @return XZ_angle
 	 */
 	public static int getXZ_angle() {
@@ -156,6 +157,7 @@ public class Camera {
 
 	/**
 	 * This method set the angle related to X and Z coordinates.
+	 * 
 	 * @param XZ_angle
 	 */
 	public static void setXZ_angle(int xZ_angle) {
@@ -164,6 +166,7 @@ public class Camera {
 
 	/**
 	 * This method returns the angle related to Y and Z coordinates.
+	 * 
 	 * @return YZ_angle
 	 */
 	public static int getYZ_angle() {
@@ -172,15 +175,17 @@ public class Camera {
 
 	/**
 	 * This method set the angle related to Y and Z coordinates.
+	 * 
 	 * @param YZ_angle
 	 */
 	public static void setYZ_angle(int yZ_angle) {
 		YZ_angle = yZ_angle;
 	}
 
-
 	/**
-	 * This method boolean indicating whether the user has restarted the game or not.
+	 * This method boolean indicating whether the user has restarted the game or
+	 * not.
+	 * 
 	 * @return restart
 	 */
 	public static boolean isRestart() {
@@ -189,6 +194,7 @@ public class Camera {
 
 	/**
 	 * This method boolean set whether the user has restarted the game or not.
+	 * 
 	 * @param restart
 	 */
 	public static void setRestart(boolean restart) {
@@ -197,6 +203,7 @@ public class Camera {
 
 	/**
 	 * This method returns the flight through time.
+	 * 
 	 * @return flyThroughTimer
 	 */
 	public int getFlyThroughTimer() {
@@ -205,6 +212,7 @@ public class Camera {
 
 	/**
 	 * This method set the flight through time.
+	 * 
 	 * @param flyThroughTimer
 	 */
 	public void setFlyThroughTimer(int flyThroughTimer) {
@@ -213,13 +221,17 @@ public class Camera {
 
 	/**
 	 * This method returns the size larger than a variable type double may have.
+	 * 
 	 * @return LARGER_SIZE_FOR_A_DOUBLE_VARIABLE
 	 */
 	public static double getLargerSizeForADoubleVariable() {
 		return LARGER_SIZE_FOR_A_DOUBLE_VARIABLE;
 	}
+
 	/**
-	 * This method returns the size smaller than a variable type double may have.
+	 * This method returns the size smaller than a variable type double may
+	 * have.
+	 * 
 	 * @return MINIMUM_MOST_FOR_A_DOUBLE_VARIABLE
 	 */
 	public static double getMinimumMostForADoubleVariable() {
@@ -228,6 +240,7 @@ public class Camera {
 
 	/**
 	 * This method returns the X coordinate of.
+	 * 
 	 * @return XCOORDINADE
 	 */
 	public static int getXcoordinade() {
@@ -236,6 +249,7 @@ public class Camera {
 
 	/**
 	 * This method returns the Y coordinate of.
+	 * 
 	 * @return YCOORDINADE
 	 */
 	public static int getYcoordinade() {
@@ -244,6 +258,7 @@ public class Camera {
 
 	/**
 	 * This method returns the width.
+	 * 
 	 * @return WIDTH
 	 */
 	public static int getWidth() {
@@ -252,6 +267,7 @@ public class Camera {
 
 	/**
 	 * This method returns the height.
+	 * 
 	 * @return HEIGHT
 	 */
 	public static int getHeight() {
@@ -260,6 +276,7 @@ public class Camera {
 
 	/**
 	 * This method returns a rectangle related to screen position.
+	 * 
 	 * @return screen
 	 */
 	public static Rectangle getScreen() {
@@ -268,6 +285,7 @@ public class Camera {
 
 	/**
 	 * This method returns the record concerning what the code is doing.
+	 * 
 	 * @return LOG
 	 */
 	public static Logger getLog() {
@@ -277,9 +295,6 @@ public class Camera {
 	/** This variable holds the flight time of the camera. */
 	public int flyThroughTimer;
 
-	
-	
-	
 	/**
 	 * This is a constructor method, which init camera with default values.
 	 */
@@ -301,219 +316,219 @@ public class Camera {
 
 		if (Main.gameOver) {
 			// Move the camera to the player's position
-		} else if (!Main.gameNotStart) {
-
-			// Update position
-
-			position.subtract(thirdPersonDisplacement);
-
-			absolutePosition.set(position);
-
-			flyThroughTimer = 0;
-
-			if (!restart) {
-
-				double d_x = (PlayerTank.bodyCenter.x - position.x) / 5;
-				double d_z = (PlayerTank.bodyCenter.z - position.z) / 5;
-				position.x += d_x;
-				position.z += d_z;
-
-			} else {
-				LOG.info("New game is starting");
-
-				double d_x = (PlayerTank.bodyCenter.x - position.x);
-				double d_z = (PlayerTank.bodyCenter.z - position.z);
-				position.x += d_x;
-				position.z += d_z;
-
-				restart = false;
-			}
-
-			// Update view direction
-
-			viewDirection.set(0, 0, 1);
-			viewDirection.rotate_YZ(YZ_angle);
-			viewDirection.rotate_XZ(XZ_angle);
-			viewDirection.unit();
-
-			/*
-			 * Move the camera back a little bit, so the view becomes more like
-			 * third person rather than first person
-			 */
-
-			thirdPersonDisplacement.set(viewDirection.x * 0.9, 0,
-					-viewDirection.z * 0.9);
-			position.add(thirdPersonDisplacement);
-
 		} else {
-			flyThroughTimer++;
+			if (!Main.gameNotStart) {
 
-			// Fly through this entire level when the game isn't started
+				// Update position
 
-			if (flyThroughTimer <= 60) {
-				position.add(0, 0, 0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 130) {
+				position.subtract(thirdPersonDisplacement);
 
-				XZ_angle -= 1;
-				XZ_angle = (XZ_angle + 360) % 360;
+				absolutePosition.set(position);
 
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.add(0, 0, 0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 430) {
-				position.add(-0.01, 0, 0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 480) {
-				XZ_angle += 1;
-				XZ_angle = (XZ_angle + 360) % 360;
-
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.add(0, 0, 0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 800) {
-				position.add(-0.005, 0, 0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 825) {
-				XZ_angle += 1;
-				XZ_angle = (XZ_angle + 360) % 360;
-
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.add(-0.005, 0, 0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 1100) {
-				position.add(0, 0, 0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 1130) {
-				XZ_angle += 1;
-				XZ_angle = (XZ_angle + 360) % 360;
-
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.add(0, 0, 0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 1250) {
-				position.add(0.005, 0, 0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 1290) {
-				XZ_angle += 1;
-				XZ_angle = (XZ_angle + 360) % 360;
-
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.add(0, 0, 0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 1550) {
-				position.add(0.01, 0, 0.005);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 1567) {
-				XZ_angle += 1;
-				XZ_angle = (XZ_angle + 360) % 360;
-
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.add(0.01, 0, 0.005);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 1867) {
-				position.add(0.012, 0, 0);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 1900) {
-				XZ_angle += 1;
-				XZ_angle = (XZ_angle + 360) % 360;
-
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.add(0.01, 0, 0.005);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 2100) {
-				position.add(0.007, 0, -0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 2130) {
-				XZ_angle += 1;
-				XZ_angle = (XZ_angle + 360) % 360;
-
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.add(0.007, 0, -0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 2330) {
-				position.add(0.003, 0, -0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 2360) {
-				XZ_angle += 1;
-				XZ_angle = (XZ_angle + 360) % 360;
-
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.add(0.003, 0, -0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 2560) {
-				position.add(0, 0, -0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 2590) {
-				XZ_angle += 1;
-				XZ_angle = (XZ_angle + 360) % 360;
-
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.add(0, 0, -0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 2900) {
-				position.add(-0.005, 0, -0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 2920) {
-				XZ_angle += 1;
-				XZ_angle = (XZ_angle + 360) % 360;
-
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.add(-0.007, 0, -0.01);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 3255) {
-				position.add(-0.009, 0, -0.011);
-				absolutePosition.set(position);
-			} else if (flyThroughTimer <= 3380) {
-				XZ_angle += 1;
-				XZ_angle = (XZ_angle + 360) % 360;
-
-				viewDirection.set(0, 0, 1);
-				viewDirection.rotate_YZ(YZ_angle);
-				viewDirection.rotate_XZ(XZ_angle);
-				viewDirection.unit();
-				position.set(10, 0.25, 1.5);
-				absolutePosition.set(position);
 				flyThroughTimer = 0;
-			} else {
-				// Does nothing.
-			}
-			
-		}
 
+				if (!restart) {
+
+					double d_x = (PlayerTank.bodyCenter.x - position.x) / 5;
+					double d_z = (PlayerTank.bodyCenter.z - position.z) / 5;
+					position.x += d_x;
+					position.z += d_z;
+
+				} else {
+					LOG.info("New game is starting");
+
+					double d_x = (PlayerTank.bodyCenter.x - position.x);
+					double d_z = (PlayerTank.bodyCenter.z - position.z);
+					position.x += d_x;
+					position.z += d_z;
+
+					restart = false;
+				}
+
+				// Update view direction
+
+				viewDirection.set(0, 0, 1);
+				viewDirection.rotate_YZ(YZ_angle);
+				viewDirection.rotate_XZ(XZ_angle);
+				viewDirection.unit();
+
+				/*
+				 * Move the camera back a little bit, so the view becomes more
+				 * like third person rather than first person
+				 */
+
+				thirdPersonDisplacement.set(viewDirection.x * 0.9, 0,
+						-viewDirection.z * 0.9);
+				position.add(thirdPersonDisplacement);
+
+			} else {
+				flyThroughTimer++;
+
+				// Fly through this entire level when the game isn't started
+
+				if (flyThroughTimer <= 60) {
+					position.add(0, 0, 0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 130) {
+
+					XZ_angle -= 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.add(0, 0, 0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 430) {
+					position.add(-0.01, 0, 0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 480) {
+					XZ_angle += 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.add(0, 0, 0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 800) {
+					position.add(-0.005, 0, 0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 825) {
+					XZ_angle += 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.add(-0.005, 0, 0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 1100) {
+					position.add(0, 0, 0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 1130) {
+					XZ_angle += 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.add(0, 0, 0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 1250) {
+					position.add(0.005, 0, 0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 1290) {
+					XZ_angle += 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.add(0, 0, 0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 1550) {
+					position.add(0.01, 0, 0.005);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 1567) {
+					XZ_angle += 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.add(0.01, 0, 0.005);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 1867) {
+					position.add(0.012, 0, 0);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 1900) {
+					XZ_angle += 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.add(0.01, 0, 0.005);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 2100) {
+					position.add(0.007, 0, -0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 2130) {
+					XZ_angle += 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.add(0.007, 0, -0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 2330) {
+					position.add(0.003, 0, -0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 2360) {
+					XZ_angle += 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.add(0.003, 0, -0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 2560) {
+					position.add(0, 0, -0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 2590) {
+					XZ_angle += 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.add(0, 0, -0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 2900) {
+					position.add(-0.005, 0, -0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 2920) {
+					XZ_angle += 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.add(-0.007, 0, -0.01);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 3255) {
+					position.add(-0.009, 0, -0.011);
+					absolutePosition.set(position);
+				} else if (flyThroughTimer <= 3380) {
+					XZ_angle += 1;
+					XZ_angle = (XZ_angle + 360) % 360;
+
+					viewDirection.set(0, 0, 1);
+					viewDirection.rotate_YZ(YZ_angle);
+					viewDirection.rotate_XZ(XZ_angle);
+					viewDirection.unit();
+					position.set(10, 0.25, 1.5);
+					absolutePosition.set(position);
+					flyThroughTimer = 0;
+				} else {
+					// Does nothing.
+				}
+			}
+		}
 	}
 
 	private static final Logger LOG = Logger.getLogger(Annihilator.class

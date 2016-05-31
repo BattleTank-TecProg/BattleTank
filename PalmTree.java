@@ -274,6 +274,7 @@ public class PalmTree extends SolidObject {
 			polygons = null;
 			visible = false;
 		} else {
+
 			tempCentre.set(centre);
 			tempCentre.y = -1;
 			tempCentre.subtract(Camera.getPosition());
@@ -284,9 +285,8 @@ public class PalmTree extends SolidObject {
 			if (tempCentre.z < 0.9 || tempCentre.screenY < -10
 					|| (tempCentre.screenX < -60 && tempCentre.z > 3)
 					|| (tempCentre.screenX > 700 && tempCentre.z > 3)) {
-				
+
 				visible = false;
-			
 			} else {
 				visible = true;
 

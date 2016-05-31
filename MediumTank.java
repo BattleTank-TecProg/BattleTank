@@ -571,32 +571,28 @@ public class MediumTank extends SolidObject {
 			engaged = true;
 
 		if (distance > 4) {
-
 			engaged = false;
+
 			targetAngle = bodyAngle;
 			int AngleDelta = turretAngle - targetAngle;
-
 			if (AngleDelta > 0) {
-				if (AngleDelta < 180) {
+				if (AngleDelta < 180)
 					aimRight = true;
-				} else {
+				else
 					aimLeft = true;
-				}
 			} else if (AngleDelta < 0) {
-				if (AngleDelta > -180) {
+				if (AngleDelta > -180)
 					aimLeft = true;
-				} else {
+				else
 					aimRight = true;
-				}
 			}
-		}
+		} else {
 
-		else {
 			if (engaged) {
 
-				if ((Main.timer) % 5 == 0) {
+				if ((Main.timer) % 5 == 0)
 					ObstacleMap.alertNearbyTanks(position);
-				}
+
 				tempVector1.set(bodyCenter);
 				tempVector2.set(PlayerTank.bodyCenter);
 				tempVector2.subtract(tempVector1);
@@ -815,8 +811,8 @@ public class MediumTank extends SolidObject {
 					displacement.reset();
 				}
 			}
+			previousTargetAngleBody = targetAngleBody;
 		}
-		previousTargetAngleBody = targetAngleBody;
 	}
 
 	public void draw() {
@@ -825,14 +821,14 @@ public class MediumTank extends SolidObject {
 			for (int i = 0; i < body.length; i++) {
 				body[i].draw();
 			}
+
 			for (int i = 0; i < turret.length; i++) {
 				turret[i].draw();
 			}
 		}
 
-		if (Smoke != null && visible) {
+		if (Smoke != null && visible)
 			Smoke.draw();
-		}
 	}
 
 	public Rectangle2D getBoundary2D() {

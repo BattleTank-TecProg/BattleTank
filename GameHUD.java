@@ -312,33 +312,34 @@ public class GameHUD {
 					Main.gamePaused = false;
 					Main.gameOver = false;
 					Main.win = false;
+				} else {
+					// Does nothing.
+				}
+
+				if (mouseXpos > 262 && mouseXpos < 385 && mouseYpos > 161
+						&& mouseYpos < 183) {
+					menuOptionStatus = 2;
+				} else {
+					// Does nothing.
+				}
+
+				if (mouseXpos > 234 && mouseXpos < 412 && mouseYpos > 197
+						&& mouseYpos < 222) {
+					menuOptionStatus = 3;
+				} else {
+					// Does nothing.
+				}
+
+				if (menuOptionStatus == 2) {
+					menuOptionStatus = 4;
+					LOG.info("You selected controls menu with mouse");
+				} else if (menuOptionStatus == 3) {
+					menuOptionStatus = 5;
+					LOG.info("You selected about author menu with mouse");
+				} else {
+					// Does nothing.
 				}
 			}
-
-			if (mouseXpos > 262 && mouseXpos < 385 && mouseYpos > 161
-					&& mouseYpos < 183) {
-				menuOptionStatus = 2;
-			} else {
-				// Does nothing.
-			}
-
-			if (mouseXpos > 234 && mouseXpos < 412 && mouseYpos > 197
-					&& mouseYpos < 222) {
-				menuOptionStatus = 3;
-			} else {
-				// Does nothing.
-			}
-
-			if (menuOptionStatus == 2) {
-				menuOptionStatus = 4;
-				LOG.info("You selected controls menu with mouse");
-			} else if (menuOptionStatus == 3) {
-				menuOptionStatus = 5;
-				LOG.info("You selected about author menu with mouse");
-			} else {
-				// Does nothing.
-			}
-
 		} else {
 			// Does nothing.
 		}

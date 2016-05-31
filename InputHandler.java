@@ -14,7 +14,7 @@ public class InputHandler {
 	public static void handleInput() {
 
 		if (Main.gamePaused || Main.gameNotStart || Main.gameOver || Main.win) {
-			// Nothing to do
+			// Nothing to do.
 		} else {
 			playerInAction = false;
 

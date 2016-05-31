@@ -78,6 +78,7 @@ public class Helix extends SolidObject {
 		if (lifeSpan == 0) {
 			lifeSpan = -1;
 		} else {
+
 			ModelDrawList.register(this);
 
 			for (int i = 0; i < 5; i++)
