@@ -138,81 +138,81 @@ public class PowerUp extends SolidObject {
 		if (tempCentre.z < 0.5 || tempCentre.screenY < -30
 				|| tempCentre.screenX < -400 || tempCentre.screenX > 800) {
 			visible = false;
-			return;
-		}
-		visible = true;
+		} else {
+			visible = true;
 
-		ModelDrawList.register(this);
+			ModelDrawList.register(this);
 
-		theta += 9;
-		theta = theta % 360;
-		double height = 0.006 * GameData.sin[theta];
+			theta += 9;
+			theta = theta % 360;
+			double height = 0.006 * GameData.sin[theta];
 
-		for (int i = 0; i < polygons.length; i++) {
-			polygons[i].origin.subtract(start);
-			polygons[i].origin.rotate_XZ(3);
-			polygons[i].origin.add(start);
-			polygons[i].origin.y += height;
+			for (int i = 0; i < polygons.length; i++) {
+				polygons[i].origin.subtract(start);
+				polygons[i].origin.rotate_XZ(3);
+				polygons[i].origin.add(start);
+				polygons[i].origin.y += height;
 
-			polygons[i].rightEnd.subtract(start);
-			polygons[i].rightEnd.rotate_XZ(3);
-			polygons[i].rightEnd.add(start);
-			polygons[i].rightEnd.y += height;
+				polygons[i].rightEnd.subtract(start);
+				polygons[i].rightEnd.rotate_XZ(3);
+				polygons[i].rightEnd.add(start);
+				polygons[i].rightEnd.y += height;
 
-			polygons[i].bottomEnd.subtract(start);
-			polygons[i].bottomEnd.rotate_XZ(3);
-			polygons[i].bottomEnd.add(start);
-			polygons[i].bottomEnd.y += height;
+				polygons[i].bottomEnd.subtract(start);
+				polygons[i].bottomEnd.rotate_XZ(3);
+				polygons[i].bottomEnd.add(start);
+				polygons[i].bottomEnd.y += height;
 
-			for (int j = 0; j < polygons[i].vertex3D.length; j++) {
+				for (int j = 0; j < polygons[i].vertex3D.length; j++) {
 
-				polygons[i].vertex3D[j].subtract(start);
-				polygons[i].vertex3D[j].rotate_XZ(3);
-				polygons[i].vertex3D[j].add(start);
-				polygons[i].vertex3D[j].y += height;
+					polygons[i].vertex3D[j].subtract(start);
+					polygons[i].vertex3D[j].rotate_XZ(3);
+					polygons[i].vertex3D[j].add(start);
+					polygons[i].vertex3D[j].y += height;
+				}
+
+				polygons[i].findRealNormal();
+				polygons[i].findDiffuse();
+
+				polygons[i].update();
 			}
 
-			polygons[i].findRealNormal();
-			polygons[i].findDiffuse();
+			for (int i = 0; i < 5; i++)
+				boundary[i].update();
 
-			polygons[i].update();
+			displacement.set(-0.003 * (GameData.sin[theta]), 0, -0.003
+					* (GameData.sin[theta]));
+
+			shadow.realCentre.add(displacement);
+
+			shadow.origin.subtract(shadow.realCentre);
+			shadow.origin.rotate_XZ(3);
+			shadow.origin.add(shadow.realCentre);
+			shadow.origin.add(displacement);
+
+			shadow.rightEnd.subtract(shadow.realCentre);
+			shadow.rightEnd.rotate_XZ(3);
+			shadow.rightEnd.add(shadow.realCentre);
+			shadow.rightEnd.add(displacement);
+
+			shadow.bottomEnd.subtract(shadow.realCentre);
+			shadow.bottomEnd.rotate_XZ(3);
+			shadow.bottomEnd.add(shadow.realCentre);
+			shadow.bottomEnd.add(displacement);
+
+			for (int i = 0; i < 4; i++) {
+				shadow.vertex3D[i].subtract(shadow.realCentre);
+				shadow.vertex3D[i].rotate_XZ(3);
+				shadow.vertex3D[i].add(shadow.realCentre);
+				shadow.vertex3D[i].add(displacement);
+
+			}
+
+			shadow.update();
+			if (shadow.visible) {
+				Rasterizer.rasterize(shadow);
+			}
 		}
-
-		for (int i = 0; i < 5; i++)
-			boundary[i].update();
-
-		displacement.set(-0.003 * (GameData.sin[theta]), 0, -0.003
-				* (GameData.sin[theta]));
-
-		shadow.realCentre.add(displacement);
-
-		shadow.origin.subtract(shadow.realCentre);
-		shadow.origin.rotate_XZ(3);
-		shadow.origin.add(shadow.realCentre);
-		shadow.origin.add(displacement);
-
-		shadow.rightEnd.subtract(shadow.realCentre);
-		shadow.rightEnd.rotate_XZ(3);
-		shadow.rightEnd.add(shadow.realCentre);
-		shadow.rightEnd.add(displacement);
-
-		shadow.bottomEnd.subtract(shadow.realCentre);
-		shadow.bottomEnd.rotate_XZ(3);
-		shadow.bottomEnd.add(shadow.realCentre);
-		shadow.bottomEnd.add(displacement);
-
-		for (int i = 0; i < 4; i++) {
-			shadow.vertex3D[i].subtract(shadow.realCentre);
-			shadow.vertex3D[i].rotate_XZ(3);
-			shadow.vertex3D[i].add(shadow.realCentre);
-			shadow.vertex3D[i].add(displacement);
-
-		}
-
-		shadow.update();
-		if (shadow.visible)
-			Rasterizer.rasterize(shadow);
-
 	}
 
 	public Rectangle2D getBoundary2D() {

@@ -354,40 +354,40 @@ public class Stone extends SolidObject {
 		if (tempCentre.getLength() > 5.5) {
 			polygons = null;
 			visible = false;
-			return;
-		}
+		} else {
 
-		tempCentre.set(centre);
-		tempCentre.y = -1;
-		tempCentre.subtract(Camera.getPosition());
-		tempCentre.rotate_XZ(Camera.getXZ_angle());
-		tempCentre.rotate_YZ(Camera.getYZ_angle());
-		tempCentre.updateLocation();
+			tempCentre.set(centre);
+			tempCentre.y = -1;
+			tempCentre.subtract(Camera.getPosition());
+			tempCentre.rotate_XZ(Camera.getXZ_angle());
+			tempCentre.rotate_YZ(Camera.getYZ_angle());
+			tempCentre.updateLocation();
 
-		if (tempCentre.z < 0.9 || tempCentre.screenY < -10
-				|| (tempCentre.screenX < -60 && tempCentre.z > 3)
-				|| (tempCentre.screenX > 700 && tempCentre.z > 3)) {
+			if (tempCentre.z < 0.9 || tempCentre.screenY < -10
+					|| (tempCentre.screenX < -60 && tempCentre.z > 3)
+					|| (tempCentre.screenX > 700 && tempCentre.z > 3)) {
 
-			visible = false;
-			return;
-		}
-		visible = true;
-		if (testCollision)
-			ModelDrawList.register(this);
+				visible = false;
+			} else {
+				visible = true;
+				if (testCollision)
+					ModelDrawList.register(this);
 
-		if (polygons == null) {
-			makePolygons(type, textureIndex);
+				if (polygons == null) {
+					makePolygons(type, textureIndex);
 
-		}
+				}
 
-		for (int i = 0; i < polygons.length; i++) {
-			polygons[i].update();
-		}
+				for (int i = 0; i < polygons.length; i++) {
+					polygons[i].update();
+				}
 
-		if (shadow != null) {
-			shadow.update();
-			if (shadow.visible) {
-				Rasterizer.rasterize(shadow);
+				if (shadow != null) {
+					shadow.update();
+					if (shadow.visible) {
+						Rasterizer.rasterize(shadow);
+					}
+				}
 			}
 		}
 	}

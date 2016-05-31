@@ -68,11 +68,10 @@ public class Ticker implements Runnable {
 	
 	private void fireActionPerformed() {
 		if (actionListen == null || !isTicking) {
-			return;
+			// Nothing to do.
 		} else {
 			ActionEvent actionevent = new ActionEvent(this, 0, null);
 			actionListen.actionPerformed(actionevent);
-			return;
 		}
 	}
 }

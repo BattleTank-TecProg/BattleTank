@@ -132,59 +132,59 @@ public class Polygon3D {
 		tempVector1.subtract(vertex3D[0]);
 		if (tempVector1.dot(realNormal) <= 0) {
 			visible = false;
-			return;
-		}
+		} else {
 
-		double x = 0, y = 0, z = 0, camX = Camera.getPosition().x, camY = Camera
-				.getPosition().y, camZ = Camera.getPosition().z, sinXZ = GameData.sin[Camera
-				.getXZ_angle()], cosXZ = GameData.cos[Camera.getXZ_angle()], sinYZ = GameData.sin[Camera
-				.getYZ_angle()], cosYZ = GameData.cos[Camera.getYZ_angle()];
+			double x = 0, y = 0, z = 0, camX = Camera.getPosition().x, camY = Camera
+					.getPosition().y, camZ = Camera.getPosition().z, sinXZ = GameData.sin[Camera
+					.getXZ_angle()], cosXZ = GameData.cos[Camera.getXZ_angle()], sinYZ = GameData.sin[Camera
+					.getYZ_angle()], cosYZ = GameData.cos[Camera.getYZ_angle()];
 
-		for (int i = 0; i < L; i++) {
-			x = vertex3D[i].x - camX;
-			y = vertex3D[i].y - camY;
-			z = vertex3D[i].z - camZ;
+			for (int i = 0; i < L; i++) {
+				x = vertex3D[i].x - camX;
+				y = vertex3D[i].y - camY;
+				z = vertex3D[i].z - camZ;
 
-			tempVertex[i].x = cosXZ * x - sinXZ * z;
-			tempVertex[i].z = sinXZ * x + cosXZ * z;
+				tempVertex[i].x = cosXZ * x - sinXZ * z;
+				tempVertex[i].z = sinXZ * x + cosXZ * z;
 
-			z = tempVertex[i].z;
+				z = tempVertex[i].z;
 
-			tempVertex[i].y = cosYZ * y - sinYZ * z;
-			tempVertex[i].z = sinYZ * y + cosYZ * z;
+				tempVertex[i].y = cosYZ * y - sinYZ * z;
+				tempVertex[i].z = sinYZ * y + cosYZ * z;
 
-			tempVertex[i].updateLocation();
-		}
+				tempVertex[i].updateLocation();
+			}
 
-		xMax = tempVertex[0].screenX;
-		xMin = xMax;
-		yMax = tempVertex[0].screenY;
-		yMin = yMax;
-		for (int i = 1; i < tempVertex.length; i++) {
-			xMax = Math.max(xMax, tempVertex[i].screenX);
-			xMin = Math.min(xMin, tempVertex[i].screenX);
-			yMax = Math.max(yMax, tempVertex[i].screenY);
-			yMin = Math.min(yMin, tempVertex[i].screenY);
-		}
-		bound.setLocation(xMin, yMin);
-		bound.setSize(xMax - xMin + 1, yMax - yMin);
+			xMax = tempVertex[0].screenX;
+			xMin = xMax;
+			yMax = tempVertex[0].screenY;
+			yMin = yMax;
+			for (int i = 1; i < tempVertex.length; i++) {
+				xMax = Math.max(xMax, tempVertex[i].screenX);
+				xMin = Math.min(xMin, tempVertex[i].screenX);
+				yMax = Math.max(yMax, tempVertex[i].screenY);
+				yMin = Math.min(yMin, tempVertex[i].screenY);
+			}
+			bound.setLocation(xMin, yMin);
+			bound.setSize(xMax - xMin + 1, yMax - yMin);
 
-		visible = Camera.screen.intersects(bound);
+			visible = Camera.screen.intersects(bound);
 
-		if (visible) {
-			tempVector1.set(tempVertex[1]);
-			tempVector1.subtract(tempVertex[0]);
-			tempVector2.set(tempVertex[2]);
-			tempVector2.subtract(tempVertex[1]);
-			normal = tempVector1.cross(tempVector2);
+			if (visible) {
+				tempVector1.set(tempVertex[1]);
+				tempVector1.subtract(tempVertex[0]);
+				tempVector2.set(tempVertex[2]);
+				tempVector2.subtract(tempVertex[1]);
+				normal = tempVector1.cross(tempVector2);
 
-			centre.reset();
-			for (int i = 0; i < L; i++)
-				centre.add(tempVertex[i]);
-			centre.scale(1.0 / L);
+				centre.reset();
+				for (int i = 0; i < L; i++)
+					centre.add(tempVertex[i]);
+				centre.scale(1.0 / L);
 
-			withinViewScreen = Camera.screen.contains(xMin, yMin)
-					&& Camera.screen.contains(xMax, yMax);
+				withinViewScreen = Camera.screen.contains(xMin, yMin)
+						&& Camera.screen.contains(xMax, yMax);
+			}
 		}
 	}
 

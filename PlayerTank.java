@@ -711,322 +711,284 @@ public class PlayerTank extends SolidObject {
 	}
 
 	public void update() {
-		if (Main.gameOver)
-			return;
-
-		if (underAttackCount > 0)
-			underAttackCount--;
-
-		if (HP < 150 && HP > 0 && underAttackCount == 0 && !Main.gamePaused) {
-			if (Main.timer % 2 == 0)
-				HP += 1;
-		}
-
-		visible = true;
-		ModelDrawList.register(this);
-
-		if (turnLeft && turnRight) {
-			turretAngleDelta = 0;
-		} else if (turnLeft) {
-			turretAngleDelta = 4;
-			turretAngle += 4;
-			if (turretAngle >= 360)
-				turretAngle -= 360;
-		} else if (turnRight) {
-			turretAngleDelta = 356;
-			turretAngle -= 4;
-			if (turretAngle < 0)
-				turretAngle += 360;
+		if (Main.gameOver) {
+			// Nothing to do
 		} else {
-			turretAngleDelta = 0;
-		}
-
-		if (forward && backward) {
-			speed = 0;
-			displacement.set(0, 0, 0);
-		} else if (forward) {
-
-			if (speed < 0.015)
-				speed += 0.001;
-
-		} else if (backward) {
-
-			if (speed > -0.01)
-				speed -= 0.001;
-
-		} else {
-			if (speed > 0 || speed < 0) {
-				if (speed > 0)
-					speed -= 0.002;
-				if (speed < 0)
-					speed += 0.002;
-				if (speed > -0.002 && speed < 0.002)
-					speed = 0;
+			if (underAttackCount > 0) {
+				underAttackCount--;
 			}
-		}
-		tempVector1.set(0, 0, 1);
-		tempVector1.rotate_XZ(bodyAngle);
-		displacement.set(tempVector1.x * speed, 0, tempVector1.z * speed);
 
-		if (moveLeft && moveRight) {
-			speed = 0;
-			displacement.set(0, 0, 0);
-		} else if (moveLeft) {
+			if (HP < 150 && HP > 0 && underAttackCount == 0 && !Main.gamePaused) {
+				if (Main.timer % 2 == 0)
+					HP += 1;
+			}
 
-			bodyAngleDelta = 5;
-			bodyAngle = (bodyAngle + bodyAngleDelta) % 360;
+			visible = true;
+			ModelDrawList.register(this);
 
-		} else if (moveRight) {
-			bodyAngleDelta = 355;
-			bodyAngle = (bodyAngle + bodyAngleDelta) % 360;
+			if (turnLeft && turnRight) {
+				turretAngleDelta = 0;
+			} else if (turnLeft) {
+				turretAngleDelta = 4;
+				turretAngle += 4;
+				if (turretAngle >= 360)
+					turretAngle -= 360;
+			} else if (turnRight) {
+				turretAngleDelta = 356;
+				turretAngle -= 4;
+				if (turretAngle < 0)
+					turretAngle += 360;
+			} else {
+				turretAngleDelta = 0;
+			}
 
-		}
+			if (forward && backward) {
+				speed = 0;
+				displacement.set(0, 0, 0);
+			} else if (forward) {
 
-		centre.add(displacement);
+				if (speed < 0.015)
+					speed += 0.001;
 
-		boundary2D.update(displacement);
+			} else if (backward) {
 
-		int newPosition = (int) (boundary2D.xPos * 4)
-				+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+				if (speed > -0.01)
+					speed -= 0.001;
 
-		if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
-			displacement.scale(-1);
-			boundary2D.update(displacement);
+			} else {
+				if (speed > 0 || speed < 0) {
+					if (speed > 0)
+						speed -= 0.002;
+					if (speed < 0)
+						speed += 0.002;
+					if (speed > -0.002 && speed < 0.002)
+						speed = 0;
+				}
+			}
+			tempVector1.set(0, 0, 1);
+			tempVector1.rotate_XZ(bodyAngle);
+			displacement.set(tempVector1.x * speed, 0, tempVector1.z * speed);
+
+			if (moveLeft && moveRight) {
+				speed = 0;
+				displacement.set(0, 0, 0);
+			} else if (moveLeft) {
+
+				bodyAngleDelta = 5;
+				bodyAngle = (bodyAngle + bodyAngleDelta) % 360;
+
+			} else if (moveRight) {
+				bodyAngleDelta = 355;
+				bodyAngle = (bodyAngle + bodyAngleDelta) % 360;
+
+			}
+
 			centre.add(displacement);
-			displacement.set(0, 0, 0);
-		} else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
-			displacement.scale(-1);
+
 			boundary2D.update(displacement);
-			centre.add(displacement);
-			displacement.set(0, 0, 0);
-		} else if (outSideBorder()) {
-			displacement.scale(-1);
-			boundary2D.update(displacement);
-			centre.add(displacement);
-			displacement.set(0, 0, 0);
-		} else {
-			if (!ObstacleMap.isOccupied(newPosition)) {
-				ObstacleMap.removeObstacle2(position);
-				ObstacleMap.registerObstacle2(this, newPosition);
-				position = newPosition;
 
-			}
-		}
+			int newPosition = (int) (boundary2D.xPos * 4)
+					+ (129 - (int) (boundary2D.yPos * 4)) * 80;
 
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 4; j++)
-				boundary[i].vertex3D[j].add(displacement);
-			boundary[i].update();
-		}
+			if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
+				displacement.scale(-1);
+				boundary2D.update(displacement);
+				centre.add(displacement);
+				displacement.set(0, 0, 0);
+			} else if (ObstacleMap.collideWithObstacle2(this, newPosition)) {
+				displacement.scale(-1);
+				boundary2D.update(displacement);
+				centre.add(displacement);
+				displacement.set(0, 0, 0);
+			} else if (outSideBorder()) {
+				displacement.scale(-1);
+				boundary2D.update(displacement);
+				centre.add(displacement);
+				displacement.set(0, 0, 0);
+			} else {
+				if (!ObstacleMap.isOccupied(newPosition)) {
+					ObstacleMap.removeObstacle2(position);
+					ObstacleMap.registerObstacle2(this, newPosition);
+					position = newPosition;
 
-		tempCentre.set(centre);
-		tempCentre.y = -1;
-		tempCentre.subtract(Camera.getPosition());
-		tempCentre.rotate_XZ(Camera.getXZ_angle());
-		tempCentre.rotate_YZ(Camera.getYZ_angle());
-
-		for (int i = 0; i < body.length; i++) {
-			body[i].origin.add(displacement);
-			body[i].origin.subtract(centre);
-			body[i].origin.rotate_XZ(bodyAngleDelta);
-			body[i].origin.add(centre);
-
-			body[i].bottomEnd.add(displacement);
-			body[i].bottomEnd.subtract(centre);
-			body[i].bottomEnd.rotate_XZ(bodyAngleDelta);
-			body[i].bottomEnd.add(centre);
-
-			body[i].rightEnd.add(displacement);
-			body[i].rightEnd.subtract(centre);
-			body[i].rightEnd.rotate_XZ(bodyAngleDelta);
-			body[i].rightEnd.add(centre);
-
-			for (int j = 0; j < body[i].vertex3D.length; j++) {
-				body[i].vertex3D[j].add(displacement);
-				body[i].vertex3D[j].subtract(centre);
-				body[i].vertex3D[j].rotate_XZ(bodyAngleDelta);
-				body[i].vertex3D[j].add(centre);
+				}
 			}
 
-			body[i].findRealNormal();
-			body[i].findDiffuse();
-
-			body[i].update();
-		}
-
-		tempVector1.set(centre);
-		tempVector1.add(-0.03, 0, -0.02);
-		shadowBody.origin.add(displacement);
-		shadowBody.origin.subtract(tempVector1);
-		shadowBody.origin.rotate_XZ(bodyAngleDelta);
-		shadowBody.origin.add(tempVector1);
-
-		shadowBody.bottomEnd.add(displacement);
-		shadowBody.bottomEnd.subtract(tempVector1);
-		shadowBody.bottomEnd.rotate_XZ(bodyAngleDelta);
-		shadowBody.bottomEnd.add(tempVector1);
-
-		shadowBody.rightEnd.add(displacement);
-		shadowBody.rightEnd.subtract(tempVector1);
-		shadowBody.rightEnd.rotate_XZ(bodyAngleDelta);
-		shadowBody.rightEnd.add(tempVector1);
-
-		for (int j = 0; j < shadowBody.vertex3D.length; j++) {
-			shadowBody.vertex3D[j].add(displacement);
-			shadowBody.vertex3D[j].subtract(tempVector1);
-			shadowBody.vertex3D[j].rotate_XZ(bodyAngleDelta);
-			shadowBody.vertex3D[j].add(tempVector1);
-		}
-
-		shadowBody.update();
-		Rasterizer.rasterize(shadowBody);
-
-		if (currentWeapon == 4) {
-			makeTurretNuke();
-		}
-
-		turretCenter.add(displacement);
-		tempVector1.set(turretCenter);
-		turretCenter.subtract(centre);
-		turretCenter.rotate_XZ(bodyAngleDelta);
-		turretCenter.add(centre);
-		tempVector2.set(turretCenter);
-		tempVector2.subtract(tempVector1);
-
-		for (int i = 0; i < turret.length; i++) {
-			turret[i].origin.add(displacement);
-			turret[i].origin.add(tempVector2);
-			turret[i].origin.subtract(turretCenter);
-			turret[i].origin.rotate_XZ(turretAngleDelta);
-			turret[i].origin.add(turretCenter);
-
-			turret[i].bottomEnd.add(displacement);
-			turret[i].bottomEnd.add(tempVector2);
-			turret[i].bottomEnd.subtract(turretCenter);
-			turret[i].bottomEnd.rotate_XZ(turretAngleDelta);
-			turret[i].bottomEnd.add(turretCenter);
-
-			turret[i].rightEnd.add(displacement);
-			turret[i].rightEnd.add(tempVector2);
-			turret[i].rightEnd.subtract(turretCenter);
-			turret[i].rightEnd.rotate_XZ(turretAngleDelta);
-			turret[i].rightEnd.add(turretCenter);
-
-			for (int j = 0; j < turret[i].vertex3D.length; j++) {
-				turret[i].vertex3D[j].add(displacement);
-				turret[i].vertex3D[j].add(tempVector2);
-				turret[i].vertex3D[j].subtract(turretCenter);
-				turret[i].vertex3D[j].rotate_XZ(turretAngleDelta);
-				turret[i].vertex3D[j].add(turretCenter);
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 4; j++)
+					boundary[i].vertex3D[j].add(displacement);
+				boundary[i].update();
 			}
 
-			turret[i].findRealNormal();
-			turret[i].findDiffuse();
+			tempCentre.set(centre);
+			tempCentre.y = -1;
+			tempCentre.subtract(Camera.getPosition());
+			tempCentre.rotate_XZ(Camera.getXZ_angle());
+			tempCentre.rotate_YZ(Camera.getYZ_angle());
 
-			turret[i].update();
-		}
+			for (int i = 0; i < body.length; i++) {
+				body[i].origin.add(displacement);
+				body[i].origin.subtract(centre);
+				body[i].origin.rotate_XZ(bodyAngleDelta);
+				body[i].origin.add(centre);
 
-		if (currentWeapon == 4) {
-			Geometry.sortPolygons(nukeCannonRear, 0);
-			Geometry.sortPolygons(nukeCannonFront, 0);
+				body[i].bottomEnd.add(displacement);
+				body[i].bottomEnd.subtract(centre);
+				body[i].bottomEnd.rotate_XZ(bodyAngleDelta);
+				body[i].bottomEnd.add(centre);
 
-			int index = 0;
+				body[i].rightEnd.add(displacement);
+				body[i].rightEnd.subtract(centre);
+				body[i].rightEnd.rotate_XZ(bodyAngleDelta);
+				body[i].rightEnd.add(centre);
 
-			for (int i = 0; i < 72; i++) {
-				turret[i] = nukeCannonFront[i];
+				for (int j = 0; j < body[i].vertex3D.length; j++) {
+					body[i].vertex3D[j].add(displacement);
+					body[i].vertex3D[j].subtract(centre);
+					body[i].vertex3D[j].rotate_XZ(bodyAngleDelta);
+					body[i].vertex3D[j].add(centre);
+				}
+
+				body[i].findRealNormal();
+				body[i].findDiffuse();
+
+				body[i].update();
 			}
 
-			index += nukeCannonFront.length;
+			tempVector1.set(centre);
+			tempVector1.add(-0.03, 0, -0.02);
+			shadowBody.origin.add(displacement);
+			shadowBody.origin.subtract(tempVector1);
+			shadowBody.origin.rotate_XZ(bodyAngleDelta);
+			shadowBody.origin.add(tempVector1);
 
-			for (int i = 0; i < nukeCannonMiddle.length; i++) {
-				turret[i + index] = nukeCannonMiddle[i];
+			shadowBody.bottomEnd.add(displacement);
+			shadowBody.bottomEnd.subtract(tempVector1);
+			shadowBody.bottomEnd.rotate_XZ(bodyAngleDelta);
+			shadowBody.bottomEnd.add(tempVector1);
+
+			shadowBody.rightEnd.add(displacement);
+			shadowBody.rightEnd.subtract(tempVector1);
+			shadowBody.rightEnd.rotate_XZ(bodyAngleDelta);
+			shadowBody.rightEnd.add(tempVector1);
+
+			for (int j = 0; j < shadowBody.vertex3D.length; j++) {
+				shadowBody.vertex3D[j].add(displacement);
+				shadowBody.vertex3D[j].subtract(tempVector1);
+				shadowBody.vertex3D[j].rotate_XZ(bodyAngleDelta);
+				shadowBody.vertex3D[j].add(tempVector1);
 			}
 
-			index += nukeCannonMiddle.length;
+			shadowBody.update();
+			Rasterizer.rasterize(shadowBody);
 
-			for (int i = 0; i < 72; i++) {
-				turret[i + index] = nukeCannonRear[i];
+			if (currentWeapon == 4) {
+				makeTurretNuke();
 			}
 
-		}
+			turretCenter.add(displacement);
+			tempVector1.set(turretCenter);
+			turretCenter.subtract(centre);
+			turretCenter.rotate_XZ(bodyAngleDelta);
+			turretCenter.add(centre);
+			tempVector2.set(turretCenter);
+			tempVector2.subtract(tempVector1);
 
-		tempVector1.set(turretCenter);
-		tempVector1.add(-0.04, 0, -0.04);
+			for (int i = 0; i < turret.length; i++) {
+				turret[i].origin.add(displacement);
+				turret[i].origin.add(tempVector2);
+				turret[i].origin.subtract(turretCenter);
+				turret[i].origin.rotate_XZ(turretAngleDelta);
+				turret[i].origin.add(turretCenter);
 
-		shadowTurret.origin.add(displacement);
-		shadowTurret.origin.add(tempVector2);
-		shadowTurret.origin.subtract(tempVector1);
-		shadowTurret.origin.rotate_XZ(turretAngleDelta);
-		shadowTurret.origin.add(tempVector1);
+				turret[i].bottomEnd.add(displacement);
+				turret[i].bottomEnd.add(tempVector2);
+				turret[i].bottomEnd.subtract(turretCenter);
+				turret[i].bottomEnd.rotate_XZ(turretAngleDelta);
+				turret[i].bottomEnd.add(turretCenter);
 
-		shadowTurret.bottomEnd.add(displacement);
-		shadowTurret.bottomEnd.add(tempVector2);
-		shadowTurret.bottomEnd.subtract(tempVector1);
-		shadowTurret.bottomEnd.rotate_XZ(turretAngleDelta);
-		shadowTurret.bottomEnd.add(tempVector1);
+				turret[i].rightEnd.add(displacement);
+				turret[i].rightEnd.add(tempVector2);
+				turret[i].rightEnd.subtract(turretCenter);
+				turret[i].rightEnd.rotate_XZ(turretAngleDelta);
+				turret[i].rightEnd.add(turretCenter);
 
-		shadowTurret.rightEnd.add(displacement);
-		shadowTurret.rightEnd.add(tempVector2);
-		shadowTurret.rightEnd.subtract(tempVector1);
-		shadowTurret.rightEnd.rotate_XZ(turretAngleDelta);
-		shadowTurret.rightEnd.add(tempVector1);
+				for (int j = 0; j < turret[i].vertex3D.length; j++) {
+					turret[i].vertex3D[j].add(displacement);
+					turret[i].vertex3D[j].add(tempVector2);
+					turret[i].vertex3D[j].subtract(turretCenter);
+					turret[i].vertex3D[j].rotate_XZ(turretAngleDelta);
+					turret[i].vertex3D[j].add(turretCenter);
+				}
 
-		for (int j = 0; j < shadowTurret.vertex3D.length; j++) {
-			shadowTurret.vertex3D[j].add(displacement);
-			shadowTurret.vertex3D[j].add(tempVector2);
-			shadowTurret.vertex3D[j].subtract(tempVector1);
-			shadowTurret.vertex3D[j].rotate_XZ(turretAngleDelta);
-			shadowTurret.vertex3D[j].add(tempVector1);
-		}
+				turret[i].findRealNormal();
+				turret[i].findDiffuse();
 
-		shadowTurret.update();
-		Rasterizer.rasterize(shadowTurret);
+				turret[i].update();
+			}
 
-		if (currentCoolDown > 0 && !Main.gamePaused)
-			currentCoolDown--;
-		if (firing) {
-			if (currentCoolDown == 0) {
-				if (currentWeapon == 1 && shells > 0) {
-					shells--;
-					currentCoolDown = coolDowns[currentWeapon];
-					Vector direction = new Vector(0, 0, 1);
-					direction.rotate_XZ(turretAngle);
-					direction.scale(0.02);
-					direction.add(turretCenter);
-					Projectiles.register(new Shell(direction.x, direction.y,
-							direction.z, turretAngle, false, 0));
-					if (shells == 0)
-						outOfAmmo = true;
+			if (currentWeapon == 4) {
+				Geometry.sortPolygons(nukeCannonRear, 0);
+				Geometry.sortPolygons(nukeCannonFront, 0);
 
-				} else if (currentWeapon == 2 && rockets > 0) {
-					rockets--;
-					currentCoolDown = coolDowns[currentWeapon];
-					Vector tempVector1 = new Vector(0, 0, 1);
-					tempVector1.rotate_XZ((turretAngle + 270) % 360);
-					tempVector1.scale(0.08);
-					Vector direction = new Vector(0, 0, 1);
-					direction.rotate_XZ(turretAngle);
-					direction.scale(0.05);
-					direction.add(turretCenter);
-					direction.add(tempVector1);
-					Projectiles.register(new Rocket(direction.x, direction.y,
-							direction.z, turretAngle, false));
-					if (rockets == 0)
-						outOfAmmo = true;
-				} else if (currentWeapon == 3 && slugs > 0) {
-					slugs--;
-					currentCoolDown = coolDowns[currentWeapon];
-					Vector direction = new Vector(0, 0, 1);
-					direction.rotate_XZ(turretAngle);
-					direction.scale(0.1);
-					direction.add(turretCenter);
-					new RailgunTail(direction, turretAngle, false);
-					if (slugs == 0)
-						outOfAmmo = true;
+				int index = 0;
 
-				} else if (currentWeapon == 4 && plasma > 0) {
-					if (angularSpeed >= 30) {
-						plasma--;
+				for (int i = 0; i < 72; i++) {
+					turret[i] = nukeCannonFront[i];
+				}
+
+				index += nukeCannonFront.length;
+
+				for (int i = 0; i < nukeCannonMiddle.length; i++) {
+					turret[i + index] = nukeCannonMiddle[i];
+				}
+
+				index += nukeCannonMiddle.length;
+
+				for (int i = 0; i < 72; i++) {
+					turret[i + index] = nukeCannonRear[i];
+				}
+
+			}
+
+			tempVector1.set(turretCenter);
+			tempVector1.add(-0.04, 0, -0.04);
+
+			shadowTurret.origin.add(displacement);
+			shadowTurret.origin.add(tempVector2);
+			shadowTurret.origin.subtract(tempVector1);
+			shadowTurret.origin.rotate_XZ(turretAngleDelta);
+			shadowTurret.origin.add(tempVector1);
+
+			shadowTurret.bottomEnd.add(displacement);
+			shadowTurret.bottomEnd.add(tempVector2);
+			shadowTurret.bottomEnd.subtract(tempVector1);
+			shadowTurret.bottomEnd.rotate_XZ(turretAngleDelta);
+			shadowTurret.bottomEnd.add(tempVector1);
+
+			shadowTurret.rightEnd.add(displacement);
+			shadowTurret.rightEnd.add(tempVector2);
+			shadowTurret.rightEnd.subtract(tempVector1);
+			shadowTurret.rightEnd.rotate_XZ(turretAngleDelta);
+			shadowTurret.rightEnd.add(tempVector1);
+
+			for (int j = 0; j < shadowTurret.vertex3D.length; j++) {
+				shadowTurret.vertex3D[j].add(displacement);
+				shadowTurret.vertex3D[j].add(tempVector2);
+				shadowTurret.vertex3D[j].subtract(tempVector1);
+				shadowTurret.vertex3D[j].rotate_XZ(turretAngleDelta);
+				shadowTurret.vertex3D[j].add(tempVector1);
+			}
+
+			shadowTurret.update();
+			Rasterizer.rasterize(shadowTurret);
+
+			if (currentCoolDown > 0 && !Main.gamePaused)
+				currentCoolDown--;
+			if (firing) {
+				if (currentCoolDown == 0) {
+					if (currentWeapon == 1 && shells > 0) {
+						shells--;
 						currentCoolDown = coolDowns[currentWeapon];
 						Vector direction = new Vector(0, 0, 1);
 						direction.rotate_XZ(turretAngle);
@@ -1034,69 +996,109 @@ public class PlayerTank extends SolidObject {
 						direction.add(turretCenter);
 						Projectiles
 								.register(new Shell(direction.x, direction.y,
-										direction.z, (turretAngle + Main.timer
-												% 8 + 356) % 360, false, 1));
+										direction.z, turretAngle, false, 0));
+						if (shells == 0)
+							outOfAmmo = true;
 
-					} else {
+					} else if (currentWeapon == 2 && rockets > 0) {
+						rockets--;
+						currentCoolDown = coolDowns[currentWeapon];
+						Vector tempVector1 = new Vector(0, 0, 1);
+						tempVector1.rotate_XZ((turretAngle + 270) % 360);
+						tempVector1.scale(0.08);
+						Vector direction = new Vector(0, 0, 1);
+						direction.rotate_XZ(turretAngle);
+						direction.scale(0.05);
+						direction.add(turretCenter);
+						direction.add(tempVector1);
+						Projectiles.register(new Rocket(direction.x,
+								direction.y, direction.z, turretAngle, false));
+						if (rockets == 0)
+							outOfAmmo = true;
+					} else if (currentWeapon == 3 && slugs > 0) {
+						slugs--;
+						currentCoolDown = coolDowns[currentWeapon];
+						Vector direction = new Vector(0, 0, 1);
+						direction.rotate_XZ(turretAngle);
+						direction.scale(0.1);
+						direction.add(turretCenter);
+						new RailgunTail(direction, turretAngle, false);
+						if (slugs == 0)
+							outOfAmmo = true;
 
-						angularSpeed += 1;
-						if (angularSpeed > 30)
-							angularSpeed = 30;
+					} else if (currentWeapon == 4 && plasma > 0) {
+						if (angularSpeed >= 30) {
+							plasma--;
+							currentCoolDown = coolDowns[currentWeapon];
+							Vector direction = new Vector(0, 0, 1);
+							direction.rotate_XZ(turretAngle);
+							direction.scale(0.02);
+							direction.add(turretCenter);
+							Projectiles.register(new Shell(direction.x,
+									direction.y, direction.z, (turretAngle
+											+ Main.timer % 8 + 356) % 360,
+									false, 1));
+
+						} else {
+
+							angularSpeed += 1;
+							if (angularSpeed > 30)
+								angularSpeed = 30;
+						}
+
+						if (plasma == 0)
+							outOfAmmo = true;
 					}
 
-					if (plasma == 0)
-						outOfAmmo = true;
-				}
+					if (outOfAmmo) {
+						if (shells > 0 && currentWeapon != 1)
+							changeWeapon(1);
+						else if (rockets > 0 && currentWeapon != 2)
+							changeWeapon(2);
+						else if (slugs > 0 && currentWeapon != 3)
+							changeWeapon(3);
+						else if (plasma > 0 && currentWeapon != 4)
+							changeWeapon(4);
+					}
 
-				if (outOfAmmo) {
-					if (shells > 0 && currentWeapon != 1)
-						changeWeapon(1);
-					else if (rockets > 0 && currentWeapon != 2)
-						changeWeapon(2);
-					else if (slugs > 0 && currentWeapon != 3)
-						changeWeapon(3);
-					else if (plasma > 0 && currentWeapon != 4)
-						changeWeapon(4);
 				}
-
 			}
+
+			if (currentWeapon == 1)
+				currentAmmo = shells;
+			if (currentWeapon == 2)
+				currentAmmo = rockets;
+			if (currentWeapon == 3)
+				currentAmmo = slugs;
+			if (currentWeapon == 4)
+				currentAmmo = plasma;
+
+			forward = false;
+			backward = false;
+			turnRight = false;
+			turnLeft = false;
+			moveRight = false;
+			moveLeft = false;
+			bodyAngleDelta = 0;
+			turretAngleDelta = 0;
+			displacement.reset();
+			firing = false;
+			outOfAmmo = false;
 		}
-
-		if (currentWeapon == 1)
-			currentAmmo = shells;
-		if (currentWeapon == 2)
-			currentAmmo = rockets;
-		if (currentWeapon == 3)
-			currentAmmo = slugs;
-		if (currentWeapon == 4)
-			currentAmmo = plasma;
-
-		forward = false;
-		backward = false;
-		turnRight = false;
-		turnLeft = false;
-		moveRight = false;
-		moveLeft = false;
-		bodyAngleDelta = 0;
-		turretAngleDelta = 0;
-		displacement.reset();
-		firing = false;
-		outOfAmmo = false;
-
 	}
 
 	public void draw() {
-		if (Main.gameOver)
-			return;
+		if (Main.gameOver) {
+			// Nothing to do.
+		} else {
+			for (int i = 0; i < body.length; i++) {
+				body[i].draw();
+			}
 
-		for (int i = 0; i < body.length; i++) {
-			body[i].draw();
+			for (int i = 0; i < turret.length; i++) {
+				turret[i].draw();
+			}
 		}
-
-		for (int i = 0; i < turret.length; i++) {
-			turret[i].draw();
-		}
-
 	}
 
 	public boolean outSideBorder() {

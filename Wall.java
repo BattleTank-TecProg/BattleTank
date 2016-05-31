@@ -502,30 +502,30 @@ public class Wall extends SolidObject {
 		if (tempCentre.z < 0.5 || tempCentre.screenY < -30
 				|| tempCentre.screenX < -400 || tempCentre.screenX > 800) {
 			visible = false;
-			return;
-		}
-		visible = true;
+		} else {
+			visible = true;
 
-		ModelDrawList.register(this);
+			ModelDrawList.register(this);
 
-		for (int i = 0; i < 5; i++)
-			boundary[i].update();
+			for (int i = 0; i < 5; i++)
+				boundary[i].update();
 
-		for (int i = 0; i < polygons.length; i++) {
-			polygons[i].update();
-		}
-
-		if (shadow != null) {
-			shadow.update();
-			if (shadow.visible) {
-				Rasterizer.rasterize(shadow);
+			for (int i = 0; i < polygons.length; i++) {
+				polygons[i].update();
 			}
-		}
 
-		if (shadow2 != null) {
-			shadow2.update();
-			if (shadow2.visible) {
-				Rasterizer.rasterize(shadow2);
+			if (shadow != null) {
+				shadow.update();
+				if (shadow.visible) {
+					Rasterizer.rasterize(shadow);
+				}
+			}
+
+			if (shadow2 != null) {
+				shadow2.update();
+				if (shadow2.visible) {
+					Rasterizer.rasterize(shadow2);
+				}
 			}
 		}
 	}

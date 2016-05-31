@@ -19,7 +19,7 @@ public class Projectiles {
 		for (int i = 0; i < projectilesArray.length; i++) {
 			if (projectilesArray[i] == null) {
 				projectilesArray[i] = projectile;
-				return;
+				i = projectilesArray.length;
 			}
 		}
 	}

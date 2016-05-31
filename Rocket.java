@@ -178,52 +178,52 @@ public class Rocket extends SolidObject {
 					centre.z, 1);
 			theExplosion.setDamage(10);
 			Projectiles.register(theExplosion);
-			return;
-		}
+		} else {
 
-		ModelDrawList.register(this);
-
-		centre.add(direction);
-
-		tempCentre.set(centre);
-		tempCentre.y = -1;
-		tempCentre.subtract(Camera.getPosition());
-		tempCentre.rotate_XZ(Camera.getXZ_angle());
-		tempCentre.rotate_YZ(Camera.getYZ_angle());
-
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 4; j++)
-				boundary[i].vertex3D[j].add(direction);
-			boundary[i].update();
-		}
-
-		for (int i = 0; i < polygons.length; i++) {
-			for (int j = 0; j < polygons[i].vertex3D.length; j++) {
-				polygons[i].vertex3D[j].add(direction);
-				polygons[i].vertex3D[j].subtract(centre);
-				polygons[i].vertex3D[j].rotate_XZ(angleDelta);
-				polygons[i].vertex3D[j].add(centre);
-			}
-
-			polygons[i].findRealNormal();
-			polygons[i].findDiffuse();
-
-			polygons[i].update();
-		}
-
-		if (lifeSpan < 0) {
-			Explosion theExplosion = new Explosion(centre.x, centre.y,
-					centre.z, 1);
-			theExplosion.setDamage(10);
-			Projectiles.register(theExplosion);
-			return;
-		}
-		if (Main.timer % 2 == 0) {
-			centre.subtract(direction);
-
-			Projectiles.register(new RocketTail(centre));
+			ModelDrawList.register(this);
 
 			centre.add(direction);
+
+			tempCentre.set(centre);
+			tempCentre.y = -1;
+			tempCentre.subtract(Camera.getPosition());
+			tempCentre.rotate_XZ(Camera.getXZ_angle());
+			tempCentre.rotate_YZ(Camera.getYZ_angle());
+
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 4; j++)
+					boundary[i].vertex3D[j].add(direction);
+				boundary[i].update();
+			}
+
+			for (int i = 0; i < polygons.length; i++) {
+				for (int j = 0; j < polygons[i].vertex3D.length; j++) {
+					polygons[i].vertex3D[j].add(direction);
+					polygons[i].vertex3D[j].subtract(centre);
+					polygons[i].vertex3D[j].rotate_XZ(angleDelta);
+					polygons[i].vertex3D[j].add(centre);
+				}
+
+				polygons[i].findRealNormal();
+				polygons[i].findDiffuse();
+
+				polygons[i].update();
+			}
+
+			if (lifeSpan < 0) {
+				Explosion theExplosion = new Explosion(centre.x, centre.y,
+						centre.z, 1);
+				theExplosion.setDamage(10);
+				Projectiles.register(theExplosion);
+			} else {
+				if (Main.timer % 2 == 0) {
+					centre.subtract(direction);
+
+					Projectiles.register(new RocketTail(centre));
+
+					centre.add(direction);
+				}
+			}
 		}
 	}
 

@@ -70,7 +70,7 @@ public class PowerUps {
 		for (int i = 0; i < PU.length; i++) {
 			if (PU[i] == null) {
 				PU[i] = P;
-				return;
+				i = PU.length;
 			}
 		}
 	}

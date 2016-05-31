@@ -481,165 +481,165 @@ public class PowerPlant extends SolidObject {
 		if (tempCentre.z < 0.5 || tempCentre.screenY < -30
 				|| tempCentre.screenX < -400 || tempCentre.screenX > 800) {
 			visible = false;
-			return;
-		}
-		visible = true;
-		ModelDrawList.register(this);
+		} else {
+			visible = true;
+			ModelDrawList.register(this);
 
-		for (int i = 0; i < 5; i++)
-			boundary[i].update();
+			for (int i = 0; i < 5; i++)
+				boundary[i].update();
 
-		if (HP <= 0) {
-			countDownToDeath++;
+			if (HP <= 0) {
+				countDownToDeath++;
 
-			if (countDownToDeath == 10) {
-				explosions[0] = new Explosion(centre.x, centre.y, centre.z, 1.7);
-				explosions[0].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 10) {
+					explosions[0] = new Explosion(centre.x, centre.y, centre.z,
+							1.7);
+					explosions[0].setExplicitDrawing(true);
+				}
 
-			if (countDownToDeath == 13) {
-				explosions[1] = new Explosion(centre.x + 0.2, centre.y,
-						centre.z, 1.7);
-				explosions[1].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 13) {
+					explosions[1] = new Explosion(centre.x + 0.2, centre.y,
+							centre.z, 1.7);
+					explosions[1].setExplicitDrawing(true);
+				}
 
-			if (countDownToDeath == 16) {
-				explosions[2] = new Explosion(centre.x + 0.1, centre.y - 0.1,
-						centre.z + 0.1, 1.7);
-				explosions[2].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 16) {
+					explosions[2] = new Explosion(centre.x + 0.1,
+							centre.y - 0.1, centre.z + 0.1, 1.7);
+					explosions[2].setExplicitDrawing(true);
+				}
 
-			if (countDownToDeath == 16) {
-				explosions[3] = new Explosion(centre.x, centre.y - 0.2,
-						centre.z, 1.7);
-				explosions[3].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 16) {
+					explosions[3] = new Explosion(centre.x, centre.y - 0.2,
+							centre.z, 1.7);
+					explosions[3].setExplicitDrawing(true);
+				}
 
-			if (countDownToDeath == 19) {
-				explosions[4] = new Explosion(centre.x - 0.1, centre.y,
-						centre.z + 0.15, 1.7);
-				explosions[4].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 19) {
+					explosions[4] = new Explosion(centre.x - 0.1, centre.y,
+							centre.z + 0.15, 1.7);
+					explosions[4].setExplicitDrawing(true);
+				}
 
-			if (countDownToDeath == 19) {
-				explosions[4] = new Explosion(centre.x, centre.y + 0.1,
-						centre.z + 0.15, 1.7);
-				explosions[4].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 19) {
+					explosions[4] = new Explosion(centre.x, centre.y + 0.1,
+							centre.z + 0.15, 1.7);
+					explosions[4].setExplicitDrawing(true);
+				}
 
-			if (countDownToDeath == 19) {
-				explosions[5] = new Explosion(centre.x - 0.05, centre.y + 0.05,
-						centre.z, 1.7);
-				explosions[5].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 19) {
+					explosions[5] = new Explosion(centre.x - 0.05,
+							centre.y + 0.05, centre.z, 1.7);
+					explosions[5].setExplicitDrawing(true);
+				}
 
-			if (countDownToDeath == 19) {
-				explosions[6] = new Explosion(centre.x + 0.01, centre.y + 0.05,
-						centre.z - 0.01, 1.7);
-				explosions[6].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 19) {
+					explosions[6] = new Explosion(centre.x + 0.01,
+							centre.y + 0.05, centre.z - 0.01, 1.7);
+					explosions[6].setExplicitDrawing(true);
+				}
 
-			if (countDownToDeath == 22) {
-				explosions[7] = new Explosion(centre.x + 0.01, centre.y + 0.15,
-						centre.z - 0.01, 1.7);
-				explosions[7].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 22) {
+					explosions[7] = new Explosion(centre.x + 0.01,
+							centre.y + 0.15, centre.z - 0.01, 1.7);
+					explosions[7].setExplicitDrawing(true);
+				}
 
-			if (countDownToDeath == 22) {
-				explosions[8] = new Explosion(centre.x + 0.15, centre.y + 0.1,
-						centre.z + 0.1, 1.7);
-				explosions[8].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 22) {
+					explosions[8] = new Explosion(centre.x + 0.15,
+							centre.y + 0.1, centre.z + 0.1, 1.7);
+					explosions[8].setExplicitDrawing(true);
+				}
 
-			if (countDownToDeath == 22) {
-				explosions[9] = new Explosion(centre.x - 0.15, centre.y - 0.03,
-						centre.z + 0.1, 1.7);
-				explosions[9].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 22) {
+					explosions[9] = new Explosion(centre.x - 0.15,
+							centre.y - 0.03, centre.z + 0.1, 1.7);
+					explosions[9].setExplicitDrawing(true);
+				}
 
-			if (countDownToDeath == 25) {
-				explosions[10] = new Explosion(centre.x, centre.y + 0.05,
-						centre.z, 3.5);
-				explosions[10].setExplicitDrawing(true);
-			}
+				if (countDownToDeath == 25) {
+					explosions[10] = new Explosion(centre.x, centre.y + 0.05,
+							centre.z, 3.5);
+					explosions[10].setExplicitDrawing(true);
+				}
 
-			for (int i = 0; i < explosions.length; i++) {
-				if (explosions[i] != null) {
+				for (int i = 0; i < explosions.length; i++) {
+					if (explosions[i] != null) {
 
-					if (explosions[i].lifeSpan < 0) {
-						explosions[i] = null;
+						if (explosions[i].lifeSpan < 0) {
+							explosions[i] = null;
 
-						continue;
+							continue;
+						}
+						explosions[i].update();
 					}
-					explosions[i].update();
 				}
+
+				if (countDownToDeath == 30) {
+					ObstacleMap.removeObstacle2(position1);
+					ObstacleMap.removeObstacle2(position2);
+					ObstacleMap.removeObstacle2(position3);
+					ObstacleMap.removeObstacle2(position4);
+
+					PowerUps.register(new PowerUp(centre.x, -0.875,
+							centre.z + 0.1, 4));
+					PowerUps.register(new PowerUp(centre.x - 0.09, -0.875,
+							centre.z - 0.05, 4));
+					PowerUps.register(new PowerUp(centre.x + 0.09, -0.875,
+							centre.z - 0.05, 4));
+				}
+
+				if (countDownToDeath > 35) {
+					lifeSpan = 0;
+
+				}
+
 			}
 
-			if (countDownToDeath == 30) {
-				ObstacleMap.removeObstacle2(position1);
-				ObstacleMap.removeObstacle2(position2);
-				ObstacleMap.removeObstacle2(position3);
-				ObstacleMap.removeObstacle2(position4);
-
-				PowerUps.register(new PowerUp(centre.x, -0.875, centre.z + 0.1,
-						4));
-				PowerUps.register(new PowerUp(centre.x - 0.09, -0.875,
-						centre.z - 0.05, 4));
-				PowerUps.register(new PowerUp(centre.x + 0.09, -0.875,
-						centre.z - 0.05, 4));
+			for (int i = 0; i < polygons.length; i++) {
+				polygons[i].update();
 			}
 
-			if (countDownToDeath > 35) {
-				lifeSpan = 0;
+			for (int i = 0; i < smokeCentres.length; i++) {
+				smokeCentres[i].y += 0.005;
+				smokeCentres[i].x -= (0.002 * Math.random() - 0.001);
+				smokeCentres[i].z -= (0.002 * Math.random() - 0.001);
 
-			}
-
-		}
-
-		for (int i = 0; i < polygons.length; i++) {
-			polygons[i].update();
-		}
-
-		for (int i = 0; i < smokeCentres.length; i++) {
-			smokeCentres[i].y += 0.005;
-			smokeCentres[i].x -= (0.002 * Math.random() - 0.001);
-			smokeCentres[i].z -= (0.002 * Math.random() - 0.001);
-
-			if (smokeCentres[i].y >= -0.275) {
-				if (HP > 250)
-					smokeCentres[i].set(smokeBottom);
-				else if (HP < 250 && HP > 0) {
-					if (GameData.getRandom() > 96)
+				if (smokeCentres[i].y >= -0.275) {
+					if (HP > 250)
 						smokeCentres[i].set(smokeBottom);
-					else
+					else if (HP < 250 && HP > 0) {
+						if (GameData.getRandom() > 96)
+							smokeCentres[i].set(smokeBottom);
+						else
+							smokeCentres[i].set(0, 0, 1500);
+					} else {
 						smokeCentres[i].set(0, 0, 1500);
-				} else {
-					smokeCentres[i].set(0, 0, 1500);
+					}
+				}
+
+				smokeCentresCamera[i].set(smokeCentres[i]);
+				smokeCentresCamera[i].subtract(Camera.getPosition());
+				smokeCentresCamera[i].rotate_XZ(Camera.getXZ_angle());
+				smokeCentresCamera[i].rotate_YZ(Camera.getYZ_angle());
+				smokeCentresCamera[i].updateLocation();
+			}
+
+			smokeBottomCamera.set(smokeBottom);
+			if (HP < 250)
+				smokeBottomCamera.set(0, 0, 1500);
+			smokeBottomCamera.subtract(Camera.getPosition());
+			smokeBottomCamera.rotate_XZ(Camera.getXZ_angle());
+			smokeBottomCamera.rotate_YZ(Camera.getYZ_angle());
+			smokeBottomCamera.updateLocation();
+
+			if (shadow != null && countDownToDeath < 30) {
+				shadow.update();
+				if (shadow.visible) {
+					Rasterizer.rasterize(shadow);
 				}
 			}
-
-			smokeCentresCamera[i].set(smokeCentres[i]);
-			smokeCentresCamera[i].subtract(Camera.getPosition());
-			smokeCentresCamera[i].rotate_XZ(Camera.getXZ_angle());
-			smokeCentresCamera[i].rotate_YZ(Camera.getYZ_angle());
-			smokeCentresCamera[i].updateLocation();
 		}
-
-		smokeBottomCamera.set(smokeBottom);
-		if (HP < 250)
-			smokeBottomCamera.set(0, 0, 1500);
-		smokeBottomCamera.subtract(Camera.getPosition());
-		smokeBottomCamera.rotate_XZ(Camera.getXZ_angle());
-		smokeBottomCamera.rotate_YZ(Camera.getYZ_angle());
-		smokeBottomCamera.updateLocation();
-
-		if (shadow != null && countDownToDeath < 30) {
-			shadow.update();
-			if (shadow.visible) {
-				Rasterizer.rasterize(shadow);
-			}
-		}
-
 	}
 
 	public void draw() {

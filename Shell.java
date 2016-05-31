@@ -180,48 +180,49 @@ public class Shell extends SolidObject {
 			centre.add(direction);
 			Explosion e = new Explosion(centre.x, centre.y, centre.z, 1);
 			e.setType(this.type);
-			if (type == 1)
+			if (type == 1) {
 				e.setDamage(10);
+			}
 			Projectiles.register(e);
+		} else {
 
-			return;
-		}
+			ModelDrawList.register(this);
 
-		ModelDrawList.register(this);
+			centre.add(direction);
 
-		centre.add(direction);
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 4; j++)
+					boundary[i].vertex3D[j].add(direction);
+				boundary[i].update();
+			}
 
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 4; j++)
-				boundary[i].vertex3D[j].add(direction);
-			boundary[i].update();
-		}
+			tempCentre.set(centre);
+			tempCentre.y = -1;
+			tempCentre.subtract(Camera.getPosition());
+			tempCentre.rotate_XZ(Camera.getXZ_angle());
+			tempCentre.rotate_YZ(Camera.getYZ_angle());
 
-		tempCentre.set(centre);
-		tempCentre.y = -1;
-		tempCentre.subtract(Camera.getPosition());
-		tempCentre.rotate_XZ(Camera.getXZ_angle());
-		tempCentre.rotate_YZ(Camera.getYZ_angle());
+			for (int j = 0; j < polygons.length; j++) {
+				for (int i = 0; i < polygons[j].vertex3D.length; i++) {
 
-		for (int j = 0; j < polygons.length; j++) {
-			for (int i = 0; i < polygons[j].vertex3D.length; i++) {
+					polygons[j].vertex3D[i].add(direction);
 
-				polygons[j].vertex3D[i].add(direction);
+				}
+			}
+
+			for (int i = 0; i < polygons.length; i++) {
+				polygons[i].update();
+			}
+
+			if (lifeSpan < 0) {
+				Explosion e = new Explosion(centre.x, centre.y, centre.z, 1);
+				e.setType(this.type);
+				if (type == 1) {
+					e.setDamage(10);
+				}
+				Projectiles.register(e);
 
 			}
-		}
-
-		for (int i = 0; i < polygons.length; i++) {
-			polygons[i].update();
-		}
-
-		if (lifeSpan < 0) {
-			Explosion e = new Explosion(centre.x, centre.y, centre.z, 1);
-			e.setType(this.type);
-			if (type == 1)
-				e.setDamage(10);
-			Projectiles.register(e);
-
 		}
 	}
 
