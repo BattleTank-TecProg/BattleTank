@@ -1113,7 +1113,7 @@ public class Annihilator extends SolidObject {
 						aimRight = true;
 					}
 				} else {
-					// Does nothing.
+					forward = true;
 				}
 				/*
 				 * Move to a target location medium tank will move towards
@@ -1121,7 +1121,7 @@ public class Annihilator extends SolidObject {
 				 * detects a type 2 obstacle between itself and the player's
 				 * tank
 				 */
-				forward = true;
+				
 				if (clearToShoot && distance < 1.5) {
 					if (distance < 1.4) {
 						forward = false;
@@ -1138,7 +1138,7 @@ public class Annihilator extends SolidObject {
 						// Does nothing.
 					}
 				} else {
-					// Does nothing.Inicia a classe Logger para Principal
+					// Does nothing.
 				}
 
 				if (unstuck && distance > 0.8) {
@@ -1213,11 +1213,11 @@ public class Annihilator extends SolidObject {
 						forward = false;
 						canMove = false;
 					} else {
-						// Does nothing.
+						displacement.scale(-1);
+						boundary2D.update(displacement);
+						displacement.reset();
 					}
-					displacement.scale(-1);
-					boundary2D.update(displacement);
-					displacement.reset();
+					
 
 					if (!canMove) {
 						if (unstuck) {
@@ -1250,17 +1250,17 @@ public class Annihilator extends SolidObject {
 								newPosition)) {
 							canMoveAngle1 = false;
 						} else {
-							// Does nothing.
+							displacement.scale(-1);
+							boundary2D.update(displacement);
+							displacement.reset();
+							// Check if tank is able to move freely at angle 1
+							displacement.set(0, 0, 0.01);
+							displacement.rotate_XZ(angle2);
+							boundary2D.update(displacement);
+							newPosition = (int) (boundary2D.xPos * 4)
+									+ (129 - (int) (boundary2D.yPos * 4)) * 80;
 						}
-						displacement.scale(-1);
-						boundary2D.update(displacement);
-						displacement.reset();
-						// Check if tank is able to move freely at angle 1
-						displacement.set(0, 0, 0.01);
-						displacement.rotate_XZ(angle2);
-						boundary2D.update(displacement);
-						newPosition = (int) (boundary2D.xPos * 4)
-								+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+
 						// Test againt type 1 & 2 obstacles
 						if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
 							canMoveAngle2 = false;
@@ -1298,9 +1298,9 @@ public class Annihilator extends SolidObject {
 
 							} else {
 								targetAngleBody = angle2;
-
+								forward = true;
 							}
-							forward = true;
+							
 
 						} else {
 							// Got stucked!!
@@ -1319,14 +1319,14 @@ public class Annihilator extends SolidObject {
 						}
 
 					} else {
-						// Does nothing.
+						// Double check whether the move is valid
+						displacement.set(0, 0, 0.01);
+						displacement.rotate_XZ(targetAngleBody);
+						boundary2D.update(displacement);
+						newPosition = (int) (boundary2D.xPos * 4)
+								+ (129 - (int) (boundary2D.yPos * 4)) * 80;
 					}
-					// Double check whether the move is valid
-					displacement.set(0, 0, 0.01);
-					displacement.rotate_XZ(targetAngleBody);
-					boundary2D.update(displacement);
-					newPosition = (int) (boundary2D.xPos * 4)
-							+ (129 - (int) (boundary2D.yPos * 4)) * 80;
+
 					// Test againt type 1 & 2 obstacles
 					if (ObstacleMap.collideWithObstacle1(this, newPosition)) {
 						forward = false;
@@ -1336,11 +1336,10 @@ public class Annihilator extends SolidObject {
 						forward = false;
 
 					} else {
-						// Does nothing.
+						displacement.scale(-1);
+						boundary2D.update(displacement);
+						displacement.reset();
 					}
-					displacement.scale(-1);
-					boundary2D.update(displacement);
-					displacement.reset();
 				}
 			}
 			previousTargetAngleBody = targetAngleBody;
