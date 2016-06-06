@@ -23,7 +23,7 @@ public class GameHUD {
 
 	public static int[] rightSide;
 
-	public static int[] Health, Ammo, BattleTank2, NewGame, Controls,
+	public static int[] Health, Saude, Ammo, Municao, BattleTank2, NewGame, Controls,
 			AboutAuthor, controlDescription1, controlDescription2,
 			controlDescription3, controlDescription4, controlDescription5,
 			controlDescription6, controlDescription7, controlDescription8,
@@ -81,7 +81,11 @@ public class GameHUD {
 		rightSide = new int[] { 196, 197, 198, 199, 199, 198, 197, 196 };
 
 		Health = new int[] { 17, 40, 36, 47, 55, 43 };
+		Saude = new int[] { 28, 36, 56, 39, 40 };
+		
 		Ammo = new int[] { 10, 48, 48, 50 };
+		Municao = new int[] { 22, 56, 49, 44, 38, 36, 50 };
+		
 		BattleTank2 = new int[] { 11, 36, 55, 55, 47, 40, -1, 29, 36, 49, 46,
 				-1, 2 };
 		NewGame = new int[] { 23, 40, 58, -1, 16, 36, 48, 40 };
@@ -549,7 +553,7 @@ public class GameHUD {
 
 		Integer integer = new Integer((int) ((double) Main.PT.HP * 100 / 150));
 		TextFactory.drawString(integer.toString(), 134, 427, 1, 0x00d0d0d0);
-		TextFactory.draw(Health, 32, 427, 1, 0x00d0d0d0);
+		TextFactory.draw(Saude, 32, 427, 1, 0x00d0d0d0);
 
 		yPos = 420;
 		for (int i = 0; i < 4; i++) {
@@ -593,8 +597,15 @@ public class GameHUD {
 		}
 
 		integer = new Integer(PlayerTank.currentAmmo);
-		TextFactory.drawString(integer.toString(), 554, 427, 1, 0x00d0d0d0);
-		TextFactory.draw(Ammo, 482, 427, 1, 0x00d0d0d0);
+		TextFactory.drawString(integer.toString(), 588, 427, 1, 0x00d0d0d0);
+		TextFactory.draw(Municao, 472, 427, 1, 0x00d0d0d0);
+		/*	
+		 * English
+		 * 
+		 * TextFactory.drawString(integer.toString(), 554, 427, 1, 0x00d0d0d0)
+		 * TextFactory.draw(Ammo, 482, 427, 1, 0x00d0d0d0);
+		 * 
+		 */
 
 	}
 
