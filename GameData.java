@@ -50,12 +50,8 @@ public class GameData {
 			random[i] = (int) (Math.random() * 100);
 		}
 
-		Random gerador = new Random();
+		random = generateRandomVector(random, 101);
 
-		for (int i = 0; i < 999; i++) {
-			random[i]=gerador.nextInt(101);
-		}
-		
 		sin = new double[361];
 		cos = new double[361];
 		for (int i = 0; i < 361; i++) {
@@ -221,4 +217,16 @@ public class GameData {
 		colorTable = null;
 		screenTable = null;
 	}
+
+	private static int[] generateRandomVector(int random[], int sizeVector) {
+		Random generator = new Random();
+
+		for (int i = 0; i < 999; i++) {
+			random[i] = generator.nextInt(sizeVector);
+			System.out.printf("%d", random[i]);
+
+		}
+		return random;
+	}
+
 }
