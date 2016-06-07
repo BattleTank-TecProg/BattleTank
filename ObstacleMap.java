@@ -1,15 +1,15 @@
 public class ObstacleMap {
 
-	public static model[] obstacleMap1;
+	public static Model[] obstacleMap1;
 
-	public static model[] obstacleMap2;
+	public static Model[] obstacleMap2;
 
 	public static int[] indexes, indexes2, indexes3;
 
 	public static void init() {
-		obstacleMap1 = new model[80 * 130];
+		obstacleMap1 = new Model[80 * 130];
 
-		obstacleMap2 = new model[80 * 130];
+		obstacleMap2 = new Model[80 * 130];
 
 		indexes = new int[9];
 		indexes2 = new int[25];
@@ -23,13 +23,13 @@ public class ObstacleMap {
 		}
 	}
 
-	public static void registerObstacle1(model obstacle, int position) {
+	public static void registerObstacle1(Model obstacle, int position) {
 		if (obstacleMap1[position] == null) {
 			obstacleMap1[position] = obstacle;
 		}
 	}
 
-	public static void registerObstacle2(model obstacle, int position) {
+	public static void registerObstacle2(Model obstacle, int position) {
 		if (position < 0 || position >= 10400) {
 			// Nothing to do.
 		} else {
@@ -57,7 +57,7 @@ public class ObstacleMap {
 		}
 	}
 
-	public static boolean collideWithObstacle1(model testObject, int position) {
+	public static boolean collideWithObstacle1(Model testObject, int position) {
 		indexes[0] = position - 81;
 		indexes[1] = position - 80;
 		indexes[2] = position - 79;
@@ -83,7 +83,7 @@ public class ObstacleMap {
 		return false;
 	}
 
-	public static boolean collideWithObstacle2(model testObject, int position) {
+	public static boolean collideWithObstacle2(Model testObject, int position) {
 
 		for (int i = 0; i < 49; i++) {
 			int temp = indexes3[i] + position;
@@ -101,7 +101,7 @@ public class ObstacleMap {
 		return false;
 	}
 
-	public static boolean projectileCollideObstacle2(model projectile,
+	public static boolean projectileCollideObstacle2(Model projectile,
 			int position, boolean hostile) {
 
 		indexes2[0] = position - 162;
@@ -169,7 +169,7 @@ public class ObstacleMap {
 		return false;
 	}
 
-	public static boolean slugCollideObstacle2(model projectile, int position,
+	public static boolean slugCollideObstacle2(Model projectile, int position,
 			boolean hostile) {
 
 		indexes2[0] = position - 162;
@@ -288,7 +288,7 @@ public class ObstacleMap {
 		return obstacleMap2[position] != null;
 	}
 
-	public static model isOccupied2(Vector position) {
+	public static Model isOccupied2(Vector position) {
 		int index = (int) (position.x * 4) + (129 - (int) (position.z * 4))
 				* 80;
 		if (index < 0 || index >= 10400) {
@@ -376,7 +376,7 @@ public class ObstacleMap {
 		}
 	}
 
-	public static void giveWay(model tank, int index) {
+	public static void giveWay(Model tank, int index) {
 		indexes[1] = index - 81;
 		indexes[2] = index - 80;
 		indexes[3] = index - 79;

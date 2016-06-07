@@ -17,7 +17,7 @@
 
 public class Enemies {
 
-	public static model enemy[];
+	public static Model enemy[];
 
 	/**
 	 * This method is responsible for initialize the enemies on the map of the
@@ -25,7 +25,7 @@ public class Enemies {
 	 */
 	public static void init() {
 		/** This declaration create 109 Enemies possibles in the scenario; */
-		enemy = new model[109];
+		enemy = new Model[109];
 		enemy[0] = new MediumTank(9.5, -0.975, 5.5, 30);
 		enemy[1] = new MediumTank(9, -0.975, 5, 75);
 		enemy[2] = new MediumTank(9, -0.975, 5.5, 175);

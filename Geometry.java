@@ -16,7 +16,7 @@
  */
 
 public class Geometry {
-	public static boolean compareModels(model a, model b) {
+	public static boolean compareModels(Model a, Model b) {
 		boolean resultCompareModels;
 		if (a.getZDepth() > b.getZDepth()) {
 			resultCompareModels = true;

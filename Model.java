@@ -1,4 +1,4 @@
-public interface model {
+public interface Model {
 	public void update();
 
 	public Polygon3D[] getBoundary();

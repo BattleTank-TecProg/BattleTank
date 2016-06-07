@@ -604,7 +604,7 @@ public class MediumTank extends SolidObject {
 				double d = 0;
 				for (int i = 0; (d < distance) && (i < 30); i++, tempVector1
 						.add(tempVector2), d += 0.125) {
-					model temp = ObstacleMap.isOccupied2(tempVector1);
+					Model temp = ObstacleMap.isOccupied2(tempVector1);
 					if (temp == null)
 						continue;
 					obstacleType = temp.getType();

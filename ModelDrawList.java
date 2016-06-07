@@ -1,13 +1,13 @@
 public class ModelDrawList {
-	public static model[] visibleModels;
+	public static Model[] visibleModels;
 	public static int modelCount;
 
 	public static void makeList() {
-		visibleModels = new model[300];
+		visibleModels = new Model[300];
 		modelCount = 0;
 	}
 
-	public static void register(model m) {
+	public static void register(Model m) {
 		for (int i = 0; i < visibleModels.length; i++) {
 			if (visibleModels[i] == null) {
 				visibleModels[i] = m;
@@ -29,7 +29,7 @@ public class ModelDrawList {
 			for (int j = 0; j < modelCount - i; j++) {
 				if (Geometry.compareModels(visibleModels[j + 1],
 						visibleModels[j])) {
-					model temp = visibleModels[j + 1];
+					Model temp = visibleModels[j + 1];
 					visibleModels[j + 1] = visibleModels[j];
 					visibleModels[j] = temp;
 				}

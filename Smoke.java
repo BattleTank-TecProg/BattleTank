@@ -1,5 +1,5 @@
 public class Smoke {
-	public model emitter;
+	public Model emitter;
 
 	public Vector[] particles;
 
@@ -11,7 +11,7 @@ public class Smoke {
 
 	public Vector soruceCentre;
 
-	public Smoke(model emitter) {
+	public Smoke(Model emitter) {
 		this.emitter = emitter;
 
 		if (emitter != null)

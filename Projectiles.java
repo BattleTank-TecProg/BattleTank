@@ -1,8 +1,8 @@
 public class Projectiles {
-	public static model[] projectilesArray;
+	public static Model[] projectilesArray;
 
 	public static void init() {
-		projectilesArray = new model[150];
+		projectilesArray = new Model[150];
 	}
 
 	public static void update() {
@@ -15,7 +15,7 @@ public class Projectiles {
 		}
 	}
 
-	public static void register(model projectile) {
+	public static void register(Model projectile) {
 		for (int i = 0; i < projectilesArray.length; i++) {
 			if (projectilesArray[i] == null) {
 				projectilesArray[i] = projectile;

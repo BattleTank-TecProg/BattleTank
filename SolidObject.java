@@ -1,4 +1,4 @@
-public abstract class SolidObject implements model {
+public abstract class SolidObject implements Model {
 	protected Vector start;
 
 	protected Vector xDirection, yDirection, zDirection;
