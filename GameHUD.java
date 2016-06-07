@@ -14,17 +14,17 @@
  *  You should have received a copy of the GNU General Public License
  *  along with BattleTank 2. If not, see <http://www.gnu.org/licenses/>
  */
-
 import java.util.logging.Logger;
+import java.util.Locale;
 
 public class GameHUD {
-
+	
 	public static int[] leftSide;
 
 	public static int[] rightSide;
 
-	public static int[] Health, Saude, Ammo, Municao, BattleTank2, NewGame, Controls,
-			AboutAuthor, controlDescription1, controlDescription2,
+	public static int[] Health, Saude, Ammo, Municao, BattleTank2, NewGame, NovoJogo, Controls, Controles,
+			AboutAuthor, SobreAutor, controlDescription1, controlDescription2,
 			controlDescription3, controlDescription4, controlDescription5,
 			controlDescription6, controlDescription7, controlDescription8,
 			controlDescription9, author1, author2, author3, author4, author5,
@@ -86,12 +86,16 @@ public class GameHUD {
 		Ammo = new int[] { 10, 48, 48, 50 };
 		Municao = new int[] { 22, 56, 49, 44, 38, 36, 50 };
 		
-		BattleTank2 = new int[] { 11, 36, 55, 55, 47, 40, -1, 29, 36, 49, 46,
-				-1, 2 };
+		BattleTank2 = new int[] { 11, 36, 55, 55, 47, 40, 29, 36, 49, 46, -1, 2 };
+		
 		NewGame = new int[] { 23, 40, 58, -1, 16, 36, 48, 40 };
+		NovoJogo = new int[] { 23, 50, 57, 50, -1, 19, 50, 42, 50};
+		
 		Controls = new int[] { 12, 50, 49, 55, 53, 50, 47, 54 };
-		AboutAuthor = new int[] { 10, 37, 50, 56, 55, -1, 36, 56, 55, 43, 50,
-				53 };
+		Controles = new int[] { 12, 50, 49, 55, 53, 50, 47, 40, 54};
+		
+		AboutAuthor = new int[] { 10, 37, 50, 56, 55, -1, 36, 56, 55, 43, 50, 53 };
+		SobreAutor = new int[] { 28, 50, 37, 53, 40, -1, 50, -1, 10, 56, 55, 50, 53};
 
 		controlDescription1 = new int[] { 25, 53, 40, 54, 54, -1, 58, -1, 54,
 				-1, 36, -1, 39, -1, 55, 50, -1 };
@@ -451,21 +455,21 @@ public class GameHUD {
 			} else {
 				color = 0x00d0d0d0;
 			}
-			TextFactory.draw(NewGame, 265, 120, 1, color);
+			TextFactory.draw(NovoJogo, 265, 120, 1, color);
 
 			if (menuOptionStatus == 2) {
 				color = 0x0055ffaa;
 			} else {
 				color = 0x00d0d0d0;
 			}
-			TextFactory.draw(Controls, 265, 160, 1, color);
+			TextFactory.draw(Controles, 265, 160, 1, color);
 
 			if (menuOptionStatus == 3) {
 				color = 0x0055ffaa;
 			} else {
 				color = 0x00d0d0d0;
 			}
-			TextFactory.draw(AboutAuthor, 235, 200, 1, color);
+			TextFactory.draw(SobreAutor, 235, 200, 1, color);
 		} else {
 			// Does nothing.
 		}
@@ -611,5 +615,7 @@ public class GameHUD {
 
 	/** Starts a Logger to GameHUD class */
 	private static final Logger LOG = Logger.getLogger(GameHUD.class.getName());
+	
+	private static final Locale PTBR = new Locale("pt","BR");
 
 }
