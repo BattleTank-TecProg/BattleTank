@@ -100,12 +100,6 @@ public class Geometry {
 				// Does nothing.
 			}
 		}
-
-		if (inside) {
-			resultComparePolygons =  true;
-		} else {
-			// Does nothing.
-		}
 		
 		return resultComparePolygons;
 	}

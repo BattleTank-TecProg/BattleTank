@@ -29,7 +29,7 @@ public class Main extends Applet implements KeyListener, ActionListener,
 	static final int WIDTH = 640;
 
 	private static final long serialVersionUID = 1L;
-	public Ticker t;
+	public Ticker ticker;
 	public int sleepTime;
 	public static int screen[];
 	public static int stencilBuffer[];
@@ -47,7 +47,7 @@ public class Main extends Applet implements KeyListener, ActionListener,
 
 	public static int timer;
 	public static long lastTime;
-	public static long tm;
+	public static long currentTimeMillis;
 
 	public static PlayerTank PT;
 
@@ -235,17 +235,17 @@ public class Main extends Applet implements KeyListener, ActionListener,
 
 		timer = 0;
 		sleepTime = 35;
-		tm = System.currentTimeMillis();
-		t = new Ticker(sleepTime);
-		t.addActionListener(this);
+		currentTimeMillis = System.currentTimeMillis();
+		ticker = new Ticker(sleepTime);
+		ticker.addActionListener(this);
 
-		t.start();
+		ticker.start();
 
 		System.gc();
 	}
 
 	public void destroy() {
-		t.stop();
+		ticker.stop();
 		System.gc();
 
 		appletDestoried = true;
@@ -264,13 +264,16 @@ public class Main extends Applet implements KeyListener, ActionListener,
 			polyCount = 0;
 
 			timer++;
-			tm += sleepTime;
-			long temp = Math.max(0, tm - System.currentTimeMillis());
-			if (temp == 0)
+			currentTimeMillis += sleepTime;
+			long temp = Math.max(0, currentTimeMillis - System.currentTimeMillis());
+			if (temp == 0) {
 				temp = (long) (lastTime * 0.5);
-			if (temp > 33)
+			} else if (temp > 33) {
 				temp = 33;
-			t.setDelay((int) temp);
+			} else {
+				// Does nothing.
+			}
+			ticker.setDelay((int) temp);
 			lastTime = temp;
 
 			InputHandler.handleInput();
@@ -286,10 +289,11 @@ public class Main extends Applet implements KeyListener, ActionListener,
 			PowerUps.update();
 			GameEventHandler.processEvent();
 
-			if (terrainBufferFlag == true)
+			if (terrainBufferFlag == true) {
 				terrainBufferFlag = false;
-			else
+			} else {
 				terrainBufferFlag = true;
+			}
 			Terrain.draw();
 
 			ModelDrawList.sort();
@@ -301,6 +305,8 @@ public class Main extends Applet implements KeyListener, ActionListener,
 
 			if (this.getGraphics() != null) {
 				myPaint(this.getGraphics());
+			} else {
+				// Does nothing.
 			}
 		}
 	}
@@ -312,9 +318,7 @@ public class Main extends Applet implements KeyListener, ActionListener,
 	}
 
 	public final void paint(Graphics g) {
-		if (timer > 0) {
-			// Nothing to do.
-		} else {
+		if (timer <= 0) {
 			screen[0] = -134250;
 
 			for (int i = 1; i < 307200; i += i) {
@@ -322,6 +326,8 @@ public class Main extends Applet implements KeyListener, ActionListener,
 						: 307200 - i);
 			}
 			myPaint(this.getGraphics());
+		} else {
+			// Does nothing.
 		}
 	}
 

@@ -223,8 +223,6 @@ public class GameData {
 
 		for (int i = 0; i < 999; i++) {
 			random[i] = generator.nextInt(sizeVector);
-			System.out.printf("%d", random[i]);
-
 		}
 		return random;
 	}
