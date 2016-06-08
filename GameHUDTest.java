@@ -3,6 +3,12 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class GameHUDTest {
+	public static int cheat1[];
+	public static int cheat2[];
+	public static int cheat3[];
+	public static int you[];
+	public static int won[];
+
 
 	@Test
 	public void testDrawMenu() {
@@ -38,6 +44,33 @@ public class GameHUDTest {
 		assertNotNull(GameHUD.gameoverMessagePosition);
 		assertEquals(GameHUD.game, null);
 		assertEquals(GameHUD.over, null);
-
 	}
+	
+	@Test
+	public void testDrawWinMessage(){
+		
+		GameHUD.drawWinMessage();
+		assertNotNull(GameHUD.winMessagePosition);
+		assertArrayEquals(cheat1, GameHUD.cheat1);
+		assertArrayEquals(cheat2, GameHUD.cheat2);
+		assertArrayEquals(cheat3, GameHUD.cheat3);
+		assertEquals(null, GameHUD.cheat1);
+		assertEquals(null, GameHUD.cheat2);
+		assertEquals(null, GameHUD.cheat3);
+		assertEquals(null, GameHUD.You);
+		assertEquals(null, GameHUD.Won);
+		assertArrayEquals(you, GameHUD.You);
+		assertArrayEquals(won, GameHUD.Won);
+
+
+
+
+		
+		
+	}
+	
+	
+	
+	
+	
 }
