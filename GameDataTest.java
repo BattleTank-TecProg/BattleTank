@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class GameDataTest {
-	
+
 	@Test
 	public void testMakeData() {
 		GameData.makeData();
@@ -20,17 +20,14 @@ public class GameDataTest {
 		assertEquals(GameData.size.length, 9);
 	}
 
-/*
-	@Test
-	public void testGetRandom() {
-		fail("Not yet implemented");
-	}
-
 	@Test
 	public void testGetRandomVector() {
-		fail("Not yet implemented");
+		GameData.getRandomVector();
+		assertNotNull(GameData.randomVectors);
+		assertEquals(GameData.randomVectors.length, 1000);
+
 	}
-*/
+
 	@Test
 	public void testDestroy() {
 		GameData.destroy();
@@ -40,11 +37,5 @@ public class GameDataTest {
 		assertEquals(GameData.screenTable, null);
 		assertSame(GameData.colorTable, null);
 	}
-/*
-	@Test
-	public void testGenerateRandomVector() {
-		fail("Not yet implemented");
 
-	}
-*/
 }
