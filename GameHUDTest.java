@@ -32,4 +32,12 @@ public class GameHUDTest {
 
 	}
 
+	@Test
+	public void testDrawGameOverMessage() {
+		GameHUD.drawGameoverMessage();
+		assertNotNull(GameHUD.gameoverMessagePosition);
+		assertEquals(GameHUD.game, null);
+		assertEquals(GameHUD.over, null);
+
+	}
 }
