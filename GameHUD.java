@@ -39,21 +39,21 @@ public class GameHUD {
 
 	public static int loadingScreenPosition = 0;
 
-	public static boolean escapePressed;
+	public static int mouseXpos = 0;
 
-	public static boolean downPressed;
+	public static int mouseYpos = 0;
+	
+	public static boolean escapePressed = false;
 
-	public static boolean upPressed;
+	public static boolean downPressed = false;
 
-	public static boolean enterPressed;
+	public static boolean upPressed = false;
 
+	public static boolean enterPressed = false;
+	
+	public static boolean mousePressed = false;
+	
 	public static int[] randomDisplacement = new int[640];
-
-	public static boolean mousePressed;
-
-	public static int mouseXpos;
-
-	public static int mouseYpos;
 
 	// X coordinate of the PlayerTank.
 	static final double XCOORDINADE = 10;
@@ -63,6 +63,436 @@ public class GameHUD {
 
 	// Z coordinate of the Player Tank.
 	static final double ZCOORDINADE = 2.5;
+	
+	
+	
+	public static int[] getLeftSide() {
+		return leftSide;
+	}
+
+	public static void setLeftSide(int[] leftSide) {
+		GameHUD.leftSide = leftSide;
+	}
+
+	public static int[] getRightSide() {
+		return rightSide;
+	}
+
+	public static void setRightSide(int[] rightSide) {
+		GameHUD.rightSide = rightSide;
+	}
+
+	public static int[] getHealth() {
+		return Health;
+	}
+
+	public static void setHealth(int[] health) {
+		Health = health;
+	}
+
+	public static int[] getSaude() {
+		return Saude;
+	}
+
+	public static void setSaude(int[] saude) {
+		Saude = saude;
+	}
+
+	public static int[] getAmmo() {
+		return Ammo;
+	}
+
+	public static void setAmmo(int[] ammo) {
+		Ammo = ammo;
+	}
+
+	public static int[] getMunicao() {
+		return Municao;
+	}
+
+	public static void setMunicao(int[] municao) {
+		Municao = municao;
+	}
+
+	public static int[] getBattleTank2() {
+		return BattleTank2;
+	}
+
+	public static void setBattleTank2(int[] battleTank2) {
+		BattleTank2 = battleTank2;
+	}
+
+	public static int[] getNewGame() {
+		return NewGame;
+	}
+
+	public static void setNewGame(int[] newGame) {
+		NewGame = newGame;
+	}
+
+	public static int[] getNovoJogo() {
+		return NovoJogo;
+	}
+
+	public static void setNovoJogo(int[] novoJogo) {
+		NovoJogo = novoJogo;
+	}
+
+	public static int[] getControls() {
+		return Controls;
+	}
+
+	public static void setControls(int[] controls) {
+		Controls = controls;
+	}
+
+	public static int[] getControles() {
+		return Controles;
+	}
+
+	public static void setControles(int[] controles) {
+		Controles = controles;
+	}
+
+	public static int[] getAboutAuthor() {
+		return AboutAuthor;
+	}
+
+	public static void setAboutAuthor(int[] aboutAuthor) {
+		AboutAuthor = aboutAuthor;
+	}
+
+	public static int[] getSobreAutor() {
+		return SobreAutor;
+	}
+
+	public static void setSobreAutor(int[] sobreAutor) {
+		SobreAutor = sobreAutor;
+	}
+
+	public static int[] getControlDescription1() {
+		return controlDescription1;
+	}
+
+	public static void setControlDescription1(int[] controlDescription1) {
+		GameHUD.controlDescription1 = controlDescription1;
+	}
+
+	public static int[] getControlDescription2() {
+		return controlDescription2;
+	}
+
+	public static void setControlDescription2(int[] controlDescription2) {
+		GameHUD.controlDescription2 = controlDescription2;
+	}
+
+	public static int[] getControlDescription3() {
+		return controlDescription3;
+	}
+
+	public static void setControlDescription3(int[] controlDescription3) {
+		GameHUD.controlDescription3 = controlDescription3;
+	}
+
+	public static int[] getControlDescription4() {
+		return controlDescription4;
+	}
+
+	public static void setControlDescription4(int[] controlDescription4) {
+		GameHUD.controlDescription4 = controlDescription4;
+	}
+
+	public static int[] getControlDescription5() {
+		return controlDescription5;
+	}
+
+	public static void setControlDescription5(int[] controlDescription5) {
+		GameHUD.controlDescription5 = controlDescription5;
+	}
+
+	public static int[] getControlDescription6() {
+		return controlDescription6;
+	}
+
+	public static void setControlDescription6(int[] controlDescription6) {
+		GameHUD.controlDescription6 = controlDescription6;
+	}
+
+	public static int[] getControlDescription7() {
+		return controlDescription7;
+	}
+
+	public static void setControlDescription7(int[] controlDescription7) {
+		GameHUD.controlDescription7 = controlDescription7;
+	}
+
+	public static int[] getControlDescription8() {
+		return controlDescription8;
+	}
+
+	public static void setControlDescription8(int[] controlDescription8) {
+		GameHUD.controlDescription8 = controlDescription8;
+	}
+
+	public static int[] getControlDescription9() {
+		return controlDescription9;
+	}
+
+	public static void setControlDescription9(int[] controlDescription9) {
+		GameHUD.controlDescription9 = controlDescription9;
+	}
+
+	public static int[] getAuthor1() {
+		return author1;
+	}
+
+	public static void setAuthor1(int[] author1) {
+		GameHUD.author1 = author1;
+	}
+
+	public static int[] getAuthor2() {
+		return author2;
+	}
+
+	public static void setAuthor2(int[] author2) {
+		GameHUD.author2 = author2;
+	}
+
+	public static int[] getAuthor3() {
+		return author3;
+	}
+
+	public static void setAuthor3(int[] author3) {
+		GameHUD.author3 = author3;
+	}
+
+	public static int[] getAuthor4() {
+		return author4;
+	}
+
+	public static void setAuthor4(int[] author4) {
+		GameHUD.author4 = author4;
+	}
+
+	public static int[] getAuthor5() {
+		return author5;
+	}
+
+	public static void setAuthor5(int[] author5) {
+		GameHUD.author5 = author5;
+	}
+
+	public static int[] getAuthor6() {
+		return author6;
+	}
+
+	public static void setAuthor6(int[] author6) {
+		GameHUD.author6 = author6;
+	}
+
+	public static int[] getAuthor7() {
+		return author7;
+	}
+
+	public static void setAuthor7(int[] author7) {
+		GameHUD.author7 = author7;
+	}
+
+	public static int[] getAuthor8() {
+		return author8;
+	}
+
+	public static void setAuthor8(int[] author8) {
+		GameHUD.author8 = author8;
+	}
+
+	public static int[] getAuthor9() {
+		return author9;
+	}
+
+	public static void setAuthor9(int[] author9) {
+		GameHUD.author9 = author9;
+	}
+
+	public static int[] getAuthor10() {
+		return author10;
+	}
+
+	public static void setAuthor10(int[] author10) {
+		GameHUD.author10 = author10;
+	}
+
+	public static int[] getGame() {
+		return game;
+	}
+
+	public static void setGame(int[] game) {
+		GameHUD.game = game;
+	}
+
+	public static int[] getOver() {
+		return over;
+	}
+
+	public static void setOver(int[] over) {
+		GameHUD.over = over;
+	}
+
+	public static int[] getYou() {
+		return You;
+	}
+
+	public static void setYou(int[] you) {
+		You = you;
+	}
+
+	public static int[] getWon() {
+		return Won;
+	}
+
+	public static void setWon(int[] won) {
+		Won = won;
+	}
+
+	public static int[] getCheat1() {
+		return cheat1;
+	}
+
+	public static void setCheat1(int[] cheat1) {
+		GameHUD.cheat1 = cheat1;
+	}
+
+	public static int[] getCheat2() {
+		return cheat2;
+	}
+
+	public static void setCheat2(int[] cheat2) {
+		GameHUD.cheat2 = cheat2;
+	}
+
+	public static int[] getCheat3() {
+		return cheat3;
+	}
+
+	public static void setCheat3(int[] cheat3) {
+		GameHUD.cheat3 = cheat3;
+	}
+
+	public static int getMenuOptionStatus() {
+		return menuOptionStatus;
+	}
+
+	public static void setMenuOptionStatus(int menuOptionStatus) {
+		GameHUD.menuOptionStatus = menuOptionStatus;
+	}
+
+	public static int getGameoverMessagePosition() {
+		return gameoverMessagePosition;
+	}
+
+	public static void setGameoverMessagePosition(int gameoverMessagePosition) {
+		GameHUD.gameoverMessagePosition = gameoverMessagePosition;
+	}
+
+	public static int getWinMessagePosition() {
+		return winMessagePosition;
+	}
+
+	public static void setWinMessagePosition(int winMessagePosition) {
+		GameHUD.winMessagePosition = winMessagePosition;
+	}
+
+	public static int getLoadingScreenPosition() {
+		return loadingScreenPosition;
+	}
+
+	public static void setLoadingScreenPosition(int loadingScreenPosition) {
+		GameHUD.loadingScreenPosition = loadingScreenPosition;
+	}
+
+	public static boolean isEscapePressed() {
+		return escapePressed;
+	}
+
+	public static void setEscapePressed(boolean escapePressed) {
+		GameHUD.escapePressed = escapePressed;
+	}
+
+	public static boolean isDownPressed() {
+		return downPressed;
+	}
+
+	public static void setDownPressed(boolean downPressed) {
+		GameHUD.downPressed = downPressed;
+	}
+
+	public static boolean isUpPressed() {
+		return upPressed;
+	}
+
+	public static void setUpPressed(boolean upPressed) {
+		GameHUD.upPressed = upPressed;
+	}
+
+	public static boolean isEnterPressed() {
+		return enterPressed;
+	}
+
+	public static void setEnterPressed(boolean enterPressed) {
+		GameHUD.enterPressed = enterPressed;
+	}
+
+	public static int[] getRandomDisplacement() {
+		return randomDisplacement;
+	}
+
+	public static void setRandomDisplacement(int[] randomDisplacement) {
+		GameHUD.randomDisplacement = randomDisplacement;
+	}
+
+	public static boolean isMousePressed() {
+		return mousePressed;
+	}
+
+	public static void setMousePressed(boolean mousePressed) {
+		GameHUD.mousePressed = mousePressed;
+	}
+
+	public static int getMouseXpos() {
+		return mouseXpos;
+	}
+
+	public static void setMouseXpos(int mouseXpos) {
+		GameHUD.mouseXpos = mouseXpos;
+	}
+
+	public static int getMouseYpos() {
+		return mouseYpos;
+	}
+
+	public static void setMouseYpos(int mouseYpos) {
+		GameHUD.mouseYpos = mouseYpos;
+	}
+
+	public static double getXcoordinade() {
+		return XCOORDINADE;
+	}
+
+	public static double getYcoordinade() {
+		return YCOORDINADE;
+	}
+
+	public static double getZcoordinade() {
+		return ZCOORDINADE;
+	}
+
+	public static Logger getLog() {
+		return LOG;
+	}
+
+	public static Locale getPtbr() {
+		return PTBR;
+	}
 
 	public static void init() {
 		menuOptionStatus = 1;

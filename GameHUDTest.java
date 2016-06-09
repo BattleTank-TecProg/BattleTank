@@ -8,8 +8,42 @@ public class GameHUDTest {
 	public static int cheat3[];
 	public static int you[];
 	public static int won[];
+	public static int menuOptionStatus = 0;
+	public static int gameoverMessagePosition = 0;
+	public static int winMessagePosition = 0;
+	public static int loadingScreenPosition = 0;
+	public static int mouseXpos = 0;
+	
+	@Test
+	public void testMenuOptionStatus() {
+		assertNotNull(GameHUD.getMenuOptionStatus());
+		assertEquals(GameHUD.getMenuOptionStatus(), menuOptionStatus);
+	}
 
-
+	@Test
+	public void testGameoverMessagePosition() {
+		assertNotNull(GameHUD.getGameoverMessagePosition());
+		assertEquals(GameHUD.getGameoverMessagePosition(), gameoverMessagePosition);
+	}
+	
+	@Test
+	public void testWinMessagePosition() {
+		assertNotNull(GameHUD.getWinMessagePosition());
+		assertEquals(GameHUD.getWinMessagePosition(), winMessagePosition);
+	}
+	
+	@Test
+	public void testLoadingScreenPosition() {
+		assertNotNull(GameHUD.getLoadingScreenPosition());
+		assertEquals(GameHUD.getLoadingScreenPosition(), loadingScreenPosition);
+	}
+	
+	@Test
+	public void testMouseXpos() {
+		assertNotNull(GameHUD.getMouseXpos());
+		assertEquals(GameHUD.mouseXpos, mouseXpos);
+	}
+	
 	@Test
 	public void testDrawMenu() {
 		int test[] = null;
