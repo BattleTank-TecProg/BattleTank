@@ -3,9 +3,8 @@ import java.awt.event.MouseEvent;
 
 public class InputHandler {
 
-	public static boolean UP, DOWN, RIGHT, LEFT, A, S, D, W, space,
-			weapon1Selected, weapon2Selected, weapon3Selected, weapon4Selected,
-			mousePressed, cursorInApplet, changeWeapon, L, I, M;
+	public static boolean UP, DOWN, RIGHT, LEFT, A, S, D, W, space, weapon1Selected, weapon2Selected, weapon3Selected,
+			weapon4Selected, mousePressed, cursorInApplet, changeWeapon, L, I, M;
 
 	public static boolean playerInAction;
 
@@ -62,8 +61,7 @@ public class InputHandler {
 			}
 
 			if (space || mousePressed) {
-				if (GameHUD.loadingScreenPosition != 1234567
-						&& GameHUD.loadingScreenPosition > 100)
+				if (GameHUD.getLoadingScreenPosition() != 1234567 && GameHUD.getLoadingScreenPosition() > 100)
 					PlayerTank.firing = true;
 			}
 
@@ -84,23 +82,20 @@ public class InputHandler {
 			}
 			changeWeapon = false;
 
-			if ((xPos < 140 || (xPos < 320 && yPos > 370)) && !LEFT
-					&& cursorInApplet) {
+			if ((xPos < 140 || (xPos < 320 && yPos > 370)) && !LEFT && cursorInApplet) {
 				PlayerTank.turnLeft = true;
 				Camera.setXZ_angle(Camera.getXZ_angle() - 4);
 				if (Camera.getXZ_angle() < 0)
 					Camera.setXZ_angle(Camera.getXZ_angle() + 360);
 			}
-			if ((xPos > 490 || (xPos > 320 && yPos > 370)) && !RIGHT
-					&& cursorInApplet) {
+			if ((xPos > 490 || (xPos > 320 && yPos > 370)) && !RIGHT && cursorInApplet) {
 				PlayerTank.turnRight = true;
 				Camera.setXZ_angle(Camera.getXZ_angle() + 4);
 				if (Camera.getXZ_angle() > 359)
 					Camera.setXZ_angle(Camera.getXZ_angle() - 360);
 			}
 
-			if (xPos <= 490 && xPos >= 140 && yPos < 410 && !RIGHT && !LEFT
-					&& cursorInApplet) {
+			if (xPos <= 490 && xPos >= 140 && yPos < 410 && !RIGHT && !LEFT && cursorInApplet) {
 				int turretAngle = PlayerTank.turretAngle % 360;
 				int cameraAngle = (360 - Camera.getXZ_angle()) % 360;
 
@@ -119,11 +114,9 @@ public class InputHandler {
 
 				int difference = xPos - xPos_;
 
-				if (difference > 0
-						&& Math.abs(difference) > (10 + (480 - yPos) / 100))
+				if (difference > 0 && Math.abs(difference) > (10 + (480 - yPos) / 100))
 					PlayerTank.turnRight = true;
-				if (difference < 0
-						&& Math.abs(difference) > (10 + (480 - yPos) / 100))
+				if (difference < 0 && Math.abs(difference) > (10 + (480 - yPos) / 100))
 					PlayerTank.turnLeft = true;
 
 			}
@@ -144,20 +137,20 @@ public class InputHandler {
 			space = true;
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			UP = true;
-			GameHUD.upPressed = true;
+			GameHUD.setUpPressed(true);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			DOWN = true;
-			GameHUD.downPressed = true;
+			GameHUD.setDownPressed(true);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT)
 			LEFT = true;
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
 			RIGHT = true;
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
-			GameHUD.escapePressed = true;
+			GameHUD.setEscapePressed(true);
 		if (e.getKeyCode() == KeyEvent.VK_ENTER)
-			GameHUD.enterPressed = true;
+			GameHUD.setEnterPressed(true);
 
 		if (e.getKeyCode() == '1')
 			weapon1Selected = true;
@@ -236,9 +229,9 @@ public class InputHandler {
 	public static void mousePressed(MouseEvent e) {
 		mousePressed = true;
 
-		GameHUD.mousePressed = true;
-		GameHUD.mouseXpos = e.getX();
-		GameHUD.mouseYpos = e.getY();
+		GameHUD.setMousePressed(true);
+		GameHUD.setMouseXpos(e.getX());
+		GameHUD.setMouseYpos(e.getY());
 	}
 
 	public static void mouseReleased(MouseEvent e) {

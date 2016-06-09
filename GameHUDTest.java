@@ -13,7 +13,7 @@ public class GameHUDTest {
 	public static int winMessagePosition = 0;
 	public static int loadingScreenPosition = 0;
 	public static int mouseXpos = 0;
-	
+
 	@Test
 	public void testMenuOptionStatus() {
 		assertNotNull(GameHUD.getMenuOptionStatus());
@@ -25,73 +25,73 @@ public class GameHUDTest {
 		assertNotNull(GameHUD.getGameoverMessagePosition());
 		assertEquals(GameHUD.getGameoverMessagePosition(), gameoverMessagePosition);
 	}
-	
+
 	@Test
 	public void testWinMessagePosition() {
 		assertNotNull(GameHUD.getWinMessagePosition());
 		assertEquals(GameHUD.getWinMessagePosition(), winMessagePosition);
 	}
-	
+
 	@Test
 	public void testLoadingScreenPosition() {
 		assertNotNull(GameHUD.getLoadingScreenPosition());
 		assertEquals(GameHUD.getLoadingScreenPosition(), loadingScreenPosition);
 	}
-	
+
 	@Test
 	public void testMouseXpos() {
 		assertNotNull(GameHUD.getMouseXpos());
-		assertEquals(GameHUD.mouseXpos, mouseXpos);
+		assertEquals(GameHUD.getMouseXpos(), mouseXpos);
 	}
-	
+
 	@Test
 	public void testDrawMenu() {
 		int test[] = null;
-		assertArrayEquals(GameHUD.leftSide, test);
-		assertArrayEquals(GameHUD.rightSide, test);
+		assertArrayEquals(GameHUD.getLeftSide(), test);
+		assertArrayEquals(GameHUD.getRightSide(), test);
 	}
 
 	@Test
 	public void testUpdate() {
 		GameHUD.update();
-		assertNotNull(GameHUD.escapePressed);
-		assertNotNull(GameHUD.upPressed);
-		assertNotNull(GameHUD.downPressed);
-		assertNotNull(GameHUD.enterPressed);
-		assertNotNull(GameHUD.mousePressed);
-		assertNotNull(GameHUD.menuOptionStatus);
-		assertNotNull(GameHUD.gameoverMessagePosition);
-		assertNotNull(GameHUD.winMessagePosition);
-		assertNotNull(GameHUD.loadingScreenPosition);
-		assertEquals(GameHUD.escapePressed, false);
-		assertEquals(GameHUD.downPressed, false);
-		assertEquals(GameHUD.upPressed, false);
-		assertEquals(GameHUD.enterPressed, false);
-		assertEquals(GameHUD.mousePressed, false);
+		assertNotNull(GameHUD.isEscapePressed());
+		assertNotNull(GameHUD.isUpPressed());
+		assertNotNull(GameHUD.isDownPressed());
+		assertNotNull(GameHUD.isEnterPressed());
+		assertNotNull(GameHUD.isMousePressed());
+		assertNotNull(GameHUD.getMenuOptionStatus());
+		assertNotNull(GameHUD.getGameoverMessagePosition());
+		assertNotNull(GameHUD.getWinMessagePosition());
+		assertNotNull(GameHUD.getLoadingScreenPosition());
+		assertEquals(GameHUD.isEscapePressed(), false);
+		assertEquals(GameHUD.isDownPressed(), false);
+		assertEquals(GameHUD.isUpPressed(), false);
+		assertEquals(GameHUD.isEnterPressed(), false);
+		assertEquals(GameHUD.isMousePressed(), false);
 
 	}
 
 	@Test
 	public void testDrawGameOverMessage() {
 		GameHUD.drawGameoverMessage();
-		assertNotNull(GameHUD.gameoverMessagePosition);
-		assertEquals(GameHUD.game, null);
-		assertEquals(GameHUD.over, null);
+		assertNotNull(GameHUD.getGameoverMessagePosition());
+		assertEquals(GameHUD.getGame(), null);
+		assertEquals(GameHUD.getOver(), null);
 	}
-	
+
 	@Test
-	public void testDrawWinMessage(){
+	public void testDrawWinMessage() {
 		GameHUD.drawWinMessage();
-		assertNotNull(GameHUD.winMessagePosition);
-		assertArrayEquals(cheat1, GameHUD.cheat1);
-		assertArrayEquals(cheat2, GameHUD.cheat2);
-		assertArrayEquals(cheat3, GameHUD.cheat3);
-		assertEquals(null, GameHUD.cheat1);
-		assertEquals(null, GameHUD.cheat2);
-		assertEquals(null, GameHUD.cheat3);
-		assertEquals(null, GameHUD.You);
-		assertEquals(null, GameHUD.Won);
-		assertArrayEquals(you, GameHUD.You);
-		assertArrayEquals(won, GameHUD.Won);	
+		assertNotNull(GameHUD.getWinMessagePosition());
+		assertArrayEquals(cheat1, GameHUD.getCheat1());
+		assertArrayEquals(cheat2, GameHUD.getCheat2());
+		assertArrayEquals(cheat3, GameHUD.getCheat3());
+		assertEquals(null, GameHUD.getCheat1());
+		assertEquals(null, GameHUD.getCheat2());
+		assertEquals(null, GameHUD.getCheat3());
+		assertEquals(null, GameHUD.getYou());
+		assertEquals(null, GameHUD.getWon());
+		assertArrayEquals(you, GameHUD.getYou());
+		assertArrayEquals(won, GameHUD.getWon());
 	}
 }
