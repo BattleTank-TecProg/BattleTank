@@ -22,8 +22,8 @@ import java.util.logging.*;
 
 public class Camera {
 
-	public static final double LARGER_SIZE_FOR_A_DOUBLE_VARIABLE = 321321.3123435;
-	public static final double MINIMUM_MOST_FOR_A_DOUBLE_VARIABLE = -3123.434354;
+	public static final double MAX = 321321.3123435;
+	public static final double MIN = -3123.434354;
 	/** X coordinate of the rectangle. */
 	private static final int XCOORDINADE = 0;
 
@@ -222,22 +222,32 @@ public class Camera {
 	/**
 	 * This method returns the size larger than a variable type double may have.
 	 * 
-	 * @return LARGER_SIZE_FOR_A_DOUBLE_VARIABLE
+	 * @return MAX
 	 */
 	public static double getLargerSizeForADoubleVariable() {
-		return LARGER_SIZE_FOR_A_DOUBLE_VARIABLE;
+		return MAX;
 	}
 
 	/**
 	 * This method returns the size smaller than a variable type double may
 	 * have.
 	 * 
-	 * @return MINIMUM_MOST_FOR_A_DOUBLE_VARIABLE
+	 * @return MIN
 	 */
 	public static double getMinimumMostForADoubleVariable() {
-		return MINIMUM_MOST_FOR_A_DOUBLE_VARIABLE;
+		return MIN;
 	}
-
+	
+	/**
+	 * This method returns the max value for type double
+	 * have.
+	 * 
+	 * @return MAX
+	 */
+	public static double getMaximunMostForADoubleVariable() {
+		return MAX;
+	}
+	
 	/**
 	 * This method returns the X coordinate of.
 	 * 

@@ -37,5 +37,5 @@ public class GameDataTest {
 		assertEquals(GameData.screenTable, null);
 		assertSame(GameData.colorTable, null);
 	}
-
+	
 }

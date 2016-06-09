@@ -15,7 +15,6 @@ public class GameHUDTest {
 		int test[] = null;
 		assertArrayEquals(GameHUD.leftSide, test);
 		assertArrayEquals(GameHUD.rightSide, test);
-
 	}
 
 	@Test
@@ -48,7 +47,6 @@ public class GameHUDTest {
 	
 	@Test
 	public void testDrawWinMessage(){
-		
 		GameHUD.drawWinMessage();
 		assertNotNull(GameHUD.winMessagePosition);
 		assertArrayEquals(cheat1, GameHUD.cheat1);
@@ -60,17 +58,6 @@ public class GameHUDTest {
 		assertEquals(null, GameHUD.You);
 		assertEquals(null, GameHUD.Won);
 		assertArrayEquals(you, GameHUD.You);
-		assertArrayEquals(won, GameHUD.Won);
-
-
-
-
-		
-		
+		assertArrayEquals(won, GameHUD.Won);	
 	}
-	
-	
-	
-	
-	
 }
