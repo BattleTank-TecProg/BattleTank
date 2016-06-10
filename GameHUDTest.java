@@ -13,6 +13,12 @@ public class GameHUDTest {
 	public static int winMessagePosition = 0;
 	public static int loadingScreenPosition = 0;
 	public static int mouseXpos = 0;
+	public static int mouseYpos = 0;
+	public static boolean escapePressed = false;
+	public static boolean downPressed = false;
+	public static boolean upPressed = false;
+	public static boolean enterPressed = false;
+	public static boolean mousePressed = false;
 
 	@Test
 	public void testMenuOptionStatus() {
@@ -42,6 +48,42 @@ public class GameHUDTest {
 	public void testMouseXpos() {
 		assertNotNull(GameHUD.getMouseXpos());
 		assertEquals(GameHUD.getMouseXpos(), mouseXpos);
+	}
+
+	@Test
+	public void testMouseYpos() {
+		assertNotNull(GameHUD.getMouseYpos());
+		assertEquals(GameHUD.getMouseYpos(), mouseYpos);
+	}
+
+	@Test
+	public void testEscapePressed() {
+		assertNotNull(GameHUD.isEscapePressed());
+		assertEquals(GameHUD.isEscapePressed(), escapePressed);
+	}
+
+	@Test
+	public void testDownPressed() {
+		assertNotNull(GameHUD.isDownPressed());
+		assertEquals(GameHUD.isDownPressed(), downPressed);
+	}
+
+	@Test
+	public void testUpPressed() {
+		assertNotNull(GameHUD.isUpPressed());
+		assertEquals(GameHUD.isUpPressed(), upPressed);
+	}
+
+	@Test
+	public void testEnterPressed() {
+		assertNotNull(GameHUD.isEnterPressed());
+		assertEquals(GameHUD.isEnterPressed(), enterPressed);
+	}
+
+	@Test
+	public void testMousePressed() {
+		assertNotNull(GameHUD.isMousePressed());
+		assertEquals(GameHUD.isMousePressed(), mousePressed);
 	}
 
 	@Test
