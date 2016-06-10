@@ -83,3 +83,5 @@
 /GameHUDTest.class
 /ExplosionTest.class
 /InputHandlerTest.class
+/GameEventHandlerTest.class
+/GunTurretTest.class

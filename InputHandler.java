@@ -27,7 +27,7 @@ public class InputHandler {
 				if (Camera.getXZ_angle() > 359) {
 					Camera.setXZ_angle(Camera.getXZ_angle() - 360);
 				} else {
-					//Does nothing.
+					// Does nothing.
 				}
 			} else if (LEFT) {
 				PlayerTank.turnLeft = true;
@@ -35,7 +35,7 @@ public class InputHandler {
 				if (Camera.getXZ_angle() < 0) {
 					Camera.setXZ_angle(Camera.getXZ_angle() + 360);
 				} else {
-					//Does nothing.
+					// Does nothing.
 				}
 			} else if (W) {
 				PlayerTank.forward = true;
@@ -65,8 +65,8 @@ public class InputHandler {
 				Main.PT.changeWeapon(4);
 			} else if (changeWeapon) {
 				Main.PT.changeWeapon(-1);
-			} else  {
-				//Does nothing.
+			} else {
+				// Does nothing.
 			}
 			changeWeapon = false;
 
@@ -76,7 +76,7 @@ public class InputHandler {
 				if (Camera.getXZ_angle() < 0) {
 					Camera.setXZ_angle(Camera.getXZ_angle() + 360);
 				} else {
-					//Does nothing.
+					// Does nothing.
 				}
 			} else if ((xPos > 490 || (xPos > 320 && yPos > 370)) && !RIGHT && cursorInApplet) {
 				PlayerTank.turnRight = true;
@@ -84,7 +84,7 @@ public class InputHandler {
 				if (Camera.getXZ_angle() > 359) {
 					Camera.setXZ_angle(Camera.getXZ_angle() - 360);
 				} else {
-					//Does nothing.
+					// Does nothing.
 				}
 			} else if (xPos <= 490 && xPos >= 140 && yPos < 410 && !RIGHT && !LEFT && cursorInApplet) {
 				int turretAngle = PlayerTank.turretAngle % 360;
@@ -110,7 +110,7 @@ public class InputHandler {
 				} else if (difference < 0 && Math.abs(difference) > (10 + (480 - yPos) / 100)) {
 					PlayerTank.turnLeft = true;
 				} else {
-					//Does nothing.
+					// Does nothing.
 				}
 
 			}
@@ -118,51 +118,47 @@ public class InputHandler {
 	}
 
 	public static void keyPressed(KeyEvent e) {
-		if (e.getKeyChar() == 'a' || e.getKeyChar() == 'A')
+		if (e.getKeyChar() == 'a' || e.getKeyChar() == 'A') {
 			A = true;
-		if (e.getKeyChar() == 's' || e.getKeyChar() == 'S')
+		} else if (e.getKeyChar() == 's' || e.getKeyChar() == 'S') {
 			S = true;
-		if (e.getKeyChar() == 'd' || e.getKeyChar() == 'D')
+		} else if (e.getKeyChar() == 'd' || e.getKeyChar() == 'D') {
 			D = true;
-		if (e.getKeyChar() == 'w' || e.getKeyChar() == 'W')
+		} else if (e.getKeyChar() == 'w' || e.getKeyChar() == 'W') {
 			W = true;
-
-		if (e.getKeyChar() == KeyEvent.VK_SPACE)
+		} else if (e.getKeyChar() == KeyEvent.VK_SPACE) {
 			space = true;
-		if (e.getKeyCode() == KeyEvent.VK_UP) {
+		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
 			UP = true;
 			GameHUD.setUpPressed(true);
-		}
-		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			DOWN = true;
 			GameHUD.setDownPressed(true);
-		}
-		if (e.getKeyCode() == KeyEvent.VK_LEFT)
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			LEFT = true;
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+		}else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			RIGHT = true;
-		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+		} else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			GameHUD.setEscapePressed(true);
-		if (e.getKeyCode() == KeyEvent.VK_ENTER)
+		} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			GameHUD.setEnterPressed(true);
-
-		if (e.getKeyCode() == '1')
+		} else if (e.getKeyCode() == '1') {
 			weapon1Selected = true;
-		if (e.getKeyCode() == '2')
+		} else if (e.getKeyCode() == '2') {
 			weapon2Selected = true;
-		if (e.getKeyCode() == '3')
+		} else if (e.getKeyCode() == '3') {
 			weapon3Selected = true;
-		if (e.getKeyCode() == '4')
+		} else if (e.getKeyCode() == '4') {
 			weapon4Selected = true;
-
-		if (e.getKeyChar() == 'i' || e.getKeyChar() == 'I')
+		} else if (e.getKeyChar() == 'i' || e.getKeyChar() == 'I') {
 			I = true;
-
-		if (e.getKeyChar() == 'l' || e.getKeyChar() == 'L')
+		} else if (e.getKeyChar() == 'l' || e.getKeyChar() == 'L') {
 			L = true;
-
-		if (e.getKeyChar() == 'm' || e.getKeyChar() == 'M')
+		} else if (e.getKeyChar() == 'm' || e.getKeyChar() == 'M') {
 			M = true;
+		} else {
+			//Does nothing.
+		}
 	}
 
 	public static void keyReleased(KeyEvent e) {
