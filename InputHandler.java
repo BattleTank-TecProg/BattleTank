@@ -136,7 +136,7 @@ public class InputHandler {
 			GameHUD.setDownPressed(true);
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			LEFT = true;
-		}else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			RIGHT = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			GameHUD.setEscapePressed(true);
@@ -162,46 +162,49 @@ public class InputHandler {
 	}
 
 	public static void keyReleased(KeyEvent e) {
-		if (e.getKeyChar() == 'a' || e.getKeyChar() == 'A')
+		if (e.getKeyChar() == 'a' || e.getKeyChar() == 'A') {
 			A = false;
-		if (e.getKeyChar() == 's' || e.getKeyChar() == 'S')
+		} else if (e.getKeyChar() == 's' || e.getKeyChar() == 'S') {
 			S = false;
-		if (e.getKeyChar() == 'd' || e.getKeyChar() == 'D')
+		} else if (e.getKeyChar() == 'd' || e.getKeyChar() == 'D') {
 			D = false;
-		if (e.getKeyChar() == 'w' || e.getKeyChar() == 'W')
+		} else if (e.getKeyChar() == 'w' || e.getKeyChar() == 'W') {
 			W = false;
-		if (e.getKeyChar() == KeyEvent.VK_SPACE)
+		} else if (e.getKeyChar() == KeyEvent.VK_SPACE) {
 			space = false;
-		if (e.getKeyCode() == KeyEvent.VK_UP)
+		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
 			UP = false;
-		if (e.getKeyCode() == KeyEvent.VK_DOWN)
+		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			DOWN = false;
-		if (e.getKeyCode() == KeyEvent.VK_LEFT)
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			LEFT = false;
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			RIGHT = false;
-		if (e.getKeyCode() == '1')
+		} else if (e.getKeyCode() == '1') {
 			weapon1Selected = false;
-		if (e.getKeyCode() == '2')
+		} else if (e.getKeyCode() == '2') {
 			weapon2Selected = false;
-		if (e.getKeyCode() == '3')
+		} else if (e.getKeyCode() == '3') {
 			weapon3Selected = false;
-		if (e.getKeyCode() == '4')
+		} else if (e.getKeyCode() == '4') {
 			weapon4Selected = false;
-
-		if (e.getKeyChar() == 'i' || e.getKeyChar() == 'I')
+		} else if (e.getKeyChar() == 'i' || e.getKeyChar() == 'I') {
 			I = false;
-
-		if (e.getKeyChar() == 'l' || e.getKeyChar() == 'L')
+		} else if (e.getKeyChar() == 'l' || e.getKeyChar() == 'L') {
 			L = false;
-
-		if (e.getKeyChar() == 'm' || e.getKeyChar() == 'M')
+		} else if (e.getKeyChar() == 'm' || e.getKeyChar() == 'M') {
 			M = false;
+		} else {
+			//Does nothing
+		}
 	}
 
 	public static void keyTyped(KeyEvent e) {
-		if (e.getKeyChar() == 'q' || e.getKeyChar() == 'Q')
+		if (e.getKeyChar() == 'q' || e.getKeyChar() == 'Q') {
 			changeWeapon = true;
+		} else {
+			//Does nothing.
+		}
 	}
 
 	public static void mouseMoved(MouseEvent e) {
@@ -234,8 +237,11 @@ public class InputHandler {
 	}
 
 	public static void mouseExited(MouseEvent e) {
-		if (playerInAction == false)
+		if (playerInAction == false) {
 			cursorInApplet = false;
+		} else {
+			//Does nothing.
+		}
 	}
 
 }
