@@ -17,85 +17,76 @@ public class InputHandler {
 		} else {
 			playerInAction = false;
 
-			if (UP || DOWN || RIGHT || LEFT || A || S || D || W || space)
+			if (UP || DOWN || RIGHT || LEFT || A || S || D || W || space) {
 				playerInAction = true;
-
-			if (RIGHT) {
+			} else if (RIGHT) {
 				PlayerTank.turnRight = true;
 
 				Camera.setXZ_angle(Camera.getXZ_angle() + 4);
 
-				if (Camera.getXZ_angle() > 359)
+				if (Camera.getXZ_angle() > 359) {
 					Camera.setXZ_angle(Camera.getXZ_angle() - 360);
-			}
-			if (LEFT) {
+				} else {
+					//Does nothing.
+				}
+			} else if (LEFT) {
 				PlayerTank.turnLeft = true;
 				Camera.setXZ_angle(Camera.getXZ_angle() - 4);
-				if (Camera.getXZ_angle() < 0)
+				if (Camera.getXZ_angle() < 0) {
 					Camera.setXZ_angle(Camera.getXZ_angle() + 360);
-			}
-
-			if (W) {
+				} else {
+					//Does nothing.
+				}
+			} else if (W) {
 				PlayerTank.forward = true;
-			}
-
-			if (S) {
+			} else if (S) {
 				PlayerTank.backward = true;
-			}
-
-			if (A) {
+			} else if (A) {
 				PlayerTank.moveLeft = true;
-			}
-
-			if (D) {
+			} else if (D) {
 				PlayerTank.moveRight = true;
 
-			}
-
-			if (I && L && M) {
+			} else if (I && L && M) {
 				Main.PT.HP = 1499;
 				PlayerTank.shells = 999;
 				PlayerTank.rockets = 999;
 				PlayerTank.slugs = 999;
 				PlayerTank.plasma = 999;
-			}
-
-			if (space || mousePressed) {
+			} else if (space || mousePressed) {
 				if (GameHUD.getLoadingScreenPosition() != 1234567 && GameHUD.getLoadingScreenPosition() > 100)
 					PlayerTank.firing = true;
-			}
-
-			if (weapon1Selected)
+			} else if (weapon1Selected) {
 				Main.PT.changeWeapon(1);
-
-			if (weapon2Selected)
+			} else if (weapon2Selected) {
 				Main.PT.changeWeapon(2);
-
-			if (weapon3Selected)
+			} else if (weapon3Selected) {
 				Main.PT.changeWeapon(3);
-
-			if (weapon4Selected)
+			} else if (weapon4Selected) {
 				Main.PT.changeWeapon(4);
-
-			if (changeWeapon) {
+			} else if (changeWeapon) {
 				Main.PT.changeWeapon(-1);
+			} else  {
+				//Does nothing.
 			}
 			changeWeapon = false;
 
 			if ((xPos < 140 || (xPos < 320 && yPos > 370)) && !LEFT && cursorInApplet) {
 				PlayerTank.turnLeft = true;
 				Camera.setXZ_angle(Camera.getXZ_angle() - 4);
-				if (Camera.getXZ_angle() < 0)
+				if (Camera.getXZ_angle() < 0) {
 					Camera.setXZ_angle(Camera.getXZ_angle() + 360);
-			}
-			if ((xPos > 490 || (xPos > 320 && yPos > 370)) && !RIGHT && cursorInApplet) {
+				} else {
+					//Does nothing.
+				}
+			} else if ((xPos > 490 || (xPos > 320 && yPos > 370)) && !RIGHT && cursorInApplet) {
 				PlayerTank.turnRight = true;
 				Camera.setXZ_angle(Camera.getXZ_angle() + 4);
-				if (Camera.getXZ_angle() > 359)
+				if (Camera.getXZ_angle() > 359) {
 					Camera.setXZ_angle(Camera.getXZ_angle() - 360);
-			}
-
-			if (xPos <= 490 && xPos >= 140 && yPos < 410 && !RIGHT && !LEFT && cursorInApplet) {
+				} else {
+					//Does nothing.
+				}
+			} else if (xPos <= 490 && xPos >= 140 && yPos < 410 && !RIGHT && !LEFT && cursorInApplet) {
 				int turretAngle = PlayerTank.turretAngle % 360;
 				int cameraAngle = (360 - Camera.getXZ_angle()) % 360;
 
@@ -114,10 +105,13 @@ public class InputHandler {
 
 				int difference = xPos - xPos_;
 
-				if (difference > 0 && Math.abs(difference) > (10 + (480 - yPos) / 100))
+				if (difference > 0 && Math.abs(difference) > (10 + (480 - yPos) / 100)) {
 					PlayerTank.turnRight = true;
-				if (difference < 0 && Math.abs(difference) > (10 + (480 - yPos) / 100))
+				} else if (difference < 0 && Math.abs(difference) > (10 + (480 - yPos) / 100)) {
 					PlayerTank.turnLeft = true;
+				} else {
+					//Does nothing.
+				}
 
 			}
 		}
