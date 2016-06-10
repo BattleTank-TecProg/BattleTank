@@ -569,15 +569,14 @@ public class Annihilator extends SolidObject {
 
 	public void damage(int damagePoint) {
 
-		if (damagePoint == -1) {
+		if (damagePoint > -1) {
+			HP -= damagePoint;
+			engaged = true;
+		} else {
 			active = true;
 			engaged = true;
-			return;
-		} else {
-			// Does nothing.
 		}
-		HP -= damagePoint;
-		engaged = true;
+		
 	}
 
 	/**

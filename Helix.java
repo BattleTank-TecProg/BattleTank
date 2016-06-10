@@ -120,6 +120,8 @@ public class Helix extends SolidObject {
 			spriteIndex = 5;
 		} else if (size >= 0.8) {
 			spriteIndex = 6;
+		} else {
+			//Does nothing.
 		}
 
 		for (int i = 19; i >= 0; i--) {
@@ -133,8 +135,9 @@ public class Helix extends SolidObject {
 					&& temp1.screenY < 480) {
 				int centre = temp1.screenX + temp1.screenY * 640;
 
-				if (lifeSpan > 30)
+				if (lifeSpan > 30) {
 					alpha = 55;
+				}
 				else {
 					alpha = 200;
 					alpha = alpha - alpha * lifeSpan / 30 + 55;
@@ -158,6 +161,8 @@ public class Helix extends SolidObject {
 						Main.screen[position] = ALPHA | (r << 16) | (g << 8)
 								| b;
 
+					} else {
+						//Does nothing.
 					}
 				}
 
