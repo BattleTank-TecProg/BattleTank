@@ -38,7 +38,8 @@ public class InputHandler {
 				} else {
 					// Does nothing.
 				}
-			} else if (W) {
+			}
+			if (W) {
 				PlayerTank.forward = true;
 			} else if (S) {
 				PlayerTank.backward = true;
@@ -54,9 +55,13 @@ public class InputHandler {
 				PlayerTank.slugs = 999;
 				PlayerTank.plasma = 999;
 			} else if (space || mousePressed) {
-				if (GameHUD.getLoadingScreenPosition() != 1234567 && GameHUD.getLoadingScreenPosition() > 100)
+				if (GameHUD.getLoadingScreenPosition() != 1234567 && GameHUD.getLoadingScreenPosition() > 100) {
 					PlayerTank.firing = true;
-			} else if (weapon1Selected) {
+				} else {
+					//Does nothing.
+				}
+			}
+			if (weapon1Selected) {
 				Main.PT.changeWeapon(1);
 			} else if (weapon2Selected) {
 				Main.PT.changeWeapon(2);
@@ -129,7 +134,8 @@ public class InputHandler {
 			W = true;
 		} else if (e.getKeyChar() == KeyEvent.VK_SPACE) {
 			space = true;
-		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
+		}
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			UP = true;
 			GameHUD.setUpPressed(true);
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -151,7 +157,8 @@ public class InputHandler {
 			weapon3Selected = true;
 		} else if (e.getKeyCode() == '4') {
 			weapon4Selected = true;
-		} else if (e.getKeyChar() == 'i' || e.getKeyChar() == 'I') {
+		} 
+		if (e.getKeyChar() == 'i' || e.getKeyChar() == 'I') {
 			I = true;
 		} else if (e.getKeyChar() == 'l' || e.getKeyChar() == 'L') {
 			L = true;
@@ -173,7 +180,8 @@ public class InputHandler {
 			W = false;
 		} else if (e.getKeyChar() == KeyEvent.VK_SPACE) {
 			space = false;
-		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
+		}
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			UP = false;
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			DOWN = false;
@@ -189,7 +197,8 @@ public class InputHandler {
 			weapon3Selected = false;
 		} else if (e.getKeyCode() == '4') {
 			weapon4Selected = false;
-		} else if (e.getKeyChar() == 'i' || e.getKeyChar() == 'I') {
+		}
+		if (e.getKeyChar() == 'i' || e.getKeyChar() == 'I') {
 			I = false;
 		} else if (e.getKeyChar() == 'l' || e.getKeyChar() == 'L') {
 			L = false;
