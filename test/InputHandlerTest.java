@@ -24,7 +24,7 @@ public class InputHandlerTest {
 		assertEquals(InputHandler.weapon2Selected, false);
 		assertEquals(InputHandler.weapon3Selected, false);
 		assertEquals(InputHandler.weapon4Selected, false);
-		assertEquals(InputHandler.mousePressed, false);
+		assertEquals(InputHandler.mousePressedAction, false);
 		assertEquals(InputHandler.changeWeapon, false);
 		assertEquals(InputHandler.L, false);
 		assertEquals(InputHandler.I, false);
