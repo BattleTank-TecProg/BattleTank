@@ -81,7 +81,10 @@ public class InputHandler {
 				} else {
 					//Does nothing.
 				}
+			} else {
+				//Does nothing.
 			}
+			
 			if (weapon1Selected) {
 				Main.PT.changeWeapon(1);
 			} else if (weapon2Selected) {
@@ -144,6 +147,8 @@ public class InputHandler {
 					// Does nothing.
 				}
 
+			} else {
+				//Does nothing.
 			}
 		}
 	}
@@ -159,7 +164,10 @@ public class InputHandler {
 			W = true;
 		} else if (keyPressed.getKeyChar() == KeyEvent.VK_SPACE) {
 			space = true;
+		} else {
+			//Does nothing.
 		}
+		
 		if (keyPressed.getKeyCode() == KeyEvent.VK_UP) {
 			UP = true;
 			GameHUD.setUpPressed(true);
@@ -182,7 +190,10 @@ public class InputHandler {
 			weapon3Selected = true;
 		} else if (keyPressed.getKeyCode() == '4') {
 			weapon4Selected = true;
-		} 
+		} else {
+			//Does nothing.
+		}
+		
 		if (keyPressed.getKeyChar() == 'i' || keyPressed.getKeyChar() == 'I') {
 			I = true;
 		} else if (keyPressed.getKeyChar() == 'l' || keyPressed.getKeyChar() == 'L') {
@@ -205,7 +216,10 @@ public class InputHandler {
 			W = false;
 		} else if (keyReleased.getKeyChar() == KeyEvent.VK_SPACE) {
 			space = false;
+		} else {
+			//Does nothing.
 		}
+		
 		if (keyReleased.getKeyCode() == KeyEvent.VK_UP) {
 			UP = false;
 		} else if (keyReleased.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -222,7 +236,10 @@ public class InputHandler {
 			weapon3Selected = false;
 		} else if (keyReleased.getKeyCode() == '4') {
 			weapon4Selected = false;
+		} else {
+			//Does nothing.
 		}
+		
 		if (keyReleased.getKeyChar() == 'i' || keyReleased.getKeyChar() == 'I') {
 			I = false;
 		} else if (keyReleased.getKeyChar() == 'l' || keyReleased.getKeyChar() == 'L') {
