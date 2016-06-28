@@ -39,22 +39,43 @@ public class InputHandler {
 					// Does nothing.
 				}
 			}
+			
 			if (W) {
 				PlayerTank.forward = true;
-			} else if (S) {
+			} else {
+				//Does nothing.
+			}
+			
+			if (S) {
 				PlayerTank.backward = true;
-			} else if (A) {
+			} else {
+				//Does nothing.
+			}
+			
+			if (A) {
 				PlayerTank.moveLeft = true;
-			} else if (D) {
+			} else {
+				//Does nothing.
+			}
+			
+			if (D) {
 				PlayerTank.moveRight = true;
 
-			} else if (I && L && M) {
+			} else {
+				//Does nothing.
+			}
+			
+			if (I && L && M) {
 				Main.PT.HP = 1499;
 				PlayerTank.shells = 999;
 				PlayerTank.rockets = 999;
 				PlayerTank.slugs = 999;
 				PlayerTank.plasma = 999;
-			} else if (space || mousePressed) {
+			} else {
+				//Does nothing.
+			}
+			
+			if (space || mousePressed) {
 				if (GameHUD.getLoadingScreenPosition() != 1234567 && GameHUD.getLoadingScreenPosition() > 100) {
 					PlayerTank.firing = true;
 				} else {
@@ -69,12 +90,16 @@ public class InputHandler {
 				Main.PT.changeWeapon(3);
 			} else if (weapon4Selected) {
 				Main.PT.changeWeapon(4);
-			} else if (changeWeapon) {
+			} else {
+				//Does nothing.
+			}
+			
+			if (changeWeapon) {
 				Main.PT.changeWeapon(-1);
 			} else {
-				// Does nothing.
+				changeWeapon = false;
 			}
-			changeWeapon = false;
+			
 
 			if ((xPos < 140 || (xPos < 320 && yPos > 370)) && !LEFT && cursorInApplet) {
 				PlayerTank.turnLeft = true;
