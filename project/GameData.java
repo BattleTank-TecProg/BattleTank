@@ -1,4 +1,5 @@
 package project;
+
 import java.util.Random;
 
 /**
@@ -39,11 +40,15 @@ public class GameData {
 	/** Initialize the datas on the game. */
 	public static void makeData() {
 
+		// Make a screen table, so a pixel index can be retrived quickly
+
 		screenTable = new int[480];
 
 		for (int i = 0; i < 480; i++) {
 			screenTable[i] = 640 * i;
 		}
+
+		// Make random number table
 
 		random = new int[SIZE_VALUES_RANDOM_VECTOR];
 
@@ -53,19 +58,25 @@ public class GameData {
 
 		random = generateRandomVector(random, 101);
 
+		// Make sin and cos look up tables
+
 		sin = new double[361];
 		cos = new double[361];
 		for (int i = 0; i < 361; i++) {
 			sin[i] = Math.sin(Math.PI * i / 180);
 			cos[i] = Math.cos(Math.PI * i / 180);
 		}
-
+		/*
+		 * Make color palette. The main color palette has 32768 (15bits)
+		 * different colors with 64 different intensity levels, The default
+		 * intensity is at level 31 .
+		 */
 		colorTable = new int[64][32768];
 		int colorTableTemp[][] = new int[32768][64];
 
 		double r, g, b, dr, dg, db;
 		int r_, g_, b_;
-
+		
 		for (int i = 0; i < 32768; i++) {
 			r = (double) ((i & 31744) >> 10) * 8;
 			g = (double) ((i & 992) >> 5) * 8;
@@ -74,6 +85,8 @@ public class GameData {
 			dr = r * 0.9 / 32;
 			dg = g * 0.9 / 32;
 			db = b * 0.9 / 32;
+			
+			//Calculated the intensity from lvl 0 ~ 31
 
 			for (int j = 0; j < 32; j++) {
 				r_ = (int) (r - dr * j);
@@ -85,7 +98,9 @@ public class GameData {
 			dr = r * 0.7 / 32;
 			dg = g * 0.7 / 32;
 			db = b * 0.7 / 32;
-
+			
+		    //calculated the intensity from lvl 32 ~ 63
+			
 			for (int j = 1; j <= 32; j++) {
 				r_ = (int) (r + dr * j);
 				g_ = (int) (g + dg * j);
@@ -106,6 +121,7 @@ public class GameData {
 				} else {
 					// Does nothing.
 				}
+				
 				colorTableTemp[i][31 + j] = b_ + (g_ << 8) + (r_ << 16);
 			}
 		}
@@ -115,14 +131,17 @@ public class GameData {
 				colorTable[i][j] = colorTableTemp[j][i];
 			}
 		}
-
+		
+		//Free memory used by creating color table
 		colorTableTemp = null;
-
+		
+		//Create randomVectors, they will be used in generating smoke particles
 		randomVectors = new Vector[SIZE_VALUES_RANDOM_VECTOR];
 		for (int i = 0; i < SIZE_VALUES_RANDOM_VECTOR; i++) {
 			randomVectors[i] = new Vector(Math.random() * 0.016 - 0.008, 0.01, Math.random() * 0.016 - 0.008);
 		}
-
+		
+		//Generate sprites for particles with different size
 		size = new int[9][];
 		size[0] = new int[] { 0, -1, -640 };
 		size[1] = new int[] { -641, 0, -1, -640 };
@@ -136,6 +155,7 @@ public class GameData {
 				1281, -1280, -641, -2, -639, 1, 2, 0, -1, -640, 640, 639, 641, 1280 };
 		size[8] = new int[] { 0 };
 
+		//Generate distortion1 map, it solely used by stealth tank 
 		distortion1 = new int[VALUE_DISTORTION];
 		distortion2 = new short[VALUE_DISTORTION];
 		for (int i = 0; i < VALUE_DISTORTION; i++) {
