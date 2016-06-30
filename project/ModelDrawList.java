@@ -14,6 +14,8 @@ public class ModelDrawList {
 				visibleModels[i] = m;
 				modelCount++;
 				break;
+			} else {
+				//Does nothing.
 			}
 		}
 	}
@@ -33,6 +35,8 @@ public class ModelDrawList {
 					Model temp = visibleModels[j + 1];
 					visibleModels[j + 1] = visibleModels[j];
 					visibleModels[j] = temp;
+				} else {
+					//Does nothing.
 				}
 			}
 		}
