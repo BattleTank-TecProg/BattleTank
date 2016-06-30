@@ -65,6 +65,10 @@ public class GameHUD {
 
 	// Z coordinate of the Player Tank.
 	private static final double ZCOORDINADE = 2.5;
+	
+	private final static int SCREENWIDHT = 640;
+	
+	private final static int SCREENHEIGHT = 480;
 
 	public static void init() {
 		menuOptionStatus = 1;
@@ -72,7 +76,7 @@ public class GameHUD {
 		winMessagePosition = 0;
 		loadingScreenPosition = 1234567;
 
-		for (int i = 0; i < 640; i += 2) {
+		for (int i = 0; i < SCREENWIDHT; i += 2) {
 			int random = GameData.getRandom() / 10;
 			randomDisplacement[i] = random;
 			randomDisplacement[i + 1] = random;
@@ -612,18 +616,18 @@ public class GameHUD {
 
 		if (loadingScreenPosition < 800) {
 
-			int startPosition = loadingScreenPosition * 640;
+			int startPosition = loadingScreenPosition * SCREENWIDHT;
 			int currentPosition = 0;
-			for (int i = 0; i < 640; i++) {
-				for (int j = 0; j < 480; j++) {
-					currentPosition = startPosition + (j + randomDisplacement[i]) * 640 + i;
-					if (currentPosition >= 640 * 480) {
-						currentPosition = 640 * 479 + i;
+			for (int i = 0; i < SCREENWIDHT; i++) {
+				for (int j = 0; j < SCREENHEIGHT; j++) {
+					currentPosition = startPosition + (j + randomDisplacement[i]) * SCREENWIDHT + i;
+					if (currentPosition >= SCREENWIDHT * SCREENHEIGHT) {
+						currentPosition = SCREENWIDHT * 479 + i;
 					} else {
 						// Does nothing.
 					}
 
-					Main.screen[currentPosition] = Main.stencilBuffer2[j * 640 + i];
+					Main.screen[currentPosition] = Main.stencilBuffer2[j * SCREENWIDHT + i];
 				}
 			}
 
@@ -831,7 +835,7 @@ public class GameHUD {
 		// Draw menu back ground
 		for (int i = 0; i < 4; i++) {
 			for (int j = leftSide[i] + 150; j < rightSide[i] + 290; j++) {
-				index = yPosition * 640 + j - 20;
+				index = yPosition * SCREENWIDHT + j - 20;
 				pixel = screen[index];
 				red = (pixel & 0x00ff0000) >> 17;
 				green = (pixel & 0x0000ff00) >> 9;
@@ -845,7 +849,7 @@ public class GameHUD {
 		int loweryPos = yPosition + 330;
 		for (int i = yPosition; i < loweryPos; i++) {
 			for (int j = 200; j < 490; j++) {
-				index = yPosition * 640 + j - 20;
+				index = yPosition * SCREENWIDHT + j - 20;
 				pixel = screen[index];
 				red = (pixel & 0x00ff0000) >> 17;
 				green = (pixel & 0x0000ff00) >> 9;
@@ -858,7 +862,7 @@ public class GameHUD {
 
 		for (int i = 4; i < 8; i++) {
 			for (int j = leftSide[i] + 150; j < rightSide[i] + 290; j++) {
-				index = yPosition * 640 + j - 20;
+				index = yPosition * SCREENWIDHT + j - 20;
 				pixel = screen[index];
 				red = (pixel & 0x00ff0000) >> 17;
 				green = (pixel & 0x0000ff00) >> 9;
@@ -941,7 +945,7 @@ public class GameHUD {
 		// Draw health info
 		for (int i = 0; i < 4; i++) {
 			for (int j = leftSide[i]; j < rightSide[i]; j++) {
-				index = yPos * 640 + j - 20;
+				index = yPos * SCREENWIDHT + j - 20;
 				pixel = screen[index];
 				r = (pixel & 0x00ff0000) >> 17;
 				g = (pixel & 0x0000ff00) >> 9;
@@ -955,7 +959,7 @@ public class GameHUD {
 		int loweryPos = yPos + 30;
 		for (int i = yPos; i < loweryPos; i++) {
 			for (int j = 50; j < 200; j++) {
-				index = yPos * 640 + j - 20;
+				index = yPos * SCREENWIDHT + j - 20;
 				pixel = screen[index];
 				r = (pixel & 0x00ff0000) >> 17;
 				g = (pixel & 0x0000ff00) >> 9;
@@ -968,7 +972,7 @@ public class GameHUD {
 
 		for (int i = 4; i < 8; i++) {
 			for (int j = leftSide[i]; j < rightSide[i]; j++) {
-				index = yPos * 640 + j - 20;
+				index = yPos * SCREENWIDHT + j - 20;
 				pixel = screen[index];
 				r = (pixel & 0x00ff0000) >> 17;
 				g = (pixel & 0x0000ff00) >> 9;
@@ -986,7 +990,7 @@ public class GameHUD {
 		yPos = 420;
 		for (int i = 0; i < 4; i++) {
 			for (int j = leftSide[i]; j < rightSide[i]; j++) {
-				index = yPos * 640 + j + 415;
+				index = yPos * SCREENWIDHT + j + 415;
 				pixel = screen[index];
 				r = (pixel & 0x00ff0000) >> 17;
 				g = (pixel & 0x0000ff00) >> 9;
@@ -1000,7 +1004,7 @@ public class GameHUD {
 		loweryPos = yPos + 30;
 		for (int i = yPos; i < loweryPos; i++) {
 			for (int j = 50; j < 200; j++) {
-				index = yPos * 640 + j + 415;
+				index = yPos * SCREENWIDHT + j + 415;
 				pixel = screen[index];
 				r = (pixel & 0x00ff0000) >> 17;
 				g = (pixel & 0x0000ff00) >> 9;
@@ -1013,7 +1017,7 @@ public class GameHUD {
 
 		for (int i = 4; i < 8; i++) {
 			for (int j = leftSide[i]; j < rightSide[i]; j++) {
-				index = yPos * 640 + j + 415;
+				index = yPos * SCREENWIDHT + j + 415;
 				pixel = screen[index];
 				r = (pixel & 0x00ff0000) >> 17;
 				g = (pixel & 0x0000ff00) >> 9;

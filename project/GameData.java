@@ -149,9 +149,10 @@ public class GameData {
 		size[1] = new int[] { -(SCREENWIDHT + 1), 0, -1, -SCREENWIDHT };
 		size[2] = new int[] { 1, 0, -1, -SCREENWIDHT, SCREENWIDHT };
 		size[3] = new int[] { -(SCREENWIDHT + 1), -(SCREENWIDHT - 1), 1, 0, -1, -SCREENWIDHT, SCREENWIDHT };
-		size[4] = new int[] { -(SCREENWIDHT + 1), -(SCREENWIDHT - 1), 1, 0, -1, -SCREENWIDHT, SCREENWIDHT, (SCREENWIDHT - 1), (SCREENWIDHT + 1) };
+		size[4] = new int[] { -(SCREENWIDHT + 1), -(SCREENWIDHT - 1), 1, 0, -1, -SCREENWIDHT, SCREENWIDHT,
+				(SCREENWIDHT - 1), (SCREENWIDHT + 1) };
 		size[5] = new int[] { -1280, -1281, -(SCREENWIDHT + 2), -(SCREENWIDHT + 1), -SCREENWIDHT, -(SCREENWIDHT - 1),
-				-2, -1, 0, 1, SCREENWIDHT - 1, SCREENWIDHT};
+				-2, -1, 0, 1, SCREENWIDHT - 1, SCREENWIDHT };
 		size[6] = new int[] { -1281, -1279, -(SCREENWIDHT + 2), -(SCREENWIDHT - 2), SCREENWIDHT - 2, SCREENWIDHT + 2,
 				1279, 1281, -1280, -(SCREENWIDHT + 1), -2, -(SCREENWIDHT - 1), 1, 2, 0, -1, -SCREENWIDHT, SCREENWIDHT,
 				(SCREENWIDHT - 1), SCREENWIDHT + 1, 1280 };
@@ -244,6 +245,11 @@ public class GameData {
 		screenTable = null;
 	}
 
+	/**
+	 * This methods is responsible for generate a random vector
+	 * @param int random[]
+	 * @param int sizeVector
+	 */
 	private static int[] generateRandomVector(int random[], int sizeVector) {
 		Random generator = new Random();
 
