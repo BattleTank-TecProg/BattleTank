@@ -276,39 +276,59 @@ public class MediumTank extends SolidObject {
 	public void update() {
 
 		if ((Main.timer + randomNumber1 * 3) % 1000 == 0) {
-			if (randomNumber2 > 50)
+			if (randomNumber2 > 50) {
 				randomNumber2 = 50;
-			else
+			} else {
 				randomNumber2 = 51;
+			}
+		} else {
+			//Does nothing.
 		}
 
-		if (countDownToDeath <= 0 && active && !Main.gamePaused)
+		if (countDownToDeath <= 0 && active && !Main.gamePaused) {
 			processAI();
+		} else {
+			//Does nothing.
+		}
 
 		if (aimLeft) {
 			if (Math.abs(turretAngle - targetAngle) <= 3) {
 				turretAngleDelta = targetAngle - turretAngle;
 				turretAngle += turretAngleDelta;
-				if (turretAngleDelta < 0)
+				if (turretAngleDelta < 0) {
 					turretAngleDelta += 360;
+				} else {
+					//Does nothing.
+				}
 			} else {
 				turretAngleDelta = 3;
 				turretAngle += 3;
 			}
-			if (turretAngle >= 360)
+			if (turretAngle >= 360) {
 				turretAngle -= 360;
+			} else {
+				//Does nothing.
+			}
 		} else if (aimRight) {
 			if (Math.abs(turretAngle - targetAngle) <= 3) {
 				turretAngleDelta = targetAngle - turretAngle;
 				turretAngle += turretAngleDelta;
-				if (turretAngleDelta < 0)
+				if (turretAngleDelta < 0) {
 					turretAngleDelta += 360;
+				} else {
+					//Does nothing.
+				}
 			} else {
 				turretAngleDelta = 357;
 				turretAngle -= 3;
 			}
-			if (turretAngle < 0)
+			if (turretAngle < 0) {
 				turretAngle += 360;
+			} else {
+				//Does nothing.
+			}
+		} else {
+			//Does nothing.
 		}
 
 		if (forward) {
@@ -322,20 +342,25 @@ public class MediumTank extends SolidObject {
 			} else {
 				displacement.set(0, 0, 0);
 				if (delta > 0) {
-					if (delta < 180)
+					if (delta < 180) {
 						bodyAngleDelta = 5;
-					else
+					} else {
 						bodyAngleDelta = 355;
-				}
-				if (delta < 0) {
-					if (delta > -180)
+					}
+				} else if (delta < 0) {
+					if (delta > -180) {
 						bodyAngleDelta = 355;
-					else
+					} else {
 						bodyAngleDelta = 5;
+					}
+				} else {
+					//Does nothing.
 				}
 
 				bodyAngle = (bodyAngle + bodyAngleDelta) % 360;
 			}
+		} else {
+			//Does nothing.
 		}
 
 		centre.add(displacement);
@@ -369,15 +394,20 @@ public class MediumTank extends SolidObject {
 				|| tempCentre.screenX < -400 || tempCentre.screenX > 800) {
 			visible = false;
 			isVisiblePreviousFrame = false;
+		} else {
+			//Does nothing.
 		}
 
 		if (visible) {
 			if (isVisiblePreviousFrame == false) {
-
 				makeBody();
 				makeTurret();
 				isVisiblePreviousFrame = true;
+			} else {
+				//Does nothing.
 			}
+		} else {
+			//Does nothing.
 		}
 
 		if (visible) {
@@ -507,11 +537,18 @@ public class MediumTank extends SolidObject {
 				}
 				shadowTurret.update();
 				Rasterizer.rasterize(shadowTurret);
+			} else {
+				//Does nothing.
 			}
+		} else {
+			//Does nothing.
 		}
 
-		if (currentCoolDown > 0 && !Main.gamePaused)
+		if (currentCoolDown > 0 && !Main.gamePaused) {
 			currentCoolDown--;
+		} else {
+			//Does nothing.
+		}
 
 		if (firing) {
 			if (currentCoolDown == 0) {
@@ -523,16 +560,25 @@ public class MediumTank extends SolidObject {
 				Projectiles
 						.register(new Shell(centre.x + direction.x, centre.y,
 								centre.z + direction.z, turretAngle, true, 0));
+			} else {
+				//Does nothing.
 			}
+		} else {
+			//Does nothing.
 		}
 
 		if (HP <= 12) {
 			if (Smoke == null) {
 				Smoke = new Smoke(this);
 			} else {
-				if (visible)
+				if (visible) {
 					Smoke.update();
+				} else {
+					//Does nothing.
+				}
 			}
+		} else {
+			//Does nothing.
 		}
 
 		if (HP <= 0) {
@@ -542,12 +588,21 @@ public class MediumTank extends SolidObject {
 					Projectiles.register(new Explosion(centre.x, centre.y,
 							centre.z, 1.7));
 					PowerUps.register(new PowerUp(centre.x, -0.875, centre.z, 1));
+				} else {
+					//Does nothing.
 				}
 				ObstacleMap.removeObstacle2(position);
 				Smoke.stopped = true;
+			} else {
+				//Does nothing.
 			}
-			if (countDownToDeath >= 40)
+			if (countDownToDeath >= 40) {
 				lifeSpan = 0;
+			} else {
+				//Does nothing.
+			}
+		} else {
+			//Does nothing.
 		}
 
 		forward = false;
@@ -557,8 +612,11 @@ public class MediumTank extends SolidObject {
 		turretAngleDelta = 0;
 		displacement.reset();
 		firing = false;
-		if (Main.timer % 10 == 0)
+		if (Main.timer % 10 == 0) {
 			unstuck = false;
+		} else {
+			//Does nothing.
+		}
 
 	}
 
@@ -568,32 +626,37 @@ public class MediumTank extends SolidObject {
 		tempVector1.subtract(PlayerTank.bodyCenter);
 		distance = tempVector1.getLength();
 
-		if (distance < 2)
+		if (distance < 2) {
 			engaged = true;
-
-		if (distance > 4) {
+		} else if (distance > 4) {
 			engaged = false;
 
 			targetAngle = bodyAngle;
 			int AngleDelta = turretAngle - targetAngle;
 			if (AngleDelta > 0) {
-				if (AngleDelta < 180)
+				if (AngleDelta < 180) {
 					aimRight = true;
-				else
+				} else {
 					aimLeft = true;
+				}
 			} else if (AngleDelta < 0) {
-				if (AngleDelta > -180)
+				if (AngleDelta > -180) {
 					aimLeft = true;
-				else
+				} else {
 					aimRight = true;
+				}
+			} else {
+				//Does nothing.
 			}
 		} else {
 
 			if (engaged) {
 
-				if ((Main.timer) % 5 == 0)
+				if ((Main.timer) % 5 == 0) {
 					ObstacleMap.alertNearbyTanks(position);
-
+				} else {
+					//Does nothing.
+				}
 				tempVector1.set(bodyCenter);
 				tempVector2.set(PlayerTank.bodyCenter);
 				tempVector2.subtract(tempVector1);
@@ -606,8 +669,11 @@ public class MediumTank extends SolidObject {
 				for (int i = 0; (d < distance) && (i < 30); i++, tempVector1
 						.add(tempVector2), d += 0.125) {
 					Model temp = ObstacleMap.isOccupied2(tempVector1);
-					if (temp == null)
+					if (temp == null) {
 						continue;
+					} else {
+						//Does nothing.
+					}
 					obstacleType = temp.getType();
 					if (obstacleType == 1) {
 						break;
@@ -622,71 +688,95 @@ public class MediumTank extends SolidObject {
 					targetAngle = 90 + (int) (180 * Math
 							.atan((centre.z - PlayerTank.bodyCenter.z)
 									/ (centre.x - PlayerTank.bodyCenter.x)) / Math.PI);
-					if (PlayerTank.bodyCenter.x > turretCenter.x
-							&& targetAngle <= 180)
+					if (PlayerTank.bodyCenter.x > turretCenter.x && targetAngle <= 180) {
 						targetAngle += 180;
-
+					} else {
+						//Does nothing.
+					}
 				} else {
 					targetAngle = bodyAngle;
 
 				}
 
 				int AngleDelta = turretAngle - targetAngle;
-				if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 1.7)
+				if (Math.abs(AngleDelta) < 3 && clearToShoot && distance < 1.7) {
 					firing = true;
-
+				} else {
+					//Does nothing.
+				}
 				if (AngleDelta > 0) {
-					if (AngleDelta < 180)
+					if (AngleDelta < 180) {
 						aimRight = true;
-					else
+					} else {
 						aimLeft = true;
+					}
 				} else if (AngleDelta < 0) {
-					if (AngleDelta > -180)
+					if (AngleDelta > -180) {
 						aimLeft = true;
-					else
+					} else {
 						aimRight = true;
+					}
+				} else {
+					//Does nothing.
 				}
 
 				forward = true;
 				if (clearToShoot && distance < 1.5) {
-					if (distance < 1.2)
+					if (distance < 1.2) {
 						forward = false;
-					if (distance >= 1.2)
-						if (randomNumber2 > 50)
+					} else if (distance >= 1.2) {
+						if (randomNumber2 > 50) {
 							forward = false;
+						} else {
+							//Does nothing.
+						}
+					} else {
+						//Does nothing.
+					}
+				} else {
+					//Does nothing.
 				}
 
 				if (unstuck && distance > 0.8) {
 					forward = true;
 					ObstacleMap.giveWay(this, position);
-
+				} else {
+					//Does nothing.
 				}
 
 				if (forward) {
 					targetAngleBody = 90 + (int) (180 * Math
 							.atan((centre.z - PlayerTank.bodyCenter.z)
 									/ (centre.x - PlayerTank.bodyCenter.x)) / Math.PI);
-					if (PlayerTank.bodyCenter.x > centre.x
-							&& targetAngleBody <= 180)
+					if (PlayerTank.bodyCenter.x > centre.x && targetAngleBody <= 180) {
 						targetAngleBody += 180;
+					} else {
+						//Does nothing.
+					}
 
 					if (!clearToShoot
 							&& (distance < 1.2 || (obstacleType == 6 && distance < 2.5))
 							|| stuckCount == 10) {
 						if (stuckCount == 10) {
-							if (randomNumber2 > 50)
+							if (randomNumber2 > 50) {
 								randomNumber2 = 50;
-							else
+							} else {
 								randomNumber2 = 51;
+							}
 							stuckCount = 0;
+						} else {
+							//Does nothing.
 						}
 
-						if (randomNumber2 > 50)
+						if (randomNumber2 > 50) {
 							targetAngleBody += 90;
-						else
+						} else {
 							targetAngleBody -= 90;
+						}
 
 						targetAngleBody = (targetAngleBody + 360) % 360;
+					} else {
+						//Does nothing.
 					}
 
 					int newPosition = (int) (boundary2D.xPos * 4)
@@ -705,6 +795,8 @@ public class MediumTank extends SolidObject {
 							newPosition)) {
 						forward = false;
 						canMove = false;
+					} else {
+						//Does nothing.
 					}
 					displacement.scale(-1);
 					boundary2D.update(displacement);
@@ -713,6 +805,8 @@ public class MediumTank extends SolidObject {
 					if (!canMove) {
 						if (unstuck) {
 							ObstacleMap.giveWay(this, position);
+						} else {
+							//Does nothing.
 						}
 
 						targetAngleBody = targetAngle;
@@ -736,6 +830,8 @@ public class MediumTank extends SolidObject {
 						} else if (ObstacleMap.collideWithObstacle2(this,
 								newPosition)) {
 							canMoveAngle1 = false;
+						} else {
+							//Does nothing.
 						}
 						displacement.scale(-1);
 						boundary2D.update(displacement);
@@ -752,6 +848,8 @@ public class MediumTank extends SolidObject {
 						} else if (ObstacleMap.collideWithObstacle2(this,
 								newPosition)) {
 							canMoveAngle2 = false;
+						} else {
+							//Does nothing.
 						}
 						displacement.scale(-1);
 						boundary2D.update(displacement);
@@ -789,8 +887,12 @@ public class MediumTank extends SolidObject {
 						if (Math.abs((previousTargetAngleBody + 180) % 360
 								- targetAngleBody) <= 50) {
 							targetAngleBody = previousTargetAngleBody;
+						} else {
+							//Does nothing.
 						}
 
+					} else {
+						//Does nothing.
 					}
 
 					displacement.set(0, 0, 0.01);
@@ -805,12 +907,17 @@ public class MediumTank extends SolidObject {
 					} else if (ObstacleMap.collideWithObstacle2(this,
 							newPosition)) {
 						forward = false;
-
+					} else {
+						//Does nothing.
 					}
 					displacement.scale(-1);
 					boundary2D.update(displacement);
 					displacement.reset();
+				} else {
+					//Does nothing
 				}
+			} else {
+				//Does nothing
 			}
 			previousTargetAngleBody = targetAngleBody;
 		}
@@ -826,10 +933,15 @@ public class MediumTank extends SolidObject {
 			for (int i = 0; i < turret.length; i++) {
 				turret[i].draw();
 			}
+		}else {
+			//Does nothing
 		}
 
-		if (Smoke != null && visible)
+		if (Smoke != null && visible) {
 			Smoke.draw();
+		} else {
+			//Does nothing.
+		}
 	}
 
 	public Rectangle2D getBoundary2D() {

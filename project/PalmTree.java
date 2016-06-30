@@ -295,7 +295,8 @@ public class PalmTree extends SolidObject {
 
 				if (polygons == null) {
 					makePolygons();
-
+				} else {
+					//Does nothing.
 				}
 
 				for (int i = 0; i < polygons.length; i++) {
@@ -306,7 +307,11 @@ public class PalmTree extends SolidObject {
 					shadow.update();
 					if (shadow.visible) {
 						Rasterizer.rasterize(shadow);
+					} else {
+						//Does nothing.
 					}
+				} else {
+					//Does nothing.
 				}
 			}
 		}
