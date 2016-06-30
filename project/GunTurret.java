@@ -386,10 +386,8 @@ public class GunTurret extends SolidObject {
 
 				obstacleType = temp.getType();
 				if (obstacleType == 1) {
-					break;
 				} else {
 					clearToShoot = false;
-					break;
 				}
 
 			}

@@ -76,7 +76,7 @@ public class Geometry {
 
 			if (tempVector.dot(a.normal) > 0.0001) {
 				inside = false;
-				break;
+
 			} else {
 				// Does nothing.
 			}
@@ -97,7 +97,6 @@ public class Geometry {
 
 			if (tempVector.dot(b.normal) < -0.0001) {
 				inside = false;
-				break;
 			} else {
 				// Does nothing.
 			}
