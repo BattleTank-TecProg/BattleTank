@@ -18,6 +18,7 @@ package project;
 
 public class Geometry {
 	public static boolean compareModels(Model a, Model b) {
+		//Compare centre Z depth values
 		boolean resultCompareModels;
 		if (a.getZDepth() > b.getZDepth()) {
 			resultCompareModels = true;
@@ -26,7 +27,7 @@ public class Geometry {
 		}
 		return resultCompareModels;
 	}
-
+	//Sort polygons
 	public final static void sortPolygons(Polygon3D[] polygons, int start) {
 		int length = polygons.length;
 		for (int i = 1; i < length; i++) {

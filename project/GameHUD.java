@@ -21,10 +21,12 @@ import java.util.Locale;
 
 public class GameHUD {
 
+	// Background window frame
 	private static int[] leftSide;
 
 	private static int[] rightSide;
 
+	// String represented in number format
 	private static int[] Health, Saude, Ammo, Municao, BattleTank2, NewGame, NovoJogo, Controls, Controles, AboutAuthor,
 			SobreAutor, controlDescription1, controlDescription2, controlDescription3, controlDescription4,
 			controlDescription5, controlDescription6, controlDescription7, controlDescription8, controlDescription9,
@@ -97,6 +99,11 @@ public class GameHUD {
 		AboutAuthor = new int[] { 10, 37, 50, 56, 55, -1, 36, 56, 55, 43, 50, 53 };
 		SobreAutor = new int[] { 28, 50, 37, 53, 40, -1, 50, -1, 10, 56, 55, 50, 53 };
 
+		/*
+		 * Press w s a d to move around. Change camera view by moving the mouse
+		 * cursor. Click mouse button to fire. press 1 2 3 4 to switch guns.
+		 */
+
 		controlDescription1 = new int[] { 25, 53, 40, 54, 54, -1, 58, -1, 54, -1, 36, -1, 39, -1, 55, 50, -1 };
 		controlDescription2 = new int[] { 48, 50, 57, 40, -1, 36, 53, 50, 56, 49, 39, 63 };
 		controlDescription3 = new int[] { 12, 43, 36, 49, 42, 40, -1, 38, 36, 48, 40, 53, 36, -1, 57, 44, 40, 58 };
@@ -118,12 +125,18 @@ public class GameHUD {
 		author9 = new int[] { 47, 40, 55, -1, 48, 40, -1, 46, 49, 50, 58, 63 };
 		author10 = new int[] { 43, 56, 51, 36, 49, 8, 4, 62, 43, 50, 55, 48, 36, 44, 47, 63, 38, 50, 48 };
 
+		// Game Over
 		game = new int[] { 16, 36, 48, 40 };
 		over = new int[] { 24, 57, 40, 53 };
 
+		// Wining message
 		You = new int[] { 34, 50, 56 };
 		Won = new int[] { 32, 50, 49 };
 
+		/*
+		 * Cheat message Thanks for playing, next time hold I, L, M keys at the
+		 * same time for unlimited ammo and health.
+		 */
 		cheat1 = new int[] { 29, 43, 36, 49, 46, 54, -1, 41, 50, 53, -1, 51, 47, 36, 60, 44, 49, 42, 63, 23, 40, 59, 55,
 				-1, 55, 44, 48, 40, -1, 43, 50, 47, 39 };
 		cheat2 = new int[] { 18, -1, 21, -1, 22, -1, 46, 40, 60, 54, -1, 36, 55, -1, 55, 43, 40, -1, 54, 36, 48, 40, -1,
@@ -131,6 +144,15 @@ public class GameHUD {
 		cheat3 = new int[] { 56, 49, 47, 44, 48, 44, 55, 40, 39, -1, 36, 48, 48, 50, -1, 36, 49, 39, -1, 43, 40, 36, 47,
 				55, 43 };
 	}
+
+	/*
+	 * Letters are stored in this order: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+	 * 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 0 1 2 3 4 5 6
+	 * 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+	 * 
+	 * 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59
+	 * 60 61 62 63 a b c d e f g h i j k l m n o p q r s t u v w x y z @ .
+	 */
 
 	public static int[] getLeftSide() {
 		return leftSide;
@@ -562,12 +584,14 @@ public class GameHUD {
 
 	public static void draw() {
 		if (Main.gameOver) {
+			// Draw game over message
 			drawGameoverMessage();
 		} else {
 			// Does nothing.
 		}
 
 		if (Main.win) {
+			// Draw wining message
 			drawWinMessage();
 		} else {
 			// Does nothing.
@@ -610,6 +634,7 @@ public class GameHUD {
 
 	}
 
+	// Handle game menu interactions
 	public static void update() {
 		if (escapePressed) {
 			if (menuOptionStatus == 0) {
@@ -803,7 +828,7 @@ public class GameHUD {
 		int index = 0;
 		int pixel;
 		int red, green, blue;
-
+		// Draw menu back ground
 		for (int i = 0; i < 4; i++) {
 			for (int j = leftSide[i] + 150; j < rightSide[i] + 290; j++) {
 				index = yPosition * 640 + j - 20;
@@ -913,7 +938,7 @@ public class GameHUD {
 		int index = 0;
 		int pixel;
 		int r, g, b;
-
+		// Draw health info
 		for (int i = 0; i < 4; i++) {
 			for (int j = leftSide[i]; j < rightSide[i]; j++) {
 				index = yPos * 640 + j - 20;
@@ -957,7 +982,7 @@ public class GameHUD {
 		Integer integer = new Integer((int) ((double) Main.PT.HP * 100 / 150));
 		TextFactory.drawString(integer.toString(), 134, 427, 1, 0x00d0d0d0);
 		TextFactory.draw(Saude, 32, 427, 1, 0x00d0d0d0);
-
+		// Draw ammo info
 		yPos = 420;
 		for (int i = 0; i < 4; i++) {
 			for (int j = leftSide[i]; j < rightSide[i]; j++) {
