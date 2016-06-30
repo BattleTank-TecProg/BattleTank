@@ -347,7 +347,8 @@ public class MediumTank extends SolidObject {
 					} else {
 						bodyAngleDelta = 355;
 					}
-				} else if (delta < 0) {
+				}
+				if (delta < 0) {
 					if (delta > -180) {
 						bodyAngleDelta = 355;
 					} else {
@@ -628,7 +629,8 @@ public class MediumTank extends SolidObject {
 
 		if (distance < 2) {
 			engaged = true;
-		} else if (distance > 4) {
+		}
+		if (distance > 4) {
 			engaged = false;
 
 			targetAngle = bodyAngle;
@@ -710,7 +712,8 @@ public class MediumTank extends SolidObject {
 					} else {
 						aimLeft = true;
 					}
-				} else if (AngleDelta < 0) {
+				}
+				if (AngleDelta < 0) {
 					if (AngleDelta > -180) {
 						aimLeft = true;
 					} else {
@@ -724,7 +727,8 @@ public class MediumTank extends SolidObject {
 				if (clearToShoot && distance < 1.5) {
 					if (distance < 1.2) {
 						forward = false;
-					} else if (distance >= 1.2) {
+					}
+					if (distance >= 1.2) {
 						if (randomNumber2 > 50) {
 							forward = false;
 						} else {
