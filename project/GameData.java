@@ -36,16 +36,18 @@ public class GameData {
 	private static int VALUE_SIMPLE_DISTORTION = 128;
 	private static int VALUE_DISTORTION = VALUE_SIMPLE_DISTORTION * VALUE_SIMPLE_DISTORTION;
 	private static int SIZE_VALUES_RANDOM_VECTOR = 1000;
+	private final static int SCREENWIDHT = 640;
+	private final static int SCREENHEIGHT = 480;
 
 	/** Initialize the datas on the game. */
 	public static void makeData() {
 
 		// Make a screen table, so a pixel index can be retrived quickly
 
-		screenTable = new int[480];
+		screenTable = new int[SCREENHEIGHT];
 
-		for (int i = 0; i < 480; i++) {
-			screenTable[i] = 640 * i;
+		for (int i = 0; i < SCREENHEIGHT; i++) {
+			screenTable[i] = SCREENWIDHT * i;
 		}
 
 		// Make random number table
@@ -76,7 +78,7 @@ public class GameData {
 
 		double r, g, b, dr, dg, db;
 		int r_, g_, b_;
-		
+
 		for (int i = 0; i < 32768; i++) {
 			r = (double) ((i & 31744) >> 10) * 8;
 			g = (double) ((i & 992) >> 5) * 8;
@@ -85,8 +87,8 @@ public class GameData {
 			dr = r * 0.9 / 32;
 			dg = g * 0.9 / 32;
 			db = b * 0.9 / 32;
-			
-			//Calculated the intensity from lvl 0 ~ 31
+
+			// Calculated the intensity from lvl 0 ~ 31
 
 			for (int j = 0; j < 32; j++) {
 				r_ = (int) (r - dr * j);
@@ -98,9 +100,9 @@ public class GameData {
 			dr = r * 0.7 / 32;
 			dg = g * 0.7 / 32;
 			db = b * 0.7 / 32;
-			
-		    //calculated the intensity from lvl 32 ~ 63
-			
+
+			// calculated the intensity from lvl 32 ~ 63
+
 			for (int j = 1; j <= 32; j++) {
 				r_ = (int) (r + dr * j);
 				g_ = (int) (g + dg * j);
@@ -121,7 +123,7 @@ public class GameData {
 				} else {
 					// Does nothing.
 				}
-				
+
 				colorTableTemp[i][31 + j] = b_ + (g_ << 8) + (r_ << 16);
 			}
 		}
@@ -131,31 +133,34 @@ public class GameData {
 				colorTable[i][j] = colorTableTemp[j][i];
 			}
 		}
-		
-		//Free memory used by creating color table
+
+		// Free memory used by creating color table
 		colorTableTemp = null;
-		
-		//Create randomVectors, they will be used in generating smoke particles
+
+		// Create randomVectors, they will be used in generating smoke particles
 		randomVectors = new Vector[SIZE_VALUES_RANDOM_VECTOR];
 		for (int i = 0; i < SIZE_VALUES_RANDOM_VECTOR; i++) {
 			randomVectors[i] = new Vector(Math.random() * 0.016 - 0.008, 0.01, Math.random() * 0.016 - 0.008);
 		}
-		
-		//Generate sprites for particles with different size
+
+		// Generate sprites for particles with different size
 		size = new int[9][];
-		size[0] = new int[] { 0, -1, -640 };
-		size[1] = new int[] { -641, 0, -1, -640 };
-		size[2] = new int[] { 1, 0, -1, -640, 640 };
-		size[3] = new int[] { -641, -639, 1, 0, -1, -640, 640 };
-		size[4] = new int[] { -641, -639, 1, 0, -1, -640, 640, 639, 641 };
-		size[5] = new int[] { -1280, -1281, -642, -641, -640, -639, -2, -1, 0, 1, 639, 640 };
-		size[6] = new int[] { -1281, -1279, -642, -638, 638, 642, 1279, 1281, -1280, -641, -2, -639, 1, 2, 0, -1, -640,
-				640, 639, 641, 1280 };
-		size[7] = new int[] { -1278, -1282, 1282, 1278, -1920, 1920, -3, 3, -1281, -1279, -642, -638, 638, 642, 1279,
-				1281, -1280, -641, -2, -639, 1, 2, 0, -1, -640, 640, 639, 641, 1280 };
+		size[0] = new int[] { 0, -1, -SCREENWIDHT };
+		size[1] = new int[] { -(SCREENWIDHT + 1), 0, -1, -SCREENWIDHT };
+		size[2] = new int[] { 1, 0, -1, -SCREENWIDHT, SCREENWIDHT };
+		size[3] = new int[] { -(SCREENWIDHT + 1), -(SCREENWIDHT - 1), 1, 0, -1, -SCREENWIDHT, SCREENWIDHT };
+		size[4] = new int[] { -(SCREENWIDHT + 1), -(SCREENWIDHT - 1), 1, 0, -1, -SCREENWIDHT, SCREENWIDHT, (SCREENWIDHT - 1), (SCREENWIDHT + 1) };
+		size[5] = new int[] { -1280, -1281, -(SCREENWIDHT + 2), -(SCREENWIDHT + 1), -SCREENWIDHT, -(SCREENWIDHT - 1),
+				-2, -1, 0, 1, SCREENWIDHT - 1, SCREENWIDHT};
+		size[6] = new int[] { -1281, -1279, -(SCREENWIDHT + 2), -(SCREENWIDHT - 2), SCREENWIDHT - 2, SCREENWIDHT + 2,
+				1279, 1281, -1280, -(SCREENWIDHT + 1), -2, -(SCREENWIDHT - 1), 1, 2, 0, -1, -SCREENWIDHT, SCREENWIDHT,
+				(SCREENWIDHT - 1), SCREENWIDHT + 1, 1280 };
+		size[7] = new int[] { -1278, -1282, 1282, 1278, -1920, 1920, -3, 3, -1281, -1279, -(SCREENWIDHT + 2),
+				-(SCREENWIDHT - 2), SCREENWIDHT - 2, SCREENWIDHT + 2, 1279, 1281, -1280, -(SCREENWIDHT + 1), -2,
+				-(SCREENWIDHT - 1), 1, 2, 0, -1, -SCREENWIDHT, SCREENWIDHT, SCREENWIDHT - 1, SCREENWIDHT + 1, 1280 };
 		size[8] = new int[] { 0 };
 
-		//Generate distortion1 map, it solely used by stealth tank 
+		// Generate distortion1 map, it solely used by stealth tank
 		distortion1 = new int[VALUE_DISTORTION];
 		distortion2 = new short[VALUE_DISTORTION];
 		for (int i = 0; i < VALUE_DISTORTION; i++) {
