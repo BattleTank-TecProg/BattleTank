@@ -1,16 +1,24 @@
 package project;
+//The terrain class, all the polygons data are stored in buffers prior to runtime
 public class Terrain {
+	
+	//polygons that represent land
 	public Polygon3D land[];
-
+	
+	//the polygon that represent the border of the island
 	public static Polygon3D border;
-
+	
+	//polygons that represent water
 	public Polygon3D water[];
 	public int waveIndex;
-
+	
+	//polygons that represent roads
 	public Polygon3D road[];
-
+	
+	//w floor
 	public Polygon3D concreteFloor[];
-
+	
+	//objects that scattered around the terrain
 	public Stone underWaterRocks[];
 
 	public Stone aboveWaterRocks[];
@@ -357,7 +365,9 @@ public class Terrain {
 				new Vector(-1.4, -1, 27.34), new Vector(-2.4, -1, 27.34),
 				new Vector(-2.4, -1, 27.786) };
 		road[17] = new Polygon3D(v, v[0], v[1], v[3], Main.textures[1], 1, 4, 1);
-
+		//These code are introduced after I have already hard-coded all the polygons of land, water and road.
+		//Then I realised that I needed to shift them 10 map units to the right, 2 map units upg, in
+		//order to get rid of nagetive values in coordinate.
 		for (int i = 0; i < land.length; i++) {
 			for (int j = 0; j < land[i].getL(); j++) {
 				land[i].getVertex3D()[j].add(10, 0, 2);
@@ -901,7 +911,7 @@ public class Terrain {
 		fences[59] = new Fence(12.125, -0.9, 21.625, 0);
 		fences[60] = new Fence(12.125, -0.9, 21.375, 0);
 		fences[61] = new Fence(12.125, -0.9, 21.125, 0);
-
+		//create inland rocks
 		palmTrees = new PalmTree[450];
 		palmTrees[0] = new PalmTree(10.125, -0.75, 4.125, 60);
 		palmTrees[1] = new PalmTree(9.875, -0.75, 3.875, 150);
