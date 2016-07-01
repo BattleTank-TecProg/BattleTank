@@ -50,18 +50,17 @@ public class ObstacleMapTest {
 
 	@Test
 	public void testIsOccupied2() {
+		assertFalse(ObstacleMap.isOccupied(8598));
+
 	}
 
-	@Test
-	public void testIsOccupied3() {
-	}
-
-	@Test
-	public void testDamageType2Obstacles() {
-	}
 
 	@Test
 	public void testAlertNearbyTanks() {
+		ObstacleMap.alertNearbyTanks(8598);
+		Model[] obstacleMap1 = new Model[80 * 130];
+		assertEquals(ObstacleMap.obstacleMap2.length, 80 * 130);
+		assertEquals(ObstacleMap.indexes3.length, 49);
 	}
 
 }
