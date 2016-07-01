@@ -15,6 +15,7 @@ package project;
 *  You should have received a copy of the GNU General Public License
 *  along with BattleTank 2.  If not, see <http://www.gnu.org/licenses/>
 */
+
 /**
  * Class to create Mediuns Tanks, which are contained values ​​and
  * methods for this purpose
