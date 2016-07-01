@@ -1,63 +1,133 @@
 package project;
+/**
+*	This class is part of BattleTank 2.
+*
+*  BattleTank 2 is free software: you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation, either version 3 of the License, or
+*  (at your option) any later version.
+*
+*  BattleTank 2 is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU General Public License for more details.
+*
+*  You should have received a copy of the GNU General Public License
+*  along with BattleTank 2.  If not, see <http://www.gnu.org/licenses/>
+*/
+/**
+ * Class to create Mediuns Tanks, which are contained values ​​and
+ * methods for this purpose
+ */
 public class MediumTank extends SolidObject {
-
+	//polygons for tank body
 	private Polygon3D body[];
-
+	
+	//total angle that the body has rotated from the initial position. (in the x-z plane)
 	private int bodyAngle;
-
+	
+	//the center of the body in camera coordinate
 	private Vector bodyCenter;
-
+	
+	//polygons for tank turret
 	private Polygon3D turret[];
-
+	
+	//the shadow of tank body
 	private Polygon3D shadowBody;
-
+	
+	//the shadow of tank turret
 	private Polygon3D shadowTurret;
-
+	
+	//the center of the turret (pivot point for rotation)
 	private Vector turretCenter;
-
+	
+	//total angle that the turret has rotated from the initial position. (in the x-z plane)
 	private int turretAngle;
-
-	private boolean forward, aimRight, aimLeft, firing;
-
+	
+	//movement flag
+	private boolean forward;
+	
+	//movement flag
+	private boolean aimRight;
+	
+	//movement flag
+	private boolean aimLeft;
+	
+	//movement flag
+	private boolean firing;
+	
+	//time needed before a weapon can be fired again
 	private int coolDown = 33;
 
+	//current coolDown
 	private int currentCoolDown = 0;
 
+	//change in tank's position of each frame
 	private Vector displacement = new Vector(0, 0, 0);
 
+	//degrees the tank body has rotated in a frame
 	private int bodyAngleDelta;
-
+	
+	//degrees the tank turret has rotated in a frame
 	private int turretAngleDelta;
 
+	//The position index of the tank in the grid map
 	private int position, desiredPosition;
 
+	//whether the tank is visible in the previous frame
 	private boolean isVisiblePreviousFrame;
-
+	
+	//a smoke tail
 	private Smoke Smoke;
-
+	
+	//distance from player tank
 	private double distance;
-
+	
+	//angle between player tank and turret center
 	private int targetAngle;
 
+	//angle between a target location and body centre
 	private int targetAngleBody;
 
+	//targetAngleBody of the previous frame
 	private int previousTargetAngleBody;
 
+	//temporary vectors which will be used for vector arithmetic
 	private Vector tempVector1 = new Vector(0, 0, 0);
+	
+	//temporary vectors which will be used for vector arithmetic
 	private Vector tempVector2 = new Vector(0, 0, 0);
 
+	// a flag which indicate whether the take will interact with player at all. (i.e some enemy only get activated at a certain stage of the game)
 	public boolean active = true;
 
+	//an AI flag  indicates whether it has engaged with player tank
 	private boolean engaged;
-
+	
+	//an AI flag indicates whether there is a type 2 obstacle between medium tank and player tank
 	private boolean clearToShoot;
 
+	//a count down for death after hp = 0
 	private int countDownToDeath;
-
+	
+	//represent the time that medium tank has been in stuck status
 	private int stuckCount;
 
-	private int randomNumber1, randomNumber2;
+	//random numbers 
+	private int randomNumber1;
+	
+	//random numbers 
+	private int randomNumber2;
 
+	/**
+	 * This is a constructor method. X, y and z are coordinates for construction
+	 * of the tank in the space.
+	 * 
+	 * @param x
+	 * @param y
+	 * @param y
+	 * @param angle
+	 */
 	public MediumTank(double x, double y, double z, int angle) {
 
 		start = new Vector(x, y, z);
@@ -92,6 +162,7 @@ public class MediumTank extends SolidObject {
 		lifeSpan = 1;
 	}
 
+	//create polygons for the tank body
 	private void makeBody() {
 		Vector v[];
 
@@ -194,7 +265,8 @@ public class MediumTank extends SolidObject {
 				1, 2);
 
 	}
-
+	
+	//create polygons for the tank turret
 	private void makeTurret() {
 		start = turretCenter.myClone();
 		Vector v[];
@@ -272,7 +344,8 @@ public class MediumTank extends SolidObject {
 				1, 2);
 
 	}
-
+	
+	//update model 
 	public void update() {
 
 		if ((Main.timer + randomNumber1 * 3) % 1000 == 0) {
@@ -620,7 +693,8 @@ public class MediumTank extends SolidObject {
 		}
 
 	}
-
+	
+	//process AI
 	private void processAI() {
 
 		tempVector1.set(centre);
@@ -927,6 +1001,7 @@ public class MediumTank extends SolidObject {
 		}
 	}
 
+	//draw model
 	public void draw() {
 
 		if (countDownToDeath < 3) {
@@ -947,11 +1022,17 @@ public class MediumTank extends SolidObject {
 			//Does nothing.
 		}
 	}
-
+	
+	//return the 2D boundary of this model
 	public Rectangle2D getBoundary2D() {
 		return boundary2D;
 	}
-
+	
+	/**
+	 * This is a method to calculate the damage of the tank
+	 * 
+	 * @param damagePoint
+	 */
 	public void damage(int damagePoint) {
 		if (damagePoint == -1) {
 			active = true;
