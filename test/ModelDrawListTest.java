@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import project.Geometry;
 import project.Model;
 import project.ModelDrawList;
 
@@ -22,6 +23,7 @@ public class ModelDrawListTest {
 
 	@Test
 	public void testRegister() {
+
 	}
 
 	@Test
@@ -32,6 +34,10 @@ public class ModelDrawListTest {
 
 	@Test
 	public void testSort() {
+		ModelDrawList.sort();
+		assertNotNull(ModelDrawList.modelCount);
+		assertNull(ModelDrawList.visibleModels);
+
 	}
 
 }
