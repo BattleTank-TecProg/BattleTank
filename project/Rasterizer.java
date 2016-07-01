@@ -64,12 +64,12 @@ public class Rasterizer {
 
 	public static void rasterize(Polygon3D polygon) {
 		poly = polygon;
-		L = poly.L;
+		L = poly.getL();
 		widthMask = poly.widthMask;
 		heightMask = poly.heightMask;
 		widthBits = poly.widthBits;
-		tempVertex = poly.tempVertex;
-		vertex2D = poly.vertex2D;
+		tempVertex = poly.getTempVertex();
+		vertex2D = poly.getVertex2D();
 		alpha = poly.alpha;
 
 		if (poly.type != 7)
@@ -487,7 +487,7 @@ public class Rasterizer {
 
 		int start = poly.start;
 		int end = poly.end;
-		double distanceScale = poly.centre.z / 2;
+		double distanceScale = poly.getCentre().z / 2;
 		if (distanceScale < 1)
 			distanceScale = 1;
 

@@ -193,7 +193,7 @@ public class Shell extends SolidObject {
 
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 4; j++)
-					boundary[i].vertex3D[j].add(direction);
+					boundary[i].getVertex3D()[j].add(direction);
 				boundary[i].update();
 			}
 
@@ -204,9 +204,9 @@ public class Shell extends SolidObject {
 			tempCentre.rotate_YZ(Camera.getYZ_angle());
 
 			for (int j = 0; j < polygons.length; j++) {
-				for (int i = 0; i < polygons[j].vertex3D.length; i++) {
+				for (int i = 0; i < polygons[j].getVertex3D().length; i++) {
 
-					polygons[j].vertex3D[i].add(direction);
+					polygons[j].getVertex3D()[i].add(direction);
 
 				}
 			}

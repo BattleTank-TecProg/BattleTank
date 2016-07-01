@@ -73,7 +73,7 @@ public abstract class SolidObject implements Model {
 	public final void findCenter() {
 		centre = new Vector(0, 0, 0);
 		for (int i = 0; i < 4; i++)
-			centre.add(boundary[i].centre);
+			centre.add(boundary[i].getCentre());
 		centre.scale(1.0 / 4);
 	}
 

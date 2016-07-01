@@ -432,11 +432,11 @@ public class MediumTank extends SolidObject {
 					body[i].rightEnd.rotate_XZ(bodyAngleDelta);
 					body[i].rightEnd.add(centre);
 
-					for (int j = 0; j < body[i].vertex3D.length; j++) {
-						body[i].vertex3D[j].add(displacement);
-						body[i].vertex3D[j].subtract(centre);
-						body[i].vertex3D[j].rotate_XZ(bodyAngleDelta);
-						body[i].vertex3D[j].add(centre);
+					for (int j = 0; j < body[i].getVertex3D().length; j++) {
+						body[i].getVertex3D()[j].add(displacement);
+						body[i].getVertex3D()[j].subtract(centre);
+						body[i].getVertex3D()[j].rotate_XZ(bodyAngleDelta);
+						body[i].getVertex3D()[j].add(centre);
 					}
 
 					body[i].findRealNormal();
@@ -462,11 +462,11 @@ public class MediumTank extends SolidObject {
 				shadowBody.rightEnd.rotate_XZ(bodyAngleDelta);
 				shadowBody.rightEnd.add(tempVector1);
 
-				for (int j = 0; j < shadowBody.vertex3D.length; j++) {
-					shadowBody.vertex3D[j].add(displacement);
-					shadowBody.vertex3D[j].subtract(tempVector1);
-					shadowBody.vertex3D[j].rotate_XZ(bodyAngleDelta);
-					shadowBody.vertex3D[j].add(tempVector1);
+				for (int j = 0; j < shadowBody.getVertex3D().length; j++) {
+					shadowBody.getVertex3D()[j].add(displacement);
+					shadowBody.getVertex3D()[j].subtract(tempVector1);
+					shadowBody.getVertex3D()[j].rotate_XZ(bodyAngleDelta);
+					shadowBody.getVertex3D()[j].add(tempVector1);
 				}
 
 				shadowBody.update();
@@ -494,12 +494,12 @@ public class MediumTank extends SolidObject {
 					turret[i].rightEnd.rotate_XZ(turretAngleDelta);
 					turret[i].rightEnd.add(turretCenter);
 
-					for (int j = 0; j < turret[i].vertex3D.length; j++) {
-						turret[i].vertex3D[j].add(displacement);
+					for (int j = 0; j < turret[i].getVertex3D().length; j++) {
+						turret[i].getVertex3D()[j].add(displacement);
 
-						turret[i].vertex3D[j].subtract(turretCenter);
-						turret[i].vertex3D[j].rotate_XZ(turretAngleDelta);
-						turret[i].vertex3D[j].add(turretCenter);
+						turret[i].getVertex3D()[j].subtract(turretCenter);
+						turret[i].getVertex3D()[j].rotate_XZ(turretAngleDelta);
+						turret[i].getVertex3D()[j].add(turretCenter);
 					}
 
 					turret[i].findRealNormal();
@@ -529,12 +529,12 @@ public class MediumTank extends SolidObject {
 				shadowTurret.rightEnd.rotate_XZ(turretAngleDelta);
 				shadowTurret.rightEnd.add(tempVector1);
 
-				for (int j = 0; j < shadowTurret.vertex3D.length; j++) {
-					shadowTurret.vertex3D[j].add(displacement);
+				for (int j = 0; j < shadowTurret.getVertex3D().length; j++) {
+					shadowTurret.getVertex3D()[j].add(displacement);
 
-					shadowTurret.vertex3D[j].subtract(tempVector1);
-					shadowTurret.vertex3D[j].rotate_XZ(turretAngleDelta);
-					shadowTurret.vertex3D[j].add(tempVector1);
+					shadowTurret.getVertex3D()[j].subtract(tempVector1);
+					shadowTurret.getVertex3D()[j].rotate_XZ(turretAngleDelta);
+					shadowTurret.getVertex3D()[j].add(tempVector1);
 				}
 				shadowTurret.update();
 				Rasterizer.rasterize(shadowTurret);

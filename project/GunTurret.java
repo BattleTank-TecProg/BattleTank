@@ -177,11 +177,11 @@ public class GunTurret extends SolidObject {
 					turret[i].rightEnd.rotate_XZ(turretAngleDelta);
 					turret[i].rightEnd.add(turretCenter);
 
-					for (int j = 0; j < turret[i].vertex3D.length; j++) {
+					for (int j = 0; j < turret[i].getVertex3D().length; j++) {
 
-						turret[i].vertex3D[j].subtract(turretCenter);
-						turret[i].vertex3D[j].rotate_XZ(turretAngleDelta);
-						turret[i].vertex3D[j].add(turretCenter);
+						turret[i].getVertex3D()[j].subtract(turretCenter);
+						turret[i].getVertex3D()[j].rotate_XZ(turretAngleDelta);
+						turret[i].getVertex3D()[j].add(turretCenter);
 					}
 
 					turret[i].findRealNormal();
@@ -205,11 +205,11 @@ public class GunTurret extends SolidObject {
 				shadowTurret.rightEnd.rotate_XZ(turretAngleDelta);
 				shadowTurret.rightEnd.add(tempVector1);
 
-				for (int j = 0; j < shadowTurret.vertex3D.length; j++) {
+				for (int j = 0; j < shadowTurret.getVertex3D().length; j++) {
 
-					shadowTurret.vertex3D[j].subtract(tempVector1);
-					shadowTurret.vertex3D[j].rotate_XZ(turretAngleDelta);
-					shadowTurret.vertex3D[j].add(tempVector1);
+					shadowTurret.getVertex3D()[j].subtract(tempVector1);
+					shadowTurret.getVertex3D()[j].rotate_XZ(turretAngleDelta);
+					shadowTurret.getVertex3D()[j].add(tempVector1);
 				}
 				shadowTurret.update();
 				Rasterizer.rasterize(shadowTurret);

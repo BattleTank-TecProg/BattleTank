@@ -109,8 +109,8 @@ public class Rocket extends SolidObject {
 			rocketAura.bottomEnd.add(direction);
 			rocketAura.rightEnd.add(direction);
 
-			for (int i = 0; i < rocketAura.vertex3D.length; i++) {
-				rocketAura.vertex3D[i].add(direction);
+			for (int i = 0; i < rocketAura.getVertex3D().length; i++) {
+				rocketAura.getVertex3D()[i].add(direction);
 			}
 			rocketAura.update();
 
@@ -193,16 +193,16 @@ public class Rocket extends SolidObject {
 
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 4; j++)
-					boundary[i].vertex3D[j].add(direction);
+					boundary[i].getVertex3D()[j].add(direction);
 				boundary[i].update();
 			}
 
 			for (int i = 0; i < polygons.length; i++) {
-				for (int j = 0; j < polygons[i].vertex3D.length; j++) {
-					polygons[i].vertex3D[j].add(direction);
-					polygons[i].vertex3D[j].subtract(centre);
-					polygons[i].vertex3D[j].rotate_XZ(angleDelta);
-					polygons[i].vertex3D[j].add(centre);
+				for (int j = 0; j < polygons[i].getVertex3D().length; j++) {
+					polygons[i].getVertex3D()[j].add(direction);
+					polygons[i].getVertex3D()[j].subtract(centre);
+					polygons[i].getVertex3D()[j].rotate_XZ(angleDelta);
+					polygons[i].getVertex3D()[j].add(centre);
 				}
 
 				polygons[i].findRealNormal();

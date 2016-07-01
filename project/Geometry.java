@@ -57,10 +57,10 @@ public class Geometry {
 			// Does nothing.
 		}
 
-		if (a.tempVertex[0].z < b.tempVertex[0].z
-				&& a.tempVertex[1].z < b.tempVertex[1].z
-				&& a.tempVertex[2].z < b.tempVertex[2].z
-				&& a.tempVertex[3].z < b.tempVertex[3].z) {
+		if (a.getTempVertex()[0].z < b.getTempVertex()[0].z
+				&& a.getTempVertex()[1].z < b.getTempVertex()[1].z
+				&& a.getTempVertex()[2].z < b.getTempVertex()[2].z
+				&& a.getTempVertex()[3].z < b.getTempVertex()[3].z) {
 			resultComparePolygons = true;
 		} else {
 			// Does nothing.
@@ -69,12 +69,12 @@ public class Geometry {
 		Vector tempVector = new Vector(0, 0, 0);
 
 		boolean inside = true;
-		for (int i = 0; i < b.tempVertex.length; i++) {
-			tempVector.set(b.tempVertex[i]);
-			tempVector.subtract(a.centre);
+		for (int i = 0; i < b.getTempVertex().length; i++) {
+			tempVector.set(b.getTempVertex()[i]);
+			tempVector.subtract(a.getCentre());
 			tempVector.unit();
 
-			if (tempVector.dot(a.normal) > 0.0001) {
+			if (tempVector.dot(a.getNormal()) > 0.0001) {
 				inside = false;
 
 			} else {
@@ -90,12 +90,12 @@ public class Geometry {
 		}
 		
 		inside = true;
-		for (int i = 0; i < a.tempVertex.length; i++) {
-			tempVector.set(a.tempVertex[i]);
-			tempVector.subtract(b.centre);
+		for (int i = 0; i < a.getTempVertex().length; i++) {
+			tempVector.set(a.getTempVertex()[i]);
+			tempVector.subtract(b.getCentre());
 			tempVector.unit();
 
-			if (tempVector.dot(b.normal) < -0.0001) {
+			if (tempVector.dot(b.getNormal()) < -0.0001) {
 				inside = false;
 			} else {
 				// Does nothing.

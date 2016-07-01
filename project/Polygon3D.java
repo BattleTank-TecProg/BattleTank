@@ -2,18 +2,19 @@ package project;
 import java.awt.*;
 
 public class Polygon3D {
-	public Vector vertex3D[], tempVertex[];
+	private Vector vertex3D[], tempVertex[];
 
-	public Vector vertex2D[];
+	private Vector vertex2D[];
 
-	public Vector realNormal, normal;
+	private Vector realNormal, normal;
 
-	public Vector realCentre, centre;
+	private Vector realCentre, centre;
 
-	public int L;
+	private int L;
 
-	public Rectangle bound;
-	public int xMin, yMin, xMax, yMax;
+	private Rectangle bound;
+	
+	private int xMin, yMin, xMax, yMax;
 
 	public boolean withinViewScreen;
 
@@ -58,38 +59,39 @@ public class Polygon3D {
 			Vector bottomEnd, Texture myTexture, double scaleX, double scaleY,
 			int type) {
 		this.type = type;
-		this.vertex3D = vertex3D;
+		this.setVertex3D(vertex3D);
 		this.myTexture = myTexture;
-		L = vertex3D.length;
+		setL(vertex3D.length);
 		bound = new Rectangle(0, 0, 0, 0);
 		diffuse_I = 31;
 
-		tempVertex = new Vector[L];
-		for (int i = 0; i < L; i++) {
-			tempVertex[i] = new Vector(0, 0, 0);
-			tempVertex[i].set(vertex3D[i]);
+		setTempVertex(new Vector[getL()]);
+		for (int i = 0; i < getL(); i++) {
+			getTempVertex()[i] = new Vector(0, 0, 0);
+			getTempVertex()[i].set(vertex3D[i]);
 		}
 
-		tempVector1.set(tempVertex[1]);
-		tempVector1.subtract(tempVertex[0]);
-		tempVector2.set(tempVertex[2]);
-		tempVector2.subtract(tempVertex[1]);
+		tempVector1.set(getTempVertex()[1]);
+		tempVector1.subtract(getTempVertex()[0]);
+		tempVector2.set(getTempVertex()[2]);
+		tempVector2.subtract(getTempVertex()[1]);
 		realNormal = tempVector1.cross(tempVector2);
 		realNormal.unit();
-		normal = new Vector(0, 0, 0);
-		normal.set(realNormal);
+		setNormal(new Vector(0, 0, 0));
+		getNormal().set(realNormal);
 
-		if (Math.abs(normal.y) > 0.99)
+		if (Math.abs(getNormal().y) > 0.99) {
 			faceVerticalPolygon = true;
-		else
+		} else {
 			faceVerticalPolygon = false;
-
-		realCentre = new Vector(0, 0, 0);
-		for (int i = 0; i < tempVertex.length; i++)
-			realCentre.add(tempVertex[i]);
-		realCentre.scale(1.0 / tempVertex.length);
-		centre = new Vector(0, 0, 0);
-		centre.set(realCentre);
+		}
+		
+		setRealCentre(new Vector(0, 0, 0));
+		for (int i = 0; i < getTempVertex().length; i++)
+			getRealCentre().add(getTempVertex()[i]);
+		getRealCentre().scale(1.0 / getTempVertex().length);
+		setCentre(new Vector(0, 0, 0));
+		getCentre().set(getRealCentre());
 
 		if (origin != null) {
 			this.origin = origin.myClone();
@@ -121,16 +123,16 @@ public class Polygon3D {
 			textureScaleY = textureScaleY / scaleY;
 		}
 
-		vertex2D = new Vector[L + 1];
-		for (int i = 0; i < vertex2D.length; i++)
-			vertex2D[i] = new Vector(0, 0, 0);
+		setVertex2D(new Vector[getL() + 1]);
+		for (int i = 0; i < getVertex2D().length; i++)
+			getVertex2D()[i] = new Vector(0, 0, 0);
 
 		findDiffuse();
 	}
 
 	public void update() {
 		tempVector1.set(Camera.getPosition());
-		tempVector1.subtract(vertex3D[0]);
+		tempVector1.subtract(getVertex3D()[0]);
 		if (tempVector1.dot(realNormal) <= 0) {
 			visible = false;
 		} else {
@@ -140,31 +142,31 @@ public class Polygon3D {
 					.getXZ_angle()], cosXZ = GameData.cos[Camera.getXZ_angle()], sinYZ = GameData.sin[Camera
 					.getYZ_angle()], cosYZ = GameData.cos[Camera.getYZ_angle()];
 
-			for (int i = 0; i < L; i++) {
-				x = vertex3D[i].x - camX;
-				y = vertex3D[i].y - camY;
-				z = vertex3D[i].z - camZ;
+			for (int i = 0; i < getL(); i++) {
+				x = getVertex3D()[i].x - camX;
+				y = getVertex3D()[i].y - camY;
+				z = getVertex3D()[i].z - camZ;
 
-				tempVertex[i].x = cosXZ * x - sinXZ * z;
-				tempVertex[i].z = sinXZ * x + cosXZ * z;
+				getTempVertex()[i].x = cosXZ * x - sinXZ * z;
+				getTempVertex()[i].z = sinXZ * x + cosXZ * z;
 
-				z = tempVertex[i].z;
+				z = getTempVertex()[i].z;
 
-				tempVertex[i].y = cosYZ * y - sinYZ * z;
-				tempVertex[i].z = sinYZ * y + cosYZ * z;
+				getTempVertex()[i].y = cosYZ * y - sinYZ * z;
+				getTempVertex()[i].z = sinYZ * y + cosYZ * z;
 
-				tempVertex[i].updateLocation();
+				getTempVertex()[i].updateLocation();
 			}
 
-			xMax = tempVertex[0].screenX;
+			xMax = getTempVertex()[0].screenX;
 			xMin = xMax;
-			yMax = tempVertex[0].screenY;
+			yMax = getTempVertex()[0].screenY;
 			yMin = yMax;
-			for (int i = 1; i < tempVertex.length; i++) {
-				xMax = Math.max(xMax, tempVertex[i].screenX);
-				xMin = Math.min(xMin, tempVertex[i].screenX);
-				yMax = Math.max(yMax, tempVertex[i].screenY);
-				yMin = Math.min(yMin, tempVertex[i].screenY);
+			for (int i = 1; i < getTempVertex().length; i++) {
+				xMax = Math.max(xMax, getTempVertex()[i].screenX);
+				xMin = Math.min(xMin, getTempVertex()[i].screenX);
+				yMax = Math.max(yMax, getTempVertex()[i].screenY);
+				yMin = Math.min(yMin, getTempVertex()[i].screenY);
 			}
 			bound.setLocation(xMin, yMin);
 			bound.setSize(xMax - xMin + 1, yMax - yMin);
@@ -172,16 +174,16 @@ public class Polygon3D {
 			visible = Camera.screen.intersects(bound);
 
 			if (visible) {
-				tempVector1.set(tempVertex[1]);
-				tempVector1.subtract(tempVertex[0]);
-				tempVector2.set(tempVertex[2]);
-				tempVector2.subtract(tempVertex[1]);
-				normal = tempVector1.cross(tempVector2);
+				tempVector1.set(getTempVertex()[1]);
+				tempVector1.subtract(getTempVertex()[0]);
+				tempVector2.set(getTempVertex()[2]);
+				tempVector2.subtract(getTempVertex()[1]);
+				setNormal(tempVector1.cross(tempVector2));
 
-				centre.reset();
-				for (int i = 0; i < L; i++)
-					centre.add(tempVertex[i]);
-				centre.scale(1.0 / L);
+				getCentre().reset();
+				for (int i = 0; i < getL(); i++)
+					getCentre().add(getTempVertex()[i]);
+				getCentre().scale(1.0 / getL());
 
 				withinViewScreen = Camera.screen.contains(xMin, yMin)
 						&& Camera.screen.contains(xMax, yMax);
@@ -199,10 +201,10 @@ public class Polygon3D {
 	}
 
 	public void findRealNormal() {
-		tempVector1.set(vertex3D[1]);
-		tempVector1.subtract(vertex3D[0]);
-		tempVector2.set(vertex3D[2]);
-		tempVector2.subtract(vertex3D[1]);
+		tempVector1.set(getVertex3D()[1]);
+		tempVector1.subtract(getVertex3D()[0]);
+		tempVector2.set(getVertex3D()[2]);
+		tempVector2.subtract(getVertex3D()[1]);
 		realNormal = tempVector1.cross(tempVector2);
 		realNormal.unit();
 	}
@@ -212,5 +214,61 @@ public class Polygon3D {
 			Main.polyCount++;
 			Rasterizer.rasterize(this);
 		}
+	}
+
+	public Vector[] getVertex3D() {
+		return vertex3D;
+	}
+
+	public void setVertex3D(Vector vertex3d[]) {
+		vertex3D = vertex3d;
+	}
+
+	public Vector[] getTempVertex() {
+		return tempVertex;
+	}
+
+	public void setTempVertex(Vector tempVertex[]) {
+		this.tempVertex = tempVertex;
+	}
+
+	public Vector getCentre() {
+		return centre;
+	}
+
+	public void setCentre(Vector centre) {
+		this.centre = centre;
+	}
+
+	public Vector getNormal() {
+		return normal;
+	}
+
+	public void setNormal(Vector normal) {
+		this.normal = normal;
+	}
+
+	public Vector getRealCentre() {
+		return realCentre;
+	}
+
+	public void setRealCentre(Vector realCentre) {
+		this.realCentre = realCentre;
+	}
+
+	public int getL() {
+		return L;
+	}
+
+	public void setL(int l) {
+		L = l;
+	}
+
+	public Vector[] getVertex2D() {
+		return vertex2D;
+	}
+
+	public void setVertex2D(Vector vertex2d[]) {
+		vertex2D = vertex2d;
 	}
 }

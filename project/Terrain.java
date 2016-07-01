@@ -359,8 +359,8 @@ public class Terrain {
 		road[17] = new Polygon3D(v, v[0], v[1], v[3], Main.textures[1], 1, 4, 1);
 
 		for (int i = 0; i < land.length; i++) {
-			for (int j = 0; j < land[i].L; j++) {
-				land[i].vertex3D[j].add(10, 0, 2);
+			for (int j = 0; j < land[i].getL(); j++) {
+				land[i].getVertex3D()[j].add(10, 0, 2);
 			}
 			land[i].origin.add(10, 0, 2);
 			land[i].rightEnd.add(10, 0, 2);
@@ -368,8 +368,8 @@ public class Terrain {
 		}
 
 		for (int i = 0; i < road.length; i++) {
-			for (int j = 0; j < road[i].L; j++) {
-				road[i].vertex3D[j].add(10, 0, 2);
+			for (int j = 0; j < road[i].getL(); j++) {
+				road[i].getVertex3D()[j].add(10, 0, 2);
 			}
 			road[i].origin.add(10, 0, 2);
 			road[i].rightEnd.add(10, 0, 2);
@@ -377,8 +377,8 @@ public class Terrain {
 		}
 
 		for (int i = 0; i < water.length; i++) {
-			for (int j = 0; j < water[i].L; j++) {
-				water[i].vertex3D[j].add(10, 0, 2);
+			for (int j = 0; j < water[i].getL(); j++) {
+				water[i].getVertex3D()[j].add(10, 0, 2);
 			}
 			water[i].origin.add(10, 0, 2);
 			water[i].rightEnd.add(10, 0, 2);

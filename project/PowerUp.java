@@ -164,12 +164,12 @@ public class PowerUp extends SolidObject {
 				polygons[i].bottomEnd.add(start);
 				polygons[i].bottomEnd.y += height;
 
-				for (int j = 0; j < polygons[i].vertex3D.length; j++) {
+				for (int j = 0; j < polygons[i].getVertex3D().length; j++) {
 
-					polygons[i].vertex3D[j].subtract(start);
-					polygons[i].vertex3D[j].rotate_XZ(3);
-					polygons[i].vertex3D[j].add(start);
-					polygons[i].vertex3D[j].y += height;
+					polygons[i].getVertex3D()[j].subtract(start);
+					polygons[i].getVertex3D()[j].rotate_XZ(3);
+					polygons[i].getVertex3D()[j].add(start);
+					polygons[i].getVertex3D()[j].y += height;
 				}
 
 				polygons[i].findRealNormal();
@@ -184,28 +184,28 @@ public class PowerUp extends SolidObject {
 			displacement.set(-0.003 * (GameData.sin[theta]), 0, -0.003
 					* (GameData.sin[theta]));
 
-			shadow.realCentre.add(displacement);
+			shadow.getRealCentre().add(displacement);
 
-			shadow.origin.subtract(shadow.realCentre);
+			shadow.origin.subtract(shadow.getRealCentre());
 			shadow.origin.rotate_XZ(3);
-			shadow.origin.add(shadow.realCentre);
+			shadow.origin.add(shadow.getRealCentre());
 			shadow.origin.add(displacement);
 
-			shadow.rightEnd.subtract(shadow.realCentre);
+			shadow.rightEnd.subtract(shadow.getRealCentre());
 			shadow.rightEnd.rotate_XZ(3);
-			shadow.rightEnd.add(shadow.realCentre);
+			shadow.rightEnd.add(shadow.getRealCentre());
 			shadow.rightEnd.add(displacement);
 
-			shadow.bottomEnd.subtract(shadow.realCentre);
+			shadow.bottomEnd.subtract(shadow.getRealCentre());
 			shadow.bottomEnd.rotate_XZ(3);
-			shadow.bottomEnd.add(shadow.realCentre);
+			shadow.bottomEnd.add(shadow.getRealCentre());
 			shadow.bottomEnd.add(displacement);
 
 			for (int i = 0; i < 4; i++) {
-				shadow.vertex3D[i].subtract(shadow.realCentre);
-				shadow.vertex3D[i].rotate_XZ(3);
-				shadow.vertex3D[i].add(shadow.realCentre);
-				shadow.vertex3D[i].add(displacement);
+				shadow.getVertex3D()[i].subtract(shadow.getRealCentre());
+				shadow.getVertex3D()[i].rotate_XZ(3);
+				shadow.getVertex3D()[i].add(shadow.getRealCentre());
+				shadow.getVertex3D()[i].add(displacement);
 
 			}
 
