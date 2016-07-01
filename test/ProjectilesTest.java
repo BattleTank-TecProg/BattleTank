@@ -23,9 +23,5 @@ public class ProjectilesTest {
 
 	}
 
-	@Test
-	public void testRegister() {
-
-	}
 
 }
