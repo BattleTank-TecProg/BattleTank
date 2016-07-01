@@ -37,10 +37,10 @@ public class Stone extends SolidObject {
 		boundary2D = new Rectangle2D(x - 0.2 * scale, z + 0.2 * scale,
 				0.4 * scale, 0.4 * scale);
 		if (testCollision) {
-			if (scale != 1)
+			if (scale != 1) {
 				ObstacleMap.registerObstacle2(this, (int) (x * 4)
 						+ (129 - (int) (z * 4)) * 80);
-			else {
+			} else {
 				ObstacleMap.registerObstacle2(this, (int) ((x - 0.125) * 4)
 						+ (129 - (int) ((z + 0.125) * 4)) * 80);
 				ObstacleMap.registerObstacle2(this, (int) ((x + 0.125) * 4)
@@ -50,8 +50,10 @@ public class Stone extends SolidObject {
 				ObstacleMap.registerObstacle2(this, (int) ((x + 0.125) * 4)
 						+ (129 - (int) ((z - 0.125) * 4)) * 80);
 			}
+		} else {
+			//Does nothing.
 		}
-
+		
 		xDirection.rotate_XZ(angle);
 		zDirection.rotate_XZ(angle);
 
@@ -113,9 +115,7 @@ public class Stone extends SolidObject {
 					put(-0.05, -0.25, 0.125), put(0.085, -0.1, 0.09) };
 			polygons[7] = new Polygon3D(v, v[0], v[1], v[2],
 					Main.textures[textureIndex], 0.5, 0.5, 6);
-		}
-
-		if (type == 2) {
+		} else if (type == 2) {
 
 			polygons = new Polygon3D[24];
 			v = new Vector[] { put(-0.1, -0.1, -0.2), put(0.1, -0.1, -0.2),
@@ -250,9 +250,7 @@ public class Stone extends SolidObject {
 					put(0.4, -0.25, -0.5), put(-0.5, -0.25, -0.5) };
 			shadow = new Polygon3D(v, v[0], v[1], v[3], Main.textures[8], 1, 1,
 					2);
-		}
-
-		if (type == 4) {
+		} else if (type == 4) {
 			yDirection.scale(1.3);
 			start.add(0, 0.03, 0);
 
@@ -333,6 +331,8 @@ public class Stone extends SolidObject {
 					-1, 0, -1), Main.textures[textureIndex], 3, 3, 6);
 
 			start.add(0, -0.03, 0);
+		} else {
+			//Does nothing.
 		}
 
 		start = new Vector(x, y, z);
@@ -371,12 +371,17 @@ public class Stone extends SolidObject {
 				visible = false;
 			} else {
 				visible = true;
-				if (testCollision)
+				if (testCollision) {
 					ModelDrawList.register(this);
-
+				} else {
+					//Does nothing.
+				}
+				
 				if (polygons == null) {
 					makePolygons(type, textureIndex);
 
+				} else {
+					//Does nothing.
 				}
 
 				for (int i = 0; i < polygons.length; i++) {
@@ -387,7 +392,11 @@ public class Stone extends SolidObject {
 					shadow.update();
 					if (shadow.visible) {
 						Rasterizer.rasterize(shadow);
+					} else {
+						//Does nothing.
 					}
+				} else {
+					//Does nothing.
 				}
 			}
 		}
@@ -398,6 +407,8 @@ public class Stone extends SolidObject {
 			for (int i = 0; i < polygons.length; i++) {
 				polygons[i].draw();
 			}
+		} else {
+			//Does nothing.
 		}
 	}
 }

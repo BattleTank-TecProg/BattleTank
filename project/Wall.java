@@ -3,11 +3,11 @@ public class Wall extends SolidObject {
 
 	private Polygon3D polygons[];
 
-	public Polygon3D shadow, shadow2;
+	private Polygon3D shadow, shadow2;
 
-	public int orientation;
+	private int orientation;
 
-	public int open;
+	private int open;
 
 	public Wall(double x, double y, double z, int orientation, int open) {
 		start = new Vector(x, y, z);
@@ -58,11 +58,12 @@ public class Wall extends SolidObject {
 		Vector v[];
 
 		if (orientation == 0) {
-			if (open != 0)
+			if (open != 0) {
 				polygons = new Polygon3D[4];
-			else
+			} else {
 				polygons = new Polygon3D[3];
-
+			}
+			
 			v = new Vector[] { put(-0.04, 0.14, 0.125),
 					put(-0.04, 0.14, -0.125), put(-0.04, -0.1, -0.125),
 					put(-0.04, -0.1, 0.125) };
@@ -91,6 +92,8 @@ public class Wall extends SolidObject {
 						put(0.04, 0.14, -0.125) };
 				polygons[3] = new Polygon3D(v, v[0], v[1], v[3],
 						Main.textures[41], 1, 1, 6);
+			} else {
+				//Does nothing.
 			}
 
 			start.add(-0.06, 0, -0.07);
@@ -104,11 +107,12 @@ public class Wall extends SolidObject {
 		}
 
 		if (orientation == 1) {
-			if (open != 0)
+			if (open != 0) {
 				polygons = new Polygon3D[4];
-			else
+			} else {
 				polygons = new Polygon3D[3];
-
+			}
+			
 			v = new Vector[] { put(-0.125, 0.14, -0.04),
 					put(0.125, 0.14, -0.04), put(0.125, -0.1, -0.04),
 					put(-0.125, -0.1, -0.04) };
@@ -129,8 +133,7 @@ public class Wall extends SolidObject {
 						put(0.125, -0.1, -0.04) };
 				polygons[3] = new Polygon3D(v, v[0], v[1], v[3],
 						Main.textures[41], 1, 1, 6);
-			}
-			if (open == 2) {
+			} else if (open == 2) {
 				v = new Vector[] { put(-0.125, -0.1, -0.04),
 						put(-0.125, -0.1, 0.04), put(-0.125, 0.14, 0.04),
 						put(-0.125, 0.14, -0.04) };
@@ -508,9 +511,10 @@ public class Wall extends SolidObject {
 
 			ModelDrawList.register(this);
 
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 5; i++) {
 				boundary[i].update();
-
+			}
+			
 			for (int i = 0; i < polygons.length; i++) {
 				polygons[i].update();
 			}
@@ -519,14 +523,22 @@ public class Wall extends SolidObject {
 				shadow.update();
 				if (shadow.visible) {
 					Rasterizer.rasterize(shadow);
+				} else {
+					// Does nothing.
 				}
+			} else {
+				// Does nothing.
 			}
 
 			if (shadow2 != null) {
 				shadow2.update();
 				if (shadow2.visible) {
 					Rasterizer.rasterize(shadow2);
+				} else {
+					// Does nothing.
 				}
+			} else {
+				// Does nothing.
 			}
 		}
 	}
