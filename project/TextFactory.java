@@ -92,7 +92,7 @@ public class TextFactory {
 					letters[i + 51][j] = true;
 			}
 		}
-
+		//create font for u ~ z
 		startIndex = 8192;
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 1024; j++) {
@@ -107,7 +107,7 @@ public class TextFactory {
 					letters[i + 56][j] = true;
 			}
 		}
-
+		//create font for @
 		for (int j = 0; j < 1024; j++) {
 			int x = j % 32;
 			int y = j / 32;
@@ -118,7 +118,7 @@ public class TextFactory {
 			else
 				letters[62][j] = true;
 		}
-
+		//create font for .
 		for (int j = 0; j < 1024; j++) {
 			int x = j % 32;
 			int y = j / 32;
@@ -131,7 +131,7 @@ public class TextFactory {
 		}
 
 	}
-
+	//draw text
 	public static void draw(int[] text, int xPos, int yPos, int size, int color) {
 		for (int i = 0; i < text.length; i++) {
 			if (text[i] == -1)
