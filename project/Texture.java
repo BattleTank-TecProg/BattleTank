@@ -3,19 +3,20 @@ import java.awt.image.PixelGrabber;
 import java.awt.*;
 
 public class Texture {
+	//holds the pixel data
 	public short[] Texture;
-
+	//stores the light maps  with different intensity
 	public short[][] lightMapData;
-
+	//stores a sequence of  water wave patterns;
 	public byte[][] waterWave;
 	public int waveIndex;
-
+	//stores a sequence of explosion texture
 	public int[][] explosions;
-
+	//store smoke texture
 	public int[] smoke;
-
+	//dimension of the texture
 	public int height, width, heightMask, widthMask, widthBits, heightBits;
-
+	//produce a texture with a given  type
 	public Texture(Image img, int widthBits, int heightBits, String type) {
 		this.widthBits = widthBits;
 		this.heightBits = heightBits;
