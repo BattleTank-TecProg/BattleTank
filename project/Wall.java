@@ -1,6 +1,6 @@
 package project;
 public class Wall extends SolidObject {
-
+	//the polygons of the model
 	private Polygon3D polygons[];
 
 	private Polygon3D shadow, shadow2;
