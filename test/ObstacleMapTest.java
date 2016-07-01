@@ -38,10 +38,14 @@ public class ObstacleMapTest {
 
 	@Test
 	public void testClear() {
+		ObstacleMap.init();
+		ObstacleMap.clear();
+		assertEquals(ObstacleMap.obstacleMap2.length,80 * 130);
 	}
 
 	@Test
 	public void testIsOccupied() {
+		assertFalse(ObstacleMap.isOccupied(8598));
 	}
 
 	@Test
