@@ -46,13 +46,13 @@ public final class Vector {
 		y -= v.y;
 		z -= v.z;
 	}
-
+	//amplify each component of the vector by a number
 	public void scale(double a) {
 		x *= a;
 		y *= a;
 		z *= a;
 	}
-
+	//normalize the vector
 	public void unit() {
 		assigningOneDividedByLenghtInTheVariableLengthInverse();
 		x = x * lengthInverse;
@@ -67,7 +67,7 @@ public final class Vector {
 	public double returnOneDividedByLenght() {
 		return 1 / getLength();
 	}
-	
+	//find the magnitude pf the vector
 	public double getLength() {
 		return Math.sqrt(x * x + y * y + z * z);
 	}
@@ -75,11 +75,11 @@ public final class Vector {
 	public double dot(Vector v) {
 		return x * v.x + y * v.y + z * v.z;
 	}
-
+	//retrun the dot product of this vector with another vector
 	public double dot(double a, double b, double c) {
 		return x * a + y * b + z * c;
 	}
-
+	//return the cross product of this vector with another vector
 	public final Vector cross(Vector v) {
 		return new Vector(y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y
 				* v.x);
