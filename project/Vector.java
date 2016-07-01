@@ -84,7 +84,7 @@ public final class Vector {
 		return new Vector(y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y
 				* v.x);
 	}
-
+	//rotate the vector along Y axis
 	public void rotate_XZ(int angle) {
 		double sin = GameData.sin[angle];
 		double cos = GameData.cos[angle];
@@ -93,7 +93,7 @@ public final class Vector {
 		x = cos * old_X - sin * old_Z;
 		z = sin * old_X + cos * old_Z;
 	}
-
+	//rotate the vector along X axis
 	public void rotate_YZ(int angle) {
 		double sin = GameData.sin[angle];
 		double cos = GameData.cos[angle];
@@ -102,7 +102,7 @@ public final class Vector {
 		y = cos * old_Y - sin * old_Z;
 		z = sin * old_Y + cos * old_Z;
 	}
-
+	//rotate the vector along Z axis
 	public void rotate_XY(int angle) {
 		double sin = GameData.sin[angle];
 		double cos = GameData.cos[angle];
@@ -111,19 +111,19 @@ public final class Vector {
 		x = cos * old_X - sin * old_Y;
 		y = sin * old_X + cos * old_Y;
 	}
-
+	//rotate the vector along Z axis
 	public void set(Vector v) {
 		x = v.x;
 		y = v.y;
 		z = v.z;
 	}
-
+	//set all the component equal to the corresponding component of a given vector
 	public void set(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
-
+	//set all the component to 0
 	public void reset() {
 		x = 0;
 		y = 0;
@@ -132,6 +132,7 @@ public final class Vector {
 	}
 
 	public void updateLocation() {
+		//find the 2D screen location of this vector
 		if (z <= 0.01) {
 			screenX = (int) (x * Z_length * 100) + 320;
 			screenY = (int) (-y * Z_length * 100) + 240;
@@ -141,7 +142,7 @@ public final class Vector {
 			screenY = (int) (-y * zInverse) + 240;
 		}
 	}
-
+	//set the 2D location of this vector to the 2D location of a given vector
 	public void setScreenLocation(Vector v) {
 		screenX = v.screenX;
 		screenY = v.screenY;
