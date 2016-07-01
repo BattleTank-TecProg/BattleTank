@@ -75,7 +75,7 @@ public class Rasterizer {
 		if (poly.type != 7)
 			findVectorOUV();
 
-		if (poly.withinViewScreen) {
+		if (poly.isWithinViewScreen()) {
 			visibleCount = L;
 			for (int i = 0; i < L; i++) {
 				vertex2D[i].set(tempVertex[i]);
@@ -199,7 +199,7 @@ public class Rasterizer {
 				continue;
 			}
 
-			if (poly.withinViewScreen) {
+			if (poly.isWithinViewScreen()) {
 				int startY = Math.max(v1.screenY, 0);
 				int endY = Math.min(v2.screenY, 479);
 				if (startY < start)

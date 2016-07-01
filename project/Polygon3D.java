@@ -16,7 +16,7 @@ public class Polygon3D {
 	
 	private int xMin, yMin, xMax, yMax;
 
-	public boolean withinViewScreen;
+	private boolean withinViewScreen;
 
 	public Vector origin, rightEnd, bottomEnd;
 
@@ -97,6 +97,8 @@ public class Polygon3D {
 			this.origin = origin.myClone();
 			this.rightEnd = rightEnd.myClone();
 			this.bottomEnd = bottomEnd.myClone();
+		} else {
+			//Does nothing.
 		}
 
 		if (myTexture != null) {
@@ -121,6 +123,8 @@ public class Polygon3D {
 
 			textureScaleX = textureScaleX / scaleX;
 			textureScaleY = textureScaleY / scaleY;
+		} else {
+			//Does nothing.
 		}
 
 		setVertex2D(new Vector[getL() + 1]);
@@ -181,12 +185,15 @@ public class Polygon3D {
 				setNormal(tempVector1.cross(tempVector2));
 
 				getCentre().reset();
-				for (int i = 0; i < getL(); i++)
+				for (int i = 0; i < getL(); i++) {
 					getCentre().add(getTempVertex()[i]);
+				}
 				getCentre().scale(1.0 / getL());
 
-				withinViewScreen = Camera.screen.contains(xMin, yMin)
-						&& Camera.screen.contains(xMax, yMax);
+				setWithinViewScreen(Camera.screen.contains(xMin, yMin)
+						&& Camera.screen.contains(xMax, yMax));
+			} else {
+				//Does nothing.
 			}
 		}
 	}
@@ -270,5 +277,13 @@ public class Polygon3D {
 
 	public void setVertex2D(Vector vertex2d[]) {
 		vertex2D = vertex2d;
+	}
+
+	public boolean isWithinViewScreen() {
+		return withinViewScreen;
+	}
+
+	public void setWithinViewScreen(boolean withinViewScreen) {
+		this.withinViewScreen = withinViewScreen;
 	}
 }
