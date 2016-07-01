@@ -1,16 +1,25 @@
 package project;
 
+//this class produce text images
+//letters are stored in this order:
+//0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 
+//0 1 2 3 4 5 6 7 8 9 A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z
+//
+//36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63
+//a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z  @  .
+//
+//each letter has a dimension of 16 pixel high and 16 pixel wide
 public class TextFactory {
-
+	//pixel of all the letters, 
 	public static boolean[][] letters;
 	public static boolean[] spaceCharacter;
-
+	//create font textures
 	public static void init() {
 		letters = new boolean[64][1024];
 		spaceCharacter = new boolean[1024];
 
 		short[] texture = Main.textures[62].Texture;
-
+		//create font for 0 ~ 9
 		int startIndex = 0;
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 1024; j++) {
@@ -26,7 +35,7 @@ public class TextFactory {
 				startIndex = 8192;
 			}
 		}
-
+		//create font for A ~ Z
 		startIndex = 16384;
 		for (int i = 0; i < 26; i++) {
 			for (int j = 0; j < 1024; j++) {
@@ -51,7 +60,7 @@ public class TextFactory {
 				startIndex = 40960;
 			}
 		}
-
+		//create font for a ~ o
 		startIndex = 49152;
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 1024; j++) {
@@ -68,7 +77,7 @@ public class TextFactory {
 			if (i == 6)
 				startIndex = 57344;
 		}
-
+		//create font for u ~ z
 		startIndex = 40960;
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 1024; j++) {
